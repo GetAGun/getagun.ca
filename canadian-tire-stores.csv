@@ -1,505 +1,505 @@
-store_number,branch,address,city,province,postal_code,phone,latitude,longitude,website
-407,Airdrie,300 - 202 Veteran's Blvd. NE,Airdrie,AB,T4B 3P2,+1 403-948-3993,51.302127,-114.006085,https://www.canadiantire.ca/en/store-details/ab/airdrie-ab-407.html
-667,Athabasca,2913 - 48th Avenue,Athabasca,AB,T9S 0A4,+1 780-675-3019,54.718969,-113.25237,https://www.canadiantire.ca/en/store-details/ab/athabasca-ab-667.html
-212,Brooks,"404 Cassils Road West, Cassil Centre Mall",Brooks,AB,T1R 0W3,+1 403-362-4222,50.572826,-111.899673,https://www.canadiantire.ca/en/store-details/ab/brooks-ab-212.html
-299,Calgary Dalhousie NW,5404 Dalton Drive NW,Calgary,AB,T3A 2C3,+1 403-288-1100,51.101009,-114.148335,https://www.canadiantire.ca/en/store-details/ab/calgary-dalhousie-nw-ab-299.html
-302,Calgary Westhills,"5200 Richmond Road SW, Richmond Square",Calgary,AB,T3E 6M9,+1 403-246-1961,51.019188,-114.162186,https://www.canadiantire.ca/en/store-details/ab/calgary-westhills-ab-302.html
-313,Calgary Southland and Macleod,9940 Macleod Trail SE,Calgary,AB,T2J 3K9,+1 403-278-4040,50.963103,-114.070015,https://www.canadiantire.ca/en/store-details/ab/calgary-southland-and-macleod-ab-313.html
-326,Calgary Pacific Place,3516 - 8th Avenue NE,Calgary,AB,T2A 6K5,+1 403-248-6400,51.060585,-113.984447,https://www.canadiantire.ca/en/store-details/ab/calgary-pacific-place-ab-326.html
-419,Calgary Deerfoot City NE,"910 - 57th Avenue NE, Deerfoot City",Calgary,AB,T2E 9B7,+1 403-295-2800,51.106432,-114.042615,https://www.canadiantire.ca/en/store-details/ab/calgary-deerfoot-city-ne-ab-419.html
-462,Calgary Shawnessy SE,250 Shawville Way SE,Calgary,AB,T2Y 3J1,+1 403-201-2002,50.902478,-114.067692,https://www.canadiantire.ca/en/store-details/ab/calgary-shawnessy-se-ab-462.html
-496,Calgary Country Hills,"388 Country Hills Blvd. NE, Unit 200",Calgary,AB,T3K 5J6,+1 403-226-9550,51.155393,-114.0653,https://www.canadiantire.ca/en/store-details/ab/calgary-country-hills-ab-496.html
-611,Calgary Beacon Hills NW,"11940 Sarcee Trail NW, Beacon Hill Centre",Calgary,AB,T3R 0A1,+1 403-456-6428,51.159138,-114.160888,https://www.canadiantire.ca/en/store-details/ab/calgary-beacon-hills-nw-ab-611.html
-637,Calgary McKenzie Towne SE,4155 - 126th Avenue SE,Calgary,AB,T2Z 0A1,+1 403-257-4729,50.934151,-113.969352,https://www.canadiantire.ca/en/store-details/ab/calgary-mckenzie-towne-se-ab-637.html
-930,Calgary Mount Royal,"201, 906 - 16th Avenue SW",Calgary,AB,T2R 0T3,+1 403-474-1113,51.038404,-114.082194,https://www.canadiantire.ca/en/store-details/ab/calgary-mount-royal-ab-930.html
-398,Camrose,"6601 - 48th Avenue, Unit 46, Duggan Mall",Camrose,AB,T4V 3G8,+1 780-672-1400,53.016218,-112.85741,https://www.canadiantire.ca/en/store-details/ab/camrose-ab-398.html
-469,Canmore,1110 Gateway Avenue,Canmore,AB,T1W 0J1,+1 403-678-3295,51.092676,-115.355346,https://www.canadiantire.ca/en/store-details/ab/canmore-ab-469.html
-493,Cochrane,"55 Quarry Street East, The Quarry Shopping Centre",Cochrane,AB,T4C 0W6,+1 403-851-0770,51.185803,-114.469496,https://www.canadiantire.ca/en/store-details/ab/cochrane-ab-493.html
-450,Cold Lake,6703 - 51st Street,Cold Lake,AB,T9M 1Z9,+1 780-594-3501,54.43386,-110.204507,https://www.canadiantire.ca/en/store-details/ab/cold-lake-ab-450.html
-615,Drayton Valley,5201 Power Centre Blvd.,Drayton Valley,AB,T7A 0A5,+1 780-514-7670,53.223666,-114.99519,https://www.canadiantire.ca/en/store-details/ab/drayton-valley-ab-615.html
-439,Drumheller,"650 South Railway Avenue, Unit 100, PO Box 1270",Drumheller,AB,T0J 0Y0,+1 403-823-9512,51.459139,-112.705674,https://www.canadiantire.ca/en/store-details/ab/drumheller-ab-439.html
-288,Edmonton West,"9909 - 178th Street NW, West Point Centre",Edmonton,AB,T5T 6H6,+1 780-444-1816,53.535876,-113.626034,https://www.canadiantire.ca/en/store-details/ab/edmonton-west-ab-288.html
-304,Edmonton South,"2110 - 101st Street NW, South Edmonton Common",Edmonton,AB,T6N 1J2,+1 780-438-4921,53.452185,-113.489684,https://www.canadiantire.ca/en/store-details/ab/edmonton-south-ab-304.html
-347,Edmonton Manning Dr.,"3650 - 158th Avenue NW, Manning Town Centre",Edmonton,AB,T5Y 0S5,+1 780-473-2394,53.620864,-113.397847,https://www.canadiantire.ca/en/store-details/ab/edmonton-manning-dr-ab-347.html
-397,Edmonton North West,9603 - 162nd Avenue,Edmonton,AB,T5Z 3T6,+1 780-495-9696,53.622899,-113.489011,https://www.canadiantire.ca/en/store-details/ab/edmonton-north-west-ab-397.html
-467,Edmonton Downtown,11839 Kingsway NW,Edmonton,AB,T5G 3J7,+1 780-413-8473,53.567077,-113.525655,https://www.canadiantire.ca/en/store-details/ab/edmonton-downtown-ab-467.html
-478,Edmonton Millwoods,"2331 - 66th Street NW, Unit 400",Edmonton,AB,T6K 4B5,+1 780-450-1800,53.454927,-113.427089,https://www.canadiantire.ca/en/store-details/ab/edmonton-millwoods-ab-478.html
-614,Edmonton Capilano,9847 - 50th Street NW,Edmonton,AB,T6A 3X5,+1 780-461-2220,53.539056,-113.416307,https://www.canadiantire.ca/en/store-details/ab/edmonton-capilano-ab-614.html
-676,Edmonton Windermere,6014 Currents Drive NW,Edmonton,AB,T6W 0L7,+1 780-436-6774,53.436224,-113.597206,https://www.canadiantire.ca/en/store-details/ab/edmonton-windermere-ab-676.html
-477,Edson,5919 - 2nd Avenue,Edson,AB,T7E 1L8,+1 780-723-6335,53.574457,-116.451861,https://www.canadiantire.ca/en/store-details/ab/edson-ab-477.html
-339,Fort McMurray - Main Store,1 Hospital Street,Fort McMurray,AB,T9H 5C1,+1 780-791-6400,56.721126,-111.356671,https://www.canadiantire.ca/en/store-details/ab/fort-mcmurray-main-store-ab-339.html
-911,Fort McMurray - Outdoor Store,"19 Riedel Street, Unit 131, Clearwater Landing",Fort McMurray,AB,T9H 5P8,+1 780-791-6470,56.722547,-111.364206,https://www.canadiantire.ca/en/store-details/ab/fort-mcmurray-outdoor-store-ab-911.html
-322,Fort Saskatchewan,"9510 - 86th Avenue, Cornerstone Fort Saskatchewan",Fort Saskatchewan,AB,T8L 4P4,+1 780-998-2118,53.696179,-113.209262,https://www.canadiantire.ca/en/store-details/ab/fort-saskatchewan-ab-322.html
-344,Grande Prairie,11601 - 104th Avenue,Grande Prairie,AB,T8V 3X9,+1 780-539-9292,55.173506,-118.848446,https://www.canadiantire.ca/en/store-details/ab/grande-prairie-ab-344.html
-908,High Level,1 Gateway Boulevard,High Level,AB,T0H 1Z0,+1 780-926-1908,58.507506,-117.146991,https://www.canadiantire.ca/en/store-details/ab/high-level-ab-908.html
-909,High River,1204 - 5th Street SE,High River,AB,T1V 0J2,+1 403-652-2264,50.570963,-113.857278,https://www.canadiantire.ca/en/store-details/ab/high-river-ab-909.html
-455,Hinton,868 Carmichael Lane,Hinton,AB,T7V 1Y6,+1 780-865-6157,53.385119,-117.624055,https://www.canadiantire.ca/en/store-details/ab/hinton-ab-455.html
-448,Leduc,"5402 Discovery Way, Leduc Common",Leduc,AB,T9E 8L9,+1 780-986-5229,53.269615,-113.567991,https://www.canadiantire.ca/en/store-details/ab/leduc-ab-448.html
-441,Lethbridge,"1240 - 2nd Avenue A North, Unit 19, Centre Village Mall",Lethbridge,AB,T1H 0E4,+1 403-320-6191,49.700399,-112.825658,https://www.canadiantire.ca/en/store-details/ab/lethbridge-ab-441.html
-634,Lethbridge South,2720 Fairway Road South,Lethbridge,AB,T1K 7A5,+1 403-394-9633,49.667402,-112.789577,https://www.canadiantire.ca/en/store-details/ab/lethbridge-south-ab-634.html
-341,Lloydminster,4104 - 80th Avenue,Lloydminster,AB,T9V 0X9,+1 780-875-1558,53.276213,-110.064874,https://www.canadiantire.ca/en/store-details/ab/lloydminster-ab-341.html
-328,Medicine Hat,1971 Strachan Road SE,Medicine Hat,AB,T1B 0G4,+1 403-526-6644,49.995395,-110.646036,https://www.canadiantire.ca/en/store-details/ab/medicine-hat-ab-328.html
-642,Okotoks,100 - 201 Southridge Drive,Okotoks,AB,T1S 2C9,+1 403-938-5551,50.706284,-113.973472,https://www.canadiantire.ca/en/store-details/ab/okotoks-ab-642.html
-475,Olds,"6900 - 46th Street, Unit 600",Olds,AB,T4H 0A2,+1 403-556-9949,51.796019,-114.13957,https://www.canadiantire.ca/en/store-details/ab/olds-ab-475.html
-474,Peace River,7713 - 100th Avenue,Peace River,AB,T8S 1M5,+1 780-624-9429,56.231748,-117.338348,https://www.canadiantire.ca/en/store-details/ab/peace-river-ab-474.html
-329,Red Deer,2510 - 50th Avenue,Red Deer,AB,T4R 1M3,+1 403-342-2222,52.243536,-113.816675,https://www.canadiantire.ca/en/store-details/ab/red-deer-ab-329.html
-645,Red Deer North,"6380 - 50th Avenue, Unit 300, Village Mall",Red Deer,AB,T4N 4C6,+1 403-346-1497,52.287837,-113.815865,https://www.canadiantire.ca/en/store-details/ab/red-deer-north-ab-645.html
-613,Rocky Mountain House,5440 - 46th Street,Rocky Mountain House,AB,T4T 1B7,+1 403-846-0077,52.382132,-114.914246,https://www.canadiantire.ca/en/store-details/ab/rocky-mountain-house-ab-613.html
-428,Sherwood Park,169 Ordze Avenue,Sherwood Park,AB,T8B 1M6,+1 780-449-1577,53.510932,-113.32523,https://www.canadiantire.ca/en/store-details/ab/sherwood-park-ab-428.html
-916,Sherwood Park Emerald Hills,200 - 3000 Emerald Drive,Sherwood Park,AB,T8H 0P5,+1 825-218-8899,53.568994,-113.290232,https://www.canadiantire.ca/en/store-details/ab/sherwood-park-emerald-hills-ab-916.html
-699,Slave Lake,"101 Cornerstone, 1500 Main Street SW",Slave Lake,AB,T0G 2A4,+1 780-849-2915,55.271464,-114.782699,https://www.canadiantire.ca/en/store-details/ab/slave-lake-ab-699.html
-449,Spruce Grove,38 McLeod Avenue,Spruce Grove,AB,T7X 3Y2,+1 780-962-1444,53.5424,-113.919594,https://www.canadiantire.ca/en/store-details/ab/spruce-grove-ab-449.html
-334,Edmonton St.Albert,40 Bellerose Drive,St. Albert,AB,T8N 6M3,+1 780-459-5545,53.644523,-113.621067,https://www.canadiantire.ca/en/store-details/ab/edmonton-st-albert-ab-334.html
-900,St. Paul,3929 - 49th Avenue,St. Paul,AB,T0A 3A2,+1 780-645-3849,53.990057,-111.264338,https://www.canadiantire.ca/en/store-details/ab/st-paul-ab-900.html
-671,Stettler,6607 - 50th Avenue,Stettler,AB,T4K 1M2,+1 403-742-8319,52.324311,-112.734031,https://www.canadiantire.ca/en/store-details/ab/stettler-ab-671.html
-651,Strathmore,109 - 900 Pine Road,Strathmore,AB,T1P 0A2,+1 403-934-9733,51.036317,-113.3893,https://www.canadiantire.ca/en/store-details/ab/strathmore-ab-651.html
-655,Sylvan Lake,200 - 62 Thevenaz Industrial Trail,Sylvan Lake,AB,T4S 0B6,+1 403-887-0581,52.306565,-114.071375,https://www.canadiantire.ca/en/store-details/ab/sylvan-lake-ab-655.html
-410,Vegreville,6623 Highway 16A West,Vegreville,AB,T9C 0A3,+1 780-632-2601,53.501372,-112.07944,https://www.canadiantire.ca/en/store-details/ab/vegreville-ab-410.html
-628,Wainwright,2801 - 13th Avenue,Wainwright,AB,T9W 0A2,+1 780-842-4522,52.841963,-110.830057,https://www.canadiantire.ca/en/store-details/ab/wainwright-ab-628.html
-330,Wetaskiwin,3851 - 56th Street,Wetaskiwin,AB,T9A 2B1,+1 780-352-7175,52.9574,-113.388887,https://www.canadiantire.ca/en/store-details/ab/wetaskiwin-ab-330.html
-695,Whitecourt,"4721 - 51st Street, PO Box 1140",Whitecourt,AB,T7S 0E8,+1 780-778-6591,54.138359,-115.685558,https://www.canadiantire.ca/en/store-details/ab/whitecourt-ab-695.html
-434,Abbotsford,32513 South Fraser Way,Abbotsford,BC,V2T 4N5,+1 604-870-4134,49.052253,-122.322995,https://www.canadiantire.ca/en/store-details/bc/abbotsford-bc-434.html
-603,Burnaby South,"7200 Market Crossing, Marine Way Market",Burnaby,BC,V5J 0A2,+1 604-451-5888,49.200604,-122.982405,https://www.canadiantire.ca/en/store-details/bc/burnaby-south-bc-603.html
-437,Campbell River,"1444 Island Hwy, Discovery Harbour Shopping Centre",Campbell River,BC,V9W 8C9,+1 250-286-0188,50.03473,-125.250637,https://www.canadiantire.ca/en/store-details/bc/campbell-river-bc-437.html
-492,Castlegar,2000 Columbia Avenue,Castlegar,BC,V1N 2W7,+1 250-365-7737,49.294505,-117.654144,https://www.canadiantire.ca/en/store-details/bc/castlegar-bc-492.html
-433,Chilliwack,45495 Luckakuck Way,Chilliwack,BC,V2R 6J3,+1 604-858-9055,49.142497,-121.965872,https://www.canadiantire.ca/en/store-details/bc/chilliwack-bc-433.html
-608,Coquitlam,1200 Seguin Drive,Coquitlam,BC,V3K 6W8,+1 604-527-8828,49.235016,-122.860456,https://www.canadiantire.ca/en/store-details/bc/coquitlam-bc-608.html
-350,Courtenay,2801 Cliffe Avenue,Courtenay,BC,V9N 2L8,+1 250-338-0101,49.67266,-124.982277,https://www.canadiantire.ca/en/store-details/bc/courtenay-bc-350.html
-395,Cranbrook,"120 - 1500 Cranbrook Street North, Tamarack Centre",Cranbrook,BC,V1C 3S8,+1 250-489-3300,49.524212,-115.75163,https://www.canadiantire.ca/en/store-details/bc/cranbrook-bc-395.html
-661,Dawson Creek,11628 - 8th Street,Dawson Creek,BC,V1G 4R7,+1 250-782-9552,55.741767,-120.22262,https://www.canadiantire.ca/en/store-details/bc/dawson-creek-bc-661.html
-466,Duncan,"2929 Green Road, Cowichan Commons",Duncan,BC,V9L 0C1,+1 250-748-0161,48.80074,-123.718071,https://www.canadiantire.ca/en/store-details/bc/duncan-bc-466.html
-635,Fernie,"1791 - 9th Avenue, PO Box 2637",Fernie,BC,V0B 1M5,+1 250-423-4222,49.517082,-115.058911,https://www.canadiantire.ca/en/store-details/bc/fernie-bc-635.html
-363,Fort St. John,9716 Old Fort Road,Fort St. John,BC,V1J 0S6,+1 250-787-1142,56.244105,-120.876902,https://www.canadiantire.ca/en/store-details/bc/fort-st-john-bc-363.html
-658,Invermere,480 Sarah Road,Invermere,BC,V0A 1K3,+1 250-342-4433,50.51457,-116.008512,https://www.canadiantire.ca/en/store-details/bc/invermere-bc-658.html
-355,Kamloops South,1441 Hillside Drive,Kamloops,BC,V2E 1A9,+1 250-374-9747,50.654576,-120.380099,https://www.canadiantire.ca/en/store-details/bc/kamloops-south-bc-355.html
-356,Kamloops North,944 - 8th Street,Kamloops,BC,V2B 2X5,+1 250-376-2013,50.702767,-120.362756,https://www.canadiantire.ca/en/store-details/bc/kamloops-north-bc-356.html
-353,Kelowna,2479 Highway 97 North,Kelowna,BC,V1X 4J2,+1 250-860-5744,49.88827,-119.419644,https://www.canadiantire.ca/en/store-details/bc/kelowna-bc-353.html
-426,Langley,6312 - 200th Street,Langley,BC,V2Y 1A1,+1 604-532-4411,49.117672,-122.667203,https://www.canadiantire.ca/en/store-details/bc/langley-bc-426.html
-481,Maple Ridge,11969 - 200th Street,Maple Ridge,BC,V2X 3M7,+1 604-460-4664,49.220733,-122.668034,https://www.canadiantire.ca/en/store-details/bc/maple-ridge-bc-481.html
-696,Merritt,2761 Forksdale Avenue,Merritt,BC,V1K 1R9,+1 250-378-1818,50.122716,-120.76151,https://www.canadiantire.ca/en/store-details/bc/merritt-bc-696.html
-479,Mission,32545 London Avenue,Mission,BC,V2V 6M7,+1 604-826-5840,49.130808,-122.321101,https://www.canadiantire.ca/en/store-details/bc/mission-bc-479.html
-362,Nanaimo,4585 Uplands Drive,Nanaimo,BC,V9T 6M8,+1 250-585-8045,49.219601,-124.031932,https://www.canadiantire.ca/en/store-details/bc/nanaimo-bc-362.html
-932,North Saanich,10300 McDonald Park Road,North Saanich,BC,V8L 5X7,+1 778-746-4120,48.662738,-123.419055,https://www.canadiantire.ca/en/store-details/bc/north-saanich-bc-932.html
-601,North Vancouver Main,1350 Main Street,North Vancouver,BC,V7J 1C6,+1 604-982-9100,49.307651,-123.035105,https://www.canadiantire.ca/en/store-details/bc/north-vancouver-main-bc-601.html
-698,Oliver,"5717 Main Street, Unit 175, Southwinds Crossing",Oliver,BC,V0H 1T9,+1 250-498-8473,49.170411,-119.555052,https://www.canadiantire.ca/en/store-details/bc/oliver-bc-698.html
-490,Parksville,822 Island Highway West,Parksville,BC,V9P 2B7,+1 250-248-1085,49.330716,-124.345388,https://www.canadiantire.ca/en/store-details/bc/parksville-bc-490.html
-351,Penticton,960 Railway Street,Penticton,BC,V2A 8N2,+1 250-492-3576,49.490519,-119.602798,https://www.canadiantire.ca/en/store-details/bc/penticton-bc-351.html
-488,Port Alberni,"3550 Johnston Road, Unit 51, Alberni Mall",Port Alberni,BC,V9Y 7W8,+1 250-720-0085,49.265326,-124.784748,https://www.canadiantire.ca/en/store-details/bc/port-alberni-bc-488.html
-609,Port Coquitlam,"2125 Hawkins Street, Freemont Village Shopping Centre",Port Coquitlam,BC,V3B 0G6,+1 604-468-6951,49.254808,-122.740799,https://www.canadiantire.ca/en/store-details/bc/port-coquitlam-bc-609.html
-480,Powell River,"4720 Joyce Avenue, Powell River Town Centre",Powell River,BC,V8A 3B5,+1 604-485-4649,49.843732,-124.519773,https://www.canadiantire.ca/en/store-details/bc/powell-river-bc-480.html
-360,Prince George,5008 Domano Blvd.,Prince George,BC,V2N 4V8,+1 250-964-8258,53.867364,-122.780027,https://www.canadiantire.ca/en/store-details/bc/prince-george-bc-360.html
-487,Quesnel,570 Newman Road,Quesnel,BC,V2J 6Z8,+1 250-747-5274,52.97065,-122.439896,https://www.canadiantire.ca/en/store-details/bc/quesnel-bc-487.html
-606,Richmond,3500 No. 3 Road,Richmond,BC,V6X 2C1,+1 604-273-2939,49.188072,-123.13225,https://www.canadiantire.ca/en/store-details/bc/richmond-bc-606.html
-610,S. Richmond,"11388 Steveston Hwy, Coppersmith Corner Shopping Centre",Richmond,BC,V7A 5J5,+1 604-271-6651,49.132205,-123.097778,https://www.canadiantire.ca/en/store-details/bc/s-richmond-bc-610.html
-482,Salmon Arm,"300, 1151 - 10th Avenue SW, The Mall at Piccadilly",Salmon Arm,BC,V1E 1T3,+1 250-832-9600,50.693784,-119.297595,https://www.canadiantire.ca/en/store-details/bc/salmon-arm-bc-482.html
-636,Sechelt,4380 Sunshine Coast Highway,Sechelt,BC,V7Z 0B1,+1 604-885-6611,49.440956,-123.712084,https://www.canadiantire.ca/en/store-details/bc/sechelt-bc-636.html
-631,Smithers,"3221 Hwy 16, PO Box 669",Smithers,BC,V0J 2N0,+1 250-847-3117,54.773081,-127.153262,https://www.canadiantire.ca/en/store-details/bc/smithers-bc-631.html
-483,Squamish,1851 Mamquam Road,Squamish,BC,V8B 0H5,+1 604-898-2227,49.7357,-123.133636,https://www.canadiantire.ca/en/store-details/bc/squamish-bc-483.html
-443,Surrey (Newton),7599 King George Blvd.,Surrey,BC,V3W 5A8,+1 604-572-3739,49.140379,-122.84741,https://www.canadiantire.ca/en/store-details/bc/surrey-(newton)-bc-443.html
-622,White Rock,"3059 - 152nd Street, South Point Exchange",Surrey,BC,V4P 3K1,+1 604-542-4317,49.057403,-122.804071,https://www.canadiantire.ca/en/store-details/bc/white-rock-bc-622.html
-678,Surrey (Scott Road),7878 - 120th Street,Surrey,BC,V3W 3N2,+1 604-591-3914,49.146462,-122.889134,https://www.canadiantire.ca/en/store-details/bc/surrey-(scott-road)-bc-678.html
-486,Terrace,5100 Highway 16 West,Terrace,BC,V8G 5S5,+1 250-635-7178,54.517797,-128.617592,https://www.canadiantire.ca/en/store-details/bc/terrace-bc-486.html
-665,Trail,8238 Highway 3B,Trail,BC,V1R 4W4,+1 250-364-3333,49.088829,-117.627297,https://www.canadiantire.ca/en/store-details/bc/trail-bc-665.html
-910,Tsawwassen,"4949 Canoe Pass Way, Unit 200, Tsawwassen Commons",Tsawwassen,BC,V4M 0B2,+1 604-948-8819,49.042639,-123.08752,https://www.canadiantire.ca/en/store-details/bc/tsawwassen-bc-910.html
-389,Cambie & 7th,2290 Cambie Street,Vancouver,BC,V5Z 2T7,+1 604-707-2290,49.26511,-123.114437,https://www.canadiantire.ca/en/store-details/bc/cambie-7th-bc-389.html
-604,"Vancouver, Grandview & Boundary",2830 Bentall Street,Vancouver,BC,V5M 4H4,+1 604-431-3570,49.259515,-123.030986,https://www.canadiantire.ca/en/store-details/bc/vancouver-grandview-boundary-bc-604.html
-605,"Vancouver, SW Marine",8277 Ontario Street,Vancouver,BC,V5X 0A7,+1 604-336-1086,49.210151,-123.107521,https://www.canadiantire.ca/en/store-details/bc/vancouver-sw-marine-bc-605.html
-361,Vernon,"4900 - 27th Street, Unit 345, Village Green Shopping Centre",Vernon,BC,V1T 7G7,+1 250-549-2131,50.284956,-119.268391,https://www.canadiantire.ca/en/store-details/bc/vernon-bc-361.html
-365,Victoria Hillside Centre,"1610 Hillside Avenue, Hillside Shopping Centre",Victoria,BC,V8T 2C5,+1 250-361-3152,48.445211,-123.337335,https://www.canadiantire.ca/en/store-details/bc/victoria-hillside-centre-bc-365.html
-366,Victoria Langford,"855 Langford Parkway, Westshore Town Centre",Victoria,BC,V9B 4V5,+1 250-474-2291,48.441886,-123.506302,https://www.canadiantire.ca/en/store-details/bc/victoria-langford-bc-366.html
-368,Victoria View Royal,1519 Admirals Road,Victoria,BC,V9A 2P8,+1 250-381-3111,48.450737,-123.426134,https://www.canadiantire.ca/en/store-details/bc/victoria-view-royal-bc-368.html
-369,Victoria Royal Oak,"801 Royal Oak Drive, Broadmead Village Shopping Centre",Victoria,BC,V8X 4V1,+1 250-727-6561,48.497614,-123.381341,https://www.canadiantire.ca/en/store-details/bc/victoria-royal-oak-bc-369.html
-935,Victoria Service Centre,3993 Cedar Hill Road,Victoria,BC,V8N 4M9,+1 250-721-1125,48.471791,-123.334038,https://www.canadiantire.ca/en/store-details/bc/victoria-service-centre-bc-935.html
-612,Westbank,"101-3550 Carrington Road, Westbank Hub Centre",Westbank,BC,V4T 2Z1,+1 250-707-3901,49.836164,-119.613634,https://www.canadiantire.ca/en/store-details/bc/westbank-bc-612.html
-438,Williams Lake,1050 South Lakeside Drive,Williams Lake,BC,V2G 3A6,+1 250-392-3303,52.117541,-122.129983,https://www.canadiantire.ca/en/store-details/bc/williams-lake-bc-438.html
-286,Brandon,1655 - 18th Street,Brandon,MB,R7A 5C6,+1 204-728-5801,49.824536,-99.960437,https://www.canadiantire.ca/en/store-details/mb/brandon-mb-286.html
-331,Dauphin,1500 Main Street South,Dauphin,MB,R7N 1M8,+1 204-638-9203,51.134386,-100.061207,https://www.canadiantire.ca/en/store-details/mb/dauphin-mb-331.html
-640,Flin Flon,170 PTH No. 10-A,Flin Flon,MB,R8A 0C6,+1 204-687-7887,54.768534,-101.840777,https://www.canadiantire.ca/en/store-details/mb/flin-flon-mb-640.html
-277,Portage La Prairie,2445 Saskatchewan Avenue West,Portage La Prairie,MB,R1N 4A6,+1 204-857-3408,49.972579,-98.331504,https://www.canadiantire.ca/en/store-details/mb/portage-la-prairie-mb-277.html
-447,Selkirk,1041 Manitoba Avenue,Selkirk,MB,R1A 3T7,+1 204-482-8473,50.158941,-96.899688,https://www.canadiantire.ca/en/store-details/mb/selkirk-mb-447.html
-203,Steinbach,131 PTH 12 North,Steinbach,MB,R5G 1T5,+1 204-326-3436,49.542908,-96.6862,https://www.canadiantire.ca/en/store-details/mb/steinbach-mb-203.html
-198,Thompson,60 Selkirk Avenue,Thompson,MB,R8N 0M8,+1 204-778-8888,55.743148,-97.85427,https://www.canadiantire.ca/en/store-details/mb/thompson-mb-198.html
-358,Winkler,"781 Norquay Drive, Southland Mall",Winkler,MB,R6W 0H9,+1 204-325-4688,49.191475,-97.931102,https://www.canadiantire.ca/en/store-details/mb/winkler-mb-358.html
-223,Winnipeg Kenaston,1711 Kenaston Blvd.,Winnipeg,MB,R3Y 1V5,+1 204-269-9630,49.821739,-97.196442,https://www.canadiantire.ca/en/store-details/mb/winnipeg-kenaston-mb-223.html
-248,Winnipeg Polo Park,750 St. James Street,Winnipeg,MB,R3G 3J7,+1 204-943-0311,49.88645,-97.202273,https://www.canadiantire.ca/en/store-details/mb/winnipeg-polo-park-mb-248.html
-252,Winnipeg Unicity Shopping Centre,3615 Portage Avenue,Winnipeg,MB,R3K 2G6,+1 204-888-0280,49.883535,-97.310964,https://www.canadiantire.ca/en/store-details/mb/winnipeg-unicity-shopping-centre-mb-252.html
-266,Winnipeg St. Boniface,157 Vermillion Road,Winnipeg,MB,R2J 3Z7,+1 204-254-5169,49.854829,-97.068779,https://www.canadiantire.ca/en/store-details/mb/winnipeg-st-boniface-mb-266.html
-270,Winnipeg Regent,1519 Regent Avenue West,Winnipeg,MB,R2C 4M4,+1 204-667-2454,49.896943,-97.055808,https://www.canadiantire.ca/en/store-details/mb/winnipeg-regent-mb-270.html
-345,Winnipeg McPhillips,"2305 McPhillips Street, Garden City Shopping Centre",Winnipeg,MB,R2V 3E1,+1 204-632-5212,49.950909,-97.14291,https://www.canadiantire.ca/en/store-details/mb/winnipeg-mcphillips-mb-345.html
-929,Winnipeg Grant Park,1080 Grant Avenue,Winnipeg,MB,R3M 2A4,+1 204-233-8000,49.858253,-97.164098,https://www.canadiantire.ca/en/store-details/mb/winnipeg-grant-park-mb-929.html
-16,Atholville,384 Old Val D'Amour Road,Atholville,NB,E3N 4E3,+1 506-789-0220,47.992234,-66.700771,https://www.canadiantire.ca/en/store-details/nb/atholville-nb-16.html
-11,Bathurst,520 St. Peter Avenue,Bathurst,NB,E2A 2Y7,+1 506-547-8120,47.630401,-65.665093,https://www.canadiantire.ca/en/store-details/nb/bathurst-nb-11.html
-63,Dieppe,500 Regis Street,Dieppe,NB,E1A 5T2,+1 506-857-9242,46.097385,-64.756197,https://www.canadiantire.ca/en/store-details/nb/dieppe-nb-63.html
-93,Edmundston,590 Victoria Street,Edmundston,NB,E3V 3N1,+1 506-735-8801,47.383329,-68.337718,https://www.canadiantire.ca/en/store-details/nb/edmundston-nb-93.html
-35,Fredericton,1110 Smythe Street,Fredericton,NB,E3B 3H6,+1 506-450-8920,45.944249,-66.66667,https://www.canadiantire.ca/en/store-details/nb/fredericton-nb-35.html
-337,Fredericton North,75 Two Nations Crossing,Fredericton,NB,E3A 0T3,+1 506-450-8933,45.989336,-66.628523,https://www.canadiantire.ca/en/store-details/nb/fredericton-north-nb-337.html
-219,Grand Falls,"383, chemin Madawaska",Grand Falls,NB,E3Y 1A4,+1 506-473-3550,47.056261,-67.750768,https://www.canadiantire.ca/en/store-details/nb/grand-falls-nb-219.html
-136,Miramichi,"2491 King George Highway, Bridgeview Plaza",Miramichi,NB,E1V 6W3,+1 506-773-9446,47.032504,-65.489395,https://www.canadiantire.ca/en/store-details/nb/miramichi-nb-136.html
-249,Moncton Mountain Rd,"1380 Mountain Road, Unit 1, Northwest Centre",Moncton,NB,E1C 2T8,+1 506-852-2970,46.11054,-64.833704,https://www.canadiantire.ca/en/store-details/nb/moncton-mountain-rd-nb-249.html
-309,Oromocto,345 Miramichi Road,Oromocto,NB,E2V 4T4,+1 506-357-3304,45.832971,-66.484854,https://www.canadiantire.ca/en/store-details/nb/oromocto-nb-309.html
-691,Riverview,525 Pinewood Road,Riverview,NB,E1B 0K3,+1 506-386-3400,46.051035,-64.795601,https://www.canadiantire.ca/en/store-details/nb/riverview-nb-691.html
-476,Rothesay,160 Hampton Road,Rothesay,NB,E2E 2R3,+1 506-848-6000,45.40191,-65.972018,https://www.canadiantire.ca/en/store-details/nb/rothesay-nb-476.html
-254,Saint John - Westmorland Road,400 Westmorland Road,Saint John,NB,E2J 2G4,+1 506-634-2606,45.304508,-66.022167,https://www.canadiantire.ca/en/store-details/nb/saint-john-westmorland-road-nb-254.html
-349,Saint John Fairville,885 Fairville Blvd.,Saint John,NB,E2M 5T9,+1 506-635-1710,45.250208,-66.100745,https://www.canadiantire.ca/en/store-details/nb/saint-john-fairville-nb-349.html
-647,Shediac,173 Main Street,Shediac,NB,E4P 2A5,+1 506-533-9788,46.216632,-64.56388,https://www.canadiantire.ca/en/store-details/nb/shediac-nb-647.html
-232,St. Stephen,250 King Street,St. Stephen,NB,E3L 2E5,+1 506-466-4110,45.205645,-67.274072,https://www.canadiantire.ca/en/store-details/nb/st-stephen-nb-232.html
-106,Sussex,"138 Main Street, Unit 17, Gateway Mall",Sussex,NB,E4E 3E1,+1 506-433-3201,45.726944,-65.530068,https://www.canadiantire.ca/en/store-details/nb/sussex-nb-106.html
-491,Tracadie - Sheila,"450, rue du Moulin",Tracadie-Sheila,NB,E1X 1A4,+1 506-395-4313,47.522204,-64.916427,https://www.canadiantire.ca/en/store-details/nb/tracadie-sheila-nb-491.html
-137,Woodstock,388 Connell Street,Woodstock,NB,E7M 5G9,+1 506-328-3353,46.170839,-67.598826,https://www.canadiantire.ca/en/store-details/nb/woodstock-nb-137.html
-217,Carbonear,95 Columbus Drive,Carbonear,NL,A1Y 1A6,+1 709-596-5104,47.723106,-53.240776,https://www.canadiantire.ca/en/store-details/nl/carbonear-nl-217.html
-319,Port aux Basques,"2 High Street, PO Box 160",Channel-Port-aux-Basques,NL,A0M 1C0,+1 709-695-2158,47.589266,-59.161345,https://www.canadiantire.ca/en/store-details/nl/port-aux-basques-nl-319.html
-650,Clarenville,27 Manitoba Drive,Clarenville,NL,A5A 1K3,+1 709-466-8080,48.165842,-53.987377,https://www.canadiantire.ca/en/store-details/nl/clarenville-nl-650.html
-185,Corner Brook,4 Murphy Square,Corner Brook,NL,A2H 1R4,+1 709-639-7101,48.958464,-57.921685,https://www.canadiantire.ca/en/store-details/nl/corner-brook-nl-185.html
-259,Gander,"132 Bennett Drive, Unit 100, Gander Mall",Gander,NL,A1V 2H2,+1 709-256-4813,48.951139,-54.60234,https://www.canadiantire.ca/en/store-details/nl/gander-nl-259.html
-205,Grand Falls-Windsor,1 Cohen Place,Grand Falls-Windsor,NL,A2A 0E7,+1 709-489-9270,48.941263,-55.653922,https://www.canadiantire.ca/en/store-details/nl/grand-falls-windsor-nl-205.html
-901,Labrador City,"500 Vanier Avenue, Unit 70, Labrador Mall",Labrador City,NL,A2V 2W7,+1 709-944-7740,52.948163,-66.92561,https://www.canadiantire.ca/en/store-details/nl/labrador-city-nl-901.html
-291,Lewisporte,425 Main Street West,Lewisporte,NL,A0G 3A0,+1 709-535-2248,49.219614,-55.054043,https://www.canadiantire.ca/en/store-details/nl/lewisporte-nl-291.html
-468,Marystown,"25 - 49 Columbia Drive, Peninsula Mall, PO Box 250",Marystown,NL,A0E 2M0,+1 709-279-3940,47.16491,-55.159419,https://www.canadiantire.ca/en/store-details/nl/marystown-nl-468.html
-333,Mount Pearl,26 Merchant Drive,Mount Pearl,NL,A1N 5J5,+1 709-364-5880,47.500953,-52.811741,https://www.canadiantire.ca/en/store-details/nl/mount-pearl-nl-333.html
-144,St. John's Hebron Way,40 Hebron Way,St. John's,NL,A1A 0L9,+1 709-722-1860,47.617367,-52.727723,https://www.canadiantire.ca/en/store-details/nl/st-john-s-hebron-way-nl-144.html
-216,St. John's West,50 Kelsey Drive,St. John's,NL,A1B 5C7,+1 709-722-5530,47.553287,-52.779801,https://www.canadiantire.ca/en/store-details/nl/st-john-s-west-nl-216.html
-325,Stephenville,54 Prince Rupert Drive,Stephenville,NL,A2N 3W7,+1 709-643-5611,48.546423,-58.577734,https://www.canadiantire.ca/en/store-details/nl/stephenville-nl-325.html
-3,Amherst,152 Albion Street South,Amherst,NS,B4H 4H4,+1 902-667-7218,45.809747,-64.200389,https://www.canadiantire.ca/en/store-details/ns/amherst-ns-3.html
-2,Antigonish,"133 Church Street, Unit 153, Antigonish Market Square",Antigonish,NS,B2G 2E3,+1 902-863-4753,45.61773,-61.984187,https://www.canadiantire.ca/en/store-details/ns/antigonish-ns-2.html
-224,Halifax - Bedford,150 Damascus Road,Bedford,NS,B4A 0E5,+1 902-835-1060,44.74988,-63.643938,https://www.canadiantire.ca/en/store-details/ns/halifax-bedford-ns-224.html
-13,Bridgewater,"16 Pine Grove Road, RR 2, Unit 1",Bridgewater,NS,B4V 4H5,+1 902-543-4648,44.39899,-64.534212,https://www.canadiantire.ca/en/store-details/ns/bridgewater-ns-13.html
-41,Dartmouth Crossing,"30 Lamont Terrace, Dartmouth Crossing",Dartmouth,NS,B3B 0B5,+1 902-434-2823,44.699661,-63.568853,https://www.canadiantire.ca/en/store-details/ns/dartmouth-crossing-ns-41.html
-436,Halifax - Cole Harbour,24 Forest Hills Parkway,Dartmouth,NS,B2W 6E4,+1 902-462-6100,44.674699,-63.492549,https://www.canadiantire.ca/en/store-details/ns/halifax-cole-harbour-ns-436.html
-25,Digby,112 Warwick Street,Digby,NS,B0V 1A0,+1 902-245-2527,44.615682,-65.767948,https://www.canadiantire.ca/en/store-details/ns/digby-ns-25.html
-619,Elmsdale,"269 Highway 214, Unit 100",Elmsdale,NS,B2S 1K1,+1 902-883-1771,44.978263,-63.504914,https://www.canadiantire.ca/en/store-details/ns/elmsdale-ns-619.html
-229,Glace Bay,130 Reserve Street,Glace Bay,NS,B1A 4W5,+1 902-842-0700,46.192931,-59.974644,https://www.canadiantire.ca/en/store-details/ns/glace-bay-ns-229.html
-261,Greenwood,"730 Central Avenue, Box 1360",Greenwood,NS,B0P 1N0,+1 902-765-6338,44.967504,-64.936457,https://www.canadiantire.ca/en/store-details/ns/greenwood-ns-261.html
-44,Halifax - Quinpool,"6203 Quinpool Road, Quinpool Centre",Halifax,NS,B3L 4P6,+1 902-422-4922,44.6459,-63.59652,https://www.canadiantire.ca/en/store-details/ns/halifax-quinpool-ns-44.html
-186,Halifax - Spryfield,"16 Dentith Road, South Centre",Halifax,NS,B3R 2H9,+1 902-477-5608,44.612462,-63.618492,https://www.canadiantire.ca/en/store-details/ns/halifax-spryfield-ns-186.html
-465,Halifax - Bayers Lake,"194 Chain Lake Drive, Bayers Lake Centre",Halifax,NS,B3S 1C5,+1 902-457-1001,44.650899,-63.673107,https://www.canadiantire.ca/en/store-details/ns/halifax-bayers-lake-ns-465.html
-289,Halifax - Lwr. Sackville,"796 Sackville Drive, Downsview Mall",Lower Sackville,NS,B4E 1R7,+1 902-864-3152,44.772816,-63.696046,https://www.canadiantire.ca/en/store-details/ns/halifax-lwr-sackville-ns-289.html
-67,New Glasgow,"699 Westville Road, Highland Square Mall",New Glasgow,NS,B2H 2J6,+1 902-755-5581,45.579946,-62.665208,https://www.canadiantire.ca/en/store-details/ns/new-glasgow-ns-67.html
-54,New Minas,9212 Commercial Street,New Minas,NS,B4N 5J5,+1 902-681-4576,45.066205,-64.44564,https://www.canadiantire.ca/en/store-details/ns/new-minas-ns-54.html
-202,North Sydney,21 Blowers Street,North Sydney,NS,B2A 3S3,+1 902-794-8577,46.212263,-60.248503,https://www.canadiantire.ca/en/store-details/ns/north-sydney-ns-202.html
-213,Port Hawkesbury,625 Reeves Street,Port Hawkesbury,NS,B9A 2R8,+1 902-625-1580,45.61539,-61.355145,https://www.canadiantire.ca/en/store-details/ns/port-hawkesbury-ns-213.html
-107,Sydney,49 Sydney Port Access Road,Sydney,NS,B1P 7J1,+1 902-539-8077,46.147722,-60.146037,https://www.canadiantire.ca/en/store-details/ns/sydney-ns-107.html
-113,Truro,"90 Robie Street, Fundy Trail Mall",Truro,NS,B2N 1L1,+1 902-897-4466,45.366876,-63.310836,https://www.canadiantire.ca/en/store-details/ns/truro-ns-113.html
-618,Tantallon,5130 St. Margarets Bay Road,Upper Tantallon,NS,B3Z 1E2,+1 902-826-2800,44.686177,-63.877022,https://www.canadiantire.ca/en/store-details/ns/tantallon-ns-618.html
-125,Yarmouth,120 Starrs Road,Yarmouth,NS,B5A 4T3,+1 902-749-1600,43.841799,-66.097355,https://www.canadiantire.ca/en/store-details/ns/yarmouth-ns-125.html
-453,Yellowknife,328 Old Airport Road,Yellowknife,NT,X1A 3T3,+1 867-873-2403,62.454095,-114.404883,https://www.canadiantire.ca/en/store-details/nt/yellowknife-nt-453.html
-160,Ajax,"250 Kingston Road East, Durham Centre",Ajax,ON,L1Z 1G1,+1 905-683-8473,43.864648,-79.015217,https://www.canadiantire.ca/en/store-details/on/ajax-on-160.html
-238,Alexandria,400 Main Street South,Alexandria,ON,K0C 1A0,+1 613-525-3454,45.30063,-74.628968,https://www.canadiantire.ca/en/store-details/on/alexandria-on-238.html
-1,Alliston,"110 Young Street, Highway 89 West, PO Box 460",Alliston,ON,L9R 1P8,+1 705-435-5551,44.149236,-79.884,https://www.canadiantire.ca/en/store-details/on/alliston-on-1.html
-281,Amherstburg,380 Sandwich Street South,Amherstburg,ON,N9V 3B5,+1 519-736-6411,42.098135,-83.108928,https://www.canadiantire.ca/en/store-details/on/amherstburg-on-281.html
-639,Ancaster,1060 Wilson Street West,Ancaster,ON,L9G 3K9,+1 905-304-0000,43.199801,-80.014176,https://www.canadiantire.ca/en/store-details/on/ancaster-on-639.html
-4,Arnprior,"375 Daniel Street South, Unit 301, Arnprior Shopping Centre",Arnprior,ON,K7S 3K6,+1 613-623-6551,45.425607,-76.366699,https://www.canadiantire.ca/en/store-details/on/arnprior-on-4.html
-189,Aurora,15400 Bayview Avenue,Aurora,ON,L4G 7J1,+1 905-727-9484,44.00918,-79.446013,https://www.canadiantire.ca/en/store-details/on/aurora-on-189.html
-142,Aylmer,"605 John Street North, (Old Hwy 73)",Aylmer,ON,N5H 2B6,+1 519-773-8424,42.7836,-80.981806,https://www.canadiantire.ca/en/store-details/on/aylmer-on-142.html
-5,Bancroft,"341 Hastings Street North, Box 130",Bancroft,ON,K0L 1C0,+1 613-332-1074,45.084521,-77.860934,https://www.canadiantire.ca/en/store-details/on/bancroft-on-5.html
-6,Barrie,"320 Bayfield Street, Bayfield Mall, Unit M103",Barrie,ON,L4M 3C1,+1 705-726-6418,44.400046,-79.701884,https://www.canadiantire.ca/en/store-details/on/barrie-on-6.html
-444,Barrie South,75 Mapleview Drive West,Barrie,ON,L4N 9H7,+1 705-792-0910,44.33239,-79.69241,https://www.canadiantire.ca/en/store-details/on/barrie-south-on-444.html
-7,Belleville,101 Bell Blvd.,Belleville,ON,K8P 4V2,+1 613-968-6701,44.186243,-77.399738,https://www.canadiantire.ca/en/store-details/on/belleville-on-7.html
-8,Blenheim,20215 Chatham Street North,Blenheim,ON,N0P 1A0,+1 519-676-8181,42.342163,-82.009495,https://www.canadiantire.ca/en/store-details/on/blenheim-on-8.html
-197,Bolton,99 McEwan Drive East,Bolton,ON,L7E 2Z7,+1 905-857-5424,43.86194,-79.710212,https://www.canadiantire.ca/en/store-details/on/bolton-on-197.html
-170,Bowmanville,2000 Green Road,Bowmanville,ON,L1C 0K5,+1 905-623-5000,43.911408,-78.71441,https://www.canadiantire.ca/en/store-details/on/bowmanville-on-170.html
-206,Bracebridge,"450 Muskoka Road, (Form. known as Hwy 118 W), Box 1260",Bracebridge,ON,P1L 1T4,+1 705-645-5261,45.042931,-79.325951,https://www.canadiantire.ca/en/store-details/on/bracebridge-on-206.html
-446,Bradford,"430 Holland Street West, PO Box 520 Station Main",Bradford,ON,L3Z 0G1,+1 905-778-4330,44.10915,-79.583167,https://www.canadiantire.ca/en/store-details/on/bradford-on-446.html
-10,Brampton Shoppers World,"499 Main Street South, Shoppers World Mall",Brampton,ON,L6Y 1N7,+1 905-451-6060,43.667026,-79.736989,https://www.canadiantire.ca/en/store-details/on/brampton-shoppers-world-on-10.html
-305,Brampton Bramalea,2850 Queen Street East,Brampton,ON,L6S 6E8,+1 905-792-9300,43.741255,-79.700269,https://www.canadiantire.ca/en/store-details/on/brampton-bramalea-on-305.html
-411,Brampton Trinity Common,"10 Great Lakes Drive, Trinity Common",Brampton,ON,L6R 2K7,+1 905-793-4800,43.730158,-79.761719,https://www.canadiantire.ca/en/store-details/on/brampton-trinity-common-on-411.html
-675,Brampton McLaughlin Road,10031 McLaughlin Road,Brampton,ON,L7A 2X5,+1 905-846-9227,43.698073,-79.797354,https://www.canadiantire.ca/en/store-details/on/brampton-mclaughlin-road-on-675.html
-664,Brantford North,30 Lynden Road,Brantford,ON,N3R 8A4,+1 519-751-2878,43.171619,-80.244892,https://www.canadiantire.ca/en/store-details/on/brantford-north-on-664.html
-14,Brockville,2360 Parkedale Avenue,Brockville,ON,K6V 7J5,+1 613-342-5841,44.60609,-75.699121,https://www.canadiantire.ca/en/store-details/on/brockville-on-14.html
-122,Burlington Fairview,"777 Guelph Line, Unit VMA2, Burlington Centre",Burlington,ON,L7R 3N2,+1 905-639-6711,43.350944,-79.79015,https://www.canadiantire.ca/en/store-details/on/burlington-fairview-on-122.html
-412,Burlington North,"2070 Appleby Line, Unit J",Burlington,ON,L7L 6M6,+1 905-335-8733,43.396114,-79.795677,https://www.canadiantire.ca/en/store-details/on/burlington-north-on-412.html
-49,Caledonia,365 Argyle Street South,Caledonia,ON,N3W 1Z2,+1 905-765-8473,43.061308,-79.963284,https://www.canadiantire.ca/en/store-details/on/caledonia-on-49.html
-36,Cambridge,"75 Dundas Street, Highland Shopping Centre",Cambridge,ON,N1R 6G5,+1 519-621-8180,43.359003,-80.292243,https://www.canadiantire.ca/en/store-details/on/cambridge-on-36.html
-168,Cambridge Hespeler,65 Pinebush Road,Cambridge,ON,N1R 8P3,+1 519-623-3360,43.407473,-80.323844,https://www.canadiantire.ca/en/store-details/on/cambridge-hespeler-on-168.html
-17,Campbellford,130 Grand Road,Campbellford,ON,K0L 1L0,+1 705-653-3250,44.304545,-77.80465,https://www.canadiantire.ca/en/store-details/on/campbellford-on-17.html
-18,Carleton Place,"485 McNeely Avenue, at Hwy 7",Carleton Place,ON,K7C 4S6,+1 613-253-8473,45.133937,-76.119091,https://www.canadiantire.ca/en/store-details/on/carleton-place-on-18.html
-625,Casselman,95 Lafleche Blvd.,Casselman,ON,K0A 1M0,+1 613-764-0401,45.304916,-75.084021,https://www.canadiantire.ca/en/store-details/on/casselman-on-625.html
-21,Chatham,"575 Grand Avenue West, Thames Lea Plaza",Chatham,ON,N7L 1C5,+1 519-351-1419,42.399653,-82.209315,https://www.canadiantire.ca/en/store-details/on/chatham-on-21.html
-244,Chelmsford,1 - 3595 Highway 144,Chelmsford,ON,P0M 1L0,+1 705-855-9011,46.567832,-81.194107,https://www.canadiantire.ca/en/store-details/on/chelmsford-on-244.html
-23,Cobourg,"1125 Elgin Street West, Highway 2",Cobourg,ON,K9A 5T9,+1 905-372-8781,43.968998,-78.203285,https://www.canadiantire.ca/en/store-details/on/cobourg-on-23.html
-24,Cochrane,"201 Highway 11 West, Box 1058",Cochrane,ON,P0L 1C0,+1 705-272-4341,49.059842,-81.044956,https://www.canadiantire.ca/en/store-details/on/cochrane-on-24.html
-108,Collingwood,89 Balsam Street,Collingwood,ON,L9Y 3Y6,+1 705-445-4161,44.504704,-80.237276,https://www.canadiantire.ca/en/store-details/on/collingwood-on-108.html
-26,Cornwall,201 Ninth Street East,Cornwall,ON,K6H 2V1,+1 613-933-0592,45.030658,-74.730334,https://www.canadiantire.ca/en/store-details/on/cornwall-on-26.html
-253,Deep River,"33277 Hwy 17 West, PO Box 1480",Deep River,ON,K0J 1P0,+1 613-584-3337,46.099571,-77.500852,https://www.canadiantire.ca/en/store-details/on/deep-river-on-253.html
-193,Delhi,308 James Street,Delhi,ON,N4B 2B4,+1 519-582-2450,42.853143,-80.49416,https://www.canadiantire.ca/en/store-details/on/delhi-on-193.html
-188,Dryden,409 Government Street,Dryden,ON,P8N 2P4,+1 807-223-4026,49.787368,-92.828847,https://www.canadiantire.ca/en/store-details/on/dryden-on-188.html
-27,Dundas,119 Osler Drive,Dundas,ON,L9H 6X4,+1 905-627-3533,43.25745,-79.941471,https://www.canadiantire.ca/en/store-details/on/dundas-on-27.html
-29,Dunnville,1002 Broad Street East,Dunnville,ON,N1A 2Z2,+1 905-774-7545,42.902266,-79.599271,https://www.canadiantire.ca/en/store-details/on/dunnville-on-29.html
-167,Elliot Lake,50 Hillside Drive South,Elliot Lake,ON,P5A 1M7,+1 705-848-3663,46.381327,-82.646534,https://www.canadiantire.ca/en/store-details/on/elliot-lake-on-167.html
-616,Elmira,325 Arthur Street South,Elmira,ON,N3B 3L5,+1 519-669-2727,43.581953,-80.560589,https://www.canadiantire.ca/en/store-details/on/elmira-on-616.html
-22,Espanola,801 Centre Street,Espanola,ON,P5E 1N2,+1 705-869-3807,46.246499,-81.757805,https://www.canadiantire.ca/en/store-details/on/espanola-on-22.html
-172,Essex,"300 Maidstone Avenue West, RR 2",Essex,ON,N8M 2X6,+1 519-776-5224,42.17752,-82.840873,https://www.canadiantire.ca/en/store-details/on/essex-on-172.html
-70,The Queensway,1608 The Queensway,Etobicoke,ON,M8Z 1V1,+1 416-255-5531,43.618221,-79.545929,https://www.canadiantire.ca/en/store-details/on/the-queensway-on-70.html
-119,"Etobicoke, Islington & 401",175 Vetiver Drive,Etobicoke,ON,M9W 0G3,+1 416-247-2196,43.71137,-79.55795,https://www.canadiantire.ca/en/store-details/on/etobicoke-islington-401-on-119.html
-294,"Etobicoke, Albion & Kipling","1530 Albion Road, Unit 36, New Albion Centre",Etobicoke,ON,M9V 1B4,+1 416-745-9070,43.741844,-79.582542,https://www.canadiantire.ca/en/store-details/on/etobicoke-albion-kipling-on-294.html
-141,Exeter,100 Thames Road East,Exeter,ON,N0M 1S3,+1 519-235-0160,43.362989,-81.479829,https://www.canadiantire.ca/en/store-details/on/exeter-on-141.html
-38,Fenelon Falls,"160 Lindsay Street, PO Box 208",Fenelon Falls,ON,K0M 1N0,+1 705-887-3310,44.528428,-78.743236,https://www.canadiantire.ca/en/store-details/on/fenelon-falls-on-38.html
-31,Centre Wellington,950 Tower Street South,Fergus,ON,N1M 3N7,+1 519-843-3680,43.695544,-80.363703,https://www.canadiantire.ca/en/store-details/on/centre-wellington-on-31.html
-32,Forest,"84 Union Street, Box 730",Forest,ON,N0N 1J0,+1 519-786-2121,43.103584,-82.005435,https://www.canadiantire.ca/en/store-details/on/forest-on-32.html
-33,Fort Erie,240 Garrison Road,Fort Erie,ON,L2A 1M7,+1 905-871-1564,42.904706,-78.924258,https://www.canadiantire.ca/en/store-details/on/fort-erie-on-33.html
-179,Fort Frances,1000 King's Highway,Fort Frances,ON,P9A 2X6,+1 807-274-7711,48.608171,-93.429505,https://www.canadiantire.ca/en/store-details/on/fort-frances-on-179.html
-37,Gananoque,705 King Street East,Gananoque,ON,K7G 1H4,+1 613-382-3729,44.336429,-76.150285,https://www.canadiantire.ca/en/store-details/on/gananoque-on-37.html
-159,Georgetown,315 Guelph Street,Georgetown,ON,L7G 4B3,+1 905-873-1350,43.650753,-79.888037,https://www.canadiantire.ca/en/store-details/on/georgetown-on-159.html
-297,Ottawa Gloucester,2010 Ogilvie Road,Gloucester,ON,K1J 8X3,+1 613-748-0637,45.435435,-75.606548,https://www.canadiantire.ca/en/store-details/on/ottawa-gloucester-on-297.html
-659,Leitrim,4776 Bank Street,Gloucester,ON,K1T 0K8,+1 613-822-1289,45.31765,-75.594075,https://www.canadiantire.ca/en/store-details/on/leitrim-on-659.html
-39,Goderich,"35430 Huron Road, Hwy 8, RR 2",Goderich,ON,N7A 3X8,+1 519-524-2121,43.730726,-81.686303,https://www.canadiantire.ca/en/store-details/on/goderich-on-39.html
-62,Gravenhurst,431 Talisman Drive,Gravenhurst,ON,P1P 0A7,+1 705-687-3422,44.904696,-79.369215,https://www.canadiantire.ca/en/store-details/on/gravenhurst-on-62.html
-40,Grimsby,"44 Livingston Avenue, Grimsby Square",Grimsby,ON,L3M 1L1,+1 905-945-5441,43.197605,-79.569761,https://www.canadiantire.ca/en/store-details/on/grimsby-on-40.html
-42,Guelph Stone Rd,127 Stone Road West,Guelph,ON,N1G 5G4,+1 519-822-9520,43.523469,-80.23081,https://www.canadiantire.ca/en/store-details/on/guelph-stone-rd-on-42.html
-260,Guelph North,10 Woodlawn Road East,Guelph,ON,N1H 1G7,+1 519-821-3414,43.566957,-80.277043,https://www.canadiantire.ca/en/store-details/on/guelph-north-on-260.html
-45,Hamilton Main,304 Main Street East,Hamilton,ON,L8N 1H9,+1 905-528-8403,43.252166,-79.858096,https://www.canadiantire.ca/en/store-details/on/hamilton-main-on-45.html
-129,Hamilton Centre,"1283 Barton Street East, The Centre on Barton",Hamilton,ON,L8H 2V4,+1 905-549-1336,43.251865,-79.806828,https://www.canadiantire.ca/en/store-details/on/hamilton-centre-on-129.html
-154,Hamilton East,"686 Queenston Road, Queenston Mall",Hamilton,ON,L8G 1A3,+1 905-560-1601,43.227827,-79.773654,https://www.canadiantire.ca/en/store-details/on/hamilton-east-on-154.html
-177,Hamilton Mt.West,777 Upper James Street,Hamilton,ON,L9C 3A1,+1 905-385-3276,43.229281,-79.879843,https://www.canadiantire.ca/en/store-details/on/hamilton-mt-west-on-177.html
-657,Hanmer,5206 Highway 69 North,Hanmer,ON,P3P 1Z3,+1 705-969-4242,46.653835,-80.984924,https://www.canadiantire.ca/en/store-details/on/hanmer-on-657.html
-194,Hamilton Mt.East,2160 Rymal Road East,Hannon,ON,L0R 1P0,+1 905-692-3485,43.174859,-79.788458,https://www.canadiantire.ca/en/store-details/on/hamilton-mt-east-on-194.html
-46,Hanover,896 - 10th Street,Hanover,ON,N4N 3P2,+1 519-364-2870,44.156535,-81.005126,https://www.canadiantire.ca/en/store-details/on/hanover-on-46.html
-157,Hawkesbury,1525 Cameron Street,Hawkesbury,ON,K6A 3R3,+1 613-632-2255,45.592375,-74.599091,https://www.canadiantire.ca/en/store-details/on/hawkesbury-on-157.html
-406,Hearst,1330 Front Street,Hearst,ON,P0L 1N0,+1 705-362-5822,49.691702,-83.676649,https://www.canadiantire.ca/en/store-details/on/hearst-on-406.html
-47,Huntsville,77 King William Street,Huntsville,ON,P1H 1E5,+1 705-789-5566,45.334355,-79.204291,https://www.canadiantire.ca/en/store-details/on/huntsville-on-47.html
-48,Ingersoll,98 Mutual Street South,Ingersoll,ON,N5C 1S5,+1 519-485-3900,43.041418,-80.881315,https://www.canadiantire.ca/en/store-details/on/ingersoll-on-48.html
-687,Innisfil,1455 Innisfil Beach Road,Innisfil,ON,L9S 4B2,+1 705-431-2121,44.30742,-79.574864,https://www.canadiantire.ca/en/store-details/on/innisfil-on-687.html
-457,Kanata,8181 Campeau Drive,Kanata,ON,K2T 1B7,+1 613-599-5105,45.3071,-75.918263,https://www.canadiantire.ca/en/store-details/on/kanata-on-457.html
-178,Kapuskasing,25 Brunetville Road,Kapuskasing,ON,P5N 2E9,+1 705-335-6066,49.419867,-82.417822,https://www.canadiantire.ca/en/store-details/on/kapuskasing-on-178.html
-227,Kemptville,311 Ryans Well Drive,Kemptville,ON,K0G 1J0,+1 613-258-3479,45.02863,-75.63381,https://www.canadiantire.ca/en/store-details/on/kemptville-on-227.html
-204,Kenora,1229 Highway 17 East,Kenora,ON,P9N 1L9,+1 807-468-3014,49.759288,-94.472251,https://www.canadiantire.ca/en/store-details/on/kenora-on-204.html
-134,Keswick,24270 Woodbine Avenue,Keswick,ON,L4P 0L3,+1 905-476-0353,44.235737,-79.450759,https://www.canadiantire.ca/en/store-details/on/keswick-on-134.html
-51,Kincardine,811 Durham Street,Kincardine,ON,N2Z 3B8,+1 519-395-2886,44.172516,-81.615433,https://www.canadiantire.ca/en/store-details/on/kincardine-on-51.html
-195,Kingston,151 Bath Road,Kingston,ON,K7L 1H2,+1 613-549-4200,44.241196,-76.517848,https://www.canadiantire.ca/en/store-details/on/kingston-on-195.html
-417,Kingston Township,2560 Princess Street,Kingston,ON,K7P 2S8,+1 613-384-0011,44.259938,-76.570126,https://www.canadiantire.ca/en/store-details/on/kingston-township-on-417.html
-694,Kingston Division St.,1040 Division Street,Kingston,ON,K7K 0C3,+1 613-546-1922,44.262785,-76.499919,https://www.canadiantire.ca/en/store-details/on/kingston-division-st-on-694.html
-52,Kirkland Lake,146 Government Road West,Kirkland Lake,ON,P2N 2E9,+1 705-567-9281,48.147962,-80.043227,https://www.canadiantire.ca/en/store-details/on/kirkland-lake-on-52.html
-53,Kitchener South,385 Fairway Road South,Kitchener,ON,N2C 2N9,+1 519-894-6257,43.419965,-80.441235,https://www.canadiantire.ca/en/store-details/on/kitchener-south-on-53.html
-139,Kitchener East,"1005 Ottawa Street North, Stanley Park Mall",Kitchener,ON,N2A 1H2,+1 519-744-1153,43.44873,-80.444505,https://www.canadiantire.ca/en/store-details/on/kitchener-east-on-139.html
-420,Kitchener West,"1400 Ottawa Street South, Unit D1, Sunrise Shopping Center",Kitchener,ON,N2E 4E2,+1 519-743-1113,43.416711,-80.513284,https://www.canadiantire.ca/en/store-details/on/kitchener-west-on-420.html
-55,Leamington,262 Erie Street South,Leamington,ON,N8H 3C5,+1 519-326-6184,42.038036,-82.598884,https://www.canadiantire.ca/en/store-details/on/leamington-on-55.html
-56,Lindsay,377 Kent Street West,Lindsay,ON,K9V 2Z7,+1 705-324-2176,44.349402,-78.757784,https://www.canadiantire.ca/en/store-details/on/lindsay-on-56.html
-57,Listowel,500 Mitchell Road South,Listowel,ON,N4W 3G7,+1 519-291-1960,43.733028,-80.966631,https://www.canadiantire.ca/en/store-details/on/listowel-on-57.html
-58,London South,1125 Wellington Road,London,ON,N6E 1M1,+1 519-681-2620,42.929987,-81.22117,https://www.canadiantire.ca/en/store-details/on/london-south-on-58.html
-130,London East,1975 Dundas Street,London,ON,N5V 4Y5,+1 519-451-6260,43.004931,-81.170484,https://www.canadiantire.ca/en/store-details/on/london-east-on-130.html
-208,London West,3100 Wonderland Road South,London,ON,N6L 1A6,+1 519-680-1770,42.935379,-81.277955,https://www.canadiantire.ca/en/store-details/on/london-west-on-208.html
-425,London North,1875 Hyde Park Road,London,ON,N6H 0A3,+1 519-660-6222,43.007652,-81.334705,https://www.canadiantire.ca/en/store-details/on/london-north-on-425.html
-494,London Auto Centre,378 Horton Street East,London,ON,N6B 1L7,+1 519-642-7250,42.981988,-81.238875,https://www.canadiantire.ca/en/store-details/on/london-auto-centre-on-494.html
-451,Marathon,"3 Peninsula Road, PO Box 1660",Marathon,ON,P0T 2E0,+1 807-229-2900,48.718636,-86.37853,https://www.canadiantire.ca/en/store-details/on/marathon-on-451.html
-164,Markham,2900 Major Mackenzie Drive East,Markham,ON,L6C 0G6,+1 416-907-8237,43.886322,-79.371417,https://www.canadiantire.ca/en/store-details/on/markham-on-164.html
-399,Markham East,7650 Markham Road,Markham,ON,L3S 4S1,+1 905-472-1638,43.85169,-79.25646,https://www.canadiantire.ca/en/store-details/on/markham-east-on-399.html
-61,Midland,"9303 County Road 93, Hugel Avenue",Midland,ON,L4R 4K4,+1 705-526-9321,44.740595,-79.91189,https://www.canadiantire.ca/en/store-details/on/midland-on-61.html
-140,Milton,"1210 Steeles Avenue East, Milton Crossroads Shopping Centre",Milton,ON,L9T 6R1,+1 905-878-2349,43.541075,-79.870691,https://www.canadiantire.ca/en/store-details/on/milton-on-140.html
-682,Minden,92 Water Street,Minden,ON,K0M 2K0,+1 705-286-4400,44.93002,-78.717636,https://www.canadiantire.ca/en/store-details/on/minden-on-682.html
-152,Miss. Dixie & Dundas,1156 Dundas Street East,Mississauga,ON,L4Y 2C1,+1 905-272-4800,43.603916,-79.587171,https://www.canadiantire.ca/en/store-details/on/miss-dixie-dundas-on-152.html
-169,Meadowvale,"6670 Meadowvale Town Centre Circle, Meadowvale Town Centre",Mississauga,ON,L5N 4B7,+1 905-821-4100,43.582019,-79.760876,https://www.canadiantire.ca/en/store-details/on/meadowvale-on-169.html
-241,Mississauga Southdown,900 Southdown Road,Mississauga,ON,L5J 2Y4,+1 905-822-6234,43.509024,-79.629078,https://www.canadiantire.ca/en/store-details/on/mississauga-southdown-on-241.html
-346,Miss.Mavis & Dundas,3050 Mavis Road at Dundas,Mississauga,ON,L5C 1T8,+1 905-270-9200,43.566221,-79.635376,https://www.canadiantire.ca/en/store-details/on/miss-mavis-dundas-on-346.html
-497,Mississauga Heartland,"5970 Mavis Road, Heartland Town Centre",Mississauga,ON,L5V 2P5,+1 905-813-9855,43.610275,-79.695994,https://www.canadiantire.ca/en/store-details/on/mississauga-heartland-on-497.html
-120,Morrisburg,12329 County Road 2,Morrisburg,ON,K0C 1X0,+1 613-543-3015,44.900013,-75.188777,https://www.canadiantire.ca/en/store-details/on/morrisburg-on-120.html
-66,Mount Forest,101 Mount Forest Drive,Mount Forest,ON,N0G 2L2,+1 519-323-1080,43.988571,-80.743498,https://www.canadiantire.ca/en/store-details/on/mount-forest-on-66.html
-65,Napanee,"476 Centre Street North, At the Napanee Mall",Napanee,ON,K7R 1P8,+1 613-354-2222,44.260048,-76.964652,https://www.canadiantire.ca/en/store-details/on/napanee-on-65.html
-258,Ottawa Merivale,"1820 Merivale Road, Nepean Crossroads Centre",Nepean,ON,K2G 1E6,+1 613-224-9330,45.336227,-75.726544,https://www.canadiantire.ca/en/store-details/on/ottawa-merivale-on-258.html
-272,Ottawa Bells Cnrs,2135 Robertson Road,Nepean,ON,K2H 5Z2,+1 613-829-9580,45.322314,-75.835517,https://www.canadiantire.ca/en/store-details/on/ottawa-bells-cnrs-on-272.html
-442,Barrhaven,2501 Greenbank Road,Nepean,ON,K2J 4Y6,+1 613-823-5278,45.272187,-75.746012,https://www.canadiantire.ca/en/store-details/on/barrhaven-on-442.html
-68,New Liskeard,997431 Hwy 11 North,New Liskeard,ON,P0J 1P0,+1 705-647-7331,47.531133,-79.672294,https://www.canadiantire.ca/en/store-details/on/new-liskeard-on-68.html
-69,Newmarket,17750 Yonge Street,Newmarket,ON,L3Y 8P4,+1 905-895-4564,44.059743,-79.484335,https://www.canadiantire.ca/en/store-details/on/newmarket-on-69.html
-71,Niagara Falls North,"7190 Morrison Street, Unit A001",Niagara Falls,ON,L2E 7K5,+1 905-358-4545,43.101945,-79.117377,https://www.canadiantire.ca/en/store-details/on/niagara-falls-north-on-71.html
-201,Nipigon,191 First Street,Nipigon,ON,P0T 2J0,+1 807-887-3131,49.015845,-88.272255,https://www.canadiantire.ca/en/store-details/on/nipigon-on-201.html
-72,North Bay,890 McKeown Avenue,North Bay,ON,P1B 8M1,+1 705-472-3000,46.331276,-79.470817,https://www.canadiantire.ca/en/store-details/on/north-bay-on-72.html
-485,Dufferin & Finch Auto Ctr,4400 Dufferin Street,North York,ON,M3H 6A8,+1 416-667-9777,43.765391,-79.467507,https://www.canadiantire.ca/en/store-details/on/dufferin-finch-auto-ctr-on-485.html
-143,Oakville,1100 Kerr Street,Oakville,ON,L6M 0L4,+1 905-844-0202,43.449912,-79.698536,https://www.canadiantire.ca/en/store-details/on/oakville-on-143.html
-424,"Oak., Winston Churchill",2510 Hyde Park Gate,Oakville,ON,L6H 6M2,+1 905-829-5552,43.513654,-79.68932,https://www.canadiantire.ca/en/store-details/on/oak-winston-churchill-on-424.html
-429,Oakville North,400 Dundas Street East,Oakville,ON,L6H 6Z9,+1 905-257-8473,43.488792,-79.715737,https://www.canadiantire.ca/en/store-details/on/oakville-north-on-429.html
-73,Orangeville,"99 First Street, Fairgrounds Centre",Orangeville,ON,L9W 2E8,+1 519-941-1090,43.931011,-80.097535,https://www.canadiantire.ca/en/store-details/on/orangeville-on-73.html
-422,Ottawa Orleans,3910 Innes Road,Orleans,ON,K1W 1K9,+1 613-830-7000,45.452537,-75.506716,https://www.canadiantire.ca/en/store-details/on/ottawa-orleans-on-422.html
-75,Oshawa Mid,441 Gibb Street,Oshawa,ON,L1J 1Z4,+1 905-728-6272,43.885779,-78.87612,https://www.canadiantire.ca/en/store-details/on/oshawa-mid-on-75.html
-336,Oshawa North,1333 Wilson Road North,Oshawa,ON,L1K 2B8,+1 905-433-5575,43.936743,-78.857481,https://www.canadiantire.ca/en/store-details/on/oshawa-north-on-336.html
-174,Ottawa East,330 Coventry Road,Ottawa,ON,K1K 4S3,+1 613-746-4303,45.420255,-75.650879,https://www.canadiantire.ca/en/store-details/on/ottawa-east-on-174.html
-210,Ottawa South,1170 Heron Road,Ottawa,ON,K1V 6B2,+1 613-733-6776,45.37733,-75.668448,https://www.canadiantire.ca/en/store-details/on/ottawa-south-on-210.html
-290,Ottawa Carling Ave,"2165 Carling Avenue, Carlingwood Shopping Centre",Ottawa,ON,K2A 1H2,+1 613-725-3111,45.371816,-75.769773,https://www.canadiantire.ca/en/store-details/on/ottawa-carling-ave-on-290.html
-77,Owen Sound,1605 - 16th Street East,Owen Sound,ON,N4K 5N3,+1 519-376-5220,44.573868,-80.914704,https://www.canadiantire.ca/en/store-details/on/owen-sound-on-77.html
-43,Paris,300 Grand River Street North,Paris,ON,N3L 3R7,+1 519-442-2312,43.211058,-80.389811,https://www.canadiantire.ca/en/store-details/on/paris-on-43.html
-78,Parry Sound,30 Pine Drive,Parry Sound,ON,P2A 3B8,+1 705-746-2133,45.342303,-80.007629,https://www.canadiantire.ca/en/store-details/on/parry-sound-on-78.html
-79,Pembroke,1104 Pembroke Street East,Pembroke,ON,K8A 8S2,+1 613-735-0000,45.81928,-77.082084,https://www.canadiantire.ca/en/store-details/on/pembroke-on-79.html
-80,Perth,45 Dufferin Street,Perth,ON,K7H 3A5,+1 613-267-3412,44.911233,-76.264786,https://www.canadiantire.ca/en/store-details/on/perth-on-80.html
-81,Peterborough,1200 Lansdowne Street West,Peterborough,ON,K9J 2A1,+1 705-742-0406,44.281443,-78.351622,https://www.canadiantire.ca/en/store-details/on/peterborough-on-81.html
-660,Peterborough North,"1050 Chemong Road, (Use Milroy Dr. Entrance)",Peterborough,ON,K9H 7S2,+1 705-745-1388,44.325652,-78.336379,https://www.canadiantire.ca/en/store-details/on/peterborough-north-on-660.html
-324,Pickering,1735 Pickering Parkway,Pickering,ON,L1V 7C7,+1 905-686-2308,43.842505,-79.070261,https://www.canadiantire.ca/en/store-details/on/pickering-on-324.html
-82,Picton,"13321 Loyalist Parkway, Box 6005",Picton,ON,K0K 2T0,+1 613-476-7405,43.998047,-77.163967,https://www.canadiantire.ca/en/store-details/on/picton-on-82.html
-128,Port Colborne,"287 West Side Road, Port Colborne Mall",Port Colborne,ON,L3K 5L2,+1 905-835-1155,42.905457,-79.266304,https://www.canadiantire.ca/en/store-details/on/port-colborne-on-128.html
-269,Port Elgin,5116 Hwy 21,Port Elgin,ON,N0H 2C0,+1 519-832-6995,44.423617,-81.397244,https://www.canadiantire.ca/en/store-details/on/port-elgin-on-269.html
-226,Port Perry,14325 Simcoe Street,Port Perry,ON,L9L 2C8,+1 905-985-7341,44.091881,-78.94033,https://www.canadiantire.ca/en/store-details/on/port-perry-on-226.html
-85,Prescott,"140 Prescott Centre Drive, PO Box 2389",Prescott,ON,K0E 1T0,+1 613-925-4217,44.723808,-75.521752,https://www.canadiantire.ca/en/store-details/on/prescott-on-85.html
-86,Renfrew,1050 O'Brien Road,Renfrew,ON,K7V 0B4,+1 613-432-5821,45.479904,-76.653858,https://www.canadiantire.ca/en/store-details/on/renfrew-on-86.html
-87,Richmond Hill,250 Silver Linden Drive,Richmond Hill,ON,L4B 4W7,+1 905-731-3100,43.842285,-79.413332,https://www.canadiantire.ca/en/store-details/on/richmond-hill-on-87.html
-697,Richmond Hill North,11720 Yonge Street,Richmond Hill,ON,L4E 0K4,+1 905-884-9009,43.913012,-79.448895,https://www.canadiantire.ca/en/store-details/on/richmond-hill-north-on-697.html
-623,Rockland,"9040 County Road 17, PO Box 220",Rockland,ON,K4K 1V5,+1 613-446-4410,45.547195,-75.302602,https://www.canadiantire.ca/en/store-details/on/rockland-on-623.html
-94,Sarnia,"1380 London Road, Unit 300, Lambton Mall",Sarnia,ON,N7S 1P8,+1 519-542-3403,42.982678,-82.350552,https://www.canadiantire.ca/en/store-details/on/sarnia-on-94.html
-95,Sault Ste. Marie,200 McNabb Street,Sault Ste. Marie,ON,P6B 1Y4,+1 705-949-0770,46.522715,-84.318188,https://www.canadiantire.ca/en/store-details/on/sault-ste-marie-on-95.html
-30,Warden & Eglinton,"1901 Eglinton Avenue East, Eglinton Town Centre",Scarborough,ON,M1L 2L8,+1 416-615-2666,43.725654,-79.293121,https://www.canadiantire.ca/en/store-details/on/warden-eglinton-on-30.html
-175,Scarborough,"3553 Lawrence Avenue East, Cedarbrae Mall",Scarborough,ON,M1H 1B2,+1 416-431-1630,43.758333,-79.226366,https://www.canadiantire.ca/en/store-details/on/scarborough-on-175.html
-209,Kingston Rd,2850 Kingston Road,Scarborough,ON,M1M 1M7,+1 416-261-3384,43.720986,-79.238065,https://www.canadiantire.ca/en/store-details/on/kingston-rd-on-209.html
-264,Agincourt,4630 Sheppard Avenue East,Scarborough,ON,M1S 3V5,+1 416-291-7791,43.790169,-79.260961,https://www.canadiantire.ca/en/store-details/on/agincourt-on-264.html
-427,Scarborough East,111 Rylander Blvd.,Scarborough,ON,M1B 4X3,+1 416-283-7707,43.797278,-79.15371,https://www.canadiantire.ca/en/store-details/on/scarborough-east-on-427.html
-74,Orillia,"1029 Brodie Drive, Orillia Square Mall",Severn,ON,L3V 0V2,+1 705-325-7414,44.631435,-79.435303,https://www.canadiantire.ca/en/store-details/on/orillia-on-74.html
-97,Simcoe,"142 Queensway East, Simcoe Mall",Simcoe,ON,N3Y 4Y7,+1 519-426-1513,42.847527,-80.291736,https://www.canadiantire.ca/en/store-details/on/simcoe-on-97.html
-98,Smiths Falls,"10 Ferrara Drive, Highway 15",Smiths Falls,ON,K7A 5K4,+1 613-283-3906,44.892075,-76.028996,https://www.canadiantire.ca/en/store-details/on/smiths-falls-on-98.html
-90,St. Catharines,431 Louth Street,St. Catharines,ON,L2S 4A2,+1 905-682-9275,43.151522,-79.265789,https://www.canadiantire.ca/en/store-details/on/st-catharines-on-90.html
-145,St. Catharines S.,300 Glendale Avenue,St. Catharines,ON,L2T 2L5,+1 905-227-7481,43.134775,-79.217901,https://www.canadiantire.ca/en/store-details/on/st-catharines-s-on-145.html
-162,St. Catharines N.,"459 Welland Avenue, Lincoln Mall",St. Catharines,ON,L2M 5V2,+1 905-688-0488,43.176538,-79.216093,https://www.canadiantire.ca/en/store-details/on/st-catharines-n-on-162.html
-91,St. Marys,"84 Wellington Street South, Units 1 & 2, Box 2070",St. Marys,ON,N4X 1C3,+1 519-284-1690,43.257014,-81.142691,https://www.canadiantire.ca/en/store-details/on/st-marys-on-91.html
-92,St. Thomas,"1063 Talbot Street, Unit 25",St. Thomas,ON,N5P 1G4,+1 519-631-4910,42.783222,-81.173883,https://www.canadiantire.ca/en/store-details/on/st-thomas-on-92.html
-280,Stouffville,1090 Hoover Park Drive,Stouffville,ON,L4A 0K2,+1 905-640-5800,43.954522,-79.276885,https://www.canadiantire.ca/en/store-details/on/stouffville-on-280.html
-103,Stratford,"1093 Ontario Street, Festival Marketplace",Stratford,ON,N5A 6W6,+1 519-273-2080,43.369673,-80.943441,https://www.canadiantire.ca/en/store-details/on/stratford-on-103.html
-104,Strathroy,24614 Adelaide Road,Strathroy,ON,N7G 2P8,+1 519-245-2703,42.945155,-81.608521,https://www.canadiantire.ca/en/store-details/on/strathroy-on-104.html
-102,Sturgeon Falls,12011 Hwy 17 East,Sturgeon Falls,ON,P2B 2S7,+1 705-753-2630,46.366387,-79.911431,https://www.canadiantire.ca/en/store-details/on/sturgeon-falls-on-102.html
-278,Sudbury North,"1485 Lasalle Blvd., Svc Cntre - 1066 Barrydowne Road",Sudbury,ON,P3A 5H7,+1 705-566-9700,46.520122,-80.942056,https://www.canadiantire.ca/en/store-details/on/sudbury-north-on-278.html
-445,Sudbury South,2259 Regent Street,Sudbury,ON,P3E 5M9,+1 705-523-6000,46.447643,-80.993217,https://www.canadiantire.ca/en/store-details/on/sudbury-south-on-445.html
-321,Dufferin & 407,8081 Dufferin Street,Thornhill,ON,L4J 8R9,+1 905-889-7455,43.814254,-79.475183,https://www.canadiantire.ca/en/store-details/on/dufferin-407-on-321.html
-34,Thunder Bay South,1221 Arthur Street West,Thunder Bay,ON,P7K 1A7,+1 807-475-4235,48.381692,-89.312754,https://www.canadiantire.ca/en/store-details/on/thunder-bay-south-on-34.html
-83,Thunder Bay Centre,939 Fort William Road,Thunder Bay,ON,P7B 3A6,+1 807-623-1999,48.40311,-89.239975,https://www.canadiantire.ca/en/store-details/on/thunder-bay-centre-on-83.html
-215,Tilbury,"37 Mill Street East, PO Box 280",Tilbury,ON,N0P 2L0,+1 519-682-1284,42.264745,-82.426472,https://www.canadiantire.ca/en/store-details/on/tilbury-on-215.html
-110,Tillsonburg,"248 Broadway Street, Tilsonburg Town Centre",Tillsonburg,ON,N4G 3R4,+1 519-842-5926,42.863958,-80.729276,https://www.canadiantire.ca/en/store-details/on/tillsonburg-on-110.html
-111,Timmins,2199 Riverside Drive,Timmins,ON,P4R 0A1,+1 705-268-8591,48.471011,-81.404335,https://www.canadiantire.ca/en/store-details/on/timmins-on-111.html
-19,Lawrence & Allen Expwy,"700 Lawrence Avenue West, Lawrence Square Shopping Centre",Toronto,ON,M6A 3B4,+1 416-787-1203,43.716128,-79.447852,https://www.canadiantire.ca/en/store-details/on/lawrence-allen-expwy-on-19.html
-126,Yonge & Steeles,"6310 Yonge Street, Centrepoint Mall",Toronto,ON,M2M 3X4,+1 416-222-2511,43.796086,-79.423862,https://www.canadiantire.ca/en/store-details/on/yonge-steeles-on-126.html
-150,"Toronto, Yonge & Church",839 Yonge Street,Toronto,ON,M4W 2H2,+1 416-925-9592,43.673711,-79.387593,https://www.canadiantire.ca/en/store-details/on/toronto-yonge-church-on-150.html
-182,West Toronto (Stockyards),2129 St. Clair Avenue West,Toronto,ON,M6N 5B4,+1 416-766-8141,43.670599,-79.471761,https://www.canadiantire.ca/en/store-details/on/west-toronto-(stockyards)-on-182.html
-192,Sheppard Ave.,1019 Sheppard Avenue East,Toronto,ON,M2K 1C2,+1 416-226-4411,43.769037,-79.371951,https://www.canadiantire.ca/en/store-details/on/sheppard-ave-on-192.html
-214,"Eglinton & Caledonia, Toronto","2360 Eglinton Avenue West, Westside Mall",Toronto,ON,M6M 1S6,+1 416-636-7480,43.693368,-79.467035,https://www.canadiantire.ca/en/store-details/on/eglinton-caledonia-toronto-on-214.html
-273,Toronto Main & Danforth,2681 Danforth Avenue,Toronto,ON,M4C 1L4,+1 416-690-6069,43.688217,-79.298308,https://www.canadiantire.ca/en/store-details/on/toronto-main-danforth-on-273.html
-459,Eglinton & Laird,825 Eglinton Avenue East,Toronto,ON,M4G 4G9,+1 416-422-0303,43.712534,-79.363368,https://www.canadiantire.ca/en/store-details/on/eglinton-laird-on-459.html
-600,Toronto Eaton Centre,"65 Dundas Street West, Eaton Centre",Toronto,ON,M5G 2C3,+1 416-979-2025,43.655535,-79.383382,https://www.canadiantire.ca/en/store-details/on/toronto-eaton-centre-on-600.html
-621,Liberty Village,5 Joe Shuster Way,Toronto,ON,M6K 0C7,+1 416-588-3232,43.639935,-79.423492,https://www.canadiantire.ca/en/store-details/on/liberty-village-on-621.html
-654,Leslie & Lake Shore,1025 Lake Shore Blvd. East,Toronto,ON,M4M 1B4,+1 416-778-0102,43.658096,-79.328737,https://www.canadiantire.ca/en/store-details/on/leslie-lake-shore-on-654.html
-112,Trenton,285 Dundas Street East,Trenton,ON,K8V 1M1,+1 613-392-3500,44.103508,-77.555518,https://www.canadiantire.ca/en/store-details/on/trenton-on-112.html
-127,Uxbridge,327 Toronto Street South,Uxbridge,ON,L9P 1Z7,+1 905-852-3315,44.089465,-79.132247,https://www.canadiantire.ca/en/store-details/on/uxbridge-on-127.html
-653,Maple,3200 Rutherford Road,Vaughan,ON,L4K 5R3,+1 905-417-0125,43.830413,-79.537617,https://www.canadiantire.ca/en/store-details/on/maple-on-653.html
-135,Wallaceburg,74 McNaughton Avenue,Wallaceburg,ON,N8A 1R9,+1 519-627-4251,42.583797,-82.383028,https://www.canadiantire.ca/en/store-details/on/wallaceburg-on-135.html
-652,Wasaga Beach,75 - 45th Street South,Wasaga Beach,ON,L9Z 1A7,+1 705-422-1250,44.471906,-80.074078,https://www.canadiantire.ca/en/store-details/on/wasaga-beach-on-652.html
-220,Waterdown,11 Clappison Avenue,Waterdown,ON,L8B 0Y2,+1 905-690-3961,43.317482,-79.913188,https://www.canadiantire.ca/en/store-details/on/waterdown-on-220.html
-251,Waterloo,400 Weber Street North,Waterloo,ON,N2J 3J3,+1 519-885-1050,43.485236,-80.523074,https://www.canadiantire.ca/en/store-details/on/waterloo-on-251.html
-674,Waterloo West,656 Erb Street West,Waterloo,ON,N2T 2Z7,+1 519-884-1255,43.447589,-80.573798,https://www.canadiantire.ca/en/store-details/on/waterloo-west-on-674.html
-279,Wawa,"54 Broadway Avenue, Box 1248",Wawa,ON,P0S 1K0,+1 705-856-2285,47.995529,-84.771125,https://www.canadiantire.ca/en/store-details/on/wawa-on-279.html
-118,Welland,158 Primeway Drive,Welland,ON,L3B 0A1,+1 905-732-7501,43.015701,-79.2293,https://www.canadiantire.ca/en/store-details/on/welland-on-118.html
-187,Whitby South,155 Consumers Drive,Whitby,ON,L1N 1C4,+1 905-668-5828,43.867208,-78.929756,https://www.canadiantire.ca/en/store-details/on/whitby-south-on-187.html
-460,Whitby North,4100 Garden Street at Taunton Road,Whitby,ON,L1R 3K5,+1 905-430-4962,43.9186,-78.949036,https://www.canadiantire.ca/en/store-details/on/whitby-north-on-460.html
-121,Windsor University Plaza,"2650 Tecumseh Road West, University Plaza",Windsor,ON,N9B 3R1,+1 519-252-7743,42.291921,-83.057773,https://www.canadiantire.ca/en/store-details/on/windsor-university-plaza-on-121.html
-199,Windsor East,8505 Tecumseh Road East,Windsor,ON,N8R 1A1,+1 519-948-8111,42.313216,-82.928145,https://www.canadiantire.ca/en/store-details/on/windsor-east-on-199.html
-236,Windsor South,4150 Walker Road,Windsor,ON,N8W 3T5,+1 519-966-3650,42.259457,-82.964351,https://www.canadiantire.ca/en/store-details/on/windsor-south-on-236.html
-237,Woodbridge,3850 Highway 7,Woodbridge,ON,L4L 9C3,+1 905-851-3214,43.789898,-79.550965,https://www.canadiantire.ca/en/store-details/on/woodbridge-on-237.html
-124,Woodstock,465 Norwich Avenue,Woodstock,ON,N4S 9A2,+1 519-539-1201,43.116276,-80.736621,https://www.canadiantire.ca/en/store-details/on/woodstock-on-124.html
-20,Charlottetown,20 Babineau Avenue,Charlottetown,PE,C1A 0G1,+1 902-892-8584,46.269094,-63.145017,https://www.canadiantire.ca/en/store-details/pe/charlottetown-pei-20.html
-132,Summerside,474 Granville Street,Summerside,PE,C1N 4K6,+1 902-436-6000,46.413502,-63.783089,https://www.canadiantire.ca/en/store-details/pe/summerside-pei-132.html
-298,Alma,"50, boul. St. Luc",Alma,QC,G8B 6K1,+1 418-662-6618,48.533956,-71.64989,https://www.canadiantire.ca/en/store-details/qc/alma-qc-298.html
-285,Amos,281 Route 111 Est,Amos,QC,J9T 3A2,+1 819-732-5337,48.559348,-78.124075,https://www.canadiantire.ca/en/store-details/qc/amos-qc-285.html
-265,Baie-Comeau,"650, rue de Parfondeval",Baie-Comeau,QC,G5C 3R3,+1 418-589-9924,49.199867,-68.254935,https://www.canadiantire.ca/en/store-details/qc/baie-comeau-qc-265.html
-228,Beloeil,"600, boul. Sir-Wilfrid-Laurier, Mail Montenach",Beloeil,QC,J3G 4J2,+1 450-464-1400,45.5617,-73.209235,https://www.canadiantire.ca/en/store-details/qc/beloeil-qc-228.html
-649,Blainville,"500, boul. de la Seigneurie Ouest",Blainville,QC,J7C 5T7,+1 450-419-4700,45.661331,-73.884028,https://www.canadiantire.ca/en/store-details/qc/blainville-qc-649.html
-332,Boucherville,"1055, boul. de Montarville",Boucherville,QC,J4B 6P5,+1 450-655-6950,45.589274,-73.431976,https://www.canadiantire.ca/en/store-details/qc/boucherville-qc-332.html
-643,Brossard,"9900, boul. Leduc, Quartier DIX30",Brossard,QC,J4Y 0B4,+1 450-443-0005,45.437223,-73.443491,https://www.canadiantire.ca/en/store-details/qc/brossard-qc-643.html
-626,Chambly,"3400, boul. Frechette",Chambly,QC,J3L 6Z6,+1 450-447-8393,45.430056,-73.304811,https://www.canadiantire.ca/en/store-details/qc/chambly-qc-626.html
-147,Chateauguay,"140, boul. d'Anjou",Chateauguay,QC,J6K 1C4,+1 450-691-4160,45.359381,-73.730847,https://www.canadiantire.ca/en/store-details/qc/chateauguay-qc-147.html
-268,Chicoutimi,"1257, boul. Talbot, Place du Royaume",Chicoutimi,QC,G7H 4C1,+1 418-549-5014,48.407057,-71.054944,https://www.canadiantire.ca/en/store-details/qc/chicoutimi-qc-268.html
-274,Cowansville,"145, rue de Salaberry",Cowansville,QC,J2K 5G9,+1 450-263-4232,45.191058,-72.760037,https://www.canadiantire.ca/en/store-details/qc/cowansville-qc-274.html
-396,Delson,65 132 Route,Delson,QC,J5B 1H1,+1 450-632-1700,45.384658,-73.5516,https://www.canadiantire.ca/en/store-details/qc/delson-qc-396.html
-284,Dolbeau-Mistassini,"1751, boul. Vezina",Dolbeau-Mistassini,QC,G8L 3S4,+1 418-276-2385,48.878089,-72.243508,https://www.canadiantire.ca/en/store-details/qc/dolbeau-mistassini-qc-284.html
-234,Dollard des Ormeaux,"3079, boul. des Sources, Galeries Des Sources",Dollard-Des-Ormeaux,QC,H9B 1Z6,+1 514-684-9750,45.482736,-73.790676,https://www.canadiantire.ca/en/store-details/qc/dollard-des-ormeaux-qc-234.html
-423,Donnacona,223 138 Route,Donnacona,QC,G3M 1C1,+1 418-285-1331,46.683418,-71.727414,https://www.canadiantire.ca/en/store-details/qc/donnacona-qc-423.html
-158,Drummondville,"715, boul. St-Joseph",Drummondville,QC,J2C 7V2,+1 819-478-1471,45.889898,-72.512684,https://www.canadiantire.ca/en/store-details/qc/drummondville-qc-158.html
-690,Laval Fabreville,"544, boul. Cure-Labelle",Fabreville,QC,H7P 2P4,+1 450-963-8686,45.582208,-73.788053,https://www.canadiantire.ca/en/store-details/qc/laval-fabreville-qc-690.html
-456,Gaspe,"39, Montee de Sandy Beach, CP 37, Carrefour Gaspe",Gaspe,QC,G4X 2A9,+1 418-368-6868,48.824928,-64.474838,https://www.canadiantire.ca/en/store-details/qc/gaspe-qc-456.html
-15,Buckingham,"170, avenue Lepine",Gatineau,QC,J8L 4M4,+1 819-986-3338,45.574489,-75.401804,https://www.canadiantire.ca/en/store-details/qc/buckingham-qc-15.html
-176,Hull,"355, boul. de la Carriere",Gatineau,QC,J8Y 6W4,+1 819-777-4381,45.443001,-75.729452,https://www.canadiantire.ca/en/store-details/qc/hull-qc-176.html
-191,Gatineau,"700, boul Maloney Ouest",Gatineau,QC,J8T 8K7,+1 819-246-1234,45.480806,-75.677884,https://www.canadiantire.ca/en/store-details/qc/gatineau-qc-191.html
-318,Gatineau Le Plateau,"213, boul. des Grives, Plateau des Grives",Gatineau,QC,J9A 0C7,+1 819-778-1881,45.431776,-75.782543,https://www.canadiantire.ca/en/store-details/qc/gatineau-le-plateau-qc-318.html
-138,Granby,"70, rue Simonds Nord",Granby,QC,J2J 2L1,+1 450-378-9884,45.416985,-72.75511,https://www.canadiantire.ca/en/store-details/qc/granby-qc-138.html
-190,Greenfield Park,"4909, boul. Taschereau",Greenfield Park,QC,J4V 3K3,+1 450-676-1818,45.483003,-73.463441,https://www.canadiantire.ca/en/store-details/qc/greenfield-park-qc-190.html
-200,Joliette,"1475, boul. Firestone",Joliette,QC,J6E 9E5,+1 450-756-1044,46.035824,-73.415837,https://www.canadiantire.ca/en/store-details/qc/joliette-qc-200.html
-221,Jonquiere,"2290, boul. Rene-Levesque",Jonquiere,QC,G7S 5Y5,+1 418-542-3501,48.410082,-71.214049,https://www.canadiantire.ca/en/store-details/qc/jonquiere-qc-221.html
-149,Kirkland,"16821, Route Transcanadienne",Kirkland,QC,H9H 5J1,+1 514-697-8151,45.455386,-73.853266,https://www.canadiantire.ca/en/store-details/qc/kirkland-qc-149.html
-692,Ancienne Lorette,"1233, autoroute Duplessis",L'Ancienne-Lorette,QC,G2G 2B4,+1 418-864-0321,46.788076,-71.350724,https://www.canadiantire.ca/en/store-details/qc/ancienne-lorette-qc-692.html
-335,La Baie,"2300, rue Bagot",La Baie,QC,G7B 3Z3,+1 418-544-8291,48.335962,-70.898769,https://www.canadiantire.ca/en/store-details/qc/la-baie-qc-335.html
-306,La Malbaie,"375, boul. de Comporte, Suite 118, Le Centre Charlevoix",La Malbaie,QC,G5A 1H9,+1 418-665-6483,47.645284,-70.150079,https://www.canadiantire.ca/en/store-details/qc/la-malbaie-qc-306.html
-633,La Pocatiere,175 230 Route Ouest,La Pocatiere,QC,G0R 1Z0,+1 418-856-4516,47.359823,-70.053093,https://www.canadiantire.ca/en/store-details/qc/la-pocatiere-qc-633.html
-233,La Sarre,"91, 2ieme rue Est",La Sarre,QC,J9Z 3J9,+1 819-333-2381,48.810896,-79.198701,https://www.canadiantire.ca/en/store-details/qc/la-sarre-qc-233.html
-352,La Tuque,"1200, boul. Ducharme",La Tuque,QC,G9X 3Z9,+1 819-523-7611,47.41768,-72.784083,https://www.canadiantire.ca/en/store-details/qc/la-tuque-qc-352.html
-230,Ville La Salle,"2221, boul. Angrignon",LaSalle,QC,H8N 3E3,+1 514-365-8880,45.450106,-73.612111,https://www.canadiantire.ca/en/store-details/qc/ville-la-salle-qc-230.html
-225,Lac Megantic,"3642, rue Laval",Lac-Megantic,QC,G6B 1A4,+1 819-583-3332,45.58897,-70.903463,https://www.canadiantire.ca/en/store-details/qc/lac-megantic-qc-225.html
-262,Lachute,"505, avenue Bethany",Lachute,QC,J8H 4A6,+1 450-562-8536,45.637695,-74.326013,https://www.canadiantire.ca/en/store-details/qc/lachute-qc-262.html
-155,"Laval, Ste-Dorothee","500 Chomedey (A-13) Ouest, Ste Dorothee",Laval,QC,H7X 3S9,+1 450-969-4141,45.524367,-73.782404,https://www.canadiantire.ca/en/store-details/qc/laval-ste-dorothee-qc-155.html
-231,Laval Vimont,"4975, boul. Robert-Bourassa, Mega Centre Val-Des-Brises",Laval,QC,H7E 0A4,+1 450-665-4747,45.609624,-73.69593,https://www.canadiantire.ca/en/store-details/qc/laval-vimont-qc-231.html
-300,"Laval, Bl. Le Corbusier","1450, boul. Le Corbusier",Laval,QC,H7N 6J5,+1 450-682-9922,45.559069,-73.727832,https://www.canadiantire.ca/en/store-details/qc/laval-bl-le-corbusier-qc-300.html
-165,Levis,100 Route du President-Kennedy,Levis,QC,G6V 6C9,+1 418-833-5525,46.790015,-71.170893,https://www.canadiantire.ca/en/store-details/qc/levis-qc-165.html
-256,Longueuil,"2211, boul. Roland-Therrien",Longueuil,QC,J4N 1P2,+1 450-448-1177,45.539184,-73.470013,https://www.canadiantire.ca/en/store-details/qc/longueuil-qc-256.html
-240,Magog,"2135, rue Sherbrooke",Magog,QC,J1X 2T5,+1 819-843-3373,45.282149,-72.125416,https://www.canadiantire.ca/en/store-details/qc/magog-qc-240.html
-196,Maniwaki,"250, boul. Desjardins",Maniwaki,QC,J9E 3G4,+1 819-449-2000,46.387673,-75.98244,https://www.canadiantire.ca/en/store-details/qc/maniwaki-qc-196.html
-315,Matane,"145, rue Piuze",Matane,QC,G4W 0H7,+1 418-562-5144,48.843325,-67.558279,https://www.canadiantire.ca/en/store-details/qc/matane-qc-315.html
-648,Mont-Laurier,"1675, boul. Albiny-Paquette",Mont-Laurier,QC,J9L 1M8,+1 819-623-2255,46.551944,-75.461445,https://www.canadiantire.ca/en/store-details/qc/mont-laurier-qc-648.html
-461,Mont-Tremblant,228 Route 117,Mont-Tremblant,QC,J8E 2X1,+1 819-425-1110,46.119127,-74.557687,https://www.canadiantire.ca/en/store-details/qc/mont-tremblant-qc-461.html
-180,Montmagny,"488, avenue Saint-David",Montmagny,QC,G5V 4P9,+1 418-248-2602,46.970509,-70.548508,https://www.canadiantire.ca/en/store-details/qc/montmagny-qc-180.html
-64,Montreal Cremazie & Papineau,"2225, boul. Cremazie Est",Montreal,QC,H1Z 4N4,+1 514-729-1861,45.556976,-73.6199,https://www.canadiantire.ca/en/store-details/qc/montreal-cremazie-papineau-qc-64.html
-292,Marche Central,"9050, boul. de l'Acadie",Montreal,QC,H4N 2S5,+1 514-388-6464,45.531218,-73.652789,https://www.canadiantire.ca/en/store-details/qc/marche-central-qc-292.html
-303,Pointe aux Trembles,"3500, boul. du Tricentenaire",Montreal,QC,H1B 0A3,+1 514-645-2761,45.652385,-73.512845,https://www.canadiantire.ca/en/store-details/qc/pointe-aux-trembles-qc-303.html
-343,Montreal Bellechasse,"6275, boul. St. Laurent",Montreal,QC,H2S 3C3,+1 514-273-2428,45.529493,-73.605373,https://www.canadiantire.ca/en/store-details/qc/montreal-bellechasse-qc-343.html
-400,Montreal Maisonneuve,"3025, rue Sherbrooke Est, Centre D'Achats Maisonneuve",Montreal,QC,H1W 1B2,+1 514-521-8888,45.542044,-73.560838,https://www.canadiantire.ca/en/store-details/qc/montreal-maisonneuve-qc-400.html
-401,Cote des Neiges,"6700, chemin de la Cote-des-Neiges, Suite 240",Montreal,QC,H3S 2B2,+1 514-737-2954,45.50185,-73.637613,https://www.canadiantire.ca/en/store-details/qc/cote-des-neiges-qc-401.html
-435,Montreal Downtown,"1500, avenue Atwater, Place Alexis Nihon, Local S-01",Montreal,QC,H3Z 1X5,+1 514-939-1820,45.488554,-73.586265,https://www.canadiantire.ca/en/store-details/qc/montreal-downtown-qc-435.html
-454,Rivieres des Prairies,"7555, boul. Maurice-Duplessis",Montreal,QC,H1E 7N2,+1 514-643-2232,45.626835,-73.599247,https://www.canadiantire.ca/en/store-details/qc/rivieres-des-prairies-qc-454.html
-627,St. Jacques - Montreal,"7200, boul. de Sainte-Anne-de-Bellevue",Montreal,QC,H4B 1T4,+1 514-483-2223,45.454611,-73.631347,https://www.canadiantire.ca/en/store-details/qc/st-jacques-montreal-qc-627.html
-928,Place Versailles,"7275, rue Sherbrooke Est, Suite 140, Place Versailles",Montreal,QC,H1N 1E9,+1 514-352-0928,45.592571,-73.54176,https://www.canadiantire.ca/en/store-details/qc/place-versailles-qc-928.html
-267,Montreal Nord,"6000, boul. Henri-Bourassa Est, Unit Z1",Montreal-nord,QC,H1G 2T6,+1 514-325-6010,45.605812,-73.61519,https://www.canadiantire.ca/en/store-details/qc/montreal-nord-qc-267.html
-686,Nicolet,"2000, boul. Louis-Frechette, Local 300",Nicolet,QC,J3T 1M9,+1 819-293-4040,46.239613,-72.597603,https://www.canadiantire.ca/en/store-details/qc/nicolet-qc-686.html
-463,Paspebiac,"49, boul. Gerard-D-Levesque Est",Paspebiac,QC,G0C 2K0,+1 418-752-5050,48.030621,-65.244337,https://www.canadiantire.ca/en/store-details/qc/paspebiac-qc-463.html
-181,Ile Perrot,"101, boul. Cardinal-Leger, Le Faubourg de l'Ile",Pincourt,QC,J7W 3Y3,+1 514-453-4211,45.38493,-73.996426,https://www.canadiantire.ca/en/store-details/qc/ile-perrot-qc-181.html
-101,Quebec Vanier,"630, boul. Wilfrid-Hamel",Quebec,QC,G1M 3P9,+1 418-687-2111,46.816986,-71.252067,https://www.canadiantire.ca/en/store-details/qc/quebec-vanier-qc-101.html
-184,Beauport,"705, rue Clemenceau",Quebec,QC,G1C 7T9,+1 418-663-4334,46.872718,-71.202226,https://www.canadiantire.ca/en/store-details/qc/beauport-qc-184.html
-245,Quebec Ste. Foy,"1170, route de l'Eglise",Quebec,QC,G1V 3W7,+1 418-659-4883,46.767937,-71.291265,https://www.canadiantire.ca/en/store-details/qc/quebec-ste-foy-qc-245.html
-342,Quebec Les Saules,"4500, rue Armand-Viau",Quebec,QC,G2C 2B9,+1 418-872-6212,46.81631,-71.333606,https://www.canadiantire.ca/en/store-details/qc/quebec-les-saules-qc-342.html
-405,Lebourgneuf,"5500, boul. des Gradins, Place Lebourgneuf",Quebec,QC,G2J 1A1,+1 418-622-7333,46.840138,-71.272806,https://www.canadiantire.ca/en/store-details/qc/lebourgneuf-qc-405.html
-222,Repentigny,"115, boul. Brien",Repentigny,QC,J6A 8J3,+1 450-585-9840,45.746024,-73.455614,https://www.canadiantire.ca/en/store-details/qc/repentigny-qc-222.html
-320,Rimouski,"419, boul. Jessop, Local 1, Svc Cntre - 419, boul. Jessop, Local 38",Rimouski,QC,G5L 7Y5,+1 418-722-8141,48.46837,-68.514261,https://www.canadiantire.ca/en/store-details/qc/rimouski-qc-320.html
-323,Riviere du Loup,"237, boul. de l'Hotel de Ville",Riviere-du-Loup,QC,G5R 4E5,+1 418-862-0106,47.824712,-69.55126,https://www.canadiantire.ca/en/store-details/qc/riviere-du-loup-qc-323.html
-458,Roberval,"1056, boul. Olivier-Vien",Roberval,QC,G8H 3G3,+1 418-275-7424,48.522671,-72.235866,https://www.canadiantire.ca/en/store-details/qc/roberval-qc-458.html
-418,Rosemere,"10, boul. Bouthillier, Place Rosemere",Rosemere,QC,J7A 4B4,+1 450-437-2007,45.627642,-73.822857,https://www.canadiantire.ca/en/store-details/qc/rosemere-qc-418.html
-89,Rouyn,"245, boul. Rideau",Rouyn-Noranda,QC,J9X 5Y6,+1 819-762-4375,48.242555,-79.04106,https://www.canadiantire.ca/en/store-details/qc/rouyn-qc-89.html
-484,St. Bruno,"900, avenue Andree Champagne",Saint-Bruno-de-Montarville,QC,J3V 6K8,+1 450-653-0222,45.507618,-73.384488,https://www.canadiantire.ca/en/store-details/qc/st-bruno-qc-484.html
-218,St. Eustache,"500, boul. Arthur-Sauve",Saint-Eustache,QC,J7R 4Z3,+1 450-472-2270,45.566926,-73.909224,https://www.canadiantire.ca/en/store-details/qc/st-eustache-qc-218.html
-173,St. Georges,"500, 107e Rue",Saint-Georges,QC,G5Y 8K1,+1 418-228-8843,46.127211,-70.681357,https://www.canadiantire.ca/en/store-details/qc/st-georges-qc-173.html
-151,St. Hyacinthe,"5930, rue Martineau",Saint-Hyacinthe,QC,J2R 2H6,+1 450-796-4226,45.642608,-72.978128,https://www.canadiantire.ca/en/store-details/qc/st-hyacinthe-qc-151.html
-153,St. Jean-sur-Richelieu,"855, boul. du Seminaire Nord",Saint-Jean-sur-Richelieu,QC,J3A 1J2,+1 450-348-3851,45.330069,-73.2658,https://www.canadiantire.ca/en/store-details/qc/st-jean-sur-richelieu-qc-153.html
-257,Ste. Agathe des Monts,"50, boul. Morin, Le Carrefour Ste-Agathe",Sainte-Agathe-des-Monts,QC,J8C 2V6,+1 819-326-8900,46.048442,-74.278969,https://www.canadiantire.ca/en/store-details/qc/ste-agathe-des-monts-qc-257.html
-416,Ste. Marie De Beauce,"980, boul. Vachon Nord",Sainte-Marie,QC,G6E 1M2,+1 418-387-5575,46.449656,-71.029361,https://www.canadiantire.ca/en/store-details/qc/ste-marie-de-beauce-qc-416.html
-115,Valleyfield,"1770, boul. Monseigneur-Langlois",Salaberry-de-valleyfield,QC,J6S 5R1,+1 450-373-0123,45.27059,-74.124769,https://www.canadiantire.ca/en/store-details/qc/valleyfield-qc-115.html
-307,Sept-Iles,"402, boul. Laure",Sept-Iles,QC,G4R 1X5,+1 418-968-1415,50.212293,-66.372289,https://www.canadiantire.ca/en/store-details/qc/sept-iles-qc-307.html
-131,Shawinigan,"1555, rue Trudel",Shawinigan,QC,G9N 8K8,+1 819-537-3888,46.555245,-72.750543,https://www.canadiantire.ca/en/store-details/qc/shawinigan-qc-131.html
-99,Shawville,431 148 Route,Shawville,QC,J0X 2Y0,+1 819-647-2733,45.598808,-76.491929,https://www.canadiantire.ca/en/store-details/qc/shawville-qc-99.html
-96,Sherbrooke,"4100, boul. Josaphat-Rancourt",Sherbrooke,QC,J1L 3C6,+1 819-566-0303,45.419389,-71.966034,https://www.canadiantire.ca/en/store-details/qc/sherbrooke-qc-96.html
-348,Sherbrooke Fleurimont,"1805 - 12E avenue Nord, Suite 01",Sherbrooke,QC,J1E 4J5,+1 819-566-5991,45.431972,-71.869025,https://www.canadiantire.ca/en/store-details/qc/sherbrooke-fleurimont-qc-348.html
-148,Sorel & Tracy,"280, boul. Fiset",Sorel-Tracy,QC,J3P 5X7,+1 450-743-5515,46.037949,-73.098468,https://www.canadiantire.ca/en/store-details/qc/sorel-tracy-qc-148.html
-271,St. Jerome,"700, boul. Monseigneur-Dubois, Carrefour du Nord",St. Jerome,QC,J7Y 4Y9,+1 450-438-3506,45.790846,-74.018975,https://www.canadiantire.ca/en/store-details/qc/st-jerome-qc-271.html
-9,St. Leonard Langelier,"6565, rue Jean-Talon Est",St. Leonard,QC,H1S 1N2,+1 514-253-2857,45.593613,-73.575397,https://www.canadiantire.ca/en/store-details/qc/st-leonard-langelier-qc-9.html
-247,St. Leonard,"4250, rue Jean-Talon Est, Centre commercial Le Boulevard",St. Leonard,QC,H1S 1J7,+1 514-723-2233,45.567752,-73.587499,https://www.canadiantire.ca/en/store-details/qc/st-leonard-qc-247.html
-624,St. Romuald,"600, rue de la Concorde",St. Romuald,QC,G6W 8A8,+1 418-839-9797,46.728996,-71.276234,https://www.canadiantire.ca/en/store-details/qc/st-romuald-qc-624.html
-312,Terrebonne,"1250, boul. Moody",Terrebonne,QC,J6W 3K9,+1 450-471-2220,45.702759,-73.650742,https://www.canadiantire.ca/en/store-details/qc/terrebonne-qc-312.html
-641,La Plaine,"4785, boul. Laurier",Terrebonne,QC,J7M 1C3,+1 450-477-4013,45.749178,-73.701222,https://www.canadiantire.ca/en/store-details/qc/la-plaine-qc-641.html
-156,Thetford Mines,"70, boul. Frontenac Est",Thetford Mines,QC,G6G 1N4,+1 418-338-3535,46.103876,-71.311001,https://www.canadiantire.ca/en/store-details/qc/thetford-mines-qc-156.html
-109,Cap-de-la-Madeleine,"350, rue Barkoff, Les Galeries du Cap",Trois-Rivieres,QC,G8T 9P5,+1 819-376-9646,46.374482,-72.557229,https://www.canadiantire.ca/en/store-details/qc/cap-de-la-madeleine-qc-109.html
-308,Trois-Rivieres,"3525, boul. des Forges",Trois-Rivieres,QC,G8Y 4P2,+1 819-378-4045,46.351749,-72.581327,https://www.canadiantire.ca/en/store-details/qc/trois-rivieres-qc-308.html
-114,Val d'Or,"1806, 3rd Avenue",Val-d'Or,QC,J9P 7A9,+1 819-825-9999,48.098429,-77.82666,https://www.canadiantire.ca/en/store-details/qc/val-d-or-qc-114.html
-646,Vaudreuil,"50, boul. de la Cite-des-Jeunes",Vaudreuil-Dorion,QC,J7V 9L5,+1 450-424-2744,45.406668,-74.039708,https://www.canadiantire.ca/en/store-details/qc/vaudreuil-qc-646.html
-117,Verdun,"3180, rue Wellington",Verdun,QC,H4G 1T3,+1 514-766-8561,45.470097,-73.563375,https://www.canadiantire.ca/en/store-details/qc/verdun-qc-117.html
-243,Victoriaville,"571, boul Jutras Est, Le Centre de Victoriaville",Victoriaville,QC,G6P 7H4,+1 819-758-1585,46.057732,-71.939555,https://www.canadiantire.ca/en/store-details/qc/victoriaville-qc-243.html
-235,Ville St. Laurent,"11200, boul. Cavendish, Place Vertu",Ville Saint-Laurent,QC,H4R 2J7,+1 514-337-4862,45.500632,-73.705677,https://www.canadiantire.ca/en/store-details/qc/ville-st-laurent-qc-235.html
-146,Estevan,200 King Street,Estevan,SK,S4A 2W4,+1 306-634-6407,49.145708,-102.974575,https://www.canadiantire.ca/en/store-details/sk/estevan-sk-146.html
-638,Humboldt,"2302 - 8th Avenue, Quill Centre",Humboldt,SK,S0K 2A0,+1 306-682-6299,52.200361,-105.147636,https://www.canadiantire.ca/en/store-details/sk/humboldt-sk-638.html
-912,Martensville,"230 Centennial Drive North, Black Iron Shopping Centre",Martensville,SK,S0K 2T0,+1 306-934-5564,52.295077,-106.672434,https://www.canadiantire.ca/en/store-details/sk/martensville-sk-912.html
-656,Melfort,"300 Stonegate, 500 Hwy 6 South",Melfort,SK,S0E 1A0,+1 306-752-7277,52.852601,-104.589157,https://www.canadiantire.ca/en/store-details/sk/melfort-sk-656.html
-915,Melville,"290 Prince William Drive, Melville Mall",Melville,SK,S0A 2P0,+1 306-728-8810,50.939149,-102.805853,https://www.canadiantire.ca/en/store-details/sk/melville-sk-915.html
-263,Moose Jaw,400 Thatcher Drive East,Moose Jaw,SK,S6J 1L7,+1 306-693-0888,50.413063,-105.525729,https://www.canadiantire.ca/en/store-details/sk/moose-jaw-sk-263.html
-301,North Battleford,11802 Railway Avenue East,North Battleford,SK,S9A 3P7,+1 306-446-3333,52.758662,-108.271251,https://www.canadiantire.ca/en/store-details/sk/north-battleford-sk-301.html
-317,Prince Albert,3725 - 2nd Avenue West,Prince Albert,SK,S6W 1A1,+1 306-764-9000,53.179271,-105.762283,https://www.canadiantire.ca/en/store-details/sk/prince-albert-sk-317.html
-275,Regina North Albert,655 Albert Street,Regina,SK,S4R 2P4,+1 306-757-8608,50.467598,-104.61628,https://www.canadiantire.ca/en/store-details/sk/regina-north-albert-sk-275.html
-310,Regina South,"2965 Gordon Road, Unit 65, Southland Mall",Regina,SK,S4S 6H7,+1 306-585-1334,50.403291,-104.621188,https://www.canadiantire.ca/en/store-details/sk/regina-south-sk-310.html
-629,Regina East,2325 Prince Of Wales Drive,Regina,SK,S4V 3A4,+1 306-522-8473,50.441914,-104.531361,https://www.canadiantire.ca/en/store-details/sk/regina-east-sk-629.html
-133,Saskatoon East,1731 Preston Avenue North,Saskatoon,SK,S7N 4V2,+1 306-373-3666,52.147586,-106.61636,https://www.canadiantire.ca/en/store-details/sk/saskatoon-east-sk-133.html
-296,Saskatoon West,"300 Confederation Drive, Unit 1, Confederation Mall",Saskatoon,SK,S7L 4R6,+1 306-384-1212,52.132139,-106.720591,https://www.canadiantire.ca/en/store-details/sk/saskatoon-west-sk-296.html
-100,Swift Current,1811 Memorial Drive,Swift Current,SK,S9H 5B7,+1 306-773-0654,50.308512,-107.775015,https://www.canadiantire.ca/en/store-details/sk/swift-current-sk-100.html
-408,Weyburn,1240 Sims Avenue,Weyburn,SK,S4H 3N9,+1 306-842-4600,49.662909,-103.877133,https://www.canadiantire.ca/en/store-details/sk/weyburn-sk-408.html
-287,Yorkton,"277 Broadway Street E, Parkland Mall",Yorkton,SK,S3N 3G7,+1 306-783-9733,51.211644,-102.441011,https://www.canadiantire.ca/en/store-details/sk/yorkton-sk-287.html
-452,Whitehorse,18 Chilkoot Way,Whitehorse,YT,Y1A 6T5,+1 867-668-3652,60.732284,-135.071658,https://www.canadiantire.ca/en/store-details/yt/whitehorse-yt-452.html
+store_number,branch,address,city,province,postal_code,phone,latitude,longitude,website,firearms,mapped
+407,Airdrie,300 - 202 Veteran's Blvd. NE,Airdrie,AB,T4B 3P2,+1 403-948-3993,51.302127,-114.006085,https://www.canadiantire.ca/en/store-details/ab/airdrie-ab-407.html,,
+667,Athabasca,2913 - 48th Avenue,Athabasca,AB,T9S 0A4,+1 780-675-3019,54.718969,-113.25237,https://www.canadiantire.ca/en/store-details/ab/athabasca-ab-667.html,,
+212,Brooks,"404 Cassils Road West, Cassil Centre Mall",Brooks,AB,T1R 0W3,+1 403-362-4222,50.572826,-111.899673,https://www.canadiantire.ca/en/store-details/ab/brooks-ab-212.html,,
+299,Calgary Dalhousie NW,5404 Dalton Drive NW,Calgary,AB,T3A 2C3,+1 403-288-1100,51.101009,-114.148335,https://www.canadiantire.ca/en/store-details/ab/calgary-dalhousie-nw-ab-299.html,,
+302,Calgary Westhills,"5200 Richmond Road SW, Richmond Square",Calgary,AB,T3E 6M9,+1 403-246-1961,51.019188,-114.162186,https://www.canadiantire.ca/en/store-details/ab/calgary-westhills-ab-302.html,,
+313,Calgary Southland and Macleod,9940 Macleod Trail SE,Calgary,AB,T2J 3K9,+1 403-278-4040,50.963103,-114.070015,https://www.canadiantire.ca/en/store-details/ab/calgary-southland-and-macleod-ab-313.html,,
+326,Calgary Pacific Place,3516 - 8th Avenue NE,Calgary,AB,T2A 6K5,+1 403-248-6400,51.060585,-113.984447,https://www.canadiantire.ca/en/store-details/ab/calgary-pacific-place-ab-326.html,,
+419,Calgary Deerfoot City NE,"910 - 57th Avenue NE, Deerfoot City",Calgary,AB,T2E 9B7,+1 403-295-2800,51.106432,-114.042615,https://www.canadiantire.ca/en/store-details/ab/calgary-deerfoot-city-ne-ab-419.html,,
+462,Calgary Shawnessy SE,250 Shawville Way SE,Calgary,AB,T2Y 3J1,+1 403-201-2002,50.902478,-114.067692,https://www.canadiantire.ca/en/store-details/ab/calgary-shawnessy-se-ab-462.html,,
+496,Calgary Country Hills,"388 Country Hills Blvd. NE, Unit 200",Calgary,AB,T3K 5J6,+1 403-226-9550,51.155393,-114.0653,https://www.canadiantire.ca/en/store-details/ab/calgary-country-hills-ab-496.html,,
+611,Calgary Beacon Hills NW,"11940 Sarcee Trail NW, Beacon Hill Centre",Calgary,AB,T3R 0A1,+1 403-456-6428,51.159138,-114.160888,https://www.canadiantire.ca/en/store-details/ab/calgary-beacon-hills-nw-ab-611.html,,
+637,Calgary McKenzie Towne SE,4155 - 126th Avenue SE,Calgary,AB,T2Z 0A1,+1 403-257-4729,50.934151,-113.969352,https://www.canadiantire.ca/en/store-details/ab/calgary-mckenzie-towne-se-ab-637.html,,
+930,Calgary Mount Royal,"201, 906 - 16th Avenue SW",Calgary,AB,T2R 0T3,+1 403-474-1113,51.038404,-114.082194,https://www.canadiantire.ca/en/store-details/ab/calgary-mount-royal-ab-930.html,,
+398,Camrose,"6601 - 48th Avenue, Unit 46, Duggan Mall",Camrose,AB,T4V 3G8,+1 780-672-1400,53.016218,-112.85741,https://www.canadiantire.ca/en/store-details/ab/camrose-ab-398.html,,
+469,Canmore,1110 Gateway Avenue,Canmore,AB,T1W 0J1,+1 403-678-3295,51.092676,-115.355346,https://www.canadiantire.ca/en/store-details/ab/canmore-ab-469.html,,
+493,Cochrane,"55 Quarry Street East, The Quarry Shopping Centre",Cochrane,AB,T4C 0W6,+1 403-851-0770,51.185803,-114.469496,https://www.canadiantire.ca/en/store-details/ab/cochrane-ab-493.html,,
+450,Cold Lake,6703 - 51st Street,Cold Lake,AB,T9M 1Z9,+1 780-594-3501,54.43386,-110.204507,https://www.canadiantire.ca/en/store-details/ab/cold-lake-ab-450.html,,
+615,Drayton Valley,5201 Power Centre Blvd.,Drayton Valley,AB,T7A 0A5,+1 780-514-7670,53.223666,-114.99519,https://www.canadiantire.ca/en/store-details/ab/drayton-valley-ab-615.html,,
+439,Drumheller,"650 South Railway Avenue, Unit 100, PO Box 1270",Drumheller,AB,T0J 0Y0,+1 403-823-9512,51.459139,-112.705674,https://www.canadiantire.ca/en/store-details/ab/drumheller-ab-439.html,,
+288,Edmonton West,"9909 - 178th Street NW, West Point Centre",Edmonton,AB,T5T 6H6,+1 780-444-1816,53.535876,-113.626034,https://www.canadiantire.ca/en/store-details/ab/edmonton-west-ab-288.html,,
+304,Edmonton South,"2110 - 101st Street NW, South Edmonton Common",Edmonton,AB,T6N 1J2,+1 780-438-4921,53.452185,-113.489684,https://www.canadiantire.ca/en/store-details/ab/edmonton-south-ab-304.html,,
+347,Edmonton Manning Dr.,"3650 - 158th Avenue NW, Manning Town Centre",Edmonton,AB,T5Y 0S5,+1 780-473-2394,53.620864,-113.397847,https://www.canadiantire.ca/en/store-details/ab/edmonton-manning-dr-ab-347.html,,
+397,Edmonton North West,9603 - 162nd Avenue,Edmonton,AB,T5Z 3T6,+1 780-495-9696,53.622899,-113.489011,https://www.canadiantire.ca/en/store-details/ab/edmonton-north-west-ab-397.html,,
+467,Edmonton Downtown,11839 Kingsway NW,Edmonton,AB,T5G 3J7,+1 780-413-8473,53.567077,-113.525655,https://www.canadiantire.ca/en/store-details/ab/edmonton-downtown-ab-467.html,,
+478,Edmonton Millwoods,"2331 - 66th Street NW, Unit 400",Edmonton,AB,T6K 4B5,+1 780-450-1800,53.454927,-113.427089,https://www.canadiantire.ca/en/store-details/ab/edmonton-millwoods-ab-478.html,,
+614,Edmonton Capilano,9847 - 50th Street NW,Edmonton,AB,T6A 3X5,+1 780-461-2220,53.539056,-113.416307,https://www.canadiantire.ca/en/store-details/ab/edmonton-capilano-ab-614.html,,
+676,Edmonton Windermere,6014 Currents Drive NW,Edmonton,AB,T6W 0L7,+1 780-436-6774,53.436224,-113.597206,https://www.canadiantire.ca/en/store-details/ab/edmonton-windermere-ab-676.html,,
+477,Edson,5919 - 2nd Avenue,Edson,AB,T7E 1L8,+1 780-723-6335,53.574457,-116.451861,https://www.canadiantire.ca/en/store-details/ab/edson-ab-477.html,,
+339,Fort McMurray - Main Store,1 Hospital Street,Fort McMurray,AB,T9H 5C1,+1 780-791-6400,56.721126,-111.356671,https://www.canadiantire.ca/en/store-details/ab/fort-mcmurray-main-store-ab-339.html,,
+911,Fort McMurray - Outdoor Store,"19 Riedel Street, Unit 131, Clearwater Landing",Fort McMurray,AB,T9H 5P8,+1 780-791-6470,56.722547,-111.364206,https://www.canadiantire.ca/en/store-details/ab/fort-mcmurray-outdoor-store-ab-911.html,,
+322,Fort Saskatchewan,"9510 - 86th Avenue, Cornerstone Fort Saskatchewan",Fort Saskatchewan,AB,T8L 4P4,+1 780-998-2118,53.696179,-113.209262,https://www.canadiantire.ca/en/store-details/ab/fort-saskatchewan-ab-322.html,,
+344,Grande Prairie,11601 - 104th Avenue,Grande Prairie,AB,T8V 3X9,+1 780-539-9292,55.173506,-118.848446,https://www.canadiantire.ca/en/store-details/ab/grande-prairie-ab-344.html,,
+908,High Level,1 Gateway Boulevard,High Level,AB,T0H 1Z0,+1 780-926-1908,58.507506,-117.146991,https://www.canadiantire.ca/en/store-details/ab/high-level-ab-908.html,,
+909,High River,1204 - 5th Street SE,High River,AB,T1V 0J2,+1 403-652-2264,50.570963,-113.857278,https://www.canadiantire.ca/en/store-details/ab/high-river-ab-909.html,,
+455,Hinton,868 Carmichael Lane,Hinton,AB,T7V 1Y6,+1 780-865-6157,53.385119,-117.624055,https://www.canadiantire.ca/en/store-details/ab/hinton-ab-455.html,,
+448,Leduc,"5402 Discovery Way, Leduc Common",Leduc,AB,T9E 8L9,+1 780-986-5229,53.269615,-113.567991,https://www.canadiantire.ca/en/store-details/ab/leduc-ab-448.html,,
+441,Lethbridge,"1240 - 2nd Avenue A North, Unit 19, Centre Village Mall",Lethbridge,AB,T1H 0E4,+1 403-320-6191,49.700399,-112.825658,https://www.canadiantire.ca/en/store-details/ab/lethbridge-ab-441.html,,
+634,Lethbridge South,2720 Fairway Road South,Lethbridge,AB,T1K 7A5,+1 403-394-9633,49.667402,-112.789577,https://www.canadiantire.ca/en/store-details/ab/lethbridge-south-ab-634.html,,
+341,Lloydminster,4104 - 80th Avenue,Lloydminster,AB,T9V 0X9,+1 780-875-1558,53.276213,-110.064874,https://www.canadiantire.ca/en/store-details/ab/lloydminster-ab-341.html,,
+328,Medicine Hat,1971 Strachan Road SE,Medicine Hat,AB,T1B 0G4,+1 403-526-6644,49.995395,-110.646036,https://www.canadiantire.ca/en/store-details/ab/medicine-hat-ab-328.html,,
+642,Okotoks,100 - 201 Southridge Drive,Okotoks,AB,T1S 2C9,+1 403-938-5551,50.706284,-113.973472,https://www.canadiantire.ca/en/store-details/ab/okotoks-ab-642.html,,
+475,Olds,"6900 - 46th Street, Unit 600",Olds,AB,T4H 0A2,+1 403-556-9949,51.796019,-114.13957,https://www.canadiantire.ca/en/store-details/ab/olds-ab-475.html,,
+474,Peace River,7713 - 100th Avenue,Peace River,AB,T8S 1M5,+1 780-624-9429,56.231748,-117.338348,https://www.canadiantire.ca/en/store-details/ab/peace-river-ab-474.html,,
+329,Red Deer,2510 - 50th Avenue,Red Deer,AB,T4R 1M3,+1 403-342-2222,52.243536,-113.816675,https://www.canadiantire.ca/en/store-details/ab/red-deer-ab-329.html,,
+645,Red Deer North,"6380 - 50th Avenue, Unit 300, Village Mall",Red Deer,AB,T4N 4C6,+1 403-346-1497,52.287837,-113.815865,https://www.canadiantire.ca/en/store-details/ab/red-deer-north-ab-645.html,,
+613,Rocky Mountain House,5440 - 46th Street,Rocky Mountain House,AB,T4T 1B7,+1 403-846-0077,52.382132,-114.914246,https://www.canadiantire.ca/en/store-details/ab/rocky-mountain-house-ab-613.html,,
+428,Sherwood Park,169 Ordze Avenue,Sherwood Park,AB,T8B 1M6,+1 780-449-1577,53.510932,-113.32523,https://www.canadiantire.ca/en/store-details/ab/sherwood-park-ab-428.html,,
+916,Sherwood Park Emerald Hills,200 - 3000 Emerald Drive,Sherwood Park,AB,T8H 0P5,+1 825-218-8899,53.568994,-113.290232,https://www.canadiantire.ca/en/store-details/ab/sherwood-park-emerald-hills-ab-916.html,,
+699,Slave Lake,"101 Cornerstone, 1500 Main Street SW",Slave Lake,AB,T0G 2A4,+1 780-849-2915,55.271464,-114.782699,https://www.canadiantire.ca/en/store-details/ab/slave-lake-ab-699.html,,
+449,Spruce Grove,38 McLeod Avenue,Spruce Grove,AB,T7X 3Y2,+1 780-962-1444,53.5424,-113.919594,https://www.canadiantire.ca/en/store-details/ab/spruce-grove-ab-449.html,,
+334,Edmonton St.Albert,40 Bellerose Drive,St. Albert,AB,T8N 6M3,+1 780-459-5545,53.644523,-113.621067,https://www.canadiantire.ca/en/store-details/ab/edmonton-st-albert-ab-334.html,,
+900,St. Paul,3929 - 49th Avenue,St. Paul,AB,T0A 3A2,+1 780-645-3849,53.990057,-111.264338,https://www.canadiantire.ca/en/store-details/ab/st-paul-ab-900.html,,
+671,Stettler,6607 - 50th Avenue,Stettler,AB,T4K 1M2,+1 403-742-8319,52.324311,-112.734031,https://www.canadiantire.ca/en/store-details/ab/stettler-ab-671.html,,
+651,Strathmore,109 - 900 Pine Road,Strathmore,AB,T1P 0A2,+1 403-934-9733,51.036317,-113.3893,https://www.canadiantire.ca/en/store-details/ab/strathmore-ab-651.html,,
+655,Sylvan Lake,200 - 62 Thevenaz Industrial Trail,Sylvan Lake,AB,T4S 0B6,+1 403-887-0581,52.306565,-114.071375,https://www.canadiantire.ca/en/store-details/ab/sylvan-lake-ab-655.html,,
+410,Vegreville,6623 Highway 16A West,Vegreville,AB,T9C 0A3,+1 780-632-2601,53.501372,-112.07944,https://www.canadiantire.ca/en/store-details/ab/vegreville-ab-410.html,,
+628,Wainwright,2801 - 13th Avenue,Wainwright,AB,T9W 0A2,+1 780-842-4522,52.841963,-110.830057,https://www.canadiantire.ca/en/store-details/ab/wainwright-ab-628.html,,
+330,Wetaskiwin,3851 - 56th Street,Wetaskiwin,AB,T9A 2B1,+1 780-352-7175,52.9574,-113.388887,https://www.canadiantire.ca/en/store-details/ab/wetaskiwin-ab-330.html,,
+695,Whitecourt,"4721 - 51st Street, PO Box 1140",Whitecourt,AB,T7S 0E8,+1 780-778-6591,54.138359,-115.685558,https://www.canadiantire.ca/en/store-details/ab/whitecourt-ab-695.html,,
+434,Abbotsford,32513 South Fraser Way,Abbotsford,BC,V2T 4N5,+1 604-870-4134,49.052253,-122.322995,https://www.canadiantire.ca/en/store-details/bc/abbotsford-bc-434.html,,
+603,Burnaby South,"7200 Market Crossing, Marine Way Market",Burnaby,BC,V5J 0A2,+1 604-451-5888,49.200604,-122.982405,https://www.canadiantire.ca/en/store-details/bc/burnaby-south-bc-603.html,,
+437,Campbell River,"1444 Island Hwy, Discovery Harbour Shopping Centre",Campbell River,BC,V9W 8C9,+1 250-286-0188,50.03473,-125.250637,https://www.canadiantire.ca/en/store-details/bc/campbell-river-bc-437.html,,
+492,Castlegar,2000 Columbia Avenue,Castlegar,BC,V1N 2W7,+1 250-365-7737,49.294505,-117.654144,https://www.canadiantire.ca/en/store-details/bc/castlegar-bc-492.html,,
+433,Chilliwack,45495 Luckakuck Way,Chilliwack,BC,V2R 6J3,+1 604-858-9055,49.142497,-121.965872,https://www.canadiantire.ca/en/store-details/bc/chilliwack-bc-433.html,,
+608,Coquitlam,1200 Seguin Drive,Coquitlam,BC,V3K 6W8,+1 604-527-8828,49.235016,-122.860456,https://www.canadiantire.ca/en/store-details/bc/coquitlam-bc-608.html,,
+350,Courtenay,2801 Cliffe Avenue,Courtenay,BC,V9N 2L8,+1 250-338-0101,49.67266,-124.982277,https://www.canadiantire.ca/en/store-details/bc/courtenay-bc-350.html,,
+395,Cranbrook,"120 - 1500 Cranbrook Street North, Tamarack Centre",Cranbrook,BC,V1C 3S8,+1 250-489-3300,49.524212,-115.75163,https://www.canadiantire.ca/en/store-details/bc/cranbrook-bc-395.html,,
+661,Dawson Creek,11628 - 8th Street,Dawson Creek,BC,V1G 4R7,+1 250-782-9552,55.741767,-120.22262,https://www.canadiantire.ca/en/store-details/bc/dawson-creek-bc-661.html,,
+466,Duncan,"2929 Green Road, Cowichan Commons",Duncan,BC,V9L 0C1,+1 250-748-0161,48.80074,-123.718071,https://www.canadiantire.ca/en/store-details/bc/duncan-bc-466.html,,
+635,Fernie,"1791 - 9th Avenue, PO Box 2637",Fernie,BC,V0B 1M5,+1 250-423-4222,49.517082,-115.058911,https://www.canadiantire.ca/en/store-details/bc/fernie-bc-635.html,,
+363,Fort St. John,9716 Old Fort Road,Fort St. John,BC,V1J 0S6,+1 250-787-1142,56.244105,-120.876902,https://www.canadiantire.ca/en/store-details/bc/fort-st-john-bc-363.html,,
+658,Invermere,480 Sarah Road,Invermere,BC,V0A 1K3,+1 250-342-4433,50.51457,-116.008512,https://www.canadiantire.ca/en/store-details/bc/invermere-bc-658.html,,
+355,Kamloops South,1441 Hillside Drive,Kamloops,BC,V2E 1A9,+1 250-374-9747,50.654576,-120.380099,https://www.canadiantire.ca/en/store-details/bc/kamloops-south-bc-355.html,,
+356,Kamloops North,944 - 8th Street,Kamloops,BC,V2B 2X5,+1 250-376-2013,50.702767,-120.362756,https://www.canadiantire.ca/en/store-details/bc/kamloops-north-bc-356.html,,
+353,Kelowna,2479 Highway 97 North,Kelowna,BC,V1X 4J2,+1 250-860-5744,49.88827,-119.419644,https://www.canadiantire.ca/en/store-details/bc/kelowna-bc-353.html,,
+426,Langley,6312 - 200th Street,Langley,BC,V2Y 1A1,+1 604-532-4411,49.117672,-122.667203,https://www.canadiantire.ca/en/store-details/bc/langley-bc-426.html,,
+481,Maple Ridge,11969 - 200th Street,Maple Ridge,BC,V2X 3M7,+1 604-460-4664,49.220733,-122.668034,https://www.canadiantire.ca/en/store-details/bc/maple-ridge-bc-481.html,,
+696,Merritt,2761 Forksdale Avenue,Merritt,BC,V1K 1R9,+1 250-378-1818,50.122716,-120.76151,https://www.canadiantire.ca/en/store-details/bc/merritt-bc-696.html,,
+479,Mission,32545 London Avenue,Mission,BC,V2V 6M7,+1 604-826-5840,49.130808,-122.321101,https://www.canadiantire.ca/en/store-details/bc/mission-bc-479.html,,
+362,Nanaimo,4585 Uplands Drive,Nanaimo,BC,V9T 6M8,+1 250-585-8045,49.219601,-124.031932,https://www.canadiantire.ca/en/store-details/bc/nanaimo-bc-362.html,,
+932,North Saanich,10300 McDonald Park Road,North Saanich,BC,V8L 5X7,+1 778-746-4120,48.662738,-123.419055,https://www.canadiantire.ca/en/store-details/bc/north-saanich-bc-932.html,,
+601,North Vancouver Main,1350 Main Street,North Vancouver,BC,V7J 1C6,+1 604-982-9100,49.307651,-123.035105,https://www.canadiantire.ca/en/store-details/bc/north-vancouver-main-bc-601.html,,
+698,Oliver,"5717 Main Street, Unit 175, Southwinds Crossing",Oliver,BC,V0H 1T9,+1 250-498-8473,49.170411,-119.555052,https://www.canadiantire.ca/en/store-details/bc/oliver-bc-698.html,,
+490,Parksville,822 Island Highway West,Parksville,BC,V9P 2B7,+1 250-248-1085,49.330716,-124.345388,https://www.canadiantire.ca/en/store-details/bc/parksville-bc-490.html,,
+351,Penticton,960 Railway Street,Penticton,BC,V2A 8N2,+1 250-492-3576,49.490519,-119.602798,https://www.canadiantire.ca/en/store-details/bc/penticton-bc-351.html,,
+488,Port Alberni,"3550 Johnston Road, Unit 51, Alberni Mall",Port Alberni,BC,V9Y 7W8,+1 250-720-0085,49.265326,-124.784748,https://www.canadiantire.ca/en/store-details/bc/port-alberni-bc-488.html,,
+609,Port Coquitlam,"2125 Hawkins Street, Freemont Village Shopping Centre",Port Coquitlam,BC,V3B 0G6,+1 604-468-6951,49.254808,-122.740799,https://www.canadiantire.ca/en/store-details/bc/port-coquitlam-bc-609.html,,
+480,Powell River,"4720 Joyce Avenue, Powell River Town Centre",Powell River,BC,V8A 3B5,+1 604-485-4649,49.843732,-124.519773,https://www.canadiantire.ca/en/store-details/bc/powell-river-bc-480.html,,
+360,Prince George,5008 Domano Blvd.,Prince George,BC,V2N 4V8,+1 250-964-8258,53.867364,-122.780027,https://www.canadiantire.ca/en/store-details/bc/prince-george-bc-360.html,,
+487,Quesnel,570 Newman Road,Quesnel,BC,V2J 6Z8,+1 250-747-5274,52.97065,-122.439896,https://www.canadiantire.ca/en/store-details/bc/quesnel-bc-487.html,,
+606,Richmond,3500 No. 3 Road,Richmond,BC,V6X 2C1,+1 604-273-2939,49.188072,-123.13225,https://www.canadiantire.ca/en/store-details/bc/richmond-bc-606.html,,
+610,S. Richmond,"11388 Steveston Hwy, Coppersmith Corner Shopping Centre",Richmond,BC,V7A 5J5,+1 604-271-6651,49.132205,-123.097778,https://www.canadiantire.ca/en/store-details/bc/s-richmond-bc-610.html,,
+482,Salmon Arm,"300, 1151 - 10th Avenue SW, The Mall at Piccadilly",Salmon Arm,BC,V1E 1T3,+1 250-832-9600,50.693784,-119.297595,https://www.canadiantire.ca/en/store-details/bc/salmon-arm-bc-482.html,,
+636,Sechelt,4380 Sunshine Coast Highway,Sechelt,BC,V7Z 0B1,+1 604-885-6611,49.440956,-123.712084,https://www.canadiantire.ca/en/store-details/bc/sechelt-bc-636.html,,
+631,Smithers,"3221 Hwy 16, PO Box 669",Smithers,BC,V0J 2N0,+1 250-847-3117,54.773081,-127.153262,https://www.canadiantire.ca/en/store-details/bc/smithers-bc-631.html,,
+483,Squamish,1851 Mamquam Road,Squamish,BC,V8B 0H5,+1 604-898-2227,49.7357,-123.133636,https://www.canadiantire.ca/en/store-details/bc/squamish-bc-483.html,,
+443,Surrey (Newton),7599 King George Blvd.,Surrey,BC,V3W 5A8,+1 604-572-3739,49.140379,-122.84741,https://www.canadiantire.ca/en/store-details/bc/surrey-(newton)-bc-443.html,,
+622,White Rock,"3059 - 152nd Street, South Point Exchange",Surrey,BC,V4P 3K1,+1 604-542-4317,49.057403,-122.804071,https://www.canadiantire.ca/en/store-details/bc/white-rock-bc-622.html,,
+678,Surrey (Scott Road),7878 - 120th Street,Surrey,BC,V3W 3N2,+1 604-591-3914,49.146462,-122.889134,https://www.canadiantire.ca/en/store-details/bc/surrey-(scott-road)-bc-678.html,,
+486,Terrace,5100 Highway 16 West,Terrace,BC,V8G 5S5,+1 250-635-7178,54.517797,-128.617592,https://www.canadiantire.ca/en/store-details/bc/terrace-bc-486.html,,
+665,Trail,8238 Highway 3B,Trail,BC,V1R 4W4,+1 250-364-3333,49.088829,-117.627297,https://www.canadiantire.ca/en/store-details/bc/trail-bc-665.html,,
+910,Tsawwassen,"4949 Canoe Pass Way, Unit 200, Tsawwassen Commons",Tsawwassen,BC,V4M 0B2,+1 604-948-8819,49.042639,-123.08752,https://www.canadiantire.ca/en/store-details/bc/tsawwassen-bc-910.html,,
+389,Cambie & 7th,2290 Cambie Street,Vancouver,BC,V5Z 2T7,+1 604-707-2290,49.26511,-123.114437,https://www.canadiantire.ca/en/store-details/bc/cambie-7th-bc-389.html,,
+604,"Vancouver, Grandview & Boundary",2830 Bentall Street,Vancouver,BC,V5M 4H4,+1 604-431-3570,49.259515,-123.030986,https://www.canadiantire.ca/en/store-details/bc/vancouver-grandview-boundary-bc-604.html,,
+605,"Vancouver, SW Marine",8277 Ontario Street,Vancouver,BC,V5X 0A7,+1 604-336-1086,49.210151,-123.107521,https://www.canadiantire.ca/en/store-details/bc/vancouver-sw-marine-bc-605.html,,
+361,Vernon,"4900 - 27th Street, Unit 345, Village Green Shopping Centre",Vernon,BC,V1T 7G7,+1 250-549-2131,50.284956,-119.268391,https://www.canadiantire.ca/en/store-details/bc/vernon-bc-361.html,,
+365,Victoria Hillside Centre,"1610 Hillside Avenue, Hillside Shopping Centre",Victoria,BC,V8T 2C5,+1 250-361-3152,48.445211,-123.337335,https://www.canadiantire.ca/en/store-details/bc/victoria-hillside-centre-bc-365.html,,
+366,Victoria Langford,"855 Langford Parkway, Westshore Town Centre",Victoria,BC,V9B 4V5,+1 250-474-2291,48.441886,-123.506302,https://www.canadiantire.ca/en/store-details/bc/victoria-langford-bc-366.html,,
+368,Victoria View Royal,1519 Admirals Road,Victoria,BC,V9A 2P8,+1 250-381-3111,48.450737,-123.426134,https://www.canadiantire.ca/en/store-details/bc/victoria-view-royal-bc-368.html,,
+369,Victoria Royal Oak,"801 Royal Oak Drive, Broadmead Village Shopping Centre",Victoria,BC,V8X 4V1,+1 250-727-6561,48.497614,-123.381341,https://www.canadiantire.ca/en/store-details/bc/victoria-royal-oak-bc-369.html,,
+935,Victoria Service Centre,3993 Cedar Hill Road,Victoria,BC,V8N 4M9,+1 250-721-1125,48.471791,-123.334038,https://www.canadiantire.ca/en/store-details/bc/victoria-service-centre-bc-935.html,,
+612,Westbank,"101-3550 Carrington Road, Westbank Hub Centre",Westbank,BC,V4T 2Z1,+1 250-707-3901,49.836164,-119.613634,https://www.canadiantire.ca/en/store-details/bc/westbank-bc-612.html,,
+438,Williams Lake,1050 South Lakeside Drive,Williams Lake,BC,V2G 3A6,+1 250-392-3303,52.117541,-122.129983,https://www.canadiantire.ca/en/store-details/bc/williams-lake-bc-438.html,,
+286,Brandon,1655 - 18th Street,Brandon,MB,R7A 5C6,+1 204-728-5801,49.824536,-99.960437,https://www.canadiantire.ca/en/store-details/mb/brandon-mb-286.html,yes,yes
+331,Dauphin,1500 Main Street South,Dauphin,MB,R7N 1M8,+1 204-638-9203,51.134386,-100.061207,https://www.canadiantire.ca/en/store-details/mb/dauphin-mb-331.html,,
+640,Flin Flon,170 PTH No. 10-A,Flin Flon,MB,R8A 0C6,+1 204-687-7887,54.768534,-101.840777,https://www.canadiantire.ca/en/store-details/mb/flin-flon-mb-640.html,yes,yes
+277,Portage La Prairie,2445 Saskatchewan Avenue West,Portage La Prairie,MB,R1N 4A6,+1 204-857-3408,49.972579,-98.331504,https://www.canadiantire.ca/en/store-details/mb/portage-la-prairie-mb-277.html,yes,yes
+447,Selkirk,1041 Manitoba Avenue,Selkirk,MB,R1A 3T7,+1 204-482-8473,50.158941,-96.899688,https://www.canadiantire.ca/en/store-details/mb/selkirk-mb-447.html,yes,yes
+203,Steinbach,131 PTH 12 North,Steinbach,MB,R5G 1T5,+1 204-326-3436,49.542908,-96.6862,https://www.canadiantire.ca/en/store-details/mb/steinbach-mb-203.html,,
+198,Thompson,60 Selkirk Avenue,Thompson,MB,R8N 0M8,+1 204-778-8888,55.743148,-97.85427,https://www.canadiantire.ca/en/store-details/mb/thompson-mb-198.html,yes,yes
+358,Winkler,"781 Norquay Drive, Southland Mall",Winkler,MB,R6W 0H9,+1 204-325-4688,49.191475,-97.931102,https://www.canadiantire.ca/en/store-details/mb/winkler-mb-358.html,,
+223,Winnipeg Kenaston,1711 Kenaston Blvd.,Winnipeg,MB,R3Y 1V5,+1 204-269-9630,49.821739,-97.196442,https://www.canadiantire.ca/en/store-details/mb/winnipeg-kenaston-mb-223.html,,
+248,Winnipeg Polo Park,750 St. James Street,Winnipeg,MB,R3G 3J7,+1 204-943-0311,49.88645,-97.202273,https://www.canadiantire.ca/en/store-details/mb/winnipeg-polo-park-mb-248.html,yes,yes
+252,Winnipeg Unicity Shopping Centre,3615 Portage Avenue,Winnipeg,MB,R3K 2G6,+1 204-888-0280,49.883535,-97.310964,https://www.canadiantire.ca/en/store-details/mb/winnipeg-unicity-shopping-centre-mb-252.html,,
+266,Winnipeg St. Boniface,157 Vermillion Road,Winnipeg,MB,R2J 3Z7,+1 204-254-5169,49.854829,-97.068779,https://www.canadiantire.ca/en/store-details/mb/winnipeg-st-boniface-mb-266.html,,
+270,Winnipeg Regent,1519 Regent Avenue West,Winnipeg,MB,R2C 4M4,+1 204-667-2454,49.896943,-97.055808,https://www.canadiantire.ca/en/store-details/mb/winnipeg-regent-mb-270.html,,
+345,Winnipeg McPhillips,"2305 McPhillips Street, Garden City Shopping Centre",Winnipeg,MB,R2V 3E1,+1 204-632-5212,49.950909,-97.14291,https://www.canadiantire.ca/en/store-details/mb/winnipeg-mcphillips-mb-345.html,yes,yes
+929,Winnipeg Grant Park,1080 Grant Avenue,Winnipeg,MB,R3M 2A4,+1 204-233-8000,49.858253,-97.164098,https://www.canadiantire.ca/en/store-details/mb/winnipeg-grant-park-mb-929.html,yes,yes
+16,Atholville,384 Old Val D'Amour Road,Atholville,NB,E3N 4E3,+1 506-789-0220,47.992234,-66.700771,https://www.canadiantire.ca/en/store-details/nb/atholville-nb-16.html,yes,yes
+11,Bathurst,520 St. Peter Avenue,Bathurst,NB,E2A 2Y7,+1 506-547-8120,47.630401,-65.665093,https://www.canadiantire.ca/en/store-details/nb/bathurst-nb-11.html,,
+63,Dieppe,500 Regis Street,Dieppe,NB,E1A 5T2,+1 506-857-9242,46.097385,-64.756197,https://www.canadiantire.ca/en/store-details/nb/dieppe-nb-63.html,yes,yes
+93,Edmundston,590 Victoria Street,Edmundston,NB,E3V 3N1,+1 506-735-8801,47.383329,-68.337718,https://www.canadiantire.ca/en/store-details/nb/edmundston-nb-93.html,yes,yes
+35,Fredericton,1110 Smythe Street,Fredericton,NB,E3B 3H6,+1 506-450-8920,45.944249,-66.66667,https://www.canadiantire.ca/en/store-details/nb/fredericton-nb-35.html,yes,yes
+337,Fredericton North,75 Two Nations Crossing,Fredericton,NB,E3A 0T3,+1 506-450-8933,45.989336,-66.628523,https://www.canadiantire.ca/en/store-details/nb/fredericton-north-nb-337.html,yes,yes
+219,Grand Falls,"383, chemin Madawaska",Grand Falls,NB,E3Y 1A4,+1 506-473-3550,47.056261,-67.750768,https://www.canadiantire.ca/en/store-details/nb/grand-falls-nb-219.html,yes,yes
+136,Miramichi,"2491 King George Highway, Bridgeview Plaza",Miramichi,NB,E1V 6W3,+1 506-773-9446,47.032504,-65.489395,https://www.canadiantire.ca/en/store-details/nb/miramichi-nb-136.html,,
+249,Moncton Mountain Rd,"1380 Mountain Road, Unit 1, Northwest Centre",Moncton,NB,E1C 2T8,+1 506-852-2970,46.11054,-64.833704,https://www.canadiantire.ca/en/store-details/nb/moncton-mountain-rd-nb-249.html,,
+309,Oromocto,345 Miramichi Road,Oromocto,NB,E2V 4T4,+1 506-357-3304,45.832971,-66.484854,https://www.canadiantire.ca/en/store-details/nb/oromocto-nb-309.html,yes,yes
+691,Riverview,525 Pinewood Road,Riverview,NB,E1B 0K3,+1 506-386-3400,46.051035,-64.795601,https://www.canadiantire.ca/en/store-details/nb/riverview-nb-691.html,,
+476,Rothesay,160 Hampton Road,Rothesay,NB,E2E 2R3,+1 506-848-6000,45.40191,-65.972018,https://www.canadiantire.ca/en/store-details/nb/rothesay-nb-476.html,,
+254,Saint John - Westmorland Road,400 Westmorland Road,Saint John,NB,E2J 2G4,+1 506-634-2606,45.304508,-66.022167,https://www.canadiantire.ca/en/store-details/nb/saint-john-westmorland-road-nb-254.html,yes,yes
+349,Saint John Fairville,885 Fairville Blvd.,Saint John,NB,E2M 5T9,+1 506-635-1710,45.250208,-66.100745,https://www.canadiantire.ca/en/store-details/nb/saint-john-fairville-nb-349.html,yes,yes
+647,Shediac,173 Main Street,Shediac,NB,E4P 2A5,+1 506-533-9788,46.216632,-64.56388,https://www.canadiantire.ca/en/store-details/nb/shediac-nb-647.html,,
+232,St. Stephen,250 King Street,St. Stephen,NB,E3L 2E5,+1 506-466-4110,45.205645,-67.274072,https://www.canadiantire.ca/en/store-details/nb/st-stephen-nb-232.html,,
+106,Sussex,"138 Main Street, Unit 17, Gateway Mall",Sussex,NB,E4E 3E1,+1 506-433-3201,45.726944,-65.530068,https://www.canadiantire.ca/en/store-details/nb/sussex-nb-106.html,yes,yes
+491,Tracadie - Sheila,"450, rue du Moulin",Tracadie-Sheila,NB,E1X 1A4,+1 506-395-4313,47.522204,-64.916427,https://www.canadiantire.ca/en/store-details/nb/tracadie-sheila-nb-491.html,,
+137,Woodstock,388 Connell Street,Woodstock,NB,E7M 5G9,+1 506-328-3353,46.170839,-67.598826,https://www.canadiantire.ca/en/store-details/nb/woodstock-nb-137.html,,
+217,Carbonear,95 Columbus Drive,Carbonear,NL,A1Y 1A6,+1 709-596-5104,47.723106,-53.240776,https://www.canadiantire.ca/en/store-details/nl/carbonear-nl-217.html,,
+319,Port aux Basques,"2 High Street, PO Box 160",Channel-Port-aux-Basques,NL,A0M 1C0,+1 709-695-2158,47.589266,-59.161345,https://www.canadiantire.ca/en/store-details/nl/port-aux-basques-nl-319.html,yes,yes
+650,Clarenville,27 Manitoba Drive,Clarenville,NL,A5A 1K3,+1 709-466-8080,48.165842,-53.987377,https://www.canadiantire.ca/en/store-details/nl/clarenville-nl-650.html,yes,yes
+185,Corner Brook,4 Murphy Square,Corner Brook,NL,A2H 1R4,+1 709-639-7101,48.958464,-57.921685,https://www.canadiantire.ca/en/store-details/nl/corner-brook-nl-185.html,yes,yes
+259,Gander,"132 Bennett Drive, Unit 100, Gander Mall",Gander,NL,A1V 2H2,+1 709-256-4813,48.951139,-54.60234,https://www.canadiantire.ca/en/store-details/nl/gander-nl-259.html,yes,yes
+205,Grand Falls-Windsor,1 Cohen Place,Grand Falls-Windsor,NL,A2A 0E7,+1 709-489-9270,48.941263,-55.653922,https://www.canadiantire.ca/en/store-details/nl/grand-falls-windsor-nl-205.html,yes,yes
+901,Labrador City,"500 Vanier Avenue, Unit 70, Labrador Mall",Labrador City,NL,A2V 2W7,+1 709-944-7740,52.948163,-66.92561,https://www.canadiantire.ca/en/store-details/nl/labrador-city-nl-901.html,yes,yes
+291,Lewisporte,425 Main Street West,Lewisporte,NL,A0G 3A0,+1 709-535-2248,49.219614,-55.054043,https://www.canadiantire.ca/en/store-details/nl/lewisporte-nl-291.html,,
+468,Marystown,"25 - 49 Columbia Drive, Peninsula Mall, PO Box 250",Marystown,NL,A0E 2M0,+1 709-279-3940,47.16491,-55.159419,https://www.canadiantire.ca/en/store-details/nl/marystown-nl-468.html,yes,yes
+333,Mount Pearl,26 Merchant Drive,Mount Pearl,NL,A1N 5J5,+1 709-364-5880,47.500953,-52.811741,https://www.canadiantire.ca/en/store-details/nl/mount-pearl-nl-333.html,,
+144,St. John's Hebron Way,40 Hebron Way,St. John's,NL,A1A 0L9,+1 709-722-1860,47.617367,-52.727723,https://www.canadiantire.ca/en/store-details/nl/st-john-s-hebron-way-nl-144.html,,
+216,St. John's West,50 Kelsey Drive,St. John's,NL,A1B 5C7,+1 709-722-5530,47.553287,-52.779801,https://www.canadiantire.ca/en/store-details/nl/st-john-s-west-nl-216.html,,
+325,Stephenville,54 Prince Rupert Drive,Stephenville,NL,A2N 3W7,+1 709-643-5611,48.546423,-58.577734,https://www.canadiantire.ca/en/store-details/nl/stephenville-nl-325.html,,
+3,Amherst,152 Albion Street South,Amherst,NS,B4H 4H4,+1 902-667-7218,45.809747,-64.200389,https://www.canadiantire.ca/en/store-details/ns/amherst-ns-3.html,,
+2,Antigonish,"133 Church Street, Unit 153, Antigonish Market Square",Antigonish,NS,B2G 2E3,+1 902-863-4753,45.61773,-61.984187,https://www.canadiantire.ca/en/store-details/ns/antigonish-ns-2.html,,
+224,Halifax - Bedford,150 Damascus Road,Bedford,NS,B4A 0E5,+1 902-835-1060,44.74988,-63.643938,https://www.canadiantire.ca/en/store-details/ns/halifax-bedford-ns-224.html,,
+13,Bridgewater,"16 Pine Grove Road, RR 2, Unit 1",Bridgewater,NS,B4V 4H5,+1 902-543-4648,44.39899,-64.534212,https://www.canadiantire.ca/en/store-details/ns/bridgewater-ns-13.html,yes,yes
+41,Dartmouth Crossing,"30 Lamont Terrace, Dartmouth Crossing",Dartmouth,NS,B3B 0B5,+1 902-434-2823,44.699661,-63.568853,https://www.canadiantire.ca/en/store-details/ns/dartmouth-crossing-ns-41.html,yes,yes
+436,Halifax - Cole Harbour,24 Forest Hills Parkway,Dartmouth,NS,B2W 6E4,+1 902-462-6100,44.674699,-63.492549,https://www.canadiantire.ca/en/store-details/ns/halifax-cole-harbour-ns-436.html,,
+25,Digby,112 Warwick Street,Digby,NS,B0V 1A0,+1 902-245-2527,44.615682,-65.767948,https://www.canadiantire.ca/en/store-details/ns/digby-ns-25.html,,
+619,Elmsdale,"269 Highway 214, Unit 100",Elmsdale,NS,B2S 1K1,+1 902-883-1771,44.978263,-63.504914,https://www.canadiantire.ca/en/store-details/ns/elmsdale-ns-619.html,,
+229,Glace Bay,130 Reserve Street,Glace Bay,NS,B1A 4W5,+1 902-842-0700,46.192931,-59.974644,https://www.canadiantire.ca/en/store-details/ns/glace-bay-ns-229.html,,
+261,Greenwood,"730 Central Avenue, Box 1360",Greenwood,NS,B0P 1N0,+1 902-765-6338,44.967504,-64.936457,https://www.canadiantire.ca/en/store-details/ns/greenwood-ns-261.html,yes,yes
+44,Halifax - Quinpool,"6203 Quinpool Road, Quinpool Centre",Halifax,NS,B3L 4P6,+1 902-422-4922,44.6459,-63.59652,https://www.canadiantire.ca/en/store-details/ns/halifax-quinpool-ns-44.html,,
+186,Halifax - Spryfield,"16 Dentith Road, South Centre",Halifax,NS,B3R 2H9,+1 902-477-5608,44.612462,-63.618492,https://www.canadiantire.ca/en/store-details/ns/halifax-spryfield-ns-186.html,,
+465,Halifax - Bayers Lake,"194 Chain Lake Drive, Bayers Lake Centre",Halifax,NS,B3S 1C5,+1 902-457-1001,44.650899,-63.673107,https://www.canadiantire.ca/en/store-details/ns/halifax-bayers-lake-ns-465.html,,
+289,Halifax - Lwr. Sackville,"796 Sackville Drive, Downsview Mall",Lower Sackville,NS,B4E 1R7,+1 902-864-3152,44.772816,-63.696046,https://www.canadiantire.ca/en/store-details/ns/halifax-lwr-sackville-ns-289.html,,
+67,New Glasgow,"699 Westville Road, Highland Square Mall",New Glasgow,NS,B2H 2J6,+1 902-755-5581,45.579946,-62.665208,https://www.canadiantire.ca/en/store-details/ns/new-glasgow-ns-67.html,yes,yes
+54,New Minas,9212 Commercial Street,New Minas,NS,B4N 5J5,+1 902-681-4576,45.066205,-64.44564,https://www.canadiantire.ca/en/store-details/ns/new-minas-ns-54.html,,
+202,North Sydney,21 Blowers Street,North Sydney,NS,B2A 3S3,+1 902-794-8577,46.212263,-60.248503,https://www.canadiantire.ca/en/store-details/ns/north-sydney-ns-202.html,,
+213,Port Hawkesbury,625 Reeves Street,Port Hawkesbury,NS,B9A 2R8,+1 902-625-1580,45.61539,-61.355145,https://www.canadiantire.ca/en/store-details/ns/port-hawkesbury-ns-213.html,,
+107,Sydney,49 Sydney Port Access Road,Sydney,NS,B1P 7J1,+1 902-539-8077,46.147722,-60.146037,https://www.canadiantire.ca/en/store-details/ns/sydney-ns-107.html,,
+113,Truro,"90 Robie Street, Fundy Trail Mall",Truro,NS,B2N 1L1,+1 902-897-4466,45.366876,-63.310836,https://www.canadiantire.ca/en/store-details/ns/truro-ns-113.html,,
+618,Tantallon,5130 St. Margarets Bay Road,Upper Tantallon,NS,B3Z 1E2,+1 902-826-2800,44.686177,-63.877022,https://www.canadiantire.ca/en/store-details/ns/tantallon-ns-618.html,,
+125,Yarmouth,120 Starrs Road,Yarmouth,NS,B5A 4T3,+1 902-749-1600,43.841799,-66.097355,https://www.canadiantire.ca/en/store-details/ns/yarmouth-ns-125.html,yes,yes
+453,Yellowknife,328 Old Airport Road,Yellowknife,NT,X1A 3T3,+1 867-873-2403,62.454095,-114.404883,https://www.canadiantire.ca/en/store-details/nt/yellowknife-nt-453.html,yes,yes
+160,Ajax,"250 Kingston Road East, Durham Centre",Ajax,ON,L1Z 1G1,+1 905-683-8473,43.864648,-79.015217,https://www.canadiantire.ca/en/store-details/on/ajax-on-160.html,,
+238,Alexandria,400 Main Street South,Alexandria,ON,K0C 1A0,+1 613-525-3454,45.30063,-74.628968,https://www.canadiantire.ca/en/store-details/on/alexandria-on-238.html,,
+1,Alliston,"110 Young Street, Highway 89 West, PO Box 460",Alliston,ON,L9R 1P8,+1 705-435-5551,44.149236,-79.884,https://www.canadiantire.ca/en/store-details/on/alliston-on-1.html,yes,yes
+281,Amherstburg,380 Sandwich Street South,Amherstburg,ON,N9V 3B5,+1 519-736-6411,42.098135,-83.108928,https://www.canadiantire.ca/en/store-details/on/amherstburg-on-281.html,,
+639,Ancaster,1060 Wilson Street West,Ancaster,ON,L9G 3K9,+1 905-304-0000,43.199801,-80.014176,https://www.canadiantire.ca/en/store-details/on/ancaster-on-639.html,,
+4,Arnprior,"375 Daniel Street South, Unit 301, Arnprior Shopping Centre",Arnprior,ON,K7S 3K6,+1 613-623-6551,45.425607,-76.366699,https://www.canadiantire.ca/en/store-details/on/arnprior-on-4.html,,
+189,Aurora,15400 Bayview Avenue,Aurora,ON,L4G 7J1,+1 905-727-9484,44.00918,-79.446013,https://www.canadiantire.ca/en/store-details/on/aurora-on-189.html,,
+142,Aylmer,"605 John Street North, (Old Hwy 73)",Aylmer,ON,N5H 2B6,+1 519-773-8424,42.7836,-80.981806,https://www.canadiantire.ca/en/store-details/on/aylmer-on-142.html,,
+5,Bancroft,"341 Hastings Street North, Box 130",Bancroft,ON,K0L 1C0,+1 613-332-1074,45.084521,-77.860934,https://www.canadiantire.ca/en/store-details/on/bancroft-on-5.html,,
+6,Barrie,"320 Bayfield Street, Bayfield Mall, Unit M103",Barrie,ON,L4M 3C1,+1 705-726-6418,44.400046,-79.701884,https://www.canadiantire.ca/en/store-details/on/barrie-on-6.html,,
+444,Barrie South,75 Mapleview Drive West,Barrie,ON,L4N 9H7,+1 705-792-0910,44.33239,-79.69241,https://www.canadiantire.ca/en/store-details/on/barrie-south-on-444.html,,
+7,Belleville,101 Bell Blvd.,Belleville,ON,K8P 4V2,+1 613-968-6701,44.186243,-77.399738,https://www.canadiantire.ca/en/store-details/on/belleville-on-7.html,,
+8,Blenheim,20215 Chatham Street North,Blenheim,ON,N0P 1A0,+1 519-676-8181,42.342163,-82.009495,https://www.canadiantire.ca/en/store-details/on/blenheim-on-8.html,,
+197,Bolton,99 McEwan Drive East,Bolton,ON,L7E 2Z7,+1 905-857-5424,43.86194,-79.710212,https://www.canadiantire.ca/en/store-details/on/bolton-on-197.html,,
+170,Bowmanville,2000 Green Road,Bowmanville,ON,L1C 0K5,+1 905-623-5000,43.911408,-78.71441,https://www.canadiantire.ca/en/store-details/on/bowmanville-on-170.html,,
+206,Bracebridge,"450 Muskoka Road, (Form. known as Hwy 118 W), Box 1260",Bracebridge,ON,P1L 1T4,+1 705-645-5261,45.042931,-79.325951,https://www.canadiantire.ca/en/store-details/on/bracebridge-on-206.html,,
+446,Bradford,"430 Holland Street West, PO Box 520 Station Main",Bradford,ON,L3Z 0G1,+1 905-778-4330,44.10915,-79.583167,https://www.canadiantire.ca/en/store-details/on/bradford-on-446.html,,
+10,Brampton Shoppers World,"499 Main Street South, Shoppers World Mall",Brampton,ON,L6Y 1N7,+1 905-451-6060,43.667026,-79.736989,https://www.canadiantire.ca/en/store-details/on/brampton-shoppers-world-on-10.html,,
+305,Brampton Bramalea,2850 Queen Street East,Brampton,ON,L6S 6E8,+1 905-792-9300,43.741255,-79.700269,https://www.canadiantire.ca/en/store-details/on/brampton-bramalea-on-305.html,,
+411,Brampton Trinity Common,"10 Great Lakes Drive, Trinity Common",Brampton,ON,L6R 2K7,+1 905-793-4800,43.730158,-79.761719,https://www.canadiantire.ca/en/store-details/on/brampton-trinity-common-on-411.html,,
+675,Brampton McLaughlin Road,10031 McLaughlin Road,Brampton,ON,L7A 2X5,+1 905-846-9227,43.698073,-79.797354,https://www.canadiantire.ca/en/store-details/on/brampton-mclaughlin-road-on-675.html,,
+664,Brantford North,30 Lynden Road,Brantford,ON,N3R 8A4,+1 519-751-2878,43.171619,-80.244892,https://www.canadiantire.ca/en/store-details/on/brantford-north-on-664.html,yes,yes
+14,Brockville,2360 Parkedale Avenue,Brockville,ON,K6V 7J5,+1 613-342-5841,44.60609,-75.699121,https://www.canadiantire.ca/en/store-details/on/brockville-on-14.html,,
+122,Burlington Fairview,"777 Guelph Line, Unit VMA2, Burlington Centre",Burlington,ON,L7R 3N2,+1 905-639-6711,43.350944,-79.79015,https://www.canadiantire.ca/en/store-details/on/burlington-fairview-on-122.html,,
+412,Burlington North,"2070 Appleby Line, Unit J",Burlington,ON,L7L 6M6,+1 905-335-8733,43.396114,-79.795677,https://www.canadiantire.ca/en/store-details/on/burlington-north-on-412.html,,
+49,Caledonia,365 Argyle Street South,Caledonia,ON,N3W 1Z2,+1 905-765-8473,43.061308,-79.963284,https://www.canadiantire.ca/en/store-details/on/caledonia-on-49.html,,
+36,Cambridge,"75 Dundas Street, Highland Shopping Centre",Cambridge,ON,N1R 6G5,+1 519-621-8180,43.359003,-80.292243,https://www.canadiantire.ca/en/store-details/on/cambridge-on-36.html,,
+168,Cambridge Hespeler,65 Pinebush Road,Cambridge,ON,N1R 8P3,+1 519-623-3360,43.407473,-80.323844,https://www.canadiantire.ca/en/store-details/on/cambridge-hespeler-on-168.html,,
+17,Campbellford,130 Grand Road,Campbellford,ON,K0L 1L0,+1 705-653-3250,44.304545,-77.80465,https://www.canadiantire.ca/en/store-details/on/campbellford-on-17.html,,
+18,Carleton Place,"485 McNeely Avenue, at Hwy 7",Carleton Place,ON,K7C 4S6,+1 613-253-8473,45.133937,-76.119091,https://www.canadiantire.ca/en/store-details/on/carleton-place-on-18.html,,
+625,Casselman,95 Lafleche Blvd.,Casselman,ON,K0A 1M0,+1 613-764-0401,45.304916,-75.084021,https://www.canadiantire.ca/en/store-details/on/casselman-on-625.html,,
+21,Chatham,"575 Grand Avenue West, Thames Lea Plaza",Chatham,ON,N7L 1C5,+1 519-351-1419,42.399653,-82.209315,https://www.canadiantire.ca/en/store-details/on/chatham-on-21.html,,
+244,Chelmsford,1 - 3595 Highway 144,Chelmsford,ON,P0M 1L0,+1 705-855-9011,46.567832,-81.194107,https://www.canadiantire.ca/en/store-details/on/chelmsford-on-244.html,,
+23,Cobourg,"1125 Elgin Street West, Highway 2",Cobourg,ON,K9A 5T9,+1 905-372-8781,43.968998,-78.203285,https://www.canadiantire.ca/en/store-details/on/cobourg-on-23.html,,
+24,Cochrane,"201 Highway 11 West, Box 1058",Cochrane,ON,P0L 1C0,+1 705-272-4341,49.059842,-81.044956,https://www.canadiantire.ca/en/store-details/on/cochrane-on-24.html,,
+108,Collingwood,89 Balsam Street,Collingwood,ON,L9Y 3Y6,+1 705-445-4161,44.504704,-80.237276,https://www.canadiantire.ca/en/store-details/on/collingwood-on-108.html,,
+26,Cornwall,201 Ninth Street East,Cornwall,ON,K6H 2V1,+1 613-933-0592,45.030658,-74.730334,https://www.canadiantire.ca/en/store-details/on/cornwall-on-26.html,,
+253,Deep River,"33277 Hwy 17 West, PO Box 1480",Deep River,ON,K0J 1P0,+1 613-584-3337,46.099571,-77.500852,https://www.canadiantire.ca/en/store-details/on/deep-river-on-253.html,,
+193,Delhi,308 James Street,Delhi,ON,N4B 2B4,+1 519-582-2450,42.853143,-80.49416,https://www.canadiantire.ca/en/store-details/on/delhi-on-193.html,,
+188,Dryden,409 Government Street,Dryden,ON,P8N 2P4,+1 807-223-4026,49.787368,-92.828847,https://www.canadiantire.ca/en/store-details/on/dryden-on-188.html,,
+27,Dundas,119 Osler Drive,Dundas,ON,L9H 6X4,+1 905-627-3533,43.25745,-79.941471,https://www.canadiantire.ca/en/store-details/on/dundas-on-27.html,,
+29,Dunnville,1002 Broad Street East,Dunnville,ON,N1A 2Z2,+1 905-774-7545,42.902266,-79.599271,https://www.canadiantire.ca/en/store-details/on/dunnville-on-29.html,,
+167,Elliot Lake,50 Hillside Drive South,Elliot Lake,ON,P5A 1M7,+1 705-848-3663,46.381327,-82.646534,https://www.canadiantire.ca/en/store-details/on/elliot-lake-on-167.html,,
+616,Elmira,325 Arthur Street South,Elmira,ON,N3B 3L5,+1 519-669-2727,43.581953,-80.560589,https://www.canadiantire.ca/en/store-details/on/elmira-on-616.html,,
+22,Espanola,801 Centre Street,Espanola,ON,P5E 1N2,+1 705-869-3807,46.246499,-81.757805,https://www.canadiantire.ca/en/store-details/on/espanola-on-22.html,,
+172,Essex,"300 Maidstone Avenue West, RR 2",Essex,ON,N8M 2X6,+1 519-776-5224,42.17752,-82.840873,https://www.canadiantire.ca/en/store-details/on/essex-on-172.html,,
+70,The Queensway,1608 The Queensway,Etobicoke,ON,M8Z 1V1,+1 416-255-5531,43.618221,-79.545929,https://www.canadiantire.ca/en/store-details/on/the-queensway-on-70.html,,
+119,"Etobicoke, Islington & 401",175 Vetiver Drive,Etobicoke,ON,M9W 0G3,+1 416-247-2196,43.71137,-79.55795,https://www.canadiantire.ca/en/store-details/on/etobicoke-islington-401-on-119.html,,
+294,"Etobicoke, Albion & Kipling","1530 Albion Road, Unit 36, New Albion Centre",Etobicoke,ON,M9V 1B4,+1 416-745-9070,43.741844,-79.582542,https://www.canadiantire.ca/en/store-details/on/etobicoke-albion-kipling-on-294.html,,
+141,Exeter,100 Thames Road East,Exeter,ON,N0M 1S3,+1 519-235-0160,43.362989,-81.479829,https://www.canadiantire.ca/en/store-details/on/exeter-on-141.html,,
+38,Fenelon Falls,"160 Lindsay Street, PO Box 208",Fenelon Falls,ON,K0M 1N0,+1 705-887-3310,44.528428,-78.743236,https://www.canadiantire.ca/en/store-details/on/fenelon-falls-on-38.html,,
+31,Centre Wellington,950 Tower Street South,Fergus,ON,N1M 3N7,+1 519-843-3680,43.695544,-80.363703,https://www.canadiantire.ca/en/store-details/on/centre-wellington-on-31.html,,
+32,Forest,"84 Union Street, Box 730",Forest,ON,N0N 1J0,+1 519-786-2121,43.103584,-82.005435,https://www.canadiantire.ca/en/store-details/on/forest-on-32.html,,
+33,Fort Erie,240 Garrison Road,Fort Erie,ON,L2A 1M7,+1 905-871-1564,42.904706,-78.924258,https://www.canadiantire.ca/en/store-details/on/fort-erie-on-33.html,,
+179,Fort Frances,1000 King's Highway,Fort Frances,ON,P9A 2X6,+1 807-274-7711,48.608171,-93.429505,https://www.canadiantire.ca/en/store-details/on/fort-frances-on-179.html,,
+37,Gananoque,705 King Street East,Gananoque,ON,K7G 1H4,+1 613-382-3729,44.336429,-76.150285,https://www.canadiantire.ca/en/store-details/on/gananoque-on-37.html,,
+159,Georgetown,315 Guelph Street,Georgetown,ON,L7G 4B3,+1 905-873-1350,43.650753,-79.888037,https://www.canadiantire.ca/en/store-details/on/georgetown-on-159.html,,
+297,Ottawa Gloucester,2010 Ogilvie Road,Gloucester,ON,K1J 8X3,+1 613-748-0637,45.435435,-75.606548,https://www.canadiantire.ca/en/store-details/on/ottawa-gloucester-on-297.html,yes,yes
+659,Leitrim,4776 Bank Street,Gloucester,ON,K1T 0K8,+1 613-822-1289,45.31765,-75.594075,https://www.canadiantire.ca/en/store-details/on/leitrim-on-659.html,,
+39,Goderich,"35430 Huron Road, Hwy 8, RR 2",Goderich,ON,N7A 3X8,+1 519-524-2121,43.730726,-81.686303,https://www.canadiantire.ca/en/store-details/on/goderich-on-39.html,,
+62,Gravenhurst,431 Talisman Drive,Gravenhurst,ON,P1P 0A7,+1 705-687-3422,44.904696,-79.369215,https://www.canadiantire.ca/en/store-details/on/gravenhurst-on-62.html,,
+40,Grimsby,"44 Livingston Avenue, Grimsby Square",Grimsby,ON,L3M 1L1,+1 905-945-5441,43.197605,-79.569761,https://www.canadiantire.ca/en/store-details/on/grimsby-on-40.html,,
+42,Guelph Stone Rd,127 Stone Road West,Guelph,ON,N1G 5G4,+1 519-822-9520,43.523469,-80.23081,https://www.canadiantire.ca/en/store-details/on/guelph-stone-rd-on-42.html,,
+260,Guelph North,10 Woodlawn Road East,Guelph,ON,N1H 1G7,+1 519-821-3414,43.566957,-80.277043,https://www.canadiantire.ca/en/store-details/on/guelph-north-on-260.html,,
+45,Hamilton Main,304 Main Street East,Hamilton,ON,L8N 1H9,+1 905-528-8403,43.252166,-79.858096,https://www.canadiantire.ca/en/store-details/on/hamilton-main-on-45.html,,
+129,Hamilton Centre,"1283 Barton Street East, The Centre on Barton",Hamilton,ON,L8H 2V4,+1 905-549-1336,43.251865,-79.806828,https://www.canadiantire.ca/en/store-details/on/hamilton-centre-on-129.html,,
+154,Hamilton East,"686 Queenston Road, Queenston Mall",Hamilton,ON,L8G 1A3,+1 905-560-1601,43.227827,-79.773654,https://www.canadiantire.ca/en/store-details/on/hamilton-east-on-154.html,,
+177,Hamilton Mt.West,777 Upper James Street,Hamilton,ON,L9C 3A1,+1 905-385-3276,43.229281,-79.879843,https://www.canadiantire.ca/en/store-details/on/hamilton-mt-west-on-177.html,,
+657,Hanmer,5206 Highway 69 North,Hanmer,ON,P3P 1Z3,+1 705-969-4242,46.653835,-80.984924,https://www.canadiantire.ca/en/store-details/on/hanmer-on-657.html,,
+194,Hamilton Mt.East,2160 Rymal Road East,Hannon,ON,L0R 1P0,+1 905-692-3485,43.174859,-79.788458,https://www.canadiantire.ca/en/store-details/on/hamilton-mt-east-on-194.html,,
+46,Hanover,896 - 10th Street,Hanover,ON,N4N 3P2,+1 519-364-2870,44.156535,-81.005126,https://www.canadiantire.ca/en/store-details/on/hanover-on-46.html,,
+157,Hawkesbury,1525 Cameron Street,Hawkesbury,ON,K6A 3R3,+1 613-632-2255,45.592375,-74.599091,https://www.canadiantire.ca/en/store-details/on/hawkesbury-on-157.html,,
+406,Hearst,1330 Front Street,Hearst,ON,P0L 1N0,+1 705-362-5822,49.691702,-83.676649,https://www.canadiantire.ca/en/store-details/on/hearst-on-406.html,,
+47,Huntsville,77 King William Street,Huntsville,ON,P1H 1E5,+1 705-789-5566,45.334355,-79.204291,https://www.canadiantire.ca/en/store-details/on/huntsville-on-47.html,,
+48,Ingersoll,98 Mutual Street South,Ingersoll,ON,N5C 1S5,+1 519-485-3900,43.041418,-80.881315,https://www.canadiantire.ca/en/store-details/on/ingersoll-on-48.html,,
+687,Innisfil,1455 Innisfil Beach Road,Innisfil,ON,L9S 4B2,+1 705-431-2121,44.30742,-79.574864,https://www.canadiantire.ca/en/store-details/on/innisfil-on-687.html,,
+457,Kanata,8181 Campeau Drive,Kanata,ON,K2T 1B7,+1 613-599-5105,45.3071,-75.918263,https://www.canadiantire.ca/en/store-details/on/kanata-on-457.html,,
+178,Kapuskasing,25 Brunetville Road,Kapuskasing,ON,P5N 2E9,+1 705-335-6066,49.419867,-82.417822,https://www.canadiantire.ca/en/store-details/on/kapuskasing-on-178.html,,
+227,Kemptville,311 Ryans Well Drive,Kemptville,ON,K0G 1J0,+1 613-258-3479,45.02863,-75.63381,https://www.canadiantire.ca/en/store-details/on/kemptville-on-227.html,,
+204,Kenora,1229 Highway 17 East,Kenora,ON,P9N 1L9,+1 807-468-3014,49.759288,-94.472251,https://www.canadiantire.ca/en/store-details/on/kenora-on-204.html,,
+134,Keswick,24270 Woodbine Avenue,Keswick,ON,L4P 0L3,+1 905-476-0353,44.235737,-79.450759,https://www.canadiantire.ca/en/store-details/on/keswick-on-134.html,,
+51,Kincardine,811 Durham Street,Kincardine,ON,N2Z 3B8,+1 519-395-2886,44.172516,-81.615433,https://www.canadiantire.ca/en/store-details/on/kincardine-on-51.html,,
+195,Kingston,151 Bath Road,Kingston,ON,K7L 1H2,+1 613-549-4200,44.241196,-76.517848,https://www.canadiantire.ca/en/store-details/on/kingston-on-195.html,,
+417,Kingston Township,2560 Princess Street,Kingston,ON,K7P 2S8,+1 613-384-0011,44.259938,-76.570126,https://www.canadiantire.ca/en/store-details/on/kingston-township-on-417.html,,
+694,Kingston Division St.,1040 Division Street,Kingston,ON,K7K 0C3,+1 613-546-1922,44.262785,-76.499919,https://www.canadiantire.ca/en/store-details/on/kingston-division-st-on-694.html,,
+52,Kirkland Lake,146 Government Road West,Kirkland Lake,ON,P2N 2E9,+1 705-567-9281,48.147962,-80.043227,https://www.canadiantire.ca/en/store-details/on/kirkland-lake-on-52.html,,
+53,Kitchener South,385 Fairway Road South,Kitchener,ON,N2C 2N9,+1 519-894-6257,43.419965,-80.441235,https://www.canadiantire.ca/en/store-details/on/kitchener-south-on-53.html,,
+139,Kitchener East,"1005 Ottawa Street North, Stanley Park Mall",Kitchener,ON,N2A 1H2,+1 519-744-1153,43.44873,-80.444505,https://www.canadiantire.ca/en/store-details/on/kitchener-east-on-139.html,,
+420,Kitchener West,"1400 Ottawa Street South, Unit D1, Sunrise Shopping Center",Kitchener,ON,N2E 4E2,+1 519-743-1113,43.416711,-80.513284,https://www.canadiantire.ca/en/store-details/on/kitchener-west-on-420.html,,
+55,Leamington,262 Erie Street South,Leamington,ON,N8H 3C5,+1 519-326-6184,42.038036,-82.598884,https://www.canadiantire.ca/en/store-details/on/leamington-on-55.html,,
+56,Lindsay,377 Kent Street West,Lindsay,ON,K9V 2Z7,+1 705-324-2176,44.349402,-78.757784,https://www.canadiantire.ca/en/store-details/on/lindsay-on-56.html,yes,yes
+57,Listowel,500 Mitchell Road South,Listowel,ON,N4W 3G7,+1 519-291-1960,43.733028,-80.966631,https://www.canadiantire.ca/en/store-details/on/listowel-on-57.html,,
+58,London South,1125 Wellington Road,London,ON,N6E 1M1,+1 519-681-2620,42.929987,-81.22117,https://www.canadiantire.ca/en/store-details/on/london-south-on-58.html,,
+130,London East,1975 Dundas Street,London,ON,N5V 4Y5,+1 519-451-6260,43.004931,-81.170484,https://www.canadiantire.ca/en/store-details/on/london-east-on-130.html,,
+208,London West,3100 Wonderland Road South,London,ON,N6L 1A6,+1 519-680-1770,42.935379,-81.277955,https://www.canadiantire.ca/en/store-details/on/london-west-on-208.html,,
+425,London North,1875 Hyde Park Road,London,ON,N6H 0A3,+1 519-660-6222,43.007652,-81.334705,https://www.canadiantire.ca/en/store-details/on/london-north-on-425.html,,
+494,London Auto Centre,378 Horton Street East,London,ON,N6B 1L7,+1 519-642-7250,42.981988,-81.238875,https://www.canadiantire.ca/en/store-details/on/london-auto-centre-on-494.html,,
+451,Marathon,"3 Peninsula Road, PO Box 1660",Marathon,ON,P0T 2E0,+1 807-229-2900,48.718636,-86.37853,https://www.canadiantire.ca/en/store-details/on/marathon-on-451.html,,
+164,Markham,2900 Major Mackenzie Drive East,Markham,ON,L6C 0G6,+1 416-907-8237,43.886322,-79.371417,https://www.canadiantire.ca/en/store-details/on/markham-on-164.html,,
+399,Markham East,7650 Markham Road,Markham,ON,L3S 4S1,+1 905-472-1638,43.85169,-79.25646,https://www.canadiantire.ca/en/store-details/on/markham-east-on-399.html,,
+61,Midland,"9303 County Road 93, Hugel Avenue",Midland,ON,L4R 4K4,+1 705-526-9321,44.740595,-79.91189,https://www.canadiantire.ca/en/store-details/on/midland-on-61.html,,
+140,Milton,"1210 Steeles Avenue East, Milton Crossroads Shopping Centre",Milton,ON,L9T 6R1,+1 905-878-2349,43.541075,-79.870691,https://www.canadiantire.ca/en/store-details/on/milton-on-140.html,,
+682,Minden,92 Water Street,Minden,ON,K0M 2K0,+1 705-286-4400,44.93002,-78.717636,https://www.canadiantire.ca/en/store-details/on/minden-on-682.html,,
+152,Miss. Dixie & Dundas,1156 Dundas Street East,Mississauga,ON,L4Y 2C1,+1 905-272-4800,43.603916,-79.587171,https://www.canadiantire.ca/en/store-details/on/miss-dixie-dundas-on-152.html,,
+169,Meadowvale,"6670 Meadowvale Town Centre Circle, Meadowvale Town Centre",Mississauga,ON,L5N 4B7,+1 905-821-4100,43.582019,-79.760876,https://www.canadiantire.ca/en/store-details/on/meadowvale-on-169.html,,
+241,Mississauga Southdown,900 Southdown Road,Mississauga,ON,L5J 2Y4,+1 905-822-6234,43.509024,-79.629078,https://www.canadiantire.ca/en/store-details/on/mississauga-southdown-on-241.html,,
+346,Miss.Mavis & Dundas,3050 Mavis Road at Dundas,Mississauga,ON,L5C 1T8,+1 905-270-9200,43.566221,-79.635376,https://www.canadiantire.ca/en/store-details/on/miss-mavis-dundas-on-346.html,,
+497,Mississauga Heartland,"5970 Mavis Road, Heartland Town Centre",Mississauga,ON,L5V 2P5,+1 905-813-9855,43.610275,-79.695994,https://www.canadiantire.ca/en/store-details/on/mississauga-heartland-on-497.html,,
+120,Morrisburg,12329 County Road 2,Morrisburg,ON,K0C 1X0,+1 613-543-3015,44.900013,-75.188777,https://www.canadiantire.ca/en/store-details/on/morrisburg-on-120.html,,
+66,Mount Forest,101 Mount Forest Drive,Mount Forest,ON,N0G 2L2,+1 519-323-1080,43.988571,-80.743498,https://www.canadiantire.ca/en/store-details/on/mount-forest-on-66.html,,
+65,Napanee,"476 Centre Street North, At the Napanee Mall",Napanee,ON,K7R 1P8,+1 613-354-2222,44.260048,-76.964652,https://www.canadiantire.ca/en/store-details/on/napanee-on-65.html,,
+258,Ottawa Merivale,"1820 Merivale Road, Nepean Crossroads Centre",Nepean,ON,K2G 1E6,+1 613-224-9330,45.336227,-75.726544,https://www.canadiantire.ca/en/store-details/on/ottawa-merivale-on-258.html,,
+272,Ottawa Bells Cnrs,2135 Robertson Road,Nepean,ON,K2H 5Z2,+1 613-829-9580,45.322314,-75.835517,https://www.canadiantire.ca/en/store-details/on/ottawa-bells-cnrs-on-272.html,,
+442,Barrhaven,2501 Greenbank Road,Nepean,ON,K2J 4Y6,+1 613-823-5278,45.272187,-75.746012,https://www.canadiantire.ca/en/store-details/on/barrhaven-on-442.html,,
+68,New Liskeard,997431 Hwy 11 North,New Liskeard,ON,P0J 1P0,+1 705-647-7331,47.531133,-79.672294,https://www.canadiantire.ca/en/store-details/on/new-liskeard-on-68.html,,
+69,Newmarket,17750 Yonge Street,Newmarket,ON,L3Y 8P4,+1 905-895-4564,44.059743,-79.484335,https://www.canadiantire.ca/en/store-details/on/newmarket-on-69.html,,
+71,Niagara Falls North,"7190 Morrison Street, Unit A001",Niagara Falls,ON,L2E 7K5,+1 905-358-4545,43.101945,-79.117377,https://www.canadiantire.ca/en/store-details/on/niagara-falls-north-on-71.html,,
+201,Nipigon,191 First Street,Nipigon,ON,P0T 2J0,+1 807-887-3131,49.015845,-88.272255,https://www.canadiantire.ca/en/store-details/on/nipigon-on-201.html,,
+72,North Bay,890 McKeown Avenue,North Bay,ON,P1B 8M1,+1 705-472-3000,46.331276,-79.470817,https://www.canadiantire.ca/en/store-details/on/north-bay-on-72.html,,
+485,Dufferin & Finch Auto Ctr,4400 Dufferin Street,North York,ON,M3H 6A8,+1 416-667-9777,43.765391,-79.467507,https://www.canadiantire.ca/en/store-details/on/dufferin-finch-auto-ctr-on-485.html,,
+143,Oakville,1100 Kerr Street,Oakville,ON,L6M 0L4,+1 905-844-0202,43.449912,-79.698536,https://www.canadiantire.ca/en/store-details/on/oakville-on-143.html,,
+424,"Oak., Winston Churchill",2510 Hyde Park Gate,Oakville,ON,L6H 6M2,+1 905-829-5552,43.513654,-79.68932,https://www.canadiantire.ca/en/store-details/on/oak-winston-churchill-on-424.html,,
+429,Oakville North,400 Dundas Street East,Oakville,ON,L6H 6Z9,+1 905-257-8473,43.488792,-79.715737,https://www.canadiantire.ca/en/store-details/on/oakville-north-on-429.html,,
+73,Orangeville,"99 First Street, Fairgrounds Centre",Orangeville,ON,L9W 2E8,+1 519-941-1090,43.931011,-80.097535,https://www.canadiantire.ca/en/store-details/on/orangeville-on-73.html,,
+422,Ottawa Orleans,3910 Innes Road,Orleans,ON,K1W 1K9,+1 613-830-7000,45.452537,-75.506716,https://www.canadiantire.ca/en/store-details/on/ottawa-orleans-on-422.html,,
+75,Oshawa Mid,441 Gibb Street,Oshawa,ON,L1J 1Z4,+1 905-728-6272,43.885779,-78.87612,https://www.canadiantire.ca/en/store-details/on/oshawa-mid-on-75.html,,
+336,Oshawa North,1333 Wilson Road North,Oshawa,ON,L1K 2B8,+1 905-433-5575,43.936743,-78.857481,https://www.canadiantire.ca/en/store-details/on/oshawa-north-on-336.html,,
+174,Ottawa East,330 Coventry Road,Ottawa,ON,K1K 4S3,+1 613-746-4303,45.420255,-75.650879,https://www.canadiantire.ca/en/store-details/on/ottawa-east-on-174.html,,
+210,Ottawa South,1170 Heron Road,Ottawa,ON,K1V 6B2,+1 613-733-6776,45.37733,-75.668448,https://www.canadiantire.ca/en/store-details/on/ottawa-south-on-210.html,,
+290,Ottawa Carling Ave,"2165 Carling Avenue, Carlingwood Shopping Centre",Ottawa,ON,K2A 1H2,+1 613-725-3111,45.371816,-75.769773,https://www.canadiantire.ca/en/store-details/on/ottawa-carling-ave-on-290.html,,
+77,Owen Sound,1605 - 16th Street East,Owen Sound,ON,N4K 5N3,+1 519-376-5220,44.573868,-80.914704,https://www.canadiantire.ca/en/store-details/on/owen-sound-on-77.html,,
+43,Paris,300 Grand River Street North,Paris,ON,N3L 3R7,+1 519-442-2312,43.211058,-80.389811,https://www.canadiantire.ca/en/store-details/on/paris-on-43.html,,
+78,Parry Sound,30 Pine Drive,Parry Sound,ON,P2A 3B8,+1 705-746-2133,45.342303,-80.007629,https://www.canadiantire.ca/en/store-details/on/parry-sound-on-78.html,,
+79,Pembroke,1104 Pembroke Street East,Pembroke,ON,K8A 8S2,+1 613-735-0000,45.81928,-77.082084,https://www.canadiantire.ca/en/store-details/on/pembroke-on-79.html,,
+80,Perth,45 Dufferin Street,Perth,ON,K7H 3A5,+1 613-267-3412,44.911233,-76.264786,https://www.canadiantire.ca/en/store-details/on/perth-on-80.html,,
+81,Peterborough,1200 Lansdowne Street West,Peterborough,ON,K9J 2A1,+1 705-742-0406,44.281443,-78.351622,https://www.canadiantire.ca/en/store-details/on/peterborough-on-81.html,,
+660,Peterborough North,"1050 Chemong Road, (Use Milroy Dr. Entrance)",Peterborough,ON,K9H 7S2,+1 705-745-1388,44.325652,-78.336379,https://www.canadiantire.ca/en/store-details/on/peterborough-north-on-660.html,,
+324,Pickering,1735 Pickering Parkway,Pickering,ON,L1V 7C7,+1 905-686-2308,43.842505,-79.070261,https://www.canadiantire.ca/en/store-details/on/pickering-on-324.html,,
+82,Picton,"13321 Loyalist Parkway, Box 6005",Picton,ON,K0K 2T0,+1 613-476-7405,43.998047,-77.163967,https://www.canadiantire.ca/en/store-details/on/picton-on-82.html,,
+128,Port Colborne,"287 West Side Road, Port Colborne Mall",Port Colborne,ON,L3K 5L2,+1 905-835-1155,42.905457,-79.266304,https://www.canadiantire.ca/en/store-details/on/port-colborne-on-128.html,,
+269,Port Elgin,5116 Hwy 21,Port Elgin,ON,N0H 2C0,+1 519-832-6995,44.423617,-81.397244,https://www.canadiantire.ca/en/store-details/on/port-elgin-on-269.html,,
+226,Port Perry,14325 Simcoe Street,Port Perry,ON,L9L 2C8,+1 905-985-7341,44.091881,-78.94033,https://www.canadiantire.ca/en/store-details/on/port-perry-on-226.html,,
+85,Prescott,"140 Prescott Centre Drive, PO Box 2389",Prescott,ON,K0E 1T0,+1 613-925-4217,44.723808,-75.521752,https://www.canadiantire.ca/en/store-details/on/prescott-on-85.html,,
+86,Renfrew,1050 O'Brien Road,Renfrew,ON,K7V 0B4,+1 613-432-5821,45.479904,-76.653858,https://www.canadiantire.ca/en/store-details/on/renfrew-on-86.html,,
+87,Richmond Hill,250 Silver Linden Drive,Richmond Hill,ON,L4B 4W7,+1 905-731-3100,43.842285,-79.413332,https://www.canadiantire.ca/en/store-details/on/richmond-hill-on-87.html,,
+697,Richmond Hill North,11720 Yonge Street,Richmond Hill,ON,L4E 0K4,+1 905-884-9009,43.913012,-79.448895,https://www.canadiantire.ca/en/store-details/on/richmond-hill-north-on-697.html,,
+623,Rockland,"9040 County Road 17, PO Box 220",Rockland,ON,K4K 1V5,+1 613-446-4410,45.547195,-75.302602,https://www.canadiantire.ca/en/store-details/on/rockland-on-623.html,,
+94,Sarnia,"1380 London Road, Unit 300, Lambton Mall",Sarnia,ON,N7S 1P8,+1 519-542-3403,42.982678,-82.350552,https://www.canadiantire.ca/en/store-details/on/sarnia-on-94.html,,
+95,Sault Ste. Marie,200 McNabb Street,Sault Ste. Marie,ON,P6B 1Y4,+1 705-949-0770,46.522715,-84.318188,https://www.canadiantire.ca/en/store-details/on/sault-ste-marie-on-95.html,,
+30,Warden & Eglinton,"1901 Eglinton Avenue East, Eglinton Town Centre",Scarborough,ON,M1L 2L8,+1 416-615-2666,43.725654,-79.293121,https://www.canadiantire.ca/en/store-details/on/warden-eglinton-on-30.html,,
+175,Scarborough,"3553 Lawrence Avenue East, Cedarbrae Mall",Scarborough,ON,M1H 1B2,+1 416-431-1630,43.758333,-79.226366,https://www.canadiantire.ca/en/store-details/on/scarborough-on-175.html,,
+209,Kingston Rd,2850 Kingston Road,Scarborough,ON,M1M 1M7,+1 416-261-3384,43.720986,-79.238065,https://www.canadiantire.ca/en/store-details/on/kingston-rd-on-209.html,,
+264,Agincourt,4630 Sheppard Avenue East,Scarborough,ON,M1S 3V5,+1 416-291-7791,43.790169,-79.260961,https://www.canadiantire.ca/en/store-details/on/agincourt-on-264.html,,
+427,Scarborough East,111 Rylander Blvd.,Scarborough,ON,M1B 4X3,+1 416-283-7707,43.797278,-79.15371,https://www.canadiantire.ca/en/store-details/on/scarborough-east-on-427.html,,
+74,Orillia,"1029 Brodie Drive, Orillia Square Mall",Severn,ON,L3V 0V2,+1 705-325-7414,44.631435,-79.435303,https://www.canadiantire.ca/en/store-details/on/orillia-on-74.html,,
+97,Simcoe,"142 Queensway East, Simcoe Mall",Simcoe,ON,N3Y 4Y7,+1 519-426-1513,42.847527,-80.291736,https://www.canadiantire.ca/en/store-details/on/simcoe-on-97.html,,
+98,Smiths Falls,"10 Ferrara Drive, Highway 15",Smiths Falls,ON,K7A 5K4,+1 613-283-3906,44.892075,-76.028996,https://www.canadiantire.ca/en/store-details/on/smiths-falls-on-98.html,,
+90,St. Catharines,431 Louth Street,St. Catharines,ON,L2S 4A2,+1 905-682-9275,43.151522,-79.265789,https://www.canadiantire.ca/en/store-details/on/st-catharines-on-90.html,,
+145,St. Catharines S.,300 Glendale Avenue,St. Catharines,ON,L2T 2L5,+1 905-227-7481,43.134775,-79.217901,https://www.canadiantire.ca/en/store-details/on/st-catharines-s-on-145.html,,
+162,St. Catharines N.,"459 Welland Avenue, Lincoln Mall",St. Catharines,ON,L2M 5V2,+1 905-688-0488,43.176538,-79.216093,https://www.canadiantire.ca/en/store-details/on/st-catharines-n-on-162.html,,
+91,St. Marys,"84 Wellington Street South, Units 1 & 2, Box 2070",St. Marys,ON,N4X 1C3,+1 519-284-1690,43.257014,-81.142691,https://www.canadiantire.ca/en/store-details/on/st-marys-on-91.html,,
+92,St. Thomas,"1063 Talbot Street, Unit 25",St. Thomas,ON,N5P 1G4,+1 519-631-4910,42.783222,-81.173883,https://www.canadiantire.ca/en/store-details/on/st-thomas-on-92.html,,
+280,Stouffville,1090 Hoover Park Drive,Stouffville,ON,L4A 0K2,+1 905-640-5800,43.954522,-79.276885,https://www.canadiantire.ca/en/store-details/on/stouffville-on-280.html,,
+103,Stratford,"1093 Ontario Street, Festival Marketplace",Stratford,ON,N5A 6W6,+1 519-273-2080,43.369673,-80.943441,https://www.canadiantire.ca/en/store-details/on/stratford-on-103.html,,
+104,Strathroy,24614 Adelaide Road,Strathroy,ON,N7G 2P8,+1 519-245-2703,42.945155,-81.608521,https://www.canadiantire.ca/en/store-details/on/strathroy-on-104.html,,
+102,Sturgeon Falls,12011 Hwy 17 East,Sturgeon Falls,ON,P2B 2S7,+1 705-753-2630,46.366387,-79.911431,https://www.canadiantire.ca/en/store-details/on/sturgeon-falls-on-102.html,,
+278,Sudbury North,"1485 Lasalle Blvd., Svc Cntre - 1066 Barrydowne Road",Sudbury,ON,P3A 5H7,+1 705-566-9700,46.520122,-80.942056,https://www.canadiantire.ca/en/store-details/on/sudbury-north-on-278.html,,
+445,Sudbury South,2259 Regent Street,Sudbury,ON,P3E 5M9,+1 705-523-6000,46.447643,-80.993217,https://www.canadiantire.ca/en/store-details/on/sudbury-south-on-445.html,,
+321,Dufferin & 407,8081 Dufferin Street,Thornhill,ON,L4J 8R9,+1 905-889-7455,43.814254,-79.475183,https://www.canadiantire.ca/en/store-details/on/dufferin-407-on-321.html,,
+34,Thunder Bay South,1221 Arthur Street West,Thunder Bay,ON,P7K 1A7,+1 807-475-4235,48.381692,-89.312754,https://www.canadiantire.ca/en/store-details/on/thunder-bay-south-on-34.html,,
+83,Thunder Bay Centre,939 Fort William Road,Thunder Bay,ON,P7B 3A6,+1 807-623-1999,48.40311,-89.239975,https://www.canadiantire.ca/en/store-details/on/thunder-bay-centre-on-83.html,,
+215,Tilbury,"37 Mill Street East, PO Box 280",Tilbury,ON,N0P 2L0,+1 519-682-1284,42.264745,-82.426472,https://www.canadiantire.ca/en/store-details/on/tilbury-on-215.html,,
+110,Tillsonburg,"248 Broadway Street, Tilsonburg Town Centre",Tillsonburg,ON,N4G 3R4,+1 519-842-5926,42.863958,-80.729276,https://www.canadiantire.ca/en/store-details/on/tillsonburg-on-110.html,,
+111,Timmins,2199 Riverside Drive,Timmins,ON,P4R 0A1,+1 705-268-8591,48.471011,-81.404335,https://www.canadiantire.ca/en/store-details/on/timmins-on-111.html,,
+19,Lawrence & Allen Expwy,"700 Lawrence Avenue West, Lawrence Square Shopping Centre",Toronto,ON,M6A 3B4,+1 416-787-1203,43.716128,-79.447852,https://www.canadiantire.ca/en/store-details/on/lawrence-allen-expwy-on-19.html,,
+126,Yonge & Steeles,"6310 Yonge Street, Centrepoint Mall",Toronto,ON,M2M 3X4,+1 416-222-2511,43.796086,-79.423862,https://www.canadiantire.ca/en/store-details/on/yonge-steeles-on-126.html,,
+150,"Toronto, Yonge & Church",839 Yonge Street,Toronto,ON,M4W 2H2,+1 416-925-9592,43.673711,-79.387593,https://www.canadiantire.ca/en/store-details/on/toronto-yonge-church-on-150.html,,
+182,West Toronto (Stockyards),2129 St. Clair Avenue West,Toronto,ON,M6N 5B4,+1 416-766-8141,43.670599,-79.471761,https://www.canadiantire.ca/en/store-details/on/west-toronto-(stockyards)-on-182.html,,
+192,Sheppard Ave.,1019 Sheppard Avenue East,Toronto,ON,M2K 1C2,+1 416-226-4411,43.769037,-79.371951,https://www.canadiantire.ca/en/store-details/on/sheppard-ave-on-192.html,,
+214,"Eglinton & Caledonia, Toronto","2360 Eglinton Avenue West, Westside Mall",Toronto,ON,M6M 1S6,+1 416-636-7480,43.693368,-79.467035,https://www.canadiantire.ca/en/store-details/on/eglinton-caledonia-toronto-on-214.html,,
+273,Toronto Main & Danforth,2681 Danforth Avenue,Toronto,ON,M4C 1L4,+1 416-690-6069,43.688217,-79.298308,https://www.canadiantire.ca/en/store-details/on/toronto-main-danforth-on-273.html,,
+459,Eglinton & Laird,825 Eglinton Avenue East,Toronto,ON,M4G 4G9,+1 416-422-0303,43.712534,-79.363368,https://www.canadiantire.ca/en/store-details/on/eglinton-laird-on-459.html,,
+600,Toronto Eaton Centre,"65 Dundas Street West, Eaton Centre",Toronto,ON,M5G 2C3,+1 416-979-2025,43.655535,-79.383382,https://www.canadiantire.ca/en/store-details/on/toronto-eaton-centre-on-600.html,,
+621,Liberty Village,5 Joe Shuster Way,Toronto,ON,M6K 0C7,+1 416-588-3232,43.639935,-79.423492,https://www.canadiantire.ca/en/store-details/on/liberty-village-on-621.html,,
+654,Leslie & Lake Shore,1025 Lake Shore Blvd. East,Toronto,ON,M4M 1B4,+1 416-778-0102,43.658096,-79.328737,https://www.canadiantire.ca/en/store-details/on/leslie-lake-shore-on-654.html,,
+112,Trenton,285 Dundas Street East,Trenton,ON,K8V 1M1,+1 613-392-3500,44.103508,-77.555518,https://www.canadiantire.ca/en/store-details/on/trenton-on-112.html,,
+127,Uxbridge,327 Toronto Street South,Uxbridge,ON,L9P 1Z7,+1 905-852-3315,44.089465,-79.132247,https://www.canadiantire.ca/en/store-details/on/uxbridge-on-127.html,,
+653,Maple,3200 Rutherford Road,Vaughan,ON,L4K 5R3,+1 905-417-0125,43.830413,-79.537617,https://www.canadiantire.ca/en/store-details/on/maple-on-653.html,,
+135,Wallaceburg,74 McNaughton Avenue,Wallaceburg,ON,N8A 1R9,+1 519-627-4251,42.583797,-82.383028,https://www.canadiantire.ca/en/store-details/on/wallaceburg-on-135.html,,
+652,Wasaga Beach,75 - 45th Street South,Wasaga Beach,ON,L9Z 1A7,+1 705-422-1250,44.471906,-80.074078,https://www.canadiantire.ca/en/store-details/on/wasaga-beach-on-652.html,,
+220,Waterdown,11 Clappison Avenue,Waterdown,ON,L8B 0Y2,+1 905-690-3961,43.317482,-79.913188,https://www.canadiantire.ca/en/store-details/on/waterdown-on-220.html,,
+251,Waterloo,400 Weber Street North,Waterloo,ON,N2J 3J3,+1 519-885-1050,43.485236,-80.523074,https://www.canadiantire.ca/en/store-details/on/waterloo-on-251.html,,
+674,Waterloo West,656 Erb Street West,Waterloo,ON,N2T 2Z7,+1 519-884-1255,43.447589,-80.573798,https://www.canadiantire.ca/en/store-details/on/waterloo-west-on-674.html,,
+279,Wawa,"54 Broadway Avenue, Box 1248",Wawa,ON,P0S 1K0,+1 705-856-2285,47.995529,-84.771125,https://www.canadiantire.ca/en/store-details/on/wawa-on-279.html,,
+118,Welland,158 Primeway Drive,Welland,ON,L3B 0A1,+1 905-732-7501,43.015701,-79.2293,https://www.canadiantire.ca/en/store-details/on/welland-on-118.html,,
+187,Whitby South,155 Consumers Drive,Whitby,ON,L1N 1C4,+1 905-668-5828,43.867208,-78.929756,https://www.canadiantire.ca/en/store-details/on/whitby-south-on-187.html,,
+460,Whitby North,4100 Garden Street at Taunton Road,Whitby,ON,L1R 3K5,+1 905-430-4962,43.9186,-78.949036,https://www.canadiantire.ca/en/store-details/on/whitby-north-on-460.html,,
+121,Windsor University Plaza,"2650 Tecumseh Road West, University Plaza",Windsor,ON,N9B 3R1,+1 519-252-7743,42.291921,-83.057773,https://www.canadiantire.ca/en/store-details/on/windsor-university-plaza-on-121.html,,
+199,Windsor East,8505 Tecumseh Road East,Windsor,ON,N8R 1A1,+1 519-948-8111,42.313216,-82.928145,https://www.canadiantire.ca/en/store-details/on/windsor-east-on-199.html,,
+236,Windsor South,4150 Walker Road,Windsor,ON,N8W 3T5,+1 519-966-3650,42.259457,-82.964351,https://www.canadiantire.ca/en/store-details/on/windsor-south-on-236.html,,
+237,Woodbridge,3850 Highway 7,Woodbridge,ON,L4L 9C3,+1 905-851-3214,43.789898,-79.550965,https://www.canadiantire.ca/en/store-details/on/woodbridge-on-237.html,,
+124,Woodstock,465 Norwich Avenue,Woodstock,ON,N4S 9A2,+1 519-539-1201,43.116276,-80.736621,https://www.canadiantire.ca/en/store-details/on/woodstock-on-124.html,,
+20,Charlottetown,20 Babineau Avenue,Charlottetown,PE,C1A 0G1,+1 902-892-8584,46.269094,-63.145017,https://www.canadiantire.ca/en/store-details/pe/charlottetown-pei-20.html,yes,yes
+132,Summerside,474 Granville Street,Summerside,PE,C1N 4K6,+1 902-436-6000,46.413502,-63.783089,https://www.canadiantire.ca/en/store-details/pe/summerside-pei-132.html,,
+298,Alma,"50, boul. St. Luc",Alma,QC,G8B 6K1,+1 418-662-6618,48.533956,-71.64989,https://www.canadiantire.ca/en/store-details/qc/alma-qc-298.html,,
+285,Amos,281 Route 111 Est,Amos,QC,J9T 3A2,+1 819-732-5337,48.559348,-78.124075,https://www.canadiantire.ca/en/store-details/qc/amos-qc-285.html,,
+265,Baie-Comeau,"650, rue de Parfondeval",Baie-Comeau,QC,G5C 3R3,+1 418-589-9924,49.199867,-68.254935,https://www.canadiantire.ca/en/store-details/qc/baie-comeau-qc-265.html,,
+228,Beloeil,"600, boul. Sir-Wilfrid-Laurier, Mail Montenach",Beloeil,QC,J3G 4J2,+1 450-464-1400,45.5617,-73.209235,https://www.canadiantire.ca/en/store-details/qc/beloeil-qc-228.html,,
+649,Blainville,"500, boul. de la Seigneurie Ouest",Blainville,QC,J7C 5T7,+1 450-419-4700,45.661331,-73.884028,https://www.canadiantire.ca/en/store-details/qc/blainville-qc-649.html,,
+332,Boucherville,"1055, boul. de Montarville",Boucherville,QC,J4B 6P5,+1 450-655-6950,45.589274,-73.431976,https://www.canadiantire.ca/en/store-details/qc/boucherville-qc-332.html,,
+643,Brossard,"9900, boul. Leduc, Quartier DIX30",Brossard,QC,J4Y 0B4,+1 450-443-0005,45.437223,-73.443491,https://www.canadiantire.ca/en/store-details/qc/brossard-qc-643.html,,
+626,Chambly,"3400, boul. Frechette",Chambly,QC,J3L 6Z6,+1 450-447-8393,45.430056,-73.304811,https://www.canadiantire.ca/en/store-details/qc/chambly-qc-626.html,,
+147,Chateauguay,"140, boul. d'Anjou",Chateauguay,QC,J6K 1C4,+1 450-691-4160,45.359381,-73.730847,https://www.canadiantire.ca/en/store-details/qc/chateauguay-qc-147.html,,
+268,Chicoutimi,"1257, boul. Talbot, Place du Royaume",Chicoutimi,QC,G7H 4C1,+1 418-549-5014,48.407057,-71.054944,https://www.canadiantire.ca/en/store-details/qc/chicoutimi-qc-268.html,,
+274,Cowansville,"145, rue de Salaberry",Cowansville,QC,J2K 5G9,+1 450-263-4232,45.191058,-72.760037,https://www.canadiantire.ca/en/store-details/qc/cowansville-qc-274.html,,
+396,Delson,65 132 Route,Delson,QC,J5B 1H1,+1 450-632-1700,45.384658,-73.5516,https://www.canadiantire.ca/en/store-details/qc/delson-qc-396.html,,
+284,Dolbeau-Mistassini,"1751, boul. Vezina",Dolbeau-Mistassini,QC,G8L 3S4,+1 418-276-2385,48.878089,-72.243508,https://www.canadiantire.ca/en/store-details/qc/dolbeau-mistassini-qc-284.html,,
+234,Dollard des Ormeaux,"3079, boul. des Sources, Galeries Des Sources",Dollard-Des-Ormeaux,QC,H9B 1Z6,+1 514-684-9750,45.482736,-73.790676,https://www.canadiantire.ca/en/store-details/qc/dollard-des-ormeaux-qc-234.html,,
+423,Donnacona,223 138 Route,Donnacona,QC,G3M 1C1,+1 418-285-1331,46.683418,-71.727414,https://www.canadiantire.ca/en/store-details/qc/donnacona-qc-423.html,,
+158,Drummondville,"715, boul. St-Joseph",Drummondville,QC,J2C 7V2,+1 819-478-1471,45.889898,-72.512684,https://www.canadiantire.ca/en/store-details/qc/drummondville-qc-158.html,,
+690,Laval Fabreville,"544, boul. Cure-Labelle",Fabreville,QC,H7P 2P4,+1 450-963-8686,45.582208,-73.788053,https://www.canadiantire.ca/en/store-details/qc/laval-fabreville-qc-690.html,,
+456,Gaspe,"39, Montee de Sandy Beach, CP 37, Carrefour Gaspe",Gaspe,QC,G4X 2A9,+1 418-368-6868,48.824928,-64.474838,https://www.canadiantire.ca/en/store-details/qc/gaspe-qc-456.html,,
+15,Buckingham,"170, avenue Lepine",Gatineau,QC,J8L 4M4,+1 819-986-3338,45.574489,-75.401804,https://www.canadiantire.ca/en/store-details/qc/buckingham-qc-15.html,,
+176,Hull,"355, boul. de la Carriere",Gatineau,QC,J8Y 6W4,+1 819-777-4381,45.443001,-75.729452,https://www.canadiantire.ca/en/store-details/qc/hull-qc-176.html,,
+191,Gatineau,"700, boul Maloney Ouest",Gatineau,QC,J8T 8K7,+1 819-246-1234,45.480806,-75.677884,https://www.canadiantire.ca/en/store-details/qc/gatineau-qc-191.html,,
+318,Gatineau Le Plateau,"213, boul. des Grives, Plateau des Grives",Gatineau,QC,J9A 0C7,+1 819-778-1881,45.431776,-75.782543,https://www.canadiantire.ca/en/store-details/qc/gatineau-le-plateau-qc-318.html,,
+138,Granby,"70, rue Simonds Nord",Granby,QC,J2J 2L1,+1 450-378-9884,45.416985,-72.75511,https://www.canadiantire.ca/en/store-details/qc/granby-qc-138.html,,
+190,Greenfield Park,"4909, boul. Taschereau",Greenfield Park,QC,J4V 3K3,+1 450-676-1818,45.483003,-73.463441,https://www.canadiantire.ca/en/store-details/qc/greenfield-park-qc-190.html,,
+200,Joliette,"1475, boul. Firestone",Joliette,QC,J6E 9E5,+1 450-756-1044,46.035824,-73.415837,https://www.canadiantire.ca/en/store-details/qc/joliette-qc-200.html,,
+221,Jonquiere,"2290, boul. Rene-Levesque",Jonquiere,QC,G7S 5Y5,+1 418-542-3501,48.410082,-71.214049,https://www.canadiantire.ca/en/store-details/qc/jonquiere-qc-221.html,,
+149,Kirkland,"16821, Route Transcanadienne",Kirkland,QC,H9H 5J1,+1 514-697-8151,45.455386,-73.853266,https://www.canadiantire.ca/en/store-details/qc/kirkland-qc-149.html,,
+692,Ancienne Lorette,"1233, autoroute Duplessis",L'Ancienne-Lorette,QC,G2G 2B4,+1 418-864-0321,46.788076,-71.350724,https://www.canadiantire.ca/en/store-details/qc/ancienne-lorette-qc-692.html,,
+335,La Baie,"2300, rue Bagot",La Baie,QC,G7B 3Z3,+1 418-544-8291,48.335962,-70.898769,https://www.canadiantire.ca/en/store-details/qc/la-baie-qc-335.html,,
+306,La Malbaie,"375, boul. de Comporte, Suite 118, Le Centre Charlevoix",La Malbaie,QC,G5A 1H9,+1 418-665-6483,47.645284,-70.150079,https://www.canadiantire.ca/en/store-details/qc/la-malbaie-qc-306.html,,
+633,La Pocatiere,175 230 Route Ouest,La Pocatiere,QC,G0R 1Z0,+1 418-856-4516,47.359823,-70.053093,https://www.canadiantire.ca/en/store-details/qc/la-pocatiere-qc-633.html,,
+233,La Sarre,"91, 2ieme rue Est",La Sarre,QC,J9Z 3J9,+1 819-333-2381,48.810896,-79.198701,https://www.canadiantire.ca/en/store-details/qc/la-sarre-qc-233.html,,
+352,La Tuque,"1200, boul. Ducharme",La Tuque,QC,G9X 3Z9,+1 819-523-7611,47.41768,-72.784083,https://www.canadiantire.ca/en/store-details/qc/la-tuque-qc-352.html,,
+230,Ville La Salle,"2221, boul. Angrignon",LaSalle,QC,H8N 3E3,+1 514-365-8880,45.450106,-73.612111,https://www.canadiantire.ca/en/store-details/qc/ville-la-salle-qc-230.html,,
+225,Lac Megantic,"3642, rue Laval",Lac-Megantic,QC,G6B 1A4,+1 819-583-3332,45.58897,-70.903463,https://www.canadiantire.ca/en/store-details/qc/lac-megantic-qc-225.html,,
+262,Lachute,"505, avenue Bethany",Lachute,QC,J8H 4A6,+1 450-562-8536,45.637695,-74.326013,https://www.canadiantire.ca/en/store-details/qc/lachute-qc-262.html,,
+155,"Laval, Ste-Dorothee","500 Chomedey (A-13) Ouest, Ste Dorothee",Laval,QC,H7X 3S9,+1 450-969-4141,45.524367,-73.782404,https://www.canadiantire.ca/en/store-details/qc/laval-ste-dorothee-qc-155.html,,
+231,Laval Vimont,"4975, boul. Robert-Bourassa, Mega Centre Val-Des-Brises",Laval,QC,H7E 0A4,+1 450-665-4747,45.609624,-73.69593,https://www.canadiantire.ca/en/store-details/qc/laval-vimont-qc-231.html,,
+300,"Laval, Bl. Le Corbusier","1450, boul. Le Corbusier",Laval,QC,H7N 6J5,+1 450-682-9922,45.559069,-73.727832,https://www.canadiantire.ca/en/store-details/qc/laval-bl-le-corbusier-qc-300.html,,
+165,Levis,100 Route du President-Kennedy,Levis,QC,G6V 6C9,+1 418-833-5525,46.790015,-71.170893,https://www.canadiantire.ca/en/store-details/qc/levis-qc-165.html,,
+256,Longueuil,"2211, boul. Roland-Therrien",Longueuil,QC,J4N 1P2,+1 450-448-1177,45.539184,-73.470013,https://www.canadiantire.ca/en/store-details/qc/longueuil-qc-256.html,,
+240,Magog,"2135, rue Sherbrooke",Magog,QC,J1X 2T5,+1 819-843-3373,45.282149,-72.125416,https://www.canadiantire.ca/en/store-details/qc/magog-qc-240.html,,
+196,Maniwaki,"250, boul. Desjardins",Maniwaki,QC,J9E 3G4,+1 819-449-2000,46.387673,-75.98244,https://www.canadiantire.ca/en/store-details/qc/maniwaki-qc-196.html,,
+315,Matane,"145, rue Piuze",Matane,QC,G4W 0H7,+1 418-562-5144,48.843325,-67.558279,https://www.canadiantire.ca/en/store-details/qc/matane-qc-315.html,,
+648,Mont-Laurier,"1675, boul. Albiny-Paquette",Mont-Laurier,QC,J9L 1M8,+1 819-623-2255,46.551944,-75.461445,https://www.canadiantire.ca/en/store-details/qc/mont-laurier-qc-648.html,,
+461,Mont-Tremblant,228 Route 117,Mont-Tremblant,QC,J8E 2X1,+1 819-425-1110,46.119127,-74.557687,https://www.canadiantire.ca/en/store-details/qc/mont-tremblant-qc-461.html,,
+180,Montmagny,"488, avenue Saint-David",Montmagny,QC,G5V 4P9,+1 418-248-2602,46.970509,-70.548508,https://www.canadiantire.ca/en/store-details/qc/montmagny-qc-180.html,,
+64,Montreal Cremazie & Papineau,"2225, boul. Cremazie Est",Montreal,QC,H1Z 4N4,+1 514-729-1861,45.556976,-73.6199,https://www.canadiantire.ca/en/store-details/qc/montreal-cremazie-papineau-qc-64.html,,
+292,Marche Central,"9050, boul. de l'Acadie",Montreal,QC,H4N 2S5,+1 514-388-6464,45.531218,-73.652789,https://www.canadiantire.ca/en/store-details/qc/marche-central-qc-292.html,,
+303,Pointe aux Trembles,"3500, boul. du Tricentenaire",Montreal,QC,H1B 0A3,+1 514-645-2761,45.652385,-73.512845,https://www.canadiantire.ca/en/store-details/qc/pointe-aux-trembles-qc-303.html,,
+343,Montreal Bellechasse,"6275, boul. St. Laurent",Montreal,QC,H2S 3C3,+1 514-273-2428,45.529493,-73.605373,https://www.canadiantire.ca/en/store-details/qc/montreal-bellechasse-qc-343.html,,
+400,Montreal Maisonneuve,"3025, rue Sherbrooke Est, Centre D'Achats Maisonneuve",Montreal,QC,H1W 1B2,+1 514-521-8888,45.542044,-73.560838,https://www.canadiantire.ca/en/store-details/qc/montreal-maisonneuve-qc-400.html,,
+401,Cote des Neiges,"6700, chemin de la Cote-des-Neiges, Suite 240",Montreal,QC,H3S 2B2,+1 514-737-2954,45.50185,-73.637613,https://www.canadiantire.ca/en/store-details/qc/cote-des-neiges-qc-401.html,,
+435,Montreal Downtown,"1500, avenue Atwater, Place Alexis Nihon, Local S-01",Montreal,QC,H3Z 1X5,+1 514-939-1820,45.488554,-73.586265,https://www.canadiantire.ca/en/store-details/qc/montreal-downtown-qc-435.html,,
+454,Rivieres des Prairies,"7555, boul. Maurice-Duplessis",Montreal,QC,H1E 7N2,+1 514-643-2232,45.626835,-73.599247,https://www.canadiantire.ca/en/store-details/qc/rivieres-des-prairies-qc-454.html,,
+627,St. Jacques - Montreal,"7200, boul. de Sainte-Anne-de-Bellevue",Montreal,QC,H4B 1T4,+1 514-483-2223,45.454611,-73.631347,https://www.canadiantire.ca/en/store-details/qc/st-jacques-montreal-qc-627.html,,
+928,Place Versailles,"7275, rue Sherbrooke Est, Suite 140, Place Versailles",Montreal,QC,H1N 1E9,+1 514-352-0928,45.592571,-73.54176,https://www.canadiantire.ca/en/store-details/qc/place-versailles-qc-928.html,,
+267,Montreal Nord,"6000, boul. Henri-Bourassa Est, Unit Z1",Montreal-nord,QC,H1G 2T6,+1 514-325-6010,45.605812,-73.61519,https://www.canadiantire.ca/en/store-details/qc/montreal-nord-qc-267.html,,
+686,Nicolet,"2000, boul. Louis-Frechette, Local 300",Nicolet,QC,J3T 1M9,+1 819-293-4040,46.239613,-72.597603,https://www.canadiantire.ca/en/store-details/qc/nicolet-qc-686.html,,
+463,Paspebiac,"49, boul. Gerard-D-Levesque Est",Paspebiac,QC,G0C 2K0,+1 418-752-5050,48.030621,-65.244337,https://www.canadiantire.ca/en/store-details/qc/paspebiac-qc-463.html,,
+181,Ile Perrot,"101, boul. Cardinal-Leger, Le Faubourg de l'Ile",Pincourt,QC,J7W 3Y3,+1 514-453-4211,45.38493,-73.996426,https://www.canadiantire.ca/en/store-details/qc/ile-perrot-qc-181.html,,
+101,Quebec Vanier,"630, boul. Wilfrid-Hamel",Quebec,QC,G1M 3P9,+1 418-687-2111,46.816986,-71.252067,https://www.canadiantire.ca/en/store-details/qc/quebec-vanier-qc-101.html,,
+184,Beauport,"705, rue Clemenceau",Quebec,QC,G1C 7T9,+1 418-663-4334,46.872718,-71.202226,https://www.canadiantire.ca/en/store-details/qc/beauport-qc-184.html,,
+245,Quebec Ste. Foy,"1170, route de l'Eglise",Quebec,QC,G1V 3W7,+1 418-659-4883,46.767937,-71.291265,https://www.canadiantire.ca/en/store-details/qc/quebec-ste-foy-qc-245.html,,
+342,Quebec Les Saules,"4500, rue Armand-Viau",Quebec,QC,G2C 2B9,+1 418-872-6212,46.81631,-71.333606,https://www.canadiantire.ca/en/store-details/qc/quebec-les-saules-qc-342.html,,
+405,Lebourgneuf,"5500, boul. des Gradins, Place Lebourgneuf",Quebec,QC,G2J 1A1,+1 418-622-7333,46.840138,-71.272806,https://www.canadiantire.ca/en/store-details/qc/lebourgneuf-qc-405.html,,
+222,Repentigny,"115, boul. Brien",Repentigny,QC,J6A 8J3,+1 450-585-9840,45.746024,-73.455614,https://www.canadiantire.ca/en/store-details/qc/repentigny-qc-222.html,,
+320,Rimouski,"419, boul. Jessop, Local 1, Svc Cntre - 419, boul. Jessop, Local 38",Rimouski,QC,G5L 7Y5,+1 418-722-8141,48.46837,-68.514261,https://www.canadiantire.ca/en/store-details/qc/rimouski-qc-320.html,,
+323,Riviere du Loup,"237, boul. de l'Hotel de Ville",Riviere-du-Loup,QC,G5R 4E5,+1 418-862-0106,47.824712,-69.55126,https://www.canadiantire.ca/en/store-details/qc/riviere-du-loup-qc-323.html,,
+458,Roberval,"1056, boul. Olivier-Vien",Roberval,QC,G8H 3G3,+1 418-275-7424,48.522671,-72.235866,https://www.canadiantire.ca/en/store-details/qc/roberval-qc-458.html,,
+418,Rosemere,"10, boul. Bouthillier, Place Rosemere",Rosemere,QC,J7A 4B4,+1 450-437-2007,45.627642,-73.822857,https://www.canadiantire.ca/en/store-details/qc/rosemere-qc-418.html,,
+89,Rouyn,"245, boul. Rideau",Rouyn-Noranda,QC,J9X 5Y6,+1 819-762-4375,48.242555,-79.04106,https://www.canadiantire.ca/en/store-details/qc/rouyn-qc-89.html,,
+484,St. Bruno,"900, avenue Andree Champagne",Saint-Bruno-de-Montarville,QC,J3V 6K8,+1 450-653-0222,45.507618,-73.384488,https://www.canadiantire.ca/en/store-details/qc/st-bruno-qc-484.html,,
+218,St. Eustache,"500, boul. Arthur-Sauve",Saint-Eustache,QC,J7R 4Z3,+1 450-472-2270,45.566926,-73.909224,https://www.canadiantire.ca/en/store-details/qc/st-eustache-qc-218.html,,
+173,St. Georges,"500, 107e Rue",Saint-Georges,QC,G5Y 8K1,+1 418-228-8843,46.127211,-70.681357,https://www.canadiantire.ca/en/store-details/qc/st-georges-qc-173.html,,
+151,St. Hyacinthe,"5930, rue Martineau",Saint-Hyacinthe,QC,J2R 2H6,+1 450-796-4226,45.642608,-72.978128,https://www.canadiantire.ca/en/store-details/qc/st-hyacinthe-qc-151.html,,
+153,St. Jean-sur-Richelieu,"855, boul. du Seminaire Nord",Saint-Jean-sur-Richelieu,QC,J3A 1J2,+1 450-348-3851,45.330069,-73.2658,https://www.canadiantire.ca/en/store-details/qc/st-jean-sur-richelieu-qc-153.html,,
+257,Ste. Agathe des Monts,"50, boul. Morin, Le Carrefour Ste-Agathe",Sainte-Agathe-des-Monts,QC,J8C 2V6,+1 819-326-8900,46.048442,-74.278969,https://www.canadiantire.ca/en/store-details/qc/ste-agathe-des-monts-qc-257.html,,
+416,Ste. Marie De Beauce,"980, boul. Vachon Nord",Sainte-Marie,QC,G6E 1M2,+1 418-387-5575,46.449656,-71.029361,https://www.canadiantire.ca/en/store-details/qc/ste-marie-de-beauce-qc-416.html,,
+115,Valleyfield,"1770, boul. Monseigneur-Langlois",Salaberry-de-valleyfield,QC,J6S 5R1,+1 450-373-0123,45.27059,-74.124769,https://www.canadiantire.ca/en/store-details/qc/valleyfield-qc-115.html,,
+307,Sept-Iles,"402, boul. Laure",Sept-Iles,QC,G4R 1X5,+1 418-968-1415,50.212293,-66.372289,https://www.canadiantire.ca/en/store-details/qc/sept-iles-qc-307.html,,
+131,Shawinigan,"1555, rue Trudel",Shawinigan,QC,G9N 8K8,+1 819-537-3888,46.555245,-72.750543,https://www.canadiantire.ca/en/store-details/qc/shawinigan-qc-131.html,,
+99,Shawville,431 148 Route,Shawville,QC,J0X 2Y0,+1 819-647-2733,45.598808,-76.491929,https://www.canadiantire.ca/en/store-details/qc/shawville-qc-99.html,,
+96,Sherbrooke,"4100, boul. Josaphat-Rancourt",Sherbrooke,QC,J1L 3C6,+1 819-566-0303,45.419389,-71.966034,https://www.canadiantire.ca/en/store-details/qc/sherbrooke-qc-96.html,,
+348,Sherbrooke Fleurimont,"1805 - 12E avenue Nord, Suite 01",Sherbrooke,QC,J1E 4J5,+1 819-566-5991,45.431972,-71.869025,https://www.canadiantire.ca/en/store-details/qc/sherbrooke-fleurimont-qc-348.html,,
+148,Sorel & Tracy,"280, boul. Fiset",Sorel-Tracy,QC,J3P 5X7,+1 450-743-5515,46.037949,-73.098468,https://www.canadiantire.ca/en/store-details/qc/sorel-tracy-qc-148.html,,
+271,St. Jerome,"700, boul. Monseigneur-Dubois, Carrefour du Nord",St. Jerome,QC,J7Y 4Y9,+1 450-438-3506,45.790846,-74.018975,https://www.canadiantire.ca/en/store-details/qc/st-jerome-qc-271.html,,
+9,St. Leonard Langelier,"6565, rue Jean-Talon Est",St. Leonard,QC,H1S 1N2,+1 514-253-2857,45.593613,-73.575397,https://www.canadiantire.ca/en/store-details/qc/st-leonard-langelier-qc-9.html,,
+247,St. Leonard,"4250, rue Jean-Talon Est, Centre commercial Le Boulevard",St. Leonard,QC,H1S 1J7,+1 514-723-2233,45.567752,-73.587499,https://www.canadiantire.ca/en/store-details/qc/st-leonard-qc-247.html,,
+624,St. Romuald,"600, rue de la Concorde",St. Romuald,QC,G6W 8A8,+1 418-839-9797,46.728996,-71.276234,https://www.canadiantire.ca/en/store-details/qc/st-romuald-qc-624.html,,
+312,Terrebonne,"1250, boul. Moody",Terrebonne,QC,J6W 3K9,+1 450-471-2220,45.702759,-73.650742,https://www.canadiantire.ca/en/store-details/qc/terrebonne-qc-312.html,,
+641,La Plaine,"4785, boul. Laurier",Terrebonne,QC,J7M 1C3,+1 450-477-4013,45.749178,-73.701222,https://www.canadiantire.ca/en/store-details/qc/la-plaine-qc-641.html,,
+156,Thetford Mines,"70, boul. Frontenac Est",Thetford Mines,QC,G6G 1N4,+1 418-338-3535,46.103876,-71.311001,https://www.canadiantire.ca/en/store-details/qc/thetford-mines-qc-156.html,,
+109,Cap-de-la-Madeleine,"350, rue Barkoff, Les Galeries du Cap",Trois-Rivieres,QC,G8T 9P5,+1 819-376-9646,46.374482,-72.557229,https://www.canadiantire.ca/en/store-details/qc/cap-de-la-madeleine-qc-109.html,,
+308,Trois-Rivieres,"3525, boul. des Forges",Trois-Rivieres,QC,G8Y 4P2,+1 819-378-4045,46.351749,-72.581327,https://www.canadiantire.ca/en/store-details/qc/trois-rivieres-qc-308.html,,
+114,Val d'Or,"1806, 3rd Avenue",Val-d'Or,QC,J9P 7A9,+1 819-825-9999,48.098429,-77.82666,https://www.canadiantire.ca/en/store-details/qc/val-d-or-qc-114.html,,
+646,Vaudreuil,"50, boul. de la Cite-des-Jeunes",Vaudreuil-Dorion,QC,J7V 9L5,+1 450-424-2744,45.406668,-74.039708,https://www.canadiantire.ca/en/store-details/qc/vaudreuil-qc-646.html,,
+117,Verdun,"3180, rue Wellington",Verdun,QC,H4G 1T3,+1 514-766-8561,45.470097,-73.563375,https://www.canadiantire.ca/en/store-details/qc/verdun-qc-117.html,,
+243,Victoriaville,"571, boul Jutras Est, Le Centre de Victoriaville",Victoriaville,QC,G6P 7H4,+1 819-758-1585,46.057732,-71.939555,https://www.canadiantire.ca/en/store-details/qc/victoriaville-qc-243.html,,
+235,Ville St. Laurent,"11200, boul. Cavendish, Place Vertu",Ville Saint-Laurent,QC,H4R 2J7,+1 514-337-4862,45.500632,-73.705677,https://www.canadiantire.ca/en/store-details/qc/ville-st-laurent-qc-235.html,,
+146,Estevan,200 King Street,Estevan,SK,S4A 2W4,+1 306-634-6407,49.145708,-102.974575,https://www.canadiantire.ca/en/store-details/sk/estevan-sk-146.html,,
+638,Humboldt,"2302 - 8th Avenue, Quill Centre",Humboldt,SK,S0K 2A0,+1 306-682-6299,52.200361,-105.147636,https://www.canadiantire.ca/en/store-details/sk/humboldt-sk-638.html,yes,yes
+912,Martensville,"230 Centennial Drive North, Black Iron Shopping Centre",Martensville,SK,S0K 2T0,+1 306-934-5564,52.295077,-106.672434,https://www.canadiantire.ca/en/store-details/sk/martensville-sk-912.html,,
+656,Melfort,"300 Stonegate, 500 Hwy 6 South",Melfort,SK,S0E 1A0,+1 306-752-7277,52.852601,-104.589157,https://www.canadiantire.ca/en/store-details/sk/melfort-sk-656.html,,
+915,Melville,"290 Prince William Drive, Melville Mall",Melville,SK,S0A 2P0,+1 306-728-8810,50.939149,-102.805853,https://www.canadiantire.ca/en/store-details/sk/melville-sk-915.html,,
+263,Moose Jaw,400 Thatcher Drive East,Moose Jaw,SK,S6J 1L7,+1 306-693-0888,50.413063,-105.525729,https://www.canadiantire.ca/en/store-details/sk/moose-jaw-sk-263.html,yes,yes
+301,North Battleford,11802 Railway Avenue East,North Battleford,SK,S9A 3P7,+1 306-446-3333,52.758662,-108.271251,https://www.canadiantire.ca/en/store-details/sk/north-battleford-sk-301.html,yes,yes
+317,Prince Albert,3725 - 2nd Avenue West,Prince Albert,SK,S6W 1A1,+1 306-764-9000,53.179271,-105.762283,https://www.canadiantire.ca/en/store-details/sk/prince-albert-sk-317.html,yes,yes
+275,Regina North Albert,655 Albert Street,Regina,SK,S4R 2P4,+1 306-757-8608,50.467598,-104.61628,https://www.canadiantire.ca/en/store-details/sk/regina-north-albert-sk-275.html,yes,yes
+310,Regina South,"2965 Gordon Road, Unit 65, Southland Mall",Regina,SK,S4S 6H7,+1 306-585-1334,50.403291,-104.621188,https://www.canadiantire.ca/en/store-details/sk/regina-south-sk-310.html,yes,yes
+629,Regina East,2325 Prince Of Wales Drive,Regina,SK,S4V 3A4,+1 306-522-8473,50.441914,-104.531361,https://www.canadiantire.ca/en/store-details/sk/regina-east-sk-629.html,yes,yes
+133,Saskatoon East,1731 Preston Avenue North,Saskatoon,SK,S7N 4V2,+1 306-373-3666,52.147586,-106.61636,https://www.canadiantire.ca/en/store-details/sk/saskatoon-east-sk-133.html,,
+296,Saskatoon West,"300 Confederation Drive, Unit 1, Confederation Mall",Saskatoon,SK,S7L 4R6,+1 306-384-1212,52.132139,-106.720591,https://www.canadiantire.ca/en/store-details/sk/saskatoon-west-sk-296.html,,
+100,Swift Current,1811 Memorial Drive,Swift Current,SK,S9H 5B7,+1 306-773-0654,50.308512,-107.775015,https://www.canadiantire.ca/en/store-details/sk/swift-current-sk-100.html,yes,yes
+408,Weyburn,1240 Sims Avenue,Weyburn,SK,S4H 3N9,+1 306-842-4600,49.662909,-103.877133,https://www.canadiantire.ca/en/store-details/sk/weyburn-sk-408.html,yes,yes
+287,Yorkton,"277 Broadway Street E, Parkland Mall",Yorkton,SK,S3N 3G7,+1 306-783-9733,51.211644,-102.441011,https://www.canadiantire.ca/en/store-details/sk/yorkton-sk-287.html,yes,yes
+452,Whitehorse,18 Chilkoot Way,Whitehorse,YT,Y1A 6T5,+1 867-668-3652,60.732284,-135.071658,https://www.canadiantire.ca/en/store-details/yt/whitehorse-yt-452.html,,
