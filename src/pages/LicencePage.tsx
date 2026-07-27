@@ -49,7 +49,10 @@ const content = {
         Bureau du contrôleur des armes à feu —{' '}
         <a className={A} href="https://www.quebec.ca/en/public-safety-emergencies/firearms" target="_blank" rel="noopener noreferrer">
           see the Quebec-specific requirements
-        </a>.
+        </a>. In particular, RPAL holders transferring a restricted firearm must
+        first complete a separate course mandated by Quebec Loi 9 (which is
+        required to join a shooting club in Quebec). Without this prerequisite
+        the CFO will not approve the transfer.
       </p>
       <h2 className={H2}>4. Buy from a verified retailer</h2>
       <p className={P}>
@@ -105,7 +108,11 @@ const content = {
         province auprès du Bureau du contrôleur des armes à feu —{' '}
         <a className={A} href="https://www.quebec.ca/securite-situations-urgence/armes-a-feu" target="_blank" rel="noopener noreferrer">
           consultez les exigences québécoises
-        </a>.
+        </a>. En particulier, les titulaires d'un permis à autorisation
+        restreinte qui procèdent à la cession d'une telle arme doivent d'abord
+        réussir une formation distincte imposée par la Loi 9 du Québec (exigée
+        pour devenir membre d'un club de tir au Québec). Sans ce préalable, le
+        contrôleur des armes à feu n'approuvera pas la cession.
       </p>
       <h2 className={H2}>4. Acheter chez un détaillant vérifié</h2>
       <p className={P}>
