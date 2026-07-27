@@ -1,0 +1,21 @@
+{
+  "name": "getagun",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/tiles/*"]
+  },
+  "r2_buckets": [{ "binding": "TILES", "bucket_name": "canadapmtiles" }],
+  "d1_databases": [
+    // database_id from `wrangler d1 create getagun`
+    { "binding": "DB", "database_name": "getagun", "database_id": "f552664b-f8f7-45a8-9f9f-11fc351f60e7" }
+  ],
+  "vars": {
+    // Fail closed: the worker returns 401 on all /api/admin/* routes unless BOTH vars are set.
+    "ACCESS_TEAM_DOMAIN": "jolly-queen-f0a0.cloudflareaccess.com",
+    "ACCESS_AUD": "9088bc218426ca6b312dafa21be1139a57f988d4f261e17f7cf55e5e5b3a22a8"
+  },
+  "routes": [{ "pattern": "getagun.ca", "custom_domain": true }]
+}
