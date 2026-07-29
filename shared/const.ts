@@ -30,7 +30,7 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   pronature: '#0d9488',
   ecotone: '#16a34a',
   'bass-pro-cabelas': '#14532d',
-  sail: '#ea580c',
+  sail: '#f97316',
   latulippe: '#1e3a8a',
   gunsmith: '#6b7280',
 };

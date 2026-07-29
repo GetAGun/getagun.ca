@@ -33,8 +33,9 @@ export default function MapPage() {
     return THEMES.includes(saved as MapTheme) ? (saved as MapTheme) : 'light';
   });
   useEffect(() => localStorage.setItem('map-theme', theme), [theme]);
-  // Collapsed by default on small screens — the panel covers too much map on mobile.
+  // Collapsed by default on small screens — the panels cover too much map on mobile.
   const [filtersOpen, setFiltersOpen] = useState(() => window.matchMedia('(min-width: 640px)').matches);
+  const [searchOpen, setSearchOpen] = useState(() => window.matchMedia('(min-width: 640px)').matches);
   const [locating, setLocating] = useState(false);
   const debounce = useRef<ReturnType<typeof setTimeout>>();
   const searchGen = useRef(0);
@@ -114,16 +115,40 @@ export default function MapPage() {
         </div>
       )}
 
-      {/* Search + nearest panel */}
+      {/* Search + nearest panel — collapses to a button so the map can go fullscreen */}
+      {!searchOpen && (
+        <button
+          onClick={() => setSearchOpen(true)}
+          aria-label={t('search_placeholder')}
+          className="absolute left-3 top-3 z-10 rounded-full bg-white p-3 shadow-lg"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5 text-slate-700">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      )}
+      {searchOpen && (
       <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] flex-col gap-2">
         <div className="rounded-lg bg-white p-2 shadow-lg">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t('search_placeholder')}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-            aria-label={t('search_placeholder')}
-          />
+          <div className="flex gap-1.5">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t('search_placeholder')}
+              className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm"
+              aria-label={t('search_placeholder')}
+            />
+            <button
+              onClick={() => setSearchOpen(false)}
+              aria-label={t('close')}
+              className="shrink-0 rounded-md px-2 text-slate-400 hover:text-slate-600"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                <path d="m18 15-6-6-6 6" />
+              </svg>
+            </button>
+          </div>
           {nameHits.length > 0 && (
             <ul className="mt-1 divide-y divide-slate-100">
               {nameHits.map((r) => (
@@ -187,33 +212,45 @@ export default function MapPage() {
           </div>
         )}
       </div>
+      )}
 
       {/* Category filter */}
       <details
         open={filtersOpen}
         onToggle={(e) => setFiltersOpen((e.target as HTMLDetailsElement).open)}
-        className="absolute bottom-3 left-3 z-10 max-h-[55vh] overflow-y-auto rounded-lg bg-white p-2 shadow-lg"
+        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-80"
       >
-        <summary className="cursor-pointer select-none text-xs font-semibold text-slate-600">
+        <summary className="cursor-pointer select-none px-1 py-1 text-sm font-semibold text-slate-700">
           {t('filters_title')}
         </summary>
-        {CATEGORIES.map((c) => (
-          <label key={c} className="flex cursor-pointer items-center gap-2 py-0.5 text-xs">
-            <input type="checkbox" checked={active.has(c)} onChange={() => toggle(c)} />
-            <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: CATEGORY_COLORS[c] }} />
-            {CATEGORY_LABELS[c][lang]}
-          </label>
-        ))}
-        <label className="mt-1 flex cursor-pointer items-center gap-2 border-t border-slate-200 pt-1.5 text-xs">
-          <input type="checkbox" checked={clustered} onChange={() => setClustered((v) => !v)} />
+        <div className="mt-2 grid grid-cols-2 gap-1.5">
+          {CATEGORIES.map((c) => {
+            const on = active.has(c);
+            return (
+              <button
+                key={c}
+                onClick={() => toggle(c)}
+                aria-pressed={on}
+                className={`flex items-center gap-2 rounded-md border px-2.5 py-2 text-left text-sm ${
+                  on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
+                }`}
+              >
+                <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: on ? CATEGORY_COLORS[c] : '#cbd5e1' }} />
+                <span className="leading-tight">{CATEGORY_LABELS[c][lang]}</span>
+              </button>
+            );
+          })}
+        </div>
+        <label className="mt-2 flex cursor-pointer items-center gap-2 border-t border-slate-200 pt-2 text-sm">
+          <input type="checkbox" checked={clustered} onChange={() => setClustered((v) => !v)} className="h-4 w-4" />
           {t('cluster_toggle')}
         </label>
-        <label className="mt-1.5 block border-t border-slate-200 pt-1.5 text-xs">
-          <span className="font-semibold text-slate-600">{t('theme_title')}</span>
+        <label className="mt-2 block border-t border-slate-200 pt-2 text-sm">
+          <span className="font-semibold text-slate-700">{t('theme_title')}</span>
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value as MapTheme)}
-            className="mt-0.5 w-full rounded-md border border-slate-300 px-2 py-1 text-xs"
+            className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
           >
             {THEMES.map((th) => {
               const flavor = th.replace('-nolabels', '') as MapFlavor;
