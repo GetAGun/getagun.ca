@@ -18,6 +18,13 @@ export function baseStyle(theme: MapTheme = 'light'): maplibregl.StyleSpecificat
   const flavor = theme.replace('-nolabels', '') as MapFlavor;
   let layers = pmLayers('protomaps', namedFlavor(flavor), { lang: 'en' }) as maplibregl.LayerSpecification[];
   if (theme.endsWith('-nolabels')) layers = layers.filter((l) => l.type !== 'symbol');
+  // Paint uncovered area (outside the Canada tile extract) as ocean instead of blank grey.
+  const bg = layers.find((l) => l.id === 'background');
+  const water = layers.find((l) => l.id === 'water');
+  const waterColor = water?.type === 'fill' ? water.paint?.['fill-color'] : undefined;
+  if (bg?.type === 'background' && typeof waterColor === 'string') {
+    bg.paint = { 'background-color': waterColor };
+  }
   return {
     version: 8,
     glyphs: `${ASSETS_URL}/fonts/{fontstack}/{range}.pbf`,
@@ -112,6 +119,10 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       style: baseStyle(themeRef.current),
       center: [-96, 56],
       zoom: 3.2,
+      // Slightly wider than the pmtiles extract bbox (-141, 41.6, -52.6, 83.2): tiles are
+      // included when they intersect it, so the periphery is covered at low zoom, and the
+      // water-coloured background hides the rare uncovered sliver at higher zooms.
+      maxBounds: [[-150, 41], [-45, 84]],
       attributionControl: { compact: true },
     });
     m.addControl(new maplibregl.NavigationControl(), 'top-right');

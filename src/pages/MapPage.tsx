@@ -58,6 +58,11 @@ export default function MapPage() {
   }, [query, lang]);
 
   const filtered = useMemo(() => retailers.filter((r) => active.has(r.category)), [retailers, active]);
+  const counts = useMemo(() => {
+    const m = {} as Record<Category, number>;
+    for (const r of retailers) m[r.category] = (m[r.category] ?? 0) + 1;
+    return m;
+  }, [retailers]);
   const results = useMemo(
     () => (origin ? nearest(filtered, origin.lat, origin.lon, 10) : []),
     [filtered, origin],
@@ -218,10 +223,15 @@ export default function MapPage() {
       <details
         open={filtersOpen}
         onToggle={(e) => setFiltersOpen((e.target as HTMLDetailsElement).open)}
-        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-80"
+        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-[21rem]"
       >
         <summary className="cursor-pointer select-none px-1 py-1 text-sm font-semibold text-slate-700">
           {t('filters_title')}
+          {retailers.length > 0 && (
+            <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full bg-slate-800 px-1.5 align-text-bottom text-xs font-medium leading-none tabular-nums text-white">
+              {retailers.length}
+            </span>
+          )}
         </summary>
         <div className="mt-2 grid grid-cols-2 gap-1.5">
           {CATEGORIES.map((c) => {
@@ -231,12 +241,19 @@ export default function MapPage() {
                 key={c}
                 onClick={() => toggle(c)}
                 aria-pressed={on}
-                className={`flex items-center gap-2 rounded-md border px-2.5 py-2 text-left text-sm ${
+                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm ${
                   on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
                 }`}
               >
                 <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: on ? CATEGORY_COLORS[c] : '#cbd5e1' }} />
                 <span className="leading-tight">{CATEGORY_LABELS[c][lang]}</span>
+                <span
+                  className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
+                    on ? 'bg-slate-100 text-slate-600' : 'bg-white text-slate-400'
+                  }`}
+                >
+                  {counts[c] ?? 0}
+                </span>
               </button>
             );
           })}
