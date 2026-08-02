@@ -57,7 +57,14 @@ function toGeoJSON(retailers: Retailer[]): GeoJSON.FeatureCollection {
   };
 }
 
-function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean) {
+// Selected pin renders larger with a thicker halo.
+const sizeExprs = (sel: number | null) =>
+  ({
+    'circle-radius': ['case', ['==', ['get', 'id'], sel ?? -1], 12, 7],
+    'circle-stroke-width': ['case', ['==', ['get', 'id'], sel ?? -1], 3, 2],
+  }) as unknown as Record<'circle-radius' | 'circle-stroke-width', maplibregl.ExpressionSpecification>;
+
+function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean, sel: number | null = null) {
   m.addSource('retailers', {
     type: 'geojson',
     data,
@@ -85,9 +92,8 @@ function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, c
     filter: ['!', ['has', 'point_count']],
     paint: {
       'circle-color': colorExpr,
-      'circle-radius': 7,
-      'circle-stroke-width': 2,
       'circle-stroke-color': '#ffffff',
+      ...sizeExprs(sel),
     },
   });
 }
@@ -98,9 +104,10 @@ interface Props {
   flyTo?: { lat: number; lon: number } | null;
   clustered?: boolean;
   theme?: MapTheme;
+  selectedId?: number | null;
 }
 
-export default function RetailerMap({ retailers, onSelect, flyTo, clustered = true, theme = 'light' }: Props) {
+export default function RetailerMap({ retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const loaded = useRef(false);
@@ -112,6 +119,8 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   clusteredRef.current = clustered;
   const themeRef = useRef(theme);
   themeRef.current = theme;
+  const selectedIdRef = useRef(selectedId);
+  selectedIdRef.current = selectedId;
 
   useEffect(() => {
     const m = new maplibregl.Map({
@@ -126,12 +135,19 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       attributionControl: { compact: true },
     });
     m.addControl(new maplibregl.NavigationControl(), 'top-right');
+    // Fullscreens the map container itself, which also hides every overlay outside it.
+    // Hidden automatically on browsers without the Fullscreen API (iPhone Safari).
+    m.addControl(new maplibregl.FullscreenControl(), 'top-right');
     m.on('load', () => {
-      addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current);
+      addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
       m.on('click', 'points', (e) => {
         const id = e.features?.[0]?.properties?.id as number | undefined;
         const r = retailersRef.current.find((x) => x.id === id);
-        if (r) onSelectRef.current(r);
+        if (r) {
+          // The retailer card lives outside the map container — leave fullscreen to show it.
+          if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+          onSelectRef.current(r);
+        }
       });
       m.on('click', 'clusters', (e) => {
         const f = e.features?.[0];
@@ -161,7 +177,7 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     if (!m || !loaded.current) return;
     for (const id of ['clusters', 'cluster-count', 'points']) if (m.getLayer(id)) m.removeLayer(id);
     if (m.getSource('retailers')) m.removeSource('retailers');
-    addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered);
+    addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered, selectedIdRef.current);
   }, [clustered]);
 
   // setStyle wipes custom sources/layers — re-add them once the new style loads.
@@ -170,9 +186,17 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     if (!m || !loaded.current) return;
     m.setStyle(baseStyle(theme));
     m.once('style.load', () => {
-      addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current);
+      addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
     });
   }, [theme]);
+
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !loaded.current || !m.getLayer('points')) return;
+    const exprs = sizeExprs(selectedId);
+    m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
+    m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
+  }, [selectedId]);
 
   useEffect(() => {
     if (flyTo) map.current?.flyTo({ center: [flyTo.lon, flyTo.lat], zoom: 10 });

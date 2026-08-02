@@ -112,7 +112,7 @@ export default function MapPage() {
 
   return (
     <div className="relative h-full">
-      <RetailerMap retailers={filtered} onSelect={setSelected} flyTo={flyTarget} clustered={clustered} theme={theme} />
+      <RetailerMap retailers={filtered} onSelect={setSelected} flyTo={flyTarget} clustered={clustered} theme={theme} selectedId={selected?.id ?? null} />
 
       {loadError && (
         <div className="absolute inset-x-0 top-0 z-20 bg-red-600 py-2 text-center text-sm text-white">
