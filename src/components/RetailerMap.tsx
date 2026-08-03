@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Protocol } from 'pmtiles';
 import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps';
 import * as GeoJSON from 'geojson';
 import { CATEGORY_COLORS, type Retailer } from '../../shared/const';
+import { useT } from '../lib/i18n';
 
 maplibregl.addProtocol('pmtiles', new Protocol().tile);
 const PMTILES_URL = import.meta.env.VITE_PMTILES_URL as string;
@@ -121,6 +122,12 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   themeRef.current = theme;
   const selectedIdRef = useRef(selectedId);
   selectedIdRef.current = selectedId;
+  const t = useT();
+  const [inView, setInView] = useState<number | null>(null);
+  const updateInView = (m: maplibregl.Map) => {
+    const b = m.getBounds();
+    setInView(retailersRef.current.filter((r) => b.contains([r.lon, r.lat])).length);
+  };
 
   useEffect(() => {
     const m = new maplibregl.Map({
@@ -159,6 +166,8 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       });
       m.on('mouseenter', 'points', () => { m.getCanvas().style.cursor = 'pointer'; });
       m.on('mouseleave', 'points', () => { m.getCanvas().style.cursor = ''; });
+      m.on('move', () => updateInView(m));
+      updateInView(m);
       loaded.current = true;
     });
     map.current = m;
@@ -168,6 +177,8 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   useEffect(() => {
     if (!loaded.current) return;
     (map.current?.getSource('retailers') as maplibregl.GeoJSONSource | undefined)?.setData(toGeoJSON(retailers));
+    if (map.current) updateInView(map.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [retailers]);
 
   // Rebuild source+layers on toggle: MapLibre fixes the cluster option at source creation.
@@ -202,5 +213,14 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     if (flyTo) map.current?.flyTo({ center: [flyTo.lon, flyTo.lat], zoom: 10 });
   }, [flyTo]);
 
-  return <div ref={container} className="h-full w-full" />;
+  // The badge lives inside the map container so it stays visible in fullscreen.
+  return (
+    <div ref={container} className="relative h-full w-full">
+      {inView !== null && (
+        <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/90 px-3 py-1 text-xs font-medium tabular-nums text-slate-700 shadow">
+          {inView} {t('stores_in_view')}
+        </div>
+      )}
+    </div>
+  );
 }
