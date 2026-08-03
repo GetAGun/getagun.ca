@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import type { Faq } from '../../shared/const';
 import { admin, type FaqForm } from '../lib/api';
+import { Rich } from '../lib/richtext';
 
 const EMPTY: FaqForm = { question_en: '', answer_en: '', question_fr: null, answer_fr: null, position: 0 };
 const field = 'w-full rounded-md border border-slate-300 px-3 py-2 text-sm';
@@ -52,6 +53,16 @@ export default function AdminFaq() {
         <label className="text-sm">Answer (English)
           <textarea value={form.answer_en} onChange={(e) => set('answer_en', e.target.value)} required maxLength={5000} rows={4} className={field} />
         </label>
+        <p className="-mt-2 text-xs text-slate-500">
+          Formatting: [link text](https://example.com or /path), ![image caption](/path.png), **bold**, *italic*. Blank line = new paragraph.
+        </p>
+        {form.answer_en && (
+          <details className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm">
+            <summary className="cursor-pointer select-none text-xs font-medium text-slate-500">Preview</summary>
+            <Rich className="mt-1 whitespace-pre-line leading-6" text={form.answer_en} />
+            {form.answer_fr && <Rich className="mt-2 whitespace-pre-line border-t border-slate-200 pt-2 leading-6" text={form.answer_fr} />}
+          </details>
+        )}
         <label className="text-sm">Question (French — optional, falls back to English)
           <input value={form.question_fr ?? ''} onChange={(e) => set('question_fr', e.target.value || null)} maxLength={300} className={field} />
         </label>

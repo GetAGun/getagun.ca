@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { Faq } from '../../shared/const';
 import { getFaqs } from '../lib/api';
 import { useLang, useT } from '../lib/i18n';
+import { Rich } from '../lib/richtext';
 
 export default function FaqPage() {
   const t = useT();
@@ -24,9 +25,10 @@ export default function FaqPage() {
             <summary className="cursor-pointer select-none font-medium">
               {lang === 'fr' && f.question_fr ? f.question_fr : f.question_en}
             </summary>
-            <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-700">
-              {lang === 'fr' && f.answer_fr ? f.answer_fr : f.answer_en}
-            </p>
+            <Rich
+              className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-700"
+              text={lang === 'fr' && f.answer_fr ? f.answer_fr : f.answer_en}
+            />
           </details>
         ))}
       </div>
