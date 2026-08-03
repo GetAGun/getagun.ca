@@ -29,6 +29,7 @@ export default function AdminPage() {
   const [coordText, setCoordText] = useState('');
   const [addrText, setAddrText] = useState('');
   const [listQuery, setListQuery] = useState('');
+  const [listSort, setListSort] = useState<'name' | 'city' | 'province' | 'category'>('name');
   const [gmapsText, setGmapsText] = useState('');
   // Warn (don't block) when the pin sits within 100 m of an existing retailer — likely a duplicate.
   const nearbyExisting = useMemo(() => {
@@ -38,9 +39,29 @@ export default function AdminPage() {
     );
   }, [retailers, form.lat, form.lon, editingId]);
   const fold = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
-  const listedRetailers = listQuery.trim()
-    ? retailers.filter((r) => fold([r.name, r.city, r.address, r.province].join(' ')).includes(fold(listQuery.trim())))
-    : retailers;
+  const listedRetailers = useMemo(() => {
+    const q = fold(listQuery.trim());
+    const matched = q
+      ? retailers.filter((r) =>
+          fold([r.name, r.city, r.address, r.province, CATEGORY_LABELS[r.category].en].join(' ')).includes(q))
+      : retailers;
+    const cmp = new Intl.Collator('en', { sensitivity: 'base' }).compare;
+    const keys: Record<typeof listSort, (r: Retailer) => string[]> = {
+      name: (r) => [r.name],
+      city: (r) => [r.city, r.name],
+      province: (r) => [r.province, r.city, r.name],
+      category: (r) => [CATEGORY_LABELS[r.category].en, r.name],
+    };
+    const key = keys[listSort];
+    return [...matched].sort((a, b) => {
+      const ka = key(a), kb = key(b);
+      for (let i = 0; i < ka.length; i++) {
+        const d = cmp(ka[i], kb[i]);
+        if (d) return d;
+      }
+      return 0;
+    });
+  }, [retailers, listQuery, listSort]);
 
   const reload = () => {
     admin.getRetailers().then(setRetailers).catch(() => setMsg('Failed to load retailers'));
@@ -342,13 +363,28 @@ export default function AdminPage() {
       </ul>
 
       <h2 className="mt-8 text-lg font-semibold">Retailers ({retailers.length})</h2>
-      <input
-        value={listQuery}
-        onChange={(e) => setListQuery(e.target.value)}
-        placeholder="Search by name, city, address or province…"
-        className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
-        aria-label="Search retailers"
-      />
+      <div className="mt-2 flex gap-2">
+        <input
+          value={listQuery}
+          onChange={(e) => setListQuery(e.target.value)}
+          placeholder="Search by name, city, address, province or category…"
+          className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm"
+          aria-label="Search retailers"
+        />
+        <label className="flex shrink-0 items-center gap-1.5 text-sm text-slate-600">
+          Sort
+          <select
+            value={listSort}
+            onChange={(e) => setListSort(e.target.value as typeof listSort)}
+            className="rounded-md border border-slate-300 px-2 py-2 text-sm"
+          >
+            <option value="name">Name</option>
+            <option value="city">City/town</option>
+            <option value="province">Province</option>
+            <option value="category">Category</option>
+          </select>
+        </label>
+      </div>
       {listQuery && (
         <p className="mt-1 text-xs text-slate-500">
           {listedRetailers.length ? `${listedRetailers.length} match${listedRetailers.length === 1 ? '' : 'es'}` : 'No matches — not added yet'}
