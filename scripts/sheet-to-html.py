@@ -14,6 +14,10 @@ rows = [
     if any(v not in (None, '') for v in row)
 ]
 header, body = rows[0], rows[1:]
+# drop trailing columns that are empty throughout (stray formatting widens sheets)
+while header and not header[-1] and all(len(r) < len(header) or not r[len(header) - 1] for r in body):
+    header = header[:-1]
+    body = [r[: len(header)] for r in body]
 
 def cell(v: str) -> str:
     if v.startswith('http://') or v.startswith('https://'):
@@ -25,7 +29,7 @@ fi = header.index('firearms') if 'firearms' in header else None
 
 def row_class(r: list) -> str:
     v = r[fi].strip().lower() if fi is not None and fi < len(r) else ''
-    return ' class="y"' if v == 'yes' else (' class="n"' if v == 'no' else '')
+    return {'yes': ' class="y"', 'no': ' class="n"', 'unknown': ' class="u"'}.get(v, '')
 
 xlsx_name = src.rsplit('/', 1)[-1]
 parts = [
@@ -46,6 +50,7 @@ parts = [
     'tbody tr:nth-child(even){background:#f8fafc}',
     'tbody tr.y{background:#dcfce7}',
     'tbody tr.n{background:#fee2e2}',
+    'tbody tr.u{background:#fef9c3}',
     '.chip{padding:.15rem .5rem;border-radius:9999px;color:#1e293b;font-size:.75rem}',
     'td a{color:#2563eb}',
     '</style></head><body>',
@@ -55,6 +60,7 @@ parts = [
     f'<span style="font-size:.8rem;color:#94a3b8">{len(body)} rows</span>',
     '<span class="chip" style="background:#dcfce7">stocks firearms</span>' if fi is not None else '',
     '<span class="chip" style="background:#fee2e2">does not</span>' if fi is not None else '',
+    '<span class="chip" style="background:#fef9c3">unknown</span>' if fi is not None else '',
     '</header><div class="wrap"><table><thead><tr>',
     *[f'<th>{html.escape(h)}</th>' for h in header],
     '</tr></thead><tbody>',
