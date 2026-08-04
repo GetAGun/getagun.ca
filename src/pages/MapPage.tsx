@@ -20,7 +20,12 @@ export default function MapPage() {
   const { lang } = useLang();
   const [retailers, setRetailers] = useState<Retailer[]>([]);
   const [loadError, setLoadError] = useState(false);
-  const [active, setActive] = useState<Set<Category>>(new Set(CATEGORIES));
+  // ?categories=canadian-tire,sail preselects category filters; anything invalid falls back to all.
+  const [active, setActive] = useState<Set<Category>>(() => {
+    const param = new URLSearchParams(window.location.search).get('categories');
+    const picked = param?.split(',').filter((c): c is Category => CATEGORIES.includes(c as Category));
+    return new Set(picked?.length ? picked : CATEGORIES);
+  });
   const [selected, setSelected] = useState<Retailer | null>(null);
   const [query, setQuery] = useState('');
   const [hits, setHits] = useState<GeocodeHit[]>([]);
