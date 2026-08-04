@@ -5,3 +5,8 @@ dist/
 .wrangler/
 .dev.vars
 .~lock.*
+
+# root-level research sheets stay local (published copies live in public/sheets/)
+/*.xlsx
+/*.csv
+!/retailers-by-category.xlsx
