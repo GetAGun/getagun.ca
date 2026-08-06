@@ -52,10 +52,10 @@ export default function Layout() {
         )}
       </header>
       {/* Map pins the footer; other pages scroll it in after their content so it never overlaps. */}
-      <main className={`min-h-0 flex-1 ${isMap ? '' : 'overflow-y-auto'}`}>
+      <main className={`min-h-0 flex-1 ${isMap ? '' : 'flex flex-col overflow-y-auto'}`}>
         <Outlet />
         {!isAdmin && !isMap && (
-          <footer className="bg-slate-900 px-4 py-2 text-center text-xs text-slate-400">
+          <footer className="mt-auto bg-slate-900 px-4 py-2 text-center text-xs text-slate-400">
             {t('footer_privacy')}
           </footer>
         )}

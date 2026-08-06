@@ -10,7 +10,7 @@ export function richtextHtml(src: string): string {
   // Images before links — the image syntax contains the link syntax.
   let out = escapeHtml(src).replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (whole, alt: string, imgSrc: string) => {
     if (!SAFE_HREF.test(imgSrc)) return whole;
-    anchors.push(`<img src="${imgSrc}" alt="${alt}" loading="lazy" class="mt-2 max-w-full rounded-md border border-slate-200" />`);
+    anchors.push(`<img src="${imgSrc}" alt="${alt}" loading="lazy" class="mt-3 ml-[50%] w-auto max-w-[calc(100vw_-_4rem)] -translate-x-1/2 rounded-md border border-slate-200" />`);
     return `\u0000${anchors.length - 1}\u0000`;
   });
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (whole, label: string, href: string) => {
