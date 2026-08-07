@@ -15,7 +15,7 @@ export default function Layout() {
       <header className="flex flex-wrap items-center gap-x-4 gap-y-1 bg-slate-900 px-3 py-2 sm:px-4">
         <Link to="/" className="order-1 flex items-center gap-2 font-display text-xl font-semibold tracking-wide text-white">
           <img src="/logo.png" alt="" className="h-8 w-auto" />
-          GetAGun<span className="text-[#1b703c]">.ca</span>
+          GetAGun<span className="text-[#e6262a]">.ca</span>
         </Link>
         <span className="hidden text-xs text-slate-400 lg:order-2 lg:block">{t('tagline')}</span>
         <a

@@ -64,7 +64,7 @@ parts = [
     'header a:hover{text-decoration:underline}',
     '.wrap{overflow-x:auto}',
     'table{border-collapse:collapse;font-size:.85rem;min-width:100%}',
-    'th{position:sticky;top:0;background:#1b703c;color:#fff;text-align:left;padding:.45rem .6rem;white-space:nowrap}',
+    'th{position:sticky;top:0;background:#c8181d;color:#fff;text-align:left;padding:.45rem .6rem;white-space:nowrap}',
     'td{padding:.4rem .6rem;border-bottom:1px solid #e2e8f0;white-space:nowrap}',
     'tbody tr:nth-child(even){background:#f8fafc}',
     'tbody tr.y{background:#dcfce7}',
