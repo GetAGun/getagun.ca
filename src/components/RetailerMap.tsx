@@ -58,6 +58,29 @@ function toGeoJSON(retailers: Retailer[]): GeoJSON.FeatureCollection {
   };
 }
 
+// MapLibre circles are single-colour, so the split co-op pin is a prerendered icon.
+function coopPinImage(): ImageData {
+  const c = document.createElement('canvas');
+  c.width = c.height = 36; // (circle-radius 7 + stroke 2) * pixelRatio 2
+  const ctx = c.getContext('2d')!;
+  ctx.beginPath(); ctx.arc(18, 18, 14, Math.PI / 2, (3 * Math.PI) / 2); ctx.closePath();
+  ctx.fillStyle = '#ffffff'; ctx.fill();
+  ctx.beginPath(); ctx.arc(18, 18, 14, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+  ctx.fillStyle = CATEGORY_COLORS.coop; ctx.fill();
+  ctx.beginPath(); ctx.arc(18, 18, 13.5, 0, 2 * Math.PI); // hairline keeps the white half visible
+  ctx.lineWidth = 1.5; ctx.strokeStyle = '#94a3b8'; ctx.stroke();
+  ctx.beginPath(); ctx.arc(18, 18, 16, 0, 2 * Math.PI); // white ring matching circle-stroke
+  ctx.lineWidth = 4; ctx.strokeStyle = '#ffffff'; ctx.stroke();
+  return ctx.getImageData(0, 0, 36, 36);
+}
+
+function ensureCoopIcon(m: maplibregl.Map) {
+  if (!m.hasImage('coop-pin')) m.addImage('coop-pin', coopPinImage(), { pixelRatio: 2 });
+}
+
+const iconSizeExpr = (sel: number | null) =>
+  ['case', ['==', ['get', 'id'], sel ?? -1], 12 / 7, 1] as unknown as maplibregl.ExpressionSpecification;
+
 // Selected pin renders larger with a thicker halo.
 const sizeExprs = (sel: number | null) =>
   ({
@@ -66,6 +89,7 @@ const sizeExprs = (sel: number | null) =>
   }) as unknown as Record<'circle-radius' | 'circle-stroke-width', maplibregl.ExpressionSpecification>;
 
 function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean, sel: number | null = null) {
+  ensureCoopIcon(m);
   m.addSource('retailers', {
     type: 'geojson',
     data,
@@ -90,11 +114,21 @@ function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, c
   }
   m.addLayer({
     id: 'points', type: 'circle', source: 'retailers',
-    filter: ['!', ['has', 'point_count']],
+    filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'category'], 'coop']],
     paint: {
       'circle-color': colorExpr,
       'circle-stroke-color': '#ffffff',
       ...sizeExprs(sel),
+    },
+  });
+  m.addLayer({
+    id: 'points-coop', type: 'symbol', source: 'retailers',
+    filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'category'], 'coop']],
+    layout: {
+      'icon-image': 'coop-pin',
+      'icon-size': iconSizeExpr(sel),
+      'icon-allow-overlap': true,
+      'icon-ignore-placement': true,
     },
   });
 }
@@ -147,15 +181,19 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     m.addControl(new maplibregl.FullscreenControl(), 'top-right');
     m.on('load', () => {
       addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
-      m.on('click', 'points', (e) => {
-        const id = e.features?.[0]?.properties?.id as number | undefined;
-        const r = retailersRef.current.find((x) => x.id === id);
-        if (r) {
-          // The retailer card lives outside the map container — leave fullscreen to show it.
-          if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-          onSelectRef.current(r);
-        }
-      });
+      for (const layer of ['points', 'points-coop']) {
+        m.on('click', layer, (e) => {
+          const id = e.features?.[0]?.properties?.id as number | undefined;
+          const r = retailersRef.current.find((x) => x.id === id);
+          if (r) {
+            // The retailer card lives outside the map container — leave fullscreen to show it.
+            if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+            onSelectRef.current(r);
+          }
+        });
+        m.on('mouseenter', layer, () => { m.getCanvas().style.cursor = 'pointer'; });
+        m.on('mouseleave', layer, () => { m.getCanvas().style.cursor = ''; });
+      }
       m.on('click', 'clusters', (e) => {
         const f = e.features?.[0];
         if (!f) return;
@@ -164,8 +202,6 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
           m.easeTo({ center: (f.geometry as GeoJSON.Point).coordinates as [number, number], zoom }),
         ).catch(() => {});
       });
-      m.on('mouseenter', 'points', () => { m.getCanvas().style.cursor = 'pointer'; });
-      m.on('mouseleave', 'points', () => { m.getCanvas().style.cursor = ''; });
       m.on('move', () => updateInView(m));
       updateInView(m);
       loaded.current = true;
@@ -186,7 +222,7 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded.current) return;
-    for (const id of ['clusters', 'cluster-count', 'points']) if (m.getLayer(id)) m.removeLayer(id);
+    for (const id of ['clusters', 'cluster-count', 'points', 'points-coop']) if (m.getLayer(id)) m.removeLayer(id);
     if (m.getSource('retailers')) m.removeSource('retailers');
     addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered, selectedIdRef.current);
   }, [clustered]);
@@ -207,6 +243,7 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     const exprs = sizeExprs(selectedId);
     m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
     m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
+    if (m.getLayer('points-coop')) m.setLayoutProperty('points-coop', 'icon-size', iconSizeExpr(selectedId));
   }, [selectedId]);
 
   useEffect(() => {

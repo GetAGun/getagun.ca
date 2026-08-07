@@ -7,6 +7,8 @@ export const CATEGORIES = [
   'bass-pro-cabelas',
   'sail',
   'latulippe',
+  'coop',
+  'fcnq',
   'gunsmith',
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -20,6 +22,8 @@ export const CATEGORY_LABELS: Record<Category, { en: string; fr: string }> = {
   'bass-pro-cabelas': { en: "Bass Pro / Cabela's", fr: "Bass Pro / Cabela's" },
   sail: { en: 'SAIL', fr: 'SAIL' },
   latulippe: { en: 'Latulippe', fr: 'Latulippe' },
+  coop: { en: 'Co-op', fr: 'Co-op' },
+  fcnq: { en: 'FCNQ', fr: 'FCNQ' },
   gunsmith: { en: 'Gunsmith', fr: 'Armurier' },
 };
 
@@ -32,6 +36,8 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   'bass-pro-cabelas': '#14532d',
   sail: '#f97316',
   latulippe: '#1e3a8a',
+  coop: '#d2042d', // cherry half of the split pin; the map and UI render white/cherry
+  fcnq: '#9bc4e2',
   gunsmith: '#6b7280',
 };
 

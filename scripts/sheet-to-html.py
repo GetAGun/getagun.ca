@@ -1,11 +1,21 @@
 # Renders an .xlsx worksheet as a standalone HTML page so visitors can view it
-# in the browser. Usage: python scripts/sheet-to-html.py <in.xlsx> <out.html> <title>
+# in the browser.
+# Usage: python scripts/sheet-to-html.py <in.xlsx> <out.html> <title> [en|fr] [alt-lang-url]
 import html
 import sys
 
 import openpyxl
 
 src, out, title = sys.argv[1], sys.argv[2], sys.argv[3]
+lang = sys.argv[4] if len(sys.argv) > 4 else 'en'
+alt = sys.argv[5] if len(sys.argv) > 5 else ''
+UI = {
+    'en': {'dl': 'Download (.xlsx)', 'rows': 'rows', 'y': 'stocks firearms', 'n': 'does not',
+           'u': 'unknown', 'link': 'link', 'alt': 'Français'},
+    'fr': {'dl': 'Télécharger (.xlsx)', 'rows': 'lignes', 'y': 'vend des armes à feu', 'n': "n'en vend pas",
+           'u': 'inconnu', 'link': 'lien', 'alt': 'English'},
+}[lang]
+
 ws = openpyxl.load_workbook(src, read_only=True).worksheets[0]
 ws.reset_dimensions()  # declared dimensions can span every formatted (empty) row
 rows = [
@@ -21,19 +31,28 @@ while header and not header[-1] and all(len(r) < len(header) or not r[len(header
 
 def cell(v: str) -> str:
     if v.startswith('http://') or v.startswith('https://'):
-        return f'<a href="{html.escape(v, quote=True)}" target="_blank" rel="noopener noreferrer">link</a>'
+        return f'<a href="{html.escape(v, quote=True)}" target="_blank" rel="noopener noreferrer">{UI["link"]}</a>'
     return html.escape(v)
 
 # Colour-code rows by the firearms yes/no column when present.
-fi = header.index('firearms') if 'firearms' in header else None
+fi = next((header.index(h) for h in ('firearms', 'armes à feu') if h in header), None)
+CLASSES = {'yes': 'y', 'oui': 'y', 'no': 'n', 'non': 'n', 'unknown': 'u', 'inconnu': 'u'}
 
 def row_class(r: list) -> str:
     v = r[fi].strip().lower() if fi is not None and fi < len(r) else ''
-    return {'yes': ' class="y"', 'no': ' class="n"', 'unknown': ' class="u"'}.get(v, '')
+    c = CLASSES.get(v)
+    return f' class="{c}"' if c else ''
 
+def tr(r: list) -> str:
+    # rows with only a leading value are section banners
+    if r[0] and all(not v for v in r[1:]):
+        return f'<tr class="s"><td colspan="{len(header)}">{html.escape(r[0])}</td></tr>'
+    return f'<tr{row_class(r)}>{"".join(f"<td>{cell(v)}</td>" for v in r)}</tr>'
+
+nrows = sum(1 for r in body if not (r[0] and all(not v for v in r[1:])))
 xlsx_name = src.rsplit('/', 1)[-1]
 parts = [
-    '<!doctype html><html lang="en"><head><meta charset="utf-8">',
+    f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
     f'<title>{html.escape(title)}</title>',
     '<link rel="icon" href="/favicon.ico">',
@@ -51,22 +70,24 @@ parts = [
     'tbody tr.y{background:#dcfce7}',
     'tbody tr.n{background:#fee2e2}',
     'tbody tr.u{background:#fef9c3}',
+    'tbody tr.s td{background:#e2e8f0;font-weight:600}',
     '.chip{padding:.15rem .5rem;border-radius:9999px;color:#1e293b;font-size:.75rem}',
     'td a{color:#2563eb}',
     '</style></head><body>',
     f'<header><h1>{html.escape(title)}</h1>',
     '<a href="/">&larr; getagun.ca</a>',
-    f'<a href="{html.escape(xlsx_name)}" download>Download (.xlsx)</a>',
-    f'<span style="font-size:.8rem;color:#94a3b8">{len(body)} rows</span>',
-    '<span class="chip" style="background:#dcfce7">stocks firearms</span>' if fi is not None else '',
-    '<span class="chip" style="background:#fee2e2">does not</span>' if fi is not None else '',
-    '<span class="chip" style="background:#fef9c3">unknown</span>' if fi is not None else '',
+    f'<a href="{html.escape(xlsx_name)}" download>{UI["dl"]}</a>',
+    f'<a href="{html.escape(alt, quote=True)}">{UI["alt"]}</a>' if alt else '',
+    f'<span style="font-size:.8rem;color:#94a3b8">{nrows} {UI["rows"]}</span>',
+    f'<span class="chip" style="background:#dcfce7">{UI["y"]}</span>' if fi is not None else '',
+    f'<span class="chip" style="background:#fee2e2">{UI["n"]}</span>' if fi is not None else '',
+    f'<span class="chip" style="background:#fef9c3">{UI["u"]}</span>' if fi is not None else '',
     '</header><div class="wrap"><table><thead><tr>',
     *[f'<th>{html.escape(h)}</th>' for h in header],
     '</tr></thead><tbody>',
-    *[f'<tr{row_class(r)}>{"".join(f"<td>{cell(v)}</td>" for v in r)}</tr>' for r in body],
+    *[tr(r) for r in body],
     '</tbody></table></div></body></html>',
 ]
 with open(out, 'w') as f:
     f.write(''.join(parts))
-print(f'{out}: {len(body)} rows')
+print(f'{out}: {nrows} {UI["rows"]}')

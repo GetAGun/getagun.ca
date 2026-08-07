@@ -41,6 +41,10 @@ export default function Layout() {
           <NavLink to="/licence" className={nav}>{t('nav_licence')}</NavLink>
           <NavLink to="/faq" className={nav}>{t('nav_faq')}</NavLink>
           <NavLink to="/suggest" className={nav}>{t('nav_suggest')}</NavLink>
+          {/* static page, not an SPA route */}
+          <a href={lang === 'fr' ? '/sheets/retailers-by-category-fr' : '/sheets/retailers-by-category'} className={nav({ isActive: false })}>
+            {t('nav_sheet')}
+          </a>
         </nav>
         {isMap && (
           <Link

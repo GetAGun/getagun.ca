@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS retailers (
   description TEXT,
   category TEXT NOT NULL CHECK (category IN (
     'independent','home-hardware','canadian-tire','pronature','ecotone',
-    'bass-pro-cabelas','sail','latulippe','gunsmith')),
+    'bass-pro-cabelas','sail','latulippe','coop','fcnq','gunsmith')),
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT
 );

@@ -6,6 +6,12 @@ import { nearest } from '../lib/geo';
 import { geocode, type GeocodeHit } from '../lib/geocode';
 import { useLang, useT, type StringKey } from '../lib/i18n';
 
+// Co-op pins are split white/cherry — mirror that in the UI dots.
+const swatch = (c: Category) =>
+  c === 'coop'
+    ? { background: `linear-gradient(90deg, #ffffff 50%, ${CATEGORY_COLORS.coop} 50%)`, boxShadow: 'inset 0 0 0 1px #cbd5e1' }
+    : { background: CATEGORY_COLORS[c] };
+
 const FLAVOR_KEY: Record<MapFlavor, StringKey> = {
   light: 'theme_light',
   dark: 'theme_dark',
@@ -164,7 +170,7 @@ export default function MapPage() {
               {nameHits.map((r) => (
                 <li key={r.id}>
                   <button onClick={() => pickRetailer(r)} className="flex w-full items-center gap-2 px-2 py-1.5 text-left text-sm hover:bg-slate-100">
-                    <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: CATEGORY_COLORS[r.category] }} />
+                    <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={swatch(r.category)} />
                     <span className="truncate">
                       <span className="font-medium">{r.name}</span>
                       <span className="text-slate-500"> — {r.city}, {r.province}</span>
@@ -250,7 +256,7 @@ export default function MapPage() {
                   on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
                 }`}
               >
-                <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: on ? CATEGORY_COLORS[c] : '#cbd5e1' }} />
+                <span className="h-3 w-3 shrink-0 rounded-full" style={on ? swatch(c) : { background: '#cbd5e1' }} />
                 <span className="leading-tight">{CATEGORY_LABELS[c][lang]}</span>
                 <span
                   className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
