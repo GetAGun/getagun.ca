@@ -39,6 +39,7 @@ export default function MapPage() {
   const [origin, setOrigin] = useState<{ lat: number; lon: number; label: string } | null>(null);
   const [flyTarget, setFlyTarget] = useState<{ lat: number; lon: number } | null>(null);
   const [clustered, setClustered] = useState(true);
+  const [density, setDensity] = useState(false);
   const [theme, setTheme] = useState<MapTheme>(() => {
     const saved = localStorage.getItem('map-theme');
     return THEMES.includes(saved as MapTheme) ? (saved as MapTheme) : 'light';
@@ -123,7 +124,7 @@ export default function MapPage() {
 
   return (
     <div className="relative h-full">
-      <RetailerMap retailers={filtered} onSelect={setSelected} flyTo={flyTarget} clustered={clustered} theme={theme} selectedId={selected?.id ?? null} />
+      <RetailerMap retailers={filtered} onSelect={setSelected} flyTo={flyTarget} clustered={clustered && !density} theme={theme} selectedId={selected?.id ?? null} density={density} />
 
       {loadError && (
         <div className="absolute inset-x-0 top-0 z-20 bg-red-600 py-2 text-center text-sm text-white">
@@ -272,6 +273,10 @@ export default function MapPage() {
         <label className="mt-2 flex cursor-pointer items-center gap-2 border-t border-slate-200 pt-2 text-sm">
           <input type="checkbox" checked={clustered} onChange={() => setClustered((v) => !v)} className="h-4 w-4" />
           {t('cluster_toggle')}
+        </label>
+        <label className="mt-2 flex items-center gap-2 text-sm">
+          <input type="checkbox" checked={density} onChange={() => setDensity((v) => !v)} className="h-4 w-4" />
+          {t('density_toggle')}
         </label>
         <label className="mt-2 block border-t border-slate-200 pt-2 text-sm">
           <span className="font-semibold text-slate-700">{t('theme_title')}</span>

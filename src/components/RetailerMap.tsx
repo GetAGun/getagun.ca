@@ -5,7 +5,8 @@ import { Protocol } from 'pmtiles';
 import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps';
 import * as GeoJSON from 'geojson';
 import { CATEGORY_COLORS, type Retailer } from '../../shared/const';
-import { useT } from '../lib/i18n';
+import { DENSITY_STOPS, densityByCd, loadCds } from '../lib/density';
+import { useLang, useT } from '../lib/i18n';
 
 maplibregl.addProtocol('pmtiles', new Protocol().tile);
 const PMTILES_URL = import.meta.env.VITE_PMTILES_URL as string;
@@ -81,12 +82,18 @@ function ensureCoopIcon(m: maplibregl.Map) {
 const iconSizeExpr = (sel: number | null) =>
   ['case', ['==', ['get', 'id'], sel ?? -1], 12 / 7, 1] as unknown as maplibregl.ExpressionSpecification;
 
-// Selected pin renders larger with a thicker halo.
-const sizeExprs = (sel: number | null) =>
+// Selected pin renders larger with a thicker halo. Density view shrinks pins to dots.
+const sizeExprs = (sel: number | null, small = false) =>
   ({
-    'circle-radius': ['case', ['==', ['get', 'id'], sel ?? -1], 12, 7],
-    'circle-stroke-width': ['case', ['==', ['get', 'id'], sel ?? -1], 3, 2],
+    'circle-radius': ['case', ['==', ['get', 'id'], sel ?? -1], small ? 7 : 12, small ? 2.5 : 7],
+    'circle-stroke-width': ['case', ['==', ['get', 'id'], sel ?? -1], small ? 1.5 : 3, small ? 0.75 : 2],
   }) as unknown as Record<'circle-radius' | 'circle-stroke-width', maplibregl.ExpressionSpecification>;
+
+const densityFill = [
+  'step', ['coalesce', ['feature-state', 'd'], 0],
+  DENSITY_STOPS[0][1],
+  ...DENSITY_STOPS.slice(1).flatMap(([v, c]) => [v, c]),
+] as unknown as maplibregl.ExpressionSpecification;
 
 function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean, sel: number | null = null) {
   ensureCoopIcon(m);
@@ -140,9 +147,10 @@ interface Props {
   clustered?: boolean;
   theme?: MapTheme;
   selectedId?: number | null;
+  density?: boolean;
 }
 
-export default function RetailerMap({ retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null }: Props) {
+export default function RetailerMap({ retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null, density = false }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const loaded = useRef(false);
@@ -156,11 +164,59 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   themeRef.current = theme;
   const selectedIdRef = useRef(selectedId);
   selectedIdRef.current = selectedId;
+  const densityRef = useRef(density);
+  densityRef.current = density;
+  const ratesRef = useRef<Map<string, number>>(new Map());
+  const popupRef = useRef<maplibregl.Popup | null>(null);
   const t = useT();
+  const tRef = useRef(t);
+  tRef.current = t;
+  const { lang } = useLang();
+  const langRef = useRef(lang);
+  langRef.current = lang;
   const [inView, setInView] = useState<number | null>(null);
   const updateInView = (m: maplibregl.Map) => {
     const b = m.getBounds();
     setInView(retailersRef.current.filter((r) => b.contains([r.lon, r.lat])).length);
+  };
+
+  // Applies everything the density toggle changes: pin sizing, coop icon visibility,
+  // and the census-division choropleth (lazy-loaded on first use).
+  const syncDensity = (m: maplibregl.Map) => {
+    const on = densityRef.current;
+    const exprs = sizeExprs(selectedIdRef.current, on);
+    if (m.getLayer('points')) {
+      m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
+      m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
+      // density view drops the coop icon layer, so its dots render here instead
+      m.setFilter('points', on
+        ? ['!', ['has', 'point_count']]
+        : ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'category'], 'coop']]);
+    }
+    if (m.getLayer('points-coop')) m.setLayoutProperty('points-coop', 'visibility', on ? 'none' : 'visible');
+    if (!on) {
+      popupRef.current?.remove();
+      for (const id of ['cd-fill', 'cd-line']) if (m.getLayer(id)) m.setLayoutProperty(id, 'visibility', 'none');
+      return;
+    }
+    loadCds().then((cds) => {
+      if (!densityRef.current || !map.current) return;
+      if (!m.getSource('cds')) {
+        m.addSource('cds', { type: 'geojson', data: cds as unknown as GeoJSON.FeatureCollection, promoteId: 'id' });
+      }
+      // insert under the basemap's labels so place names stay readable
+      const firstSymbol = m.getStyle().layers.find((l) => l.type === 'symbol')?.id;
+      if (!m.getLayer('cd-fill')) {
+        m.addLayer({ id: 'cd-fill', type: 'fill', source: 'cds', paint: { 'fill-color': densityFill, 'fill-opacity': 0.55 } }, firstSymbol);
+      }
+      if (!m.getLayer('cd-line')) {
+        m.addLayer({ id: 'cd-line', type: 'line', source: 'cds', paint: { 'line-color': 'rgba(0,0,0,0.18)', 'line-width': 0.5 } }, firstSymbol);
+      }
+      for (const id of ['cd-fill', 'cd-line']) m.setLayoutProperty(id, 'visibility', 'visible');
+      const rates = densityByCd(cds, retailersRef.current);
+      ratesRef.current = rates;
+      for (const [id, d] of rates) m.setFeatureState({ source: 'cds', id }, { d });
+    }).catch(() => {});
   };
 
   useEffect(() => {
@@ -202,9 +258,34 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
           m.easeTo({ center: (f.geometry as GeoJSON.Point).coordinates as [number, number], zoom }),
         ).catch(() => {});
       });
+      m.on('click', 'cd-fill', (e) => {
+        if (!densityRef.current) return;
+        // a click on a dot selects the store — don't also pop the division box
+        const pins = ['points', 'clusters'].filter((l) => m.getLayer(l));
+        if (pins.length && m.queryRenderedFeatures(e.point, { layers: pins }).length) return;
+        const f = e.features?.[0];
+        if (!f) return;
+        const { id, n } = f.properties as { id: string; n: string };
+        const d = ratesRef.current.get(id) ?? 0;
+        const rate = d.toLocaleString(langRef.current === 'fr' ? 'fr-CA' : 'en-CA', {
+          minimumFractionDigits: 1, maximumFractionDigits: 1,
+        });
+        const box = document.createElement('div');
+        box.className = 'text-xs leading-snug text-slate-700';
+        const name = document.createElement('div');
+        name.className = 'font-semibold';
+        name.textContent = n;
+        const val = document.createElement('div');
+        val.textContent = `${rate} ${tRef.current('density_popup_suffix')}`;
+        box.append(name, val);
+        popupRef.current?.remove();
+        popupRef.current = new maplibregl.Popup({ closeButton: false, maxWidth: '260px' })
+          .setLngLat(e.lngLat).setDOMContent(box).addTo(m);
+      });
       m.on('move', () => updateInView(m));
       updateInView(m);
       loaded.current = true;
+      syncDensity(m);
     });
     map.current = m;
     return () => { loaded.current = false; m.remove(); };
@@ -213,9 +294,17 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   useEffect(() => {
     if (!loaded.current) return;
     (map.current?.getSource('retailers') as maplibregl.GeoJSONSource | undefined)?.setData(toGeoJSON(retailers));
-    if (map.current) updateInView(map.current);
+    if (map.current) {
+      updateInView(map.current);
+      if (densityRef.current) syncDensity(map.current); // shading follows the category filters
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [retailers]);
+
+  useEffect(() => {
+    if (map.current && loaded.current) syncDensity(map.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [density]);
 
   // Rebuild source+layers on toggle: MapLibre fixes the cluster option at source creation.
   // Event handlers survive — they're bound by layer id, and the ids are reused.
@@ -225,6 +314,7 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     for (const id of ['clusters', 'cluster-count', 'points', 'points-coop']) if (m.getLayer(id)) m.removeLayer(id);
     if (m.getSource('retailers')) m.removeSource('retailers');
     addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered, selectedIdRef.current);
+    syncDensity(m);
   }, [clustered]);
 
   // setStyle wipes custom sources/layers — re-add them once the new style loads.
@@ -234,13 +324,14 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     m.setStyle(baseStyle(theme));
     m.once('style.load', () => {
       addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
+      syncDensity(m);
     });
   }, [theme]);
 
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded.current || !m.getLayer('points')) return;
-    const exprs = sizeExprs(selectedId);
+    const exprs = sizeExprs(selectedId, densityRef.current);
     m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
     m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
     if (m.getLayer('points-coop')) m.setLayoutProperty('points-coop', 'icon-size', iconSizeExpr(selectedId));
@@ -256,6 +347,19 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       {inView !== null && (
         <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/90 px-3 py-1 text-xs font-medium tabular-nums text-slate-700 shadow">
           {inView} {t('stores_in_view')}
+        </div>
+      )}
+      {density && (
+        <div className="pointer-events-none absolute bottom-10 right-3 z-10 rounded-md bg-white/90 px-2.5 py-1.5 text-[11px] leading-tight text-slate-700 shadow">
+          <div className="mb-1 font-medium">{t('density_legend')}</div>
+          <div className="flex">
+            {DENSITY_STOPS.map(([, c]) => (
+              <span key={c} className="h-2.5 w-6" style={{ background: c }} />
+            ))}
+          </div>
+          <div className="flex justify-between tabular-nums text-slate-500">
+            <span>0</span><span>1</span><span>2</span><span>4</span><span>8</span><span>16+</span>
+          </div>
         </div>
       )}
     </div>
