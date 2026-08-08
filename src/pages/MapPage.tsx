@@ -12,6 +12,27 @@ const swatch = (c: Category) =>
     ? { background: `linear-gradient(90deg, #ffffff 50%, ${CATEGORY_COLORS.coop} 50%)`, boxShadow: 'inset 0 0 0 1px #cbd5e1' }
     : { background: CATEGORY_COLORS[c] };
 
+// Switch-style toggle: instant knob slide + track colour for clear state feedback.
+function Toggle({ on, onClick, label, className = '' }: { on: boolean; onClick: () => void; label: string; className?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={on}
+      className={`flex w-full items-center gap-2 rounded-md px-1 py-1 text-left text-sm transition-colors duration-150 hover:bg-slate-50 active:scale-[.98] ${className}`}
+    >
+      <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-200 ${on ? 'bg-[#e6262a]' : 'bg-slate-300'}`}>
+        <span
+          className={`absolute left-0 top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 ease-out ${
+            on ? 'translate-x-[18px]' : 'translate-x-0.5'
+          }`}
+        />
+      </span>
+      <span>{label}</span>
+    </button>
+  );
+}
+
 const FLAVOR_KEY: Record<MapFlavor, StringKey> = {
   light: 'theme_light',
   dark: 'theme_dark',
@@ -137,7 +158,7 @@ export default function MapPage() {
         <button
           onClick={() => setSearchOpen(true)}
           aria-label={t('search_placeholder')}
-          className="absolute left-3 top-3 z-10 rounded-full bg-white p-3 shadow-lg"
+          className="absolute left-3 top-3 z-10 animate-[pop-in_.15s_ease-out] rounded-full bg-white p-3 shadow-lg transition-transform duration-150 hover:scale-105 active:scale-95"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5 text-slate-700">
             <circle cx="11" cy="11" r="7" />
@@ -146,7 +167,7 @@ export default function MapPage() {
         </button>
       )}
       {searchOpen && (
-      <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] flex-col gap-2">
+      <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] origin-top-left animate-[pop-in_.18s_ease-out] flex-col gap-2">
         <div className="rounded-lg bg-white p-2 shadow-lg">
           <div className="flex gap-1.5">
             <input
@@ -237,7 +258,8 @@ export default function MapPage() {
         onToggle={(e) => setFiltersOpen((e.target as HTMLDetailsElement).open)}
         className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-[21rem]"
       >
-        <summary className="cursor-pointer select-none px-1 py-1 text-sm font-semibold text-slate-700">
+        <summary className="cursor-pointer select-none list-none px-1 py-1 text-sm font-semibold text-slate-700 [&::-webkit-details-marker]:hidden">
+          <span className={`mr-1 inline-block text-xs transition-transform duration-200 ${filtersOpen ? '' : '-rotate-90'}`}>▼</span>
           {t('filters_title')}
           {retailers.length > 0 && (
             <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full bg-slate-800 px-1.5 align-text-bottom text-xs font-medium leading-none tabular-nums text-white">
@@ -245,7 +267,7 @@ export default function MapPage() {
             </span>
           )}
         </summary>
-        <div className="mt-2 grid grid-cols-2 gap-1.5">
+        <div className="mt-2 grid animate-[pop-in_.18s_ease-out] grid-cols-2 gap-1.5">
           {CATEGORIES.map((c) => {
             const on = active.has(c);
             return (
@@ -253,7 +275,7 @@ export default function MapPage() {
                 key={c}
                 onClick={() => toggle(c)}
                 aria-pressed={on}
-                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm ${
+                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all duration-150 active:scale-[.97] ${
                   on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
                 }`}
               >
@@ -270,14 +292,10 @@ export default function MapPage() {
             );
           })}
         </div>
-        <label className="mt-2 flex cursor-pointer items-center gap-2 border-t border-slate-200 pt-2 text-sm">
-          <input type="checkbox" checked={clustered} onChange={() => setClustered((v) => !v)} className="h-4 w-4" />
-          {t('cluster_toggle')}
-        </label>
-        <label className="mt-2 flex items-center gap-2 text-sm">
-          <input type="checkbox" checked={density} onChange={() => setDensity((v) => !v)} className="h-4 w-4" />
-          {t('density_toggle')}
-        </label>
+        <div className="mt-2 border-t border-slate-200 pt-2">
+          <Toggle on={clustered} onClick={() => setClustered((v) => !v)} label={t('cluster_toggle')} />
+          <Toggle on={density} onClick={() => setDensity((v) => !v)} label={t('density_toggle')} className="mt-1" />
+        </div>
         <label className="mt-2 block border-t border-slate-200 pt-2 text-sm">
           <span className="font-semibold text-slate-700">{t('theme_title')}</span>
           <select
@@ -299,7 +317,7 @@ export default function MapPage() {
 
       {/* Selected retailer card */}
       {selected && (
-        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] rounded-lg bg-white p-4 shadow-lg">
+        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] origin-top-right animate-[pop-in_.18s_ease-out] rounded-lg bg-white p-4 shadow-lg">
           <button
             onClick={() => setSelected(null)}
             className="float-right text-slate-400 hover:text-slate-600"
