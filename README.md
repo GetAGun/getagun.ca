@@ -21,8 +21,7 @@ Built with React, MapLibre GL (pmtiles basemap), and Cloudflare Workers + D1.
   and [which Canadian Tires stock firearms](https://getagun.ca/sheets/canadian-tire-stores),
   with .xlsx downloads and charts — all available in French at the same
   address plus `-fr`
-- FAQ with rich-text answers, suggestion form (Turnstile-protected), admin
-  panel behind Cloudflare Access
+- FAQ with rich-text answers and a suggestion form (Turnstile-protected)
 
 ## Development
 
