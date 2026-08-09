@@ -33,6 +33,21 @@ CREATE TABLE IF NOT EXISTS suggestions (
 -- Migration for databases created before the kind column (run once):
 -- ALTER TABLE suggestions ADD COLUMN kind TEXT NOT NULL DEFAULT 'new' CHECK (kind IN ('new','update','feedback'));
 
+-- All Canadian Tire locations (from the store locator); whether one stocks
+-- firearms is derived at request time from the mapped canadian-tire retailers.
+CREATE TABLE IF NOT EXISTS ct_locations (
+  store_number INTEGER PRIMARY KEY,
+  branch TEXT NOT NULL,
+  address TEXT NOT NULL,
+  city TEXT NOT NULL,
+  province TEXT NOT NULL,
+  postal TEXT,
+  phone TEXT,
+  lat REAL NOT NULL,
+  lon REAL NOT NULL,
+  website TEXT
+);
+
 CREATE TABLE IF NOT EXISTS faqs (
   id INTEGER PRIMARY KEY,
   question_en TEXT NOT NULL,
