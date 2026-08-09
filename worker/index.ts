@@ -1,9 +1,11 @@
 import { validateSuggestion, validateRetailer, validateFaq } from './validate';
 import { requireAccess } from './access';
+import { purgeSheets, sheetsRoute } from './sheets';
 
 export interface Env {
   DB: D1Database;
   TILES: R2Bucket;
+  ASSETS: Fetcher;
   TURNSTILE_SECRET: string;
   ACCESS_TEAM_DOMAIN?: string;
   ACCESS_AUD?: string;
@@ -105,6 +107,13 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
     return res;
   }
 
+  // Dynamic sheets and live charts; anything else under /sheets/ (the PNGs)
+  // falls through to the static assets.
+  if (pathname.startsWith('/sheets/') && (request.method === 'GET' || request.method === 'HEAD')) {
+    const r = await sheetsRoute(request, env, ctx);
+    return r ?? env.ASSETS.fetch(request);
+  }
+
   if (pathname === '/api/suggest' && request.method === 'POST') {
     const body = await request.json().catch(() => null);
     const v = validateSuggestion(body);
@@ -124,7 +133,15 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
   if (pathname.startsWith('/api/admin/')) {
     if (!(await requireAccess(request, env))) return json({ error: 'unauthorized' }, 401);
     // cache.delete clears this colo only; the 5-min TTL covers other colos
-    const purge = () => ctx.waitUntil(caches.default.delete(cacheKeyFor(url)));
+    const purge = () => {
+      ctx.waitUntil(caches.default.delete(cacheKeyFor(url)));
+      purgeSheets(url.origin, ctx);
+    };
+
+    if (pathname === '/api/admin/refresh-sheets' && request.method === 'POST') {
+      purge();
+      return json({ ok: true });
+    }
 
     if (pathname === '/api/admin/retailers' && request.method === 'POST') {
       const v = validateRetailer(await request.json().catch(() => null));
