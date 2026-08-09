@@ -20,6 +20,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const getRetailers = () => request<Retailer[]>('/api/retailers');
 
+export const getMeta = () => request<{ asOf: string }>('/api/meta');
+
 export const postSuggestion = async (data: SuggestionForm): Promise<void> => {
   await request('/api/suggest', { method: 'POST', body: JSON.stringify(data) });
 };
@@ -32,6 +34,7 @@ export const admin = {
   refreshSheets: async (): Promise<void> => {
     await request('/api/admin/refresh-sheets', { method: 'POST' });
   },
+  snapshot: () => request<{ ok: boolean; files: string[] }>('/api/admin/snapshot', { method: 'POST' }),
   getFaqs: () => request<Faq[]>('/api/faqs', { cache: 'no-store' }),
   createFaq: async (data: FaqForm): Promise<number> =>
     (await request<{ id: number }>('/api/admin/faqs', { method: 'POST', body: JSON.stringify(data) })).id,

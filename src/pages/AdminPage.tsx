@@ -257,6 +257,21 @@ export default function AdminPage() {
         >
           Refresh published data
         </button>
+        <button
+          onClick={async () => {
+            setRefreshed('...');
+            try {
+              const r = await admin.snapshot();
+              setRefreshed(`✓ snapshot saved (${r.files.length} files)`);
+            } catch {
+              setRefreshed('snapshot failed');
+            }
+            setTimeout(() => setRefreshed(''), 2500);
+          }}
+          className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 transition-colors duration-150 hover:bg-slate-100 active:scale-95"
+        >
+          Snapshot now
+        </button>
         {refreshed && <span className="text-sm text-slate-500">{refreshed}</span>}
       </div>
       {tab === 'faq' && <div className="mt-4"><AdminFaq /></div>}

@@ -1,10 +1,11 @@
 import { validateSuggestion, validateRetailer, validateFaq } from './validate';
 import { requireAccess } from './access';
-import { purgeSheets, sheetsRoute } from './sheets';
+import { dataAsOf, purgeSheets, sheetsRoute, snapshotSheets } from './sheets';
 
 export interface Env {
   DB: D1Database;
   TILES: R2Bucket;
+  SNAPSHOTS: R2Bucket;
   ASSETS: Fetcher;
   TURNSTILE_SECRET: string;
   ACCESS_TEAM_DOMAIN?: string;
@@ -114,6 +115,10 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
     return r ?? env.ASSETS.fetch(request);
   }
 
+  if (pathname === '/api/meta' && request.method === 'GET') {
+    return json({ asOf: await dataAsOf(env) });
+  }
+
   if (pathname === '/api/suggest' && request.method === 'POST') {
     const body = await request.json().catch(() => null);
     const v = validateSuggestion(body);
@@ -141,6 +146,10 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
     if (pathname === '/api/admin/refresh-sheets' && request.method === 'POST') {
       purge();
       return json({ ok: true });
+    }
+
+    if (pathname === '/api/admin/snapshot' && request.method === 'POST') {
+      return json({ ok: true, files: await snapshotSheets(env) });
     }
 
     if (pathname === '/api/admin/retailers' && request.method === 'POST') {
@@ -256,5 +265,9 @@ export default {
     } catch {
       return json({ error: 'internal' }, 500);
     }
+  },
+  // monthly spreadsheet snapshot into the archive bucket
+  async scheduled(_controller, env, ctx): Promise<void> {
+    ctx.waitUntil(snapshotSheets(env));
   },
 } satisfies ExportedHandler<Env>;

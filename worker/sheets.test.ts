@@ -1,6 +1,23 @@
 import { strFromU8, unzipSync } from 'fflate';
 import { describe, expect, it } from 'vitest';
-import { buildXlsx, ctChartSvg, percapitaWideSvg } from './sheets';
+import { buildXlsx, ctChartSvg, percapitaWideSvg, sheetHtml } from './sheets';
+
+describe('sheetHtml', () => {
+  it('includes the sort script, as-of stamp, and archive link', () => {
+    const html = sheetHtml('T', 'en', ['a', 'b'], [{ cells: ['x', 'y'] }], '/alt', '/x.xlsx', false, '2026-08-08 21:00:00');
+    expect(html).toContain('data-sort-hint');
+    expect(html).toContain('replaceChildren');
+    expect(html).toContain('Data current as of');
+    expect(html).toContain('UTC');
+    expect(html).toContain('/sheets/archive');
+  });
+
+  it('formats the French stamp with a French date', () => {
+    const html = sheetHtml('T', 'fr', ['a'], [{ cells: ['x'] }], '/alt', '/x.xlsx', false, '2026-08-08 21:00:00');
+    expect(html).toContain('Données à jour au');
+    expect(html).toContain('août');
+  });
+});
 
 describe('buildXlsx', () => {
   it('produces a valid zip with cells, styles, and both sheets', () => {

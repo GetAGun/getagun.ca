@@ -5,6 +5,7 @@ import { strToU8, zipSync } from 'fflate';
 
 export interface SheetsEnv {
   DB: D1Database;
+  SNAPSHOTS: R2Bucket;
 }
 
 interface Store {
@@ -20,6 +21,23 @@ const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // ---------- data ----------
+
+// Most recent retailer edit — the dataset's "current as of" moment (UTC).
+export async function dataAsOf(env: SheetsEnv): Promise<string> {
+  const row = await env.DB.prepare(
+    'SELECT MAX(COALESCE(updated_at, created_at)) AS m FROM retailers',
+  ).first<{ m: string | null }>();
+  return row?.m ?? '';
+}
+
+function fmtAsOf(asOf: string, lang: 'en' | 'fr'): string {
+  if (!asOf) return '';
+  const d = new Date(asOf.replace(' ', 'T') + 'Z');
+  const s = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-CA', {
+    dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC',
+  }).format(d);
+  return `${s} UTC`;
+}
 
 async function retailers(env: SheetsEnv): Promise<Store[]> {
   const { results } = await env.DB.prepare(
@@ -61,9 +79,29 @@ function deriveCt(locations: CtLocation[], stores: Store[]): Array<CtLocation & 
 // ---------- sheet HTML ----------
 
 const UI = {
-  en: { dl: 'Download (.xlsx)', rows: 'rows', y: 'stocks firearms', n: 'does not', u: 'unknown', link: 'link', alt: 'Français' },
-  fr: { dl: 'Télécharger (.xlsx)', rows: 'lignes', y: 'vend des armes à feu', n: "n'en vend pas", u: 'inconnu', link: 'lien', alt: 'English' },
+  en: { dl: 'Download (.xlsx)', rows: 'rows', y: 'stocks firearms', n: 'does not', u: 'unknown', link: 'link', alt: 'Français',
+        archive: 'Archive', asof: 'Data current as of', sort: 'Click to sort; third click restores the original order' },
+  fr: { dl: 'Télécharger (.xlsx)', rows: 'lignes', y: 'vend des armes à feu', n: "n'en vend pas", u: 'inconnu', link: 'lien', alt: 'English',
+        archive: 'Archives', asof: 'Données à jour au', sort: "Cliquez pour trier; un troisième clic rétablit l'ordre initial" },
 };
+
+// Column sorting for the generated sheet pages: click cycles asc/desc/original;
+// section banner rows drop out of view while a sort is active.
+const SORT_SCRIPT = `<script>(function(){
+var tb=document.querySelector('tbody');var orig=Array.prototype.slice.call(tb.rows);var cur=-1,dir=1;
+var ths=document.querySelectorAll('th');
+function val(r,i){var c=r.cells[i];return c?c.textContent.trim():''}
+function mark(){ths.forEach(function(th,i){th.textContent=th.textContent.replace(/ [\\u25b2\\u25bc]$/,'');if(i===cur)th.textContent+=dir===1?' \\u25b2':' \\u25bc'})}
+ths.forEach(function(th,i){th.style.cursor='pointer';th.title=document.body.dataset.sortHint;
+th.addEventListener('click',function(){
+if(cur===i&&dir===-1){tb.replaceChildren.apply(tb,orig);cur=-1;dir=1;mark();return}
+dir=cur===i?-1:1;cur=i;
+var rows=orig.filter(function(r){return !r.classList.contains('s')});
+var num=rows.every(function(r){var v=val(r,i);return v===''||!isNaN(parseFloat(v))});
+rows.sort(function(a,b){var x=val(a,i),y=val(b,i);
+var c=num?(parseFloat(x)||0)-(parseFloat(y)||0):x.localeCompare(y,undefined,{sensitivity:'base'});
+return dir*c});
+tb.replaceChildren.apply(tb,rows);mark()})})})()</script>`;
 
 const CT_HEADERS = {
   en: ['store_number', 'branch', 'address', 'city', 'province', 'postal_code', 'phone', 'latitude', 'longitude', 'website', 'firearms'],
@@ -81,7 +119,7 @@ const BANNER_FR: Record<string, string> = {
 
 type Row = { cells: Array<string | number | null>; banner?: string; cls?: string };
 
-function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], rows: Row[], alt: string, xlsxHref: string, hasLegend: boolean): string {
+export function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], rows: Row[], alt: string, xlsxHref: string, hasLegend: boolean, asOf = ''): string {
   const ui = UI[lang];
   const nrows = rows.filter((r) => !r.banner).length;
   const cell = (v: string | number | null) => {
@@ -117,12 +155,15 @@ function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], rows: Ro
     'tbody tr.s td{background:#e2e8f0;font-weight:600}' +
     '.chip{padding:.15rem .5rem;border-radius:9999px;color:#1e293b;font-size:.75rem}' +
     'td a{color:#2563eb}' +
-    '</style></head><body>' +
+    '</style></head>' +
+    `<body data-sort-hint="${esc(ui.sort)}">` +
     `<header><h1>${esc(title)}</h1>` +
     '<a href="/">&larr; getagun.ca</a>' +
     `<a href="${esc(xlsxHref)}" download>${ui.dl}</a>` +
     `<a href="${esc(alt)}">${ui.alt}</a>` +
+    `<a href="${lang === 'fr' ? '/sheets/archive-fr' : '/sheets/archive'}">${ui.archive}</a>` +
     `<span style="font-size:.8rem;color:#94a3b8">${nrows} ${ui.rows}</span>` +
+    (asOf ? `<span style="font-size:.8rem;color:#94a3b8">${ui.asof} ${esc(fmtAsOf(asOf, lang))}</span>` : '') +
     (hasLegend
       ? `<span class="chip" style="background:#dcfce7">${ui.y}</span>` +
         `<span class="chip" style="background:#fee2e2">${ui.n}</span>` +
@@ -132,7 +173,7 @@ function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], rows: Ro
     headers.map((h) => `<th>${esc(h)}</th>`).join('') +
     '</tr></thead><tbody>' +
     rows.map(tr).join('') +
-    '</tbody></table></div></body></html>'
+    `</tbody></table></div>${SORT_SCRIPT}</body></html>`
   );
 }
 
@@ -344,6 +385,96 @@ export function percapitaWideSvg(counts: Record<string, number>, fr: boolean): s
   return `<svg xmlns="http://www.w3.org/2000/svg" width="4800" height="1988" viewBox="0 0 2400 994">${parts.join('')}</svg>`;
 }
 
+function rbcXlsx(stores: Store[], lang: 'en' | 'fr'): Uint8Array {
+  const rows = rbcRows(stores, lang);
+  const counts = new Map<string, number>();
+  for (const s of stores) counts.set(s.category, (counts.get(s.category) ?? 0) + 1);
+  const summary = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  return buildXlsx([
+    { name: lang === 'fr' ? 'Tous les détaillants' : 'All retailers',
+      rows: [{ cells: RBC_HEADERS[lang], style: 1 },
+             ...rows.map((r) => (r.banner !== undefined ? { cells: [r.banner], style: 2 } : { cells: r.cells }))] },
+    { name: lang === 'fr' ? 'Sommaire' : 'Summary',
+      rows: [{ cells: [lang === 'fr' ? 'Catégorie' : 'Category', lang === 'fr' ? 'Nombre' : 'Count'] },
+             ...summary.map(([c, n]) => ({ cells: [c, n] })), { cells: ['TOTAL', stores.length] }] },
+  ]);
+}
+
+function ctXlsx(rows: Row[], lang: 'en' | 'fr'): Uint8Array {
+  return buildXlsx([{
+    name: 'Canadian Tire',
+    rows: [{ cells: CT_HEADERS[lang], style: 1 }, ...rows.map((r) => ({ cells: r.cells }))],
+  }]);
+}
+
+// ---------- monthly snapshots ----------
+
+const XLSX_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+
+export async function snapshotSheets(env: SheetsEnv): Promise<string[]> {
+  const ym = new Date().toISOString().slice(0, 7);
+  const stores = await retailers(env);
+  const saved: string[] = [];
+  for (const lang of ['en', 'fr'] as const) {
+    const suffix = lang === 'fr' ? '-fr' : '';
+    const rbcKey = `retailers-by-category-${ym}${suffix}.xlsx`;
+    await env.SNAPSHOTS.put(rbcKey, rbcXlsx(stores, lang).buffer as ArrayBuffer, { httpMetadata: { contentType: XLSX_TYPE } });
+    saved.push(rbcKey);
+  }
+  const locs = await ctLocations(env);
+  if (locs.length) {
+    const derived = deriveCt(locs, stores);
+    for (const lang of ['en', 'fr'] as const) {
+      const suffix = lang === 'fr' ? '-fr' : '';
+      const ctKey = `canadian-tire-stores-${ym}${suffix}.xlsx`;
+      await env.SNAPSHOTS.put(ctKey, ctXlsx(ctSheetRows(derived, lang), lang).buffer as ArrayBuffer, { httpMetadata: { contentType: XLSX_TYPE } });
+      saved.push(ctKey);
+    }
+  }
+  return saved;
+}
+
+const ARCHIVE_UI = {
+  en: { title: 'Monthly snapshot archive', intro: 'Fixed monthly copies of the published spreadsheets, for citation and comparison. Current data lives on the spreadsheet pages.', alt: 'Français', back: 'getagun.ca' },
+  fr: { title: 'Archives mensuelles', intro: 'Copies mensuelles figées des tableurs publiés, pour citation et comparaison. Les données à jour se trouvent sur les pages des tableurs.', alt: 'English', back: 'getagun.ca' },
+};
+
+async function archivePage(env: SheetsEnv, lang: 'en' | 'fr'): Promise<Response> {
+  const ui = ARCHIVE_UI[lang];
+  const list = await env.SNAPSHOTS.list();
+  const byMonth = new Map<string, string[]>();
+  for (const o of list.objects) {
+    const m = o.key.match(/-(\d{4}-\d{2})(-fr)?\.xlsx$/);
+    if (!m) continue;
+    if ((lang === 'fr') !== !!m[2]) continue;
+    byMonth.set(m[1], [...(byMonth.get(m[1]) ?? []), o.key]);
+  }
+  const months = [...byMonth.keys()].sort().reverse();
+  const monthName = (ym: string) =>
+    new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', timeZone: 'UTC' })
+      .format(new Date(`${ym}-15T00:00:00Z`));
+  const body = months.length
+    ? months.map((ym) =>
+        `<h2>${esc(monthName(ym))}</h2><ul>` +
+        byMonth.get(ym)!.sort().map((k) => `<li><a href="/sheets/archive/${esc(k)}" download>${esc(k)}</a></li>`).join('') +
+        '</ul>').join('')
+    : `<p>${lang === 'fr' ? 'Aucun instantané pour le moment.' : 'No snapshots yet.'}</p>`;
+  const html =
+    `<!doctype html><html lang="${lang}"><head><meta charset="utf-8">` +
+    '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+    `<title>${esc(ui.title)}</title><link rel="icon" href="/favicon.ico"><style>` +
+    'body{margin:0;font-family:system-ui,sans-serif;color:#1e293b}' +
+    'header{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:1rem 1.25rem;background:#0f172a;color:#fff}' +
+    'header h1{margin:0;font-size:1.1rem}header a{color:#93c5fd;font-size:.85rem;text-decoration:none}header a:hover{text-decoration:underline}' +
+    'main{padding:1rem 1.25rem;max-width:44rem}h2{font-size:1rem;margin:1.2rem 0 .4rem}ul{margin:.2rem 0;padding-left:1.4rem}' +
+    'li{margin:.2rem 0}a{color:#2563eb}p{color:#475569;font-size:.9rem}' +
+    '</style></head><body>' +
+    `<header><h1>${esc(ui.title)}</h1><a href="/">&larr; ${ui.back}</a>` +
+    `<a href="${lang === 'fr' ? '/sheets/archive' : '/sheets/archive-fr'}">${ui.alt}</a></header>` +
+    `<main><p>${esc(ui.intro)}</p>${body}</main></body></html>`;
+  return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8' } });
+}
+
 // ---------- routing ----------
 
 const TITLES = {
@@ -368,6 +499,23 @@ export async function sheetsRoute(request: Request, env: SheetsEnv, ctx: Executi
   const url = new URL(request.url);
   let path = url.pathname;
   if (path.endsWith('.html')) path = path.slice(0, -5);
+
+  if (path === '/sheets/archive' || path === '/sheets/archive-fr') {
+    return archivePage(env, path.endsWith('-fr') ? 'fr' : 'en');
+  }
+  const dl = path.match(/^\/sheets\/archive\/([a-z-]+-\d{4}-\d{2}(?:-fr)?\.xlsx)$/);
+  if (dl) {
+    const obj = await env.SNAPSHOTS.get(dl[1]);
+    if (!obj) return new Response('not found', { status: 404 });
+    return new Response(obj.body, {
+      headers: {
+        'content-type': XLSX_TYPE,
+        'content-disposition': `attachment; filename="${dl[1]}"`,
+        'cache-control': 'public, max-age=86400',
+      },
+    });
+  }
+
   if (!DYNAMIC_SHEET_PATHS.includes(path)) return null;
 
   const key = new Request(url.origin + path);
@@ -400,34 +548,18 @@ export async function sheetsRoute(request: Request, env: SheetsEnv, ctx: Executi
     if (!locs.length) return null; // fall back to the static asset until ct_locations is seeded
     const rows = ctSheetRows(deriveCt(locs, await retailers(env)), lang);
     if (path.endsWith('.xlsx')) {
-      const xl = buildXlsx([{
-        name: lang === 'fr' ? 'Canadian Tire' : 'Canadian Tire',
-        rows: [{ cells: CT_HEADERS[lang], style: 1 }, ...rows.map((r) => ({ cells: r.cells }))],
-      }]);
-      res = xlsxResponse(xl, path);
+      res = xlsxResponse(ctXlsx(rows, lang), path);
     } else {
       res = htmlResponse(sheetHtml(TITLES.ct[lang], lang, CT_HEADERS[lang], rows,
-        fr ? '/sheets/canadian-tire-stores' : '/sheets/canadian-tire-stores-fr', `${path}.xlsx`, true));
+        fr ? '/sheets/canadian-tire-stores' : '/sheets/canadian-tire-stores-fr', `${path}.xlsx`, true, await dataAsOf(env)));
     }
   } else {
     const stores = await retailers(env);
-    const rows = rbcRows(stores, lang);
     if (path.endsWith('.xlsx')) {
-      const counts = new Map<string, number>();
-      for (const s of stores) counts.set(s.category, (counts.get(s.category) ?? 0) + 1);
-      const summary = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-      const xl = buildXlsx([
-        { name: lang === 'fr' ? 'Tous les détaillants' : 'All retailers',
-          rows: [{ cells: RBC_HEADERS[lang], style: 1 },
-                 ...rows.map((r) => (r.banner !== undefined ? { cells: [r.banner], style: 2 } : { cells: r.cells }))] },
-        { name: lang === 'fr' ? 'Sommaire' : 'Summary',
-          rows: [{ cells: [lang === 'fr' ? 'Catégorie' : 'Category', lang === 'fr' ? 'Nombre' : 'Count'] },
-                 ...summary.map(([c, n]) => ({ cells: [c, n] })), { cells: ['TOTAL', stores.length] }] },
-      ]);
-      res = xlsxResponse(xl, path);
+      res = xlsxResponse(rbcXlsx(stores, lang), path);
     } else {
-      res = htmlResponse(sheetHtml(TITLES.rbc[lang], lang, RBC_HEADERS[lang], rows,
-        fr ? '/sheets/retailers-by-category' : '/sheets/retailers-by-category-fr', `${path}.xlsx`, false));
+      res = htmlResponse(sheetHtml(TITLES.rbc[lang], lang, RBC_HEADERS[lang], rbcRows(stores, lang),
+        fr ? '/sheets/retailers-by-category' : '/sheets/retailers-by-category-fr', `${path}.xlsx`, false, await dataAsOf(env)));
     }
   }
 

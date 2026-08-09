@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CATEGORIES, CATEGORY_COLORS, CATEGORY_LABELS, type Category, type Retailer } from '../../shared/const';
 import RetailerMap, { MAP_FLAVORS, type MapFlavor, type MapTheme } from '../components/RetailerMap';
-import { getRetailers } from '../lib/api';
+import { getMeta, getRetailers } from '../lib/api';
 import { nearest } from '../lib/geo';
 import { geocode, type GeocodeHit } from '../lib/geocode';
 import { useLang, useT, type StringKey } from '../lib/i18n';
@@ -55,6 +55,7 @@ export default function MapPage() {
   });
   const [selected, setSelected] = useState<Retailer | null>(null);
   const [query, setQuery] = useState('');
+  const [asOf, setAsOf] = useState('');
   const [hits, setHits] = useState<GeocodeHit[]>([]);
   const [searchMsg, setSearchMsg] = useState('');
   const [origin, setOrigin] = useState<{ lat: number; lon: number; label: string } | null>(null);
@@ -75,6 +76,7 @@ export default function MapPage() {
 
   useEffect(() => {
     getRetailers().then(setRetailers).catch(() => setLoadError(true));
+    getMeta().then((m) => setAsOf(m.asOf)).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -346,6 +348,14 @@ export default function MapPage() {
             </p>
           )}
           {selected.description && <p className="mt-2 text-sm">{selected.description}</p>}
+          {asOf && (
+            <p className="mt-2 text-xs text-slate-400">
+              {t('data_as_of')}{' '}
+              {new Date(asOf.replace(' ', 'T') + 'Z').toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
+                year: 'numeric', month: 'long', day: 'numeric',
+              })}
+            </p>
+          )}
         </div>
       )}
     </div>
