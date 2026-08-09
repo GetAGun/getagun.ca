@@ -29,6 +29,9 @@ export const getFaqs = () => request<Faq[]>('/api/faqs');
 export type FaqForm = Omit<Faq, 'id'>;
 
 export const admin = {
+  refreshSheets: async (): Promise<void> => {
+    await request('/api/admin/refresh-sheets', { method: 'POST' });
+  },
   getFaqs: () => request<Faq[]>('/api/faqs', { cache: 'no-store' }),
   createFaq: async (data: FaqForm): Promise<number> =>
     (await request<{ id: number }>('/api/admin/faqs', { method: 'POST', body: JSON.stringify(data) })).id,

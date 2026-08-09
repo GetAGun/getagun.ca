@@ -31,6 +31,7 @@ export default function AdminPage() {
   const [listQuery, setListQuery] = useState('');
   const [listSort, setListSort] = useState<'name' | 'city' | 'province' | 'category'>('name');
   const [gmapsText, setGmapsText] = useState('');
+  const [refreshed, setRefreshed] = useState('');
   // Warn (don't block) when the pin sits within 100 m of an existing retailer — likely a duplicate.
   const nearbyExisting = useMemo(() => {
     if (!form.lat || !form.lon) return [];
@@ -241,6 +242,22 @@ export default function AdminPage() {
           <button onClick={() => setTab('retailers')} className={tabBtn(tab === 'retailers')}>Retailers</button>
           <button onClick={() => setTab('faq')} className={tabBtn(tab === 'faq')}>FAQ</button>
         </div>
+        <button
+          onClick={async () => {
+            setRefreshed('...');
+            try {
+              await admin.refreshSheets();
+              setRefreshed('✓ published data refreshed');
+            } catch {
+              setRefreshed('refresh failed');
+            }
+            setTimeout(() => setRefreshed(''), 2500);
+          }}
+          className="ml-auto rounded-md bg-slate-800 px-3 py-1.5 text-sm text-white transition-colors duration-150 hover:bg-slate-700 active:scale-95"
+        >
+          Refresh published data
+        </button>
+        {refreshed && <span className="text-sm text-slate-500">{refreshed}</span>}
       </div>
       {tab === 'faq' && <div className="mt-4"><AdminFaq /></div>}
       <div className={tab === 'retailers' ? '' : 'hidden'}>
