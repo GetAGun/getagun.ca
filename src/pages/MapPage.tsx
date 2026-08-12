@@ -56,6 +56,11 @@ export default function MapPage() {
   const [selected, setSelected] = useState<Retailer | null>(null);
   const [query, setQuery] = useState('');
   const [asOf, setAsOf] = useState('');
+  // These toggles restyle the whole map, but on a phone the filter panel covers
+  // most of it — collapse the panel so the change is actually visible.
+  const revealMap = () => {
+    if (!window.matchMedia('(min-width: 640px)').matches) setFiltersOpen(false);
+  };
   const [hits, setHits] = useState<GeocodeHit[]>([]);
   const [searchMsg, setSearchMsg] = useState('');
   const [origin, setOrigin] = useState<{ lat: number; lon: number; label: string } | null>(null);
@@ -295,8 +300,8 @@ export default function MapPage() {
           })}
         </div>
         <div className="mt-2 border-t border-slate-200 pt-2">
-          <Toggle on={clustered} onClick={() => setClustered((v) => !v)} label={t('cluster_toggle')} />
-          <Toggle on={density} onClick={() => setDensity((v) => !v)} label={t('density_toggle')} className="mt-1" />
+          <Toggle on={clustered} onClick={() => { setClustered((v) => !v); revealMap(); }} label={t('cluster_toggle')} />
+          <Toggle on={density} onClick={() => { setDensity((v) => !v); revealMap(); }} label={t('density_toggle')} className="mt-1" />
         </div>
         <label className="mt-2 block border-t border-slate-200 pt-2 text-sm">
           <span className="font-semibold text-slate-700">{t('theme_title')}</span>

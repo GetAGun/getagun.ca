@@ -344,17 +344,19 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   // The badge lives inside the map container so it stays visible in fullscreen.
   return (
     <div ref={container} className="relative h-full w-full">
+      {/* Phones: the bottom edge is taken by the filter pill and attribution, so the
+          counter sits under the header instead. */}
       {inView !== null && (
-        <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/90 px-3 py-1 text-xs font-medium tabular-nums text-slate-700 shadow">
+        <div className="pointer-events-none absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/90 px-3 py-1 text-xs font-medium tabular-nums text-slate-700 shadow sm:bottom-3 sm:top-auto">
           {inView} {t('stores_in_view')}
         </div>
       )}
       {density && (
-        <div className="pointer-events-none absolute bottom-10 right-3 z-10 rounded-md bg-white/90 px-2.5 py-1.5 text-[11px] leading-tight text-slate-700 shadow">
+        <div className="pointer-events-none absolute bottom-16 left-3 z-10 rounded-md bg-white/90 px-2.5 py-1.5 text-[11px] leading-tight text-slate-700 shadow sm:bottom-10 sm:left-auto sm:right-3">
           <div className="mb-1 font-medium">{t('density_legend')}</div>
           <div className="flex">
             {DENSITY_STOPS.map(([, c]) => (
-              <span key={c} className="h-2.5 w-6" style={{ background: c }} />
+              <span key={c} className="h-2.5 w-4 sm:w-6" style={{ background: c }} />
             ))}
           </div>
           <div className="flex justify-between tabular-nums text-slate-500">

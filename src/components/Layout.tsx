@@ -7,14 +7,15 @@ export default function Layout() {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith('/admin');
   const isMap = pathname === '/';
+  // Phones: one non-wrapping row (scrolls if a translation runs long). Desktop: roomy tabs.
   const nav = ({ isActive }: { isActive: boolean }) =>
-    `flex-1 text-center sm:flex-none px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-sm font-medium transition-colors duration-150 active:scale-[.97] ${isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800/50'}`;
+    `shrink-0 whitespace-nowrap px-1.5 sm:px-3 py-1 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-colors duration-150 active:scale-[.97] ${isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800/50'}`;
   return (
     <div className="flex h-full flex-col">
       {/* Mobile: logo+FR row, then full-width nav row, then WIP line. Desktop: one row via order-*. */}
-      <header className="flex flex-wrap items-center gap-x-4 gap-y-1 bg-slate-900 px-3 py-2 sm:px-4">
-        <Link to="/" className="order-1 flex items-center gap-2 font-display text-xl font-semibold tracking-wide text-white">
-          <img src="/logo.png" alt="" className="h-8 w-auto" />
+      <header className="flex flex-wrap items-center gap-x-4 gap-y-0.5 bg-slate-900 px-3 py-1.5 sm:gap-y-1 sm:py-2 sm:px-4">
+        <Link to="/" className="order-1 flex items-center gap-2 font-display text-lg font-semibold tracking-wide text-white sm:text-xl">
+          <img src="/logo.png" alt="" className="h-7 w-auto sm:h-8" />
           GetAGun<span className="text-[#e6262a]">.ca</span>
         </Link>
         <span className="hidden text-xs text-slate-400 lg:order-2 lg:block">{t('tagline')}</span>
@@ -36,20 +37,24 @@ export default function Layout() {
         >
           {lang === 'en' ? 'FR' : 'EN'}
         </button>
-        <nav className="order-3 flex w-full items-center gap-1 sm:order-4 sm:ml-auto sm:w-auto">
+        <nav className="order-3 flex w-full items-center gap-0.5 overflow-x-auto sm:order-4 sm:ml-auto sm:w-auto sm:gap-1 sm:overflow-visible">
           <NavLink to="/" end className={nav}>{t('nav_map')}</NavLink>
-          <NavLink to="/licence" className={nav}>{t('nav_licence')}</NavLink>
+          <NavLink to="/licence" className={nav}>
+            <span className="sm:hidden">{t('nav_licence_short')}</span>
+            <span className="hidden sm:inline">{t('nav_licence')}</span>
+          </NavLink>
           <NavLink to="/faq" className={nav}>{t('nav_faq')}</NavLink>
           <NavLink to="/suggest" className={nav}>{t('nav_suggest')}</NavLink>
           {/* static page, not an SPA route */}
           <a href={lang === 'fr' ? '/sheets/retailers-by-category-fr' : '/sheets/retailers-by-category'} className={nav({ isActive: false })}>
-            {t('nav_sheet')}
+            <span className="sm:hidden">{t('nav_sheet_short')}</span>
+            <span className="hidden sm:inline">{t('nav_sheet')}</span>
           </a>
         </nav>
         {isMap && (
           <Link
             to="/suggest"
-            className="order-4 w-full rounded-full bg-amber-500/20 px-2.5 py-0.5 text-center text-xs text-amber-300 hover:bg-amber-500/30 sm:order-3 sm:w-auto sm:text-left"
+            className="order-4 w-full rounded-full bg-amber-500/20 px-2.5 py-0.5 text-center text-[11px] text-amber-300 hover:bg-amber-500/30 sm:order-3 sm:w-auto sm:text-xs sm:text-left"
           >
             {t('wip_notice')}
           </Link>
