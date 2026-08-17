@@ -4,8 +4,12 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { Protocol } from 'pmtiles';
 import { layers as pmLayers, namedFlavor } from '@protomaps/basemaps';
 import * as GeoJSON from 'geojson';
-import { CATEGORY_COLORS, type Retailer } from '../../shared/const';
+import {
+  CATEGORY_COLORS, RANGE_ACCESS, RANGE_KINDS, SPLIT_CATEGORIES, rangeIcon,
+  type Retailer, type ShootingRange,
+} from '../../shared/const';
 import { DENSITY_STOPS, densityByCd, loadCds } from '../lib/density';
+import { currentFeel } from '../lib/feel';
 import { useLang, useT } from '../lib/i18n';
 
 maplibregl.addProtocol('pmtiles', new Protocol().tile);
@@ -59,15 +63,15 @@ function toGeoJSON(retailers: Retailer[]): GeoJSON.FeatureCollection {
   };
 }
 
-// MapLibre circles are single-colour, so the split co-op pin is a prerendered icon.
-function coopPinImage(): ImageData {
+// MapLibre circles are single-colour, so each split pin is a prerendered icon.
+function splitPinImage(color: string): ImageData {
   const c = document.createElement('canvas');
   c.width = c.height = 36; // (circle-radius 7 + stroke 2) * pixelRatio 2
   const ctx = c.getContext('2d')!;
   ctx.beginPath(); ctx.arc(18, 18, 14, Math.PI / 2, (3 * Math.PI) / 2); ctx.closePath();
   ctx.fillStyle = '#ffffff'; ctx.fill();
   ctx.beginPath(); ctx.arc(18, 18, 14, -Math.PI / 2, Math.PI / 2); ctx.closePath();
-  ctx.fillStyle = CATEGORY_COLORS.coop; ctx.fill();
+  ctx.fillStyle = color; ctx.fill();
   ctx.beginPath(); ctx.arc(18, 18, 13.5, 0, 2 * Math.PI); // hairline keeps the white half visible
   ctx.lineWidth = 1.5; ctx.strokeStyle = '#94a3b8'; ctx.stroke();
   ctx.beginPath(); ctx.arc(18, 18, 16, 0, 2 * Math.PI); // white ring matching circle-stroke
@@ -75,8 +79,59 @@ function coopPinImage(): ImageData {
   return ctx.getImageData(0, 0, 36, 36);
 }
 
-function ensureCoopIcon(m: maplibregl.Map) {
-  if (!m.hasImage('coop-pin')) m.addImage('coop-pin', coopPinImage(), { pixelRatio: 2 });
+function ensureSplitIcons(m: maplibregl.Map) {
+  for (const c of SPLIT_CATEGORIES) {
+    if (!m.hasImage(`${c}-pin`)) m.addImage(`${c}-pin`, splitPinImage(CATEGORY_COLORS[c]), { pixelRatio: 2 });
+  }
+}
+
+const isSplit = ['in', ['get', 'category'], ['literal', SPLIT_CATEGORIES]] as unknown as maplibregl.ExpressionSpecification;
+
+// Read once: MapLibre bakes transition specs into the layer at creation.
+const PAINT_MS = currentFeel().paintMs;
+
+function rangesGeoJSON(ranges: ShootingRange[]): GeoJSON.FeatureCollection {
+  return {
+    type: 'FeatureCollection',
+    features: ranges.map((r) => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [r.lon, r.lat] },
+      properties: { id: r.id, kind: r.kind, access: r.access },
+    })),
+  };
+}
+
+// The six range glyphs are PNGs rather than canvas drawings — one loadImage each,
+// then they live in the style until it is replaced.
+async function ensureRangeIcons(m: maplibregl.Map) {
+  await Promise.all(
+    RANGE_ACCESS.flatMap((a) => RANGE_KINDS.map(async (k) => {
+      const id = rangeIcon(a, k);
+      if (m.hasImage(id)) return;
+      const { data } = await m.loadImage(`/icons/${id}.png`);
+      if (!m.hasImage(id)) m.addImage(id, data, { pixelRatio: 2 });
+    })),
+  );
+}
+
+async function addRangeLayer(m: maplibregl.Map, data: GeoJSON.FeatureCollection) {
+  await ensureRangeIcons(m);
+  if (!m.getStyle()) return; // style swapped while the icons were loading
+  if (m.getSource('ranges')) {
+    (m.getSource('ranges') as maplibregl.GeoJSONSource).setData(data);
+  } else {
+    m.addSource('ranges', { type: 'geojson', data });
+  }
+  if (!m.getLayer('points-ranges')) {
+    m.addLayer({
+      id: 'points-ranges', type: 'symbol', source: 'ranges',
+      layout: {
+        'icon-image': ['concat', 'range-', ['get', 'access'], '-', ['get', 'kind']],
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
+      },
+    });
+  }
 }
 
 const iconSizeExpr = (sel: number | null) =>
@@ -96,7 +151,7 @@ const densityFill = [
 ] as unknown as maplibregl.ExpressionSpecification;
 
 function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean, sel: number | null = null) {
-  ensureCoopIcon(m);
+  ensureSplitIcons(m);
   m.addSource('retailers', {
     type: 'geojson',
     data,
@@ -121,18 +176,21 @@ function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, c
   }
   m.addLayer({
     id: 'points', type: 'circle', source: 'retailers',
-    filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'category'], 'coop']],
+    filter: ['all', ['!', ['has', 'point_count']], ['!', isSplit]],
     paint: {
       'circle-color': colorExpr,
       'circle-stroke-color': '#ffffff',
+      // Without these the density/range toggles resize every pin in one frame.
+      'circle-radius-transition': { duration: PAINT_MS, delay: 0 },
+      'circle-stroke-width-transition': { duration: PAINT_MS, delay: 0 },
       ...sizeExprs(sel),
     },
   });
   m.addLayer({
-    id: 'points-coop', type: 'symbol', source: 'retailers',
-    filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'category'], 'coop']],
+    id: 'points-split', type: 'symbol', source: 'retailers',
+    filter: ['all', ['!', ['has', 'point_count']], isSplit],
     layout: {
-      'icon-image': 'coop-pin',
+      'icon-image': ['concat', ['get', 'category'], '-pin'],
       'icon-size': iconSizeExpr(sel),
       'icon-allow-overlap': true,
       'icon-ignore-placement': true,
@@ -148,9 +206,15 @@ interface Props {
   theme?: MapTheme;
   selectedId?: number | null;
   density?: boolean;
+  ranges?: ShootingRange[];
+  rangeMode?: boolean;
+  onSelectRange?: (r: ShootingRange) => void;
 }
 
-export default function RetailerMap({ retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null, density = false }: Props) {
+export default function RetailerMap({
+  retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null,
+  density = false, ranges = [], rangeMode = false, onSelectRange,
+}: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const loaded = useRef(false);
@@ -166,6 +230,12 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   selectedIdRef.current = selectedId;
   const densityRef = useRef(density);
   densityRef.current = density;
+  const rangesRef = useRef(ranges);
+  rangesRef.current = ranges;
+  const rangeModeRef = useRef(rangeMode);
+  rangeModeRef.current = rangeMode;
+  const onSelectRangeRef = useRef(onSelectRange);
+  onSelectRangeRef.current = onSelectRange;
   const ratesRef = useRef<Map<string, number>>(new Map());
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const t = useT();
@@ -180,22 +250,47 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     setInView(retailersRef.current.filter((r) => b.contains([r.lon, r.lat])).length);
   };
 
-  // Applies everything the density toggle changes: pin sizing, coop icon visibility,
-  // and the census-division choropleth (lazy-loaded on first use).
+  // Shows the ranges layer, lazily creating it (and loading its icons) on first use.
+  const syncRanges = (m: maplibregl.Map) => {
+    if (!rangeModeRef.current) {
+      if (m.getLayer('points-ranges')) m.setLayoutProperty('points-ranges', 'visibility', 'none');
+      return;
+    }
+    addRangeLayer(m, rangesGeoJSON(rangesRef.current))
+      .then(() => {
+        if (!rangeModeRef.current || !m.getLayer('points-ranges')) return;
+        m.setLayoutProperty('points-ranges', 'visibility', 'visible');
+        m.moveLayer('points-ranges'); // stay above pins rebuilt by the cluster/theme toggles
+      })
+      .catch(() => {});
+  };
+
+  // Applies everything the density and range toggles change: pin sizing, split-pin icon
+  // visibility, and the census-division choropleth (lazy-loaded on first use).
   const syncDensity = (m: maplibregl.Map) => {
     const on = densityRef.current;
-    const exprs = sizeExprs(selectedIdRef.current, on);
+    // Both views shrink the store pins to dots so they stop crowding what sits on top.
+    const small = on || rangeModeRef.current;
+    const exprs = sizeExprs(selectedIdRef.current, small);
     if (m.getLayer('points')) {
       m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
       m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
-      // density view drops the coop icon layer, so its dots render here instead
-      m.setFilter('points', on
+      // shrinking drops the split-pin icon layer, so those dots render here instead
+      m.setFilter('points', small
         ? ['!', ['has', 'point_count']]
-        : ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'category'], 'coop']]);
+        : ['all', ['!', ['has', 'point_count']], ['!', isSplit]]);
     }
-    if (m.getLayer('points-coop')) m.setLayoutProperty('points-coop', 'visibility', on ? 'none' : 'visible');
+    if (m.getLayer('points-split')) m.setLayoutProperty('points-split', 'visibility', small ? 'none' : 'visible');
     if (!on) {
       popupRef.current?.remove();
+      if (PAINT_MS && m.getLayer('cd-fill')) {
+        m.setPaintProperty('cd-fill', 'fill-opacity', 0); // fade out, then hide
+        window.setTimeout(() => {
+          if (densityRef.current || !m.getLayer('cd-fill')) return;
+          for (const id of ['cd-fill', 'cd-line']) if (m.getLayer(id)) m.setLayoutProperty(id, 'visibility', 'none');
+        }, PAINT_MS);
+        return;
+      }
       for (const id of ['cd-fill', 'cd-line']) if (m.getLayer(id)) m.setLayoutProperty(id, 'visibility', 'none');
       return;
     }
@@ -207,7 +302,15 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       // insert under the basemap's labels so place names stay readable
       const firstSymbol = m.getStyle().layers.find((l) => l.type === 'symbol')?.id;
       if (!m.getLayer('cd-fill')) {
-        m.addLayer({ id: 'cd-fill', type: 'fill', source: 'cds', paint: { 'fill-color': densityFill, 'fill-opacity': 0.55 } }, firstSymbol);
+        // Start transparent so the choropleth fades up instead of snapping in.
+        m.addLayer({
+          id: 'cd-fill', type: 'fill', source: 'cds',
+          paint: {
+            'fill-color': densityFill,
+            'fill-opacity': PAINT_MS ? 0 : 0.55,
+            'fill-opacity-transition': { duration: PAINT_MS, delay: 0 },
+          },
+        }, firstSymbol);
       }
       if (!m.getLayer('cd-line')) {
         m.addLayer({ id: 'cd-line', type: 'line', source: 'cds', paint: { 'line-color': 'rgba(0,0,0,0.18)', 'line-width': 0.5 } }, firstSymbol);
@@ -216,6 +319,10 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
       const rates = densityByCd(cds, retailersRef.current);
       ratesRef.current = rates;
       for (const [id, d] of rates) m.setFeatureState({ source: 'cds', id }, { d });
+      // Raise opacity after the states land so the fade shows finished colours.
+      if (PAINT_MS) requestAnimationFrame(() => {
+        if (densityRef.current && m.getLayer('cd-fill')) m.setPaintProperty('cd-fill', 'fill-opacity', 0.55);
+      });
     }).catch(() => {});
   };
 
@@ -237,7 +344,7 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     m.addControl(new maplibregl.FullscreenControl(), 'top-right');
     m.on('load', () => {
       addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
-      for (const layer of ['points', 'points-coop']) {
+      for (const layer of ['points', 'points-split']) {
         m.on('click', layer, (e) => {
           const id = e.features?.[0]?.properties?.id as number | undefined;
           const r = retailersRef.current.find((x) => x.id === id);
@@ -282,10 +389,20 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
         popupRef.current = new maplibregl.Popup({ closeButton: false, maxWidth: '260px' })
           .setLngLat(e.lngLat).setDOMContent(box).addTo(m);
       });
+      m.on('click', 'points-ranges', (e) => {
+        const id = e.features?.[0]?.properties?.id as number | undefined;
+        const r = rangesRef.current.find((x) => x.id === id);
+        if (!r) return;
+        if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+        onSelectRangeRef.current?.(r);
+      });
+      m.on('mouseenter', 'points-ranges', () => { m.getCanvas().style.cursor = 'pointer'; });
+      m.on('mouseleave', 'points-ranges', () => { m.getCanvas().style.cursor = ''; });
       m.on('move', () => updateInView(m));
       updateInView(m);
       loaded.current = true;
       syncDensity(m);
+      syncRanges(m);
     });
     map.current = m;
     return () => { loaded.current = false; m.remove(); };
@@ -304,17 +421,23 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
   useEffect(() => {
     if (map.current && loaded.current) syncDensity(map.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [density]);
+  }, [density, rangeMode]);
+
+  useEffect(() => {
+    if (map.current && loaded.current) syncRanges(map.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ranges, rangeMode]);
 
   // Rebuild source+layers on toggle: MapLibre fixes the cluster option at source creation.
   // Event handlers survive — they're bound by layer id, and the ids are reused.
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded.current) return;
-    for (const id of ['clusters', 'cluster-count', 'points', 'points-coop']) if (m.getLayer(id)) m.removeLayer(id);
+    for (const id of ['clusters', 'cluster-count', 'points', 'points-split']) if (m.getLayer(id)) m.removeLayer(id);
     if (m.getSource('retailers')) m.removeSource('retailers');
     addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered, selectedIdRef.current);
     syncDensity(m);
+    syncRanges(m);
   }, [clustered]);
 
   // setStyle wipes custom sources/layers — re-add them once the new style loads.
@@ -325,20 +448,24 @@ export default function RetailerMap({ retailers, onSelect, flyTo, clustered = tr
     m.once('style.load', () => {
       addRetailerLayers(m, toGeoJSON(retailersRef.current), clusteredRef.current, selectedIdRef.current);
       syncDensity(m);
+      syncRanges(m);
     });
   }, [theme]);
 
   useEffect(() => {
     const m = map.current;
     if (!m || !loaded.current || !m.getLayer('points')) return;
-    const exprs = sizeExprs(selectedId, densityRef.current);
+    const exprs = sizeExprs(selectedId, densityRef.current || rangeModeRef.current);
     m.setPaintProperty('points', 'circle-radius', exprs['circle-radius']);
     m.setPaintProperty('points', 'circle-stroke-width', exprs['circle-stroke-width']);
-    if (m.getLayer('points-coop')) m.setLayoutProperty('points-coop', 'icon-size', iconSizeExpr(selectedId));
+    if (m.getLayer('points-split')) m.setLayoutProperty('points-split', 'icon-size', iconSizeExpr(selectedId));
   }, [selectedId]);
 
   useEffect(() => {
-    if (flyTo) map.current?.flyTo({ center: [flyTo.lon, flyTo.lat], zoom: 10 });
+    if (flyTo) {
+      const { speed, curve } = currentFeel().fly;
+      map.current?.flyTo({ center: [flyTo.lon, flyTo.lat], zoom: 10, speed, curve, essential: true });
+    }
   }, [flyTo]);
 
   // The badge lives inside the map container so it stays visible in fullscreen.

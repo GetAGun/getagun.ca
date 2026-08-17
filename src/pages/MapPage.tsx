@@ -1,34 +1,45 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { CATEGORIES, CATEGORY_COLORS, CATEGORY_LABELS, type Category, type Retailer } from '../../shared/const';
+import {
+  CATEGORIES, CATEGORY_COLORS, CATEGORY_LABELS, RANGE_ACCESS, RANGE_ACCESS_COLORS,
+  RANGE_ACCESS_LABELS, RANGE_KINDS, RANGE_KIND_LABELS, SPLIT_CATEGORIES, rangeIcon,
+  type Category, type RangeAccess, type RangeKind, type Retailer, type ShootingRange,
+} from '../../shared/const';
+import Bullseye from '../components/Bullseye';
 import RetailerMap, { MAP_FLAVORS, type MapFlavor, type MapTheme } from '../components/RetailerMap';
-import { getMeta, getRetailers } from '../lib/api';
+import { getMeta, getRanges, getRetailers } from '../lib/api';
 import { nearest } from '../lib/geo';
 import { geocode, type GeocodeHit } from '../lib/geocode';
 import { useLang, useT, type StringKey } from '../lib/i18n';
 
-// Co-op pins are split white/cherry — mirror that in the UI dots.
+// Co-op and Northern pins are split white/colour — mirror that in the UI dots.
 const swatch = (c: Category) =>
-  c === 'coop'
-    ? { background: `linear-gradient(90deg, #ffffff 50%, ${CATEGORY_COLORS.coop} 50%)`, boxShadow: 'inset 0 0 0 1px #cbd5e1' }
+  (SPLIT_CATEGORIES as readonly Category[]).includes(c)
+    ? { background: `linear-gradient(90deg, #ffffff 50%, ${CATEGORY_COLORS[c]} 50%)`, boxShadow: 'inset 0 0 0 1px #cbd5e1' }
     : { background: CATEGORY_COLORS[c] };
 
 // Switch-style toggle: instant knob slide + track colour for clear state feedback.
-function Toggle({ on, onClick, label, className = '' }: { on: boolean; onClick: () => void; label: string; className?: string }) {
+// With labelOff set the control reads as a two-way switch (off-label · switch · on-label),
+// with the active side emphasised; otherwise it is a plain on/off toggle.
+function Toggle({ on, onClick, label, labelOff, className = '', labelClass = '' }: { on: boolean; onClick: (e: React.MouseEvent) => void; label: string; labelOff?: string; className?: string; labelClass?: string }) {
+  // The summary is font-semibold, so the inactive side must reset weight explicitly.
+  const side = (active: boolean) => (active ? 'font-semibold text-slate-800' : 'font-normal text-slate-400');
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={on}
-      className={`flex w-full items-center gap-2 rounded-md px-1 py-1 text-left text-sm transition-colors duration-150 hover:bg-slate-50 active:scale-[.98] ${className}`}
+      aria-label={labelOff ? `${labelOff} / ${label}` : label}
+      className={`flex items-center gap-2 rounded-md px-1 py-1 text-left text-sm transition-colors sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] hover:bg-slate-50 active:scale-[var(--press)] ${className}`}
     >
-      <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-200 ${on ? 'bg-[#e6262a]' : 'bg-slate-300'}`}>
+      {labelOff && <span className={`${labelClass} ${side(!on)}`}>{labelOff}</span>}
+      <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-[var(--dur)] ease-[var(--ease)] ${on ? 'bg-[#e6262a]' : labelOff ? 'bg-slate-500' : 'bg-slate-300'}`}>
         <span
-          className={`absolute left-0 top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 ease-out ${
+          className={`absolute left-0 top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform duration-[var(--dur)] ease-[var(--ease)] ${
             on ? 'translate-x-[18px]' : 'translate-x-0.5'
           }`}
         />
       </span>
-      <span>{label}</span>
+      <span className={`${labelClass} ${labelOff ? side(on) : ''}`}>{label}</span>
     </button>
   );
 }
@@ -67,6 +78,12 @@ export default function MapPage() {
   const [flyTarget, setFlyTarget] = useState<{ lat: number; lon: number } | null>(null);
   const [clustered, setClustered] = useState(true);
   const [density, setDensity] = useState(false);
+  const [rangeMode, setRangeMode] = useState(false);
+  const [ranges, setRanges] = useState<ShootingRange[]>([]);
+  const [selectedRange, setSelectedRange] = useState<ShootingRange | null>(null);
+  const [activeRanges, setActiveRanges] = useState<Set<string>>(
+    () => new Set(RANGE_ACCESS.flatMap((a) => RANGE_KINDS.map((k) => `${a}-${k}`))),
+  );
   const [theme, setTheme] = useState<MapTheme>(() => {
     const saved = localStorage.getItem('map-theme');
     return THEMES.includes(saved as MapTheme) ? (saved as MapTheme) : 'light';
@@ -96,6 +113,28 @@ export default function MapPage() {
     return () => clearTimeout(debounce.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, lang]);
+
+  // Ranges are a separate dataset — only fetched once someone asks to see them.
+  useEffect(() => {
+    if (!rangeMode || ranges.length) return;
+    getRanges().then(setRanges).catch(() => {});
+  }, [rangeMode, ranges.length]);
+
+  const visibleRanges = useMemo(
+    () => (rangeMode ? ranges.filter((r) => activeRanges.has(`${r.access}-${r.kind}`)) : []),
+    [ranges, activeRanges, rangeMode],
+  );
+  const rangeCounts = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const r of ranges) m[`${r.access}-${r.kind}`] = (m[`${r.access}-${r.kind}`] ?? 0) + 1;
+    return m;
+  }, [ranges]);
+  const toggleRange = (slug: string) =>
+    setActiveRanges((prev) => {
+      const next = new Set(prev);
+      if (next.has(slug)) next.delete(slug); else next.add(slug);
+      return next;
+    });
 
   const filtered = useMemo(() => retailers.filter((r) => active.has(r.category)), [retailers, active]);
   const counts = useMemo(() => {
@@ -152,7 +191,18 @@ export default function MapPage() {
 
   return (
     <div className="relative h-full">
-      <RetailerMap retailers={filtered} onSelect={setSelected} flyTo={flyTarget} clustered={clustered && !density} theme={theme} selectedId={selected?.id ?? null} density={density} />
+      <RetailerMap
+        retailers={filtered}
+        onSelect={(r) => { setSelected(r); setSelectedRange(null); }}
+        flyTo={flyTarget}
+        clustered={clustered && !density && !rangeMode}
+        theme={theme}
+        selectedId={selected?.id ?? null}
+        density={density}
+        ranges={visibleRanges}
+        rangeMode={rangeMode}
+        onSelectRange={(r) => { setSelectedRange(r); setSelected(null); }}
+      />
 
       {loadError && (
         <div className="absolute inset-x-0 top-0 z-20 bg-red-600 py-2 text-center text-sm text-white">
@@ -165,7 +215,7 @@ export default function MapPage() {
         <button
           onClick={() => setSearchOpen(true)}
           aria-label={t('search_placeholder')}
-          className="absolute left-3 top-3 z-10 animate-[pop-in_.15s_ease-out] rounded-full bg-white p-3 shadow-lg transition-transform duration-150 hover:scale-105 active:scale-95"
+          className="absolute left-3 top-3 z-10 animate-[pop-in_var(--dur-fast)_var(--ease)] rounded-full bg-white p-3 shadow-lg transition-transform duration-[var(--dur-fast)] ease-[var(--ease)] hover:scale-105 active:scale-[var(--press)]"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5 text-slate-700">
             <circle cx="11" cy="11" r="7" />
@@ -174,14 +224,14 @@ export default function MapPage() {
         </button>
       )}
       {searchOpen && (
-      <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] origin-top-left animate-[pop-in_.18s_ease-out] flex-col gap-2">
+      <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] sm:w-72 origin-top-left animate-[pop-in_var(--dur)_var(--ease)] flex-col gap-2">
         <div className="rounded-lg bg-white p-2 shadow-lg">
           <div className="flex gap-1.5">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('search_placeholder')}
-              className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm"
+              className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm sm:py-1.5"
               aria-label={t('search_placeholder')}
             />
             <button
@@ -223,7 +273,7 @@ export default function MapPage() {
           <button
             onClick={locate}
             disabled={locating}
-            className="mt-2 w-full rounded-md bg-slate-800 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-50"
+            className="mt-2 w-full rounded-md bg-slate-800 py-2 text-sm font-medium text-white sm:py-1.5 hover:bg-slate-700 disabled:opacity-50"
           >
             {locating ? t('locating') : t('use_my_location')}
           </button>
@@ -263,30 +313,83 @@ export default function MapPage() {
       <details
         open={filtersOpen}
         onToggle={(e) => setFiltersOpen((e.target as HTMLDetailsElement).open)}
-        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-[21rem]"
+        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-[21rem] sm:p-1.5"
       >
-        <summary className="cursor-pointer select-none list-none px-1 py-1 text-sm font-semibold text-slate-700 [&::-webkit-details-marker]:hidden">
-          <span className={`mr-1 inline-block text-xs transition-transform duration-200 ${filtersOpen ? '' : '-rotate-90'}`}>▼</span>
+        {/* flex-wrap so the longer French labels drop to a second line instead of clipping */}
+        <summary className="flex cursor-pointer select-none list-none flex-wrap items-center gap-y-1 px-1 py-1 text-sm font-semibold text-slate-700 sm:text-[13px] [&::-webkit-details-marker]:hidden">
+          <Bullseye open={filtersOpen} className={`mr-1.5 transition-colors duration-[var(--dur-fast)] ${filtersOpen ? 'text-ink' : 'text-slate-400'}`} />
           {t('filters_title')}
-          {retailers.length > 0 && (
-            <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full bg-slate-800 px-1.5 align-text-bottom text-xs font-medium leading-none tabular-nums text-white">
-              {retailers.length}
+          {(rangeMode ? ranges.length : retailers.length) > 0 && (
+            <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full bg-slate-800 px-1.5 text-xs font-medium leading-none tabular-nums text-white">
+              {rangeMode ? ranges.length : retailers.length}
             </span>
           )}
+          {/* Inside <summary>, so suppress the default open/close on click. */}
+          <Toggle
+            on={rangeMode}
+            onClick={(e) => { e.preventDefault(); setRangeMode((v) => !v); setSelectedRange(null); revealMap(); }}
+            label={t('range_toggle')}
+            labelOff={t('stores_toggle')}
+            className="ml-auto shrink-0 gap-1 sm:gap-2"
+            /* Smaller on phones: the French labels are long and the summary row
+               must still leave room to tap open the panel. */
+            labelClass="text-[11px] sm:text-[13px]"
+          />
         </summary>
-        <div className="mt-2 grid animate-[pop-in_.18s_ease-out] grid-cols-2 gap-1.5">
-          {CATEGORIES.map((c) => {
+        {rangeMode ? (
+          <div className="stagger mt-2 grid grid-cols-2 gap-1.5 sm:gap-1">
+            {RANGE_ACCESS.map((a) => (
+              <div key={a} className="px-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                {RANGE_ACCESS_LABELS[a][lang]}
+              </div>
+            ))}
+            {/* Row-major grid: one kind per row, public left and private right. */}
+            {RANGE_KINDS.flatMap((k, row) => RANGE_ACCESS.map((a, col) => {
+              const slug = `${a}-${k}`;
+              const on = activeRanges.has(slug);
+              return (
+                <button
+                  key={slug}
+                  style={{ ["--i" as string]: row * 2 + col + 2 }}
+                  onClick={() => toggleRange(slug)}
+                  aria-pressed={on}
+                  aria-label={`${RANGE_ACCESS_LABELS[a][lang]} — ${RANGE_KIND_LABELS[k][lang]}`}
+                  className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
+                    on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
+                  }`}
+                >
+                  <img
+                    src={`/icons/${rangeIcon(a, k)}.png`}
+                    alt=""
+                    className={`h-5 w-5 shrink-0 object-contain ${on ? '' : 'opacity-30 grayscale'}`}
+                  />
+                  <span className="leading-tight">{RANGE_KIND_LABELS[k][lang]}</span>
+                  <span
+                    className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
+                      on ? 'bg-slate-100 text-slate-600' : 'bg-white text-slate-400'
+                    }`}
+                  >
+                    {rangeCounts[slug] ?? 0}
+                  </span>
+                </button>
+              );
+            }))}
+          </div>
+        ) : (
+        <div className="stagger mt-2 grid grid-cols-2 gap-1.5 sm:gap-1">
+          {CATEGORIES.map((c, i) => {
             const on = active.has(c);
             return (
               <button
                 key={c}
+                style={{ ["--i" as string]: i }}
                 onClick={() => toggle(c)}
                 aria-pressed={on}
-                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all duration-150 active:scale-[.97] ${
+                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
                   on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
                 }`}
               >
-                <span className="h-3 w-3 shrink-0 rounded-full" style={on ? swatch(c) : { background: '#cbd5e1' }} />
+                <span className="h-3 w-3 shrink-0 rounded-full sm:h-2.5 sm:w-2.5" style={on ? swatch(c) : { background: '#cbd5e1' }} />
                 <span className="leading-tight">{CATEGORY_LABELS[c][lang]}</span>
                 <span
                   className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
@@ -299,16 +402,17 @@ export default function MapPage() {
             );
           })}
         </div>
+        )}
         <div className="mt-2 border-t border-slate-200 pt-2">
-          <Toggle on={clustered} onClick={() => { setClustered((v) => !v); revealMap(); }} label={t('cluster_toggle')} />
-          <Toggle on={density} onClick={() => { setDensity((v) => !v); revealMap(); }} label={t('density_toggle')} className="mt-1" />
+          <Toggle on={clustered} onClick={() => { setClustered((v) => !v); revealMap(); }} label={t('cluster_toggle')} className="w-full" />
+          <Toggle on={density} onClick={() => { setDensity((v) => !v); revealMap(); }} label={t('density_toggle')} className="mt-1 w-full" />
         </div>
-        <label className="mt-2 block border-t border-slate-200 pt-2 text-sm">
+        <label className="mt-2 block border-t border-slate-200 pt-2 text-sm sm:text-[13px]">
           <span className="font-semibold text-slate-700">{t('theme_title')}</span>
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value as MapTheme)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm sm:py-1"
           >
             {THEMES.map((th) => {
               const flavor = th.replace('-nolabels', '') as MapFlavor;
@@ -322,11 +426,19 @@ export default function MapPage() {
         </label>
       </details>
 
-      {/* Selected retailer card */}
-      {selected && (
-        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] origin-top-right animate-[pop-in_.18s_ease-out] rounded-lg bg-white p-4 shadow-lg">
+      {/* Selected retailer or range card — same shape, different badge */}
+      {(selected ?? selectedRange) && (() => {
+        const item = (selected ?? selectedRange)!;
+        const badge = selected
+          ? { label: CATEGORY_LABELS[selected.category][lang], color: CATEGORY_COLORS[selected.category] }
+          : {
+              label: `${RANGE_KIND_LABELS[selectedRange!.kind][lang]} · ${RANGE_ACCESS_LABELS[selectedRange!.access][lang]}`,
+              color: RANGE_ACCESS_COLORS[selectedRange!.access],
+            };
+        return (
+        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] origin-top-right animate-[pop-in_var(--dur)_var(--ease)] rounded-lg bg-white p-4 shadow-lg">
           <button
-            onClick={() => setSelected(null)}
+            onClick={() => { setSelected(null); setSelectedRange(null); }}
             className="float-right text-slate-400 hover:text-slate-600"
             aria-label={t('close')}
           >
@@ -334,26 +446,26 @@ export default function MapPage() {
           </button>
           <span
             className="mb-1 inline-block rounded-full px-2 py-0.5 text-xs font-medium text-white"
-            style={{ background: CATEGORY_COLORS[selected.category] }}
+            style={{ background: badge.color }}
           >
-            {CATEGORY_LABELS[selected.category][lang]}
+            {badge.label}
           </span>
-          <h2 className="text-lg font-bold">{selected.name}</h2>
+          <h2 className="text-lg font-bold">{item.name}</h2>
           <p className="text-sm text-slate-600">
-            {selected.address}, {selected.city}, {selected.province} {selected.postal ?? ''}
+            {item.address}, {item.city}, {item.province} {item.postal ?? ''}
           </p>
-          {selected.phone && (
-            <p className="mt-1 text-sm"><a className="text-blue-600 hover:underline" href={`tel:${selected.phone}`}>{selected.phone}</a></p>
+          {item.phone && (
+            <p className="mt-1 text-sm"><a className="text-blue-600 hover:underline" href={`tel:${item.phone}`}>{item.phone}</a></p>
           )}
-          {selected.website && (
+          {item.website && (
             <p className="mt-1 text-sm">
-              <a className="text-blue-600 hover:underline" href={selected.website} target="_blank" rel="noopener noreferrer">
+              <a className="text-blue-600 hover:underline" href={item.website} target="_blank" rel="noopener noreferrer">
                 {t('visit_website')}
               </a>
             </p>
           )}
-          {selected.description && <p className="mt-2 text-sm">{selected.description}</p>}
-          {asOf && (
+          {item.description && <p className="mt-2 text-sm">{item.description}</p>}
+          {selected && asOf && (
             <p className="mt-2 text-xs text-slate-400">
               {t('data_as_of')}{' '}
               {new Date(asOf.replace(' ', 'T') + 'Z').toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
@@ -362,7 +474,8 @@ export default function MapPage() {
             </p>
           )}
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
