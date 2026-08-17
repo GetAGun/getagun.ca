@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateRetailer, validateSuggestion } from './validate';
+import { validateRange, validateRetailer, validateSuggestion } from './validate';
 
 const good = {
   name: 'North Bay Guns', address: '12 Main St', city: 'North Bay', province: 'ON',
@@ -75,5 +75,39 @@ describe('validateSuggestion', () => {
     expect(validateSuggestion({ kind: 'feedback' }).ok).toBe(false);
     const fb = validateSuggestion({ kind: 'feedback', note: 'great site' });
     expect(fb.ok && fb.value.name === 'Feedback').toBe(true);
+  });
+});
+
+const goodRange = {
+  name: 'Rideau Valley Gun Club', address: '99 Range Rd', city: 'Ottawa', province: 'ON',
+  postal: 'K1A 0B1', lat: 45.42, lon: -75.7, phone: '613-555-0100',
+  website: 'https://example.ca', description: 'Trap and skeet.', kind: 'outdoor', access: 'public',
+};
+
+describe('validateRange', () => {
+  it('accepts a complete valid range', () => {
+    const r = validateRange(goodRange);
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.value).toMatchObject({ kind: 'outdoor', access: 'public', city: 'Ottawa' });
+  });
+
+  it('rejects an unknown kind or access', () => {
+    expect(validateRange({ ...goodRange, kind: 'underground' }).ok).toBe(false);
+    expect(validateRange({ ...goodRange, access: 'sometimes' }).ok).toBe(false);
+    expect(validateRange({ ...goodRange, kind: undefined }).ok).toBe(false);
+  });
+
+  it('applies the same location rules as retailers', () => {
+    expect(validateRange({ ...goodRange, province: 'XX' }).ok).toBe(false);
+    expect(validateRange({ ...goodRange, lat: 12 }).ok).toBe(false);
+    expect(validateRange({ ...goodRange, name: '   ' }).ok).toBe(false);
+    expect(validateRange({ ...goodRange, website: 'javascript:alert(1)' }).ok).toBe(false);
+    expect(validateRange(null).ok).toBe(false);
+  });
+
+  it('keeps optional fields nullable', () => {
+    const r = validateRange({ ...goodRange, postal: '', phone: null, website: '', description: undefined });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.value).toMatchObject({ postal: null, phone: null, website: null, description: null });
   });
 });

@@ -12,7 +12,27 @@ CREATE TABLE IF NOT EXISTS retailers (
   description TEXT,
   category TEXT NOT NULL CHECK (category IN (
     'independent','home-hardware','canadian-tire','pronature','ecotone',
-    'bass-pro-cabelas','sail','latulippe','coop','fcnq','gunsmith')),
+    'bass-pro-cabelas','sail','latulippe','coop','fcnq','northern','gunsmith')),
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT
+);
+
+-- Shooting/skeet/trap ranges. Deliberately a separate table from retailers so
+-- they never reach the store counts, per-capita charts or retailer spreadsheets.
+CREATE TABLE IF NOT EXISTS ranges (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  address TEXT NOT NULL,
+  city TEXT NOT NULL,
+  province TEXT NOT NULL,
+  postal TEXT,
+  lat REAL NOT NULL,
+  lon REAL NOT NULL,
+  phone TEXT,
+  website TEXT,
+  description TEXT,
+  kind TEXT NOT NULL CHECK (kind IN ('indoor','outdoor','hybrid')),
+  access TEXT NOT NULL CHECK (access IN ('public','private')),
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT
 );

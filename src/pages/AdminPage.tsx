@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { CATEGORIES, CATEGORY_LABELS, PROVINCES, type Category, type Province, type Retailer, type Suggestion } from '../../shared/const';
 import PinPreview from '../components/PinPreview';
 import AdminFaq from './AdminFaq';
+import AdminRanges from './AdminRanges';
 import { admin, type RetailerForm } from '../lib/api';
+import { parseAddress } from '../lib/address';
 import { geocode, reverseGeocode } from '../lib/geocode';
 import { haversineKm } from '../lib/geo';
 
@@ -25,7 +27,7 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [fromSuggestion, setFromSuggestion] = useState<number | null>(null);
   const [msg, setMsg] = useState('');
-  const [tab, setTab] = useState<'retailers' | 'faq'>('retailers');
+  const [tab, setTab] = useState<'retailers' | 'ranges' | 'faq'>('retailers');
   const [coordText, setCoordText] = useState('');
   const [addrText, setAddrText] = useState('');
   const [listQuery, setListQuery] = useState('');
@@ -126,24 +128,15 @@ export default function AdminPage() {
 
   const applyAddress = () => {
     setMsg('');
-    let s = addrText.trim();
-    if (!s) { setMsg('Paste a full address first (e.g. 22789 Hagerty Rd, Newbury, ON N0L 1Z0)'); return; }
-    const postalM = s.match(/[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d/);
-    const postal = postalM ? postalM[0].toUpperCase().replace(/\s+/, '').replace(/^(.{3})/, '$1 ') : null;
-    if (postalM) s = s.replace(postalM[0], '');
-    const provM = s.toUpperCase().match(/(?:^|[\s,])(AB|BC|MB|NB|NL|NS|NT|NU|ON|PE|QC|SK|YT)(?=$|[\s,.])/);
-    if (provM) {
-      const i = s.toUpperCase().lastIndexOf(provM[1]);
-      s = s.slice(0, i) + s.slice(i + 2);
-    }
-    const parts = s.split(',').map((p) => p.trim()).filter(Boolean);
-    if (!parts.length) { setMsg('Could not read a street address from that'); return; }
+    if (!addrText.trim()) { setMsg('Paste a full address first (e.g. 22789 Hagerty Rd, Newbury, ON N0L 1Z0)'); return; }
+    const p = parseAddress(addrText);
+    if (!p) { setMsg('Could not read a street address from that'); return; }
     setForm((f) => ({
       ...f,
-      address: parts[0],
-      city: parts[1] ?? f.city,
-      province: (provM ? provM[1] : f.province) as Province,
-      postal: postal ?? f.postal,
+      address: p.address,
+      city: p.city ?? f.city,
+      province: p.province ?? f.province,
+      postal: p.postal ?? f.postal,
     }));
     setAddrText('');
   };
@@ -240,6 +233,7 @@ export default function AdminPage() {
         <h1 className="text-2xl font-bold">Admin</h1>
         <div className="ml-4 flex gap-2">
           <button onClick={() => setTab('retailers')} className={tabBtn(tab === 'retailers')}>Retailers</button>
+          <button onClick={() => setTab('ranges')} className={tabBtn(tab === 'ranges')}>Ranges</button>
           <button onClick={() => setTab('faq')} className={tabBtn(tab === 'faq')}>FAQ</button>
         </div>
         <button
@@ -253,7 +247,7 @@ export default function AdminPage() {
             }
             setTimeout(() => setRefreshed(''), 2500);
           }}
-          className="ml-auto rounded-md bg-slate-800 px-3 py-1.5 text-sm text-white transition-colors duration-150 hover:bg-slate-700 active:scale-95"
+          className="ml-auto rounded-md bg-slate-800 px-3 py-1.5 text-sm text-white transition-colors duration-[var(--dur-fast)] ease-[var(--ease)] hover:bg-slate-700 active:scale-[var(--press)]"
         >
           Refresh published data
         </button>
@@ -268,13 +262,14 @@ export default function AdminPage() {
             }
             setTimeout(() => setRefreshed(''), 2500);
           }}
-          className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 transition-colors duration-150 hover:bg-slate-100 active:scale-95"
+          className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 transition-colors duration-[var(--dur-fast)] ease-[var(--ease)] hover:bg-slate-100 active:scale-[var(--press)]"
         >
           Snapshot now
         </button>
         {refreshed && <span className="text-sm text-slate-500">{refreshed}</span>}
       </div>
       {tab === 'faq' && <div className="mt-4"><AdminFaq /></div>}
+      {tab === 'ranges' && <div className="mt-4"><AdminRanges /></div>}
       <div className={tab === 'retailers' ? '' : 'hidden'}>
       {msg && <p className="mt-2 rounded bg-amber-100 px-3 py-2 text-sm">{msg}</p>}
 

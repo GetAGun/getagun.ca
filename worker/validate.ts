@@ -1,15 +1,18 @@
-import { CATEGORIES, PROVINCES, SUGGESTION_KINDS, type SuggestionKind } from '../shared/const';
+import { CATEGORIES, PROVINCES, RANGE_ACCESS, RANGE_KINDS, SUGGESTION_KINDS, type SuggestionKind } from '../shared/const';
 
 const CANADA = { latMin: 41.6, latMax: 83.2, lonMin: -141.1, lonMax: -52.5 };
 const URL_RE = /^https?:\/\/\S+$/i;
 
 type Result<T> = { ok: true; value: T } | { ok: false; error: string };
 
-export interface RetailerInput {
+// Retailers and ranges carry the same location fields; only the classifier differs.
+export interface PlaceInput {
   name: string; address: string; city: string; province: string;
   postal: string | null; lat: number; lon: number; phone: string | null;
-  website: string | null; description: string | null; category: string;
+  website: string | null; description: string | null;
 }
+export interface RetailerInput extends PlaceInput { category: string }
+export interface RangeInput extends PlaceInput { kind: string; access: string }
 
 export interface SuggestionInput {
   name: string; address: string | null; city: string | null;
@@ -39,7 +42,7 @@ function optUrl(v: unknown): string | null | undefined {
   return URL_RE.test(s) ? s : undefined;
 }
 
-export function validateRetailer(body: unknown): Result<RetailerInput> {
+function validatePlace(body: unknown): Result<PlaceInput> {
   if (typeof body !== 'object' || body === null) return { ok: false, error: 'invalid body' };
   const b = body as Record<string, unknown>;
   const name = reqStr(b.name, 120);
@@ -49,7 +52,6 @@ export function validateRetailer(body: unknown): Result<RetailerInput> {
   if (!address) return { ok: false, error: 'address is required (max 200 chars)' };
   if (!city) return { ok: false, error: 'city is required (max 80 chars)' };
   if (!PROVINCES.includes(b.province as never)) return { ok: false, error: 'invalid province' };
-  if (!CATEGORIES.includes(b.category as never)) return { ok: false, error: 'invalid category' };
   if (typeof b.lat !== 'number' || b.lat < CANADA.latMin || b.lat > CANADA.latMax)
     return { ok: false, error: 'lat outside Canada' };
   if (typeof b.lon !== 'number' || b.lon < CANADA.lonMin || b.lon > CANADA.lonMax)
@@ -64,11 +66,25 @@ export function validateRetailer(body: unknown): Result<RetailerInput> {
   if (website === undefined) return { ok: false, error: 'website must be an http(s) URL (max 200 chars)' };
   return {
     ok: true,
-    value: {
-      name, address, city, province: b.province as string, postal,
-      lat: b.lat, lon: b.lon, phone, website, description, category: b.category as string,
-    },
+    value: { name, address, city, province: b.province as string, postal, lat: b.lat, lon: b.lon, phone, website, description },
   };
+}
+
+export function validateRetailer(body: unknown): Result<RetailerInput> {
+  const b = body as Record<string, unknown> | null;
+  if (typeof body !== 'object' || body === null) return { ok: false, error: 'invalid body' };
+  if (!CATEGORIES.includes(b!.category as never)) return { ok: false, error: 'invalid category' };
+  const base = validatePlace(body);
+  return base.ok ? { ok: true, value: { ...base.value, category: b!.category as string } } : base;
+}
+
+export function validateRange(body: unknown): Result<RangeInput> {
+  const b = body as Record<string, unknown> | null;
+  if (typeof body !== 'object' || body === null) return { ok: false, error: 'invalid body' };
+  if (!RANGE_KINDS.includes(b!.kind as never)) return { ok: false, error: 'invalid kind' };
+  if (!RANGE_ACCESS.includes(b!.access as never)) return { ok: false, error: 'invalid access' };
+  const base = validatePlace(body);
+  return base.ok ? { ok: true, value: { ...base.value, kind: b!.kind as string, access: b!.access as string } } : base;
 }
 
 export function validateSuggestion(body: unknown): Result<SuggestionInput> {

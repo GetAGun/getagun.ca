@@ -1,6 +1,7 @@
-import type { Faq, Retailer, Suggestion } from '../../shared/const';
+import type { ChartData, Faq, Retailer, ShootingRange, Suggestion } from '../../shared/const';
 
 export type RetailerForm = Omit<Retailer, 'id'>;
+export type RangeForm = Omit<ShootingRange, 'id'>;
 export interface SuggestionForm {
   name?: string; address?: string; city?: string; province?: string;
   website?: string; note?: string; kind: 'new' | 'update' | 'feedback'; turnstileToken: string;
@@ -19,6 +20,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const getRetailers = () => request<Retailer[]>('/api/retailers');
+
+export const getRanges = () => request<ShootingRange[]>('/api/ranges');
+
+export const getCharts = () => request<ChartData>('/api/charts');
 
 export const getMeta = () => request<{ asOf: string }>('/api/meta');
 
@@ -52,6 +57,15 @@ export const admin = {
   },
   deleteRetailer: async (id: number): Promise<void> => {
     await request(`/api/admin/retailers/${id}`, { method: 'DELETE' });
+  },
+  getRanges: () => request<ShootingRange[]>('/api/admin/ranges', { cache: 'no-store' }),
+  createRange: async (data: RangeForm) =>
+    (await request<{ id: number }>('/api/admin/ranges', { method: 'POST', body: JSON.stringify(data) })).id,
+  updateRange: async (id: number, data: RangeForm): Promise<void> => {
+    await request(`/api/admin/ranges/${id}`, { method: 'PUT', body: JSON.stringify(data) });
+  },
+  deleteRange: async (id: number): Promise<void> => {
+    await request(`/api/admin/ranges/${id}`, { method: 'DELETE' });
   },
   getSuggestions: () => request<Suggestion[]>('/api/admin/suggestions'),
   resolveGmaps: (url: string) =>
