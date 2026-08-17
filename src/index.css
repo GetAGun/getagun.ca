@@ -2,16 +2,269 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted at stable paths so index.html can preload them — the hashed
+   fontsource assets were discovered too late and reflowed the page (CLS 0.10).
+   Only latin + latin-ext are shipped; the packages remain the source of truth. */
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/rajdhani-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/rajdhani-600-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/rajdhani-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/rajdhani-700-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/serif-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/serif-400-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/serif-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/serif-600-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/serif-400i.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/serif-400i-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 html, body, #root { height: 100%; }
 
+/* Motion tokens — "calm": long ease-out, no bounce. Overridable at runtime by src/lib/feel.ts. */
+:root {
+  --dur-fast: 180ms;
+  --dur: 280ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --press: 0.985;
+  --stagger: 18ms;
+  --rise: 6px;
+}
+
+@layer base {
+  /* One visible focus treatment everywhere, in the brand accent. */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.DEFAULT');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Small tracked caps — the registry's label voice. */
+  .eyebrow {
+    @apply font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-steel;
+  }
+  /* Reading setting for regulatory prose. */
+  .doc-prose {
+    @apply font-prose text-[15px] leading-[1.7] text-ink/85;
+  }
+  .doc-prose a {
+    @apply text-brand-deep underline decoration-brand/40 underline-offset-[3px] transition-colors duration-[var(--dur-fast)] hover:decoration-brand;
+  }
+  .doc-prose strong { @apply font-semibold text-ink; }
+  /* Page shell for the document pages. */
+  .doc-page {
+    @apply relative min-h-full shrink-0 bg-paper px-5 pb-16 pt-8 sm:px-8;
+  }
+  .field-label { @apply eyebrow block; }
+  .field {
+    @apply mt-1.5 w-full rounded-none border border-rule bg-white px-3 py-2 font-prose text-[15px] text-ink transition-colors duration-[var(--dur-fast)] placeholder:text-steel/60 focus:border-brand;
+  }
+}
+
 @keyframes page-in {
-  from { opacity: 0; transform: translateY(4px); }
+  from { opacity: 0; transform: translateY(var(--rise)); }
   to { opacity: 1; transform: none; }
 }
 @keyframes pop-in {
   from { opacity: 0; transform: scale(0.96) translateY(-2px); }
   to { opacity: 1; transform: none; }
 }
+/* Staggered list reveal: each item sets --i. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(var(--rise)); }
+  to { opacity: 1; transform: none; }
+}
+.stagger > * {
+  animation: rise-in var(--dur) var(--ease) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+/* Phones: the collapsed Categories bar runs the width of the map, so lift the
+   attribution clear of it instead of letting the two sit on the same line. */
+@media (max-width: 639px) {
+  .maplibregl-ctrl-bottom-right { bottom: 2.6rem; }
+}
+
+/* ── Cosmetic directions (preview via ?skin=grain|stamp|ledger) ───────────────
+   Each is pure CSS over the existing markup, so nothing here changes behaviour.
+   Base = no skin attribute. */
+
+/* Paper grain: fractal noise laid over the page, multiplied into the warm paper
+   so it reads as stock rather than as a screen. */
+[data-skin="grain"] .doc-page::before,
+[data-skin="stamp"] .doc-page::before,
+[data-skin="ledger"] .doc-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+/* Letterpress: a hairline of paper-white under the ink, as if the type were
+   pressed into the sheet. Display faces only — body text stays crisp. */
+[data-skin="grain"] h1,
+[data-skin="grain"] h2,
+[data-skin="grain"] .eyebrow,
+[data-skin="stamp"] h1,
+[data-skin="stamp"] h2,
+[data-skin="stamp"] .eyebrow,
+[data-skin="ledger"] h1,
+[data-skin="ledger"] h2,
+[data-skin="ledger"] .eyebrow {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* Masthead gains the same tooth, inverted for dark ground. */
+[data-skin="grain"] header,
+[data-skin="stamp"] header,
+[data-skin="ledger"] header { position: relative; }
+[data-skin="grain"] header::after,
+[data-skin="stamp"] header::after,
+[data-skin="ledger"] header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ── Stamp: the site's thesis is that every record is checked by hand, so the
+   mark of verification becomes the page's signature. */
+[data-skin="stamp"] .doc-page article,
+[data-skin="stamp"] .doc-page > div { position: relative; }
+[data-skin="stamp"] .doc-page article::before,
+[data-skin="stamp"] .doc-page > div::before {
+  content: 'VERIFIED';
+  position: absolute;
+  top: -0.25rem;
+  right: -0.5rem;
+  transform: rotate(-9deg);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: rgba(230, 38, 42, 0.42);
+  border: 2px solid rgba(230, 38, 42, 0.32);
+  border-radius: 2px;
+  padding: 0.3rem 0.7rem 0.25rem;
+  pointer-events: none;
+  z-index: 2;
+}
+html[lang="fr"][data-skin="stamp"] .doc-page article::before,
+html[lang="fr"][data-skin="stamp"] .doc-page > div::before { content: 'VÉRIFIÉ'; }
+@media (max-width: 640px) {
+  [data-skin="stamp"] .doc-page article::before,
+  [data-skin="stamp"] .doc-page > div::before { display: none; }
+}
+/* Step numerals struck into the page rather than sitting on it. */
+[data-skin="stamp"] ol > li > div:first-child {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ── Ledger: the register made literal — ruled stock behind the prose and a
+   tick-marked rail down the step ladder. */
+[data-skin="ledger"] .doc-prose {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.7em - 1px),
+    rgba(21, 22, 26, 0.055) calc(1.7em - 1px),
+    rgba(21, 22, 26, 0.055) 1.7em
+  );
+}
+[data-skin="ledger"] ol > li { position: relative; }
+[data-skin="ledger"] ol > li::before {
+  content: '';
+  position: absolute;
+  left: 2.2rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(230, 38, 42, 0.35) 0 6px,
+    transparent 6px 12px
+  );
+}
+@media (min-width: 640px) {
+  [data-skin="ledger"] ol > li::before { left: 3.4rem; }
+}
+[data-skin="ledger"] details:nth-of-type(odd) { background: rgba(21, 22, 26, 0.022); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
