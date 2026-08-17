@@ -1,6 +1,6 @@
-import { validateSuggestion, validateRetailer, validateFaq } from './validate';
+import { validateSuggestion, validateRetailer, validateRange, validateFaq } from './validate';
 import { requireAccess } from './access';
-import { dataAsOf, purgeSheets, sheetsRoute, snapshotSheets } from './sheets';
+import { chartData, dataAsOf, purgeSheets, sheetsRoute, snapshotSheets } from './sheets';
 
 export interface Env {
   DB: D1Database;
@@ -18,6 +18,7 @@ const json = (data: unknown, status = 200) =>
 
 const cacheKeyFor = (url: URL) => new Request(`${url.origin}/api/retailers`);
 const faqCacheKeyFor = (url: URL) => new Request(`${url.origin}/api/faqs`);
+const rangesCacheKeyFor = (url: URL) => new Request(`${url.origin}/api/ranges`);
 
 async function verifyTurnstile(token: string, secret: string, ip: string | null): Promise<boolean> {
   try {
@@ -90,6 +91,30 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
       'SELECT id, name, address, city, province, postal, lat, lon, phone, website, description, category FROM retailers ORDER BY name',
     ).all();
     const res = json(results);
+    res.headers.set('cache-control', 'public, max-age=60, s-maxage=300');
+    ctx.waitUntil(caches.default.put(key, res.clone()));
+    return res;
+  }
+
+  // Fetched only when the visitor turns the range view on.
+  if (pathname === '/api/ranges' && request.method === 'GET') {
+    const key = rangesCacheKeyFor(url);
+    const cached = await caches.default.match(key);
+    if (cached) return cached;
+    const { results } = await env.DB.prepare(
+      'SELECT id, name, address, city, province, postal, lat, lon, phone, website, description, kind, access FROM ranges ORDER BY name',
+    ).all();
+    const res = json(results);
+    res.headers.set('cache-control', 'public, max-age=60, s-maxage=300');
+    ctx.waitUntil(caches.default.put(key, res.clone()));
+    return res;
+  }
+
+  if (pathname === '/api/charts' && request.method === 'GET') {
+    const key = new Request(`${url.origin}/api/charts`);
+    const cached = await caches.default.match(key);
+    if (cached) return cached;
+    const res = json(await chartData(env));
     res.headers.set('cache-control', 'public, max-age=60, s-maxage=300');
     ctx.waitUntil(caches.default.put(key, res.clone()));
     return res;
@@ -178,6 +203,45 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
     if (rMatch && request.method === 'DELETE') {
       await env.DB.prepare('DELETE FROM retailers WHERE id=?').bind(Number(rMatch[1])).run();
       purge();
+      return json({ ok: true });
+    }
+
+    // Ranges live in their own table, so they only invalidate their own cache.
+    const purgeRanges = () => ctx.waitUntil(caches.default.delete(rangesCacheKeyFor(url)));
+
+    if (pathname === '/api/admin/ranges' && request.method === 'GET') {
+      const { results } = await env.DB.prepare(
+        'SELECT id, name, address, city, province, postal, lat, lon, phone, website, description, kind, access FROM ranges ORDER BY name',
+      ).all();
+      return json(results);
+    }
+
+    if (pathname === '/api/admin/ranges' && request.method === 'POST') {
+      const v = validateRange(await request.json().catch(() => null));
+      if (!v.ok) return json({ error: v.error }, 400);
+      const r = v.value;
+      const { meta } = await env.DB.prepare(
+        `INSERT INTO ranges (name, address, city, province, postal, lat, lon, phone, website, description, kind, access)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ).bind(r.name, r.address, r.city, r.province, r.postal, r.lat, r.lon, r.phone, r.website, r.description, r.kind, r.access).run();
+      purgeRanges();
+      return json({ id: meta.last_row_id }, 201);
+    }
+
+    const gMatch = pathname.match(/^\/api\/admin\/ranges\/(\d+)$/);
+    if (gMatch && request.method === 'PUT') {
+      const v = validateRange(await request.json().catch(() => null));
+      if (!v.ok) return json({ error: v.error }, 400);
+      const r = v.value;
+      await env.DB.prepare(
+        `UPDATE ranges SET name=?, address=?, city=?, province=?, postal=?, lat=?, lon=?, phone=?, website=?, description=?, kind=?, access=?, updated_at=datetime('now') WHERE id=?`,
+      ).bind(r.name, r.address, r.city, r.province, r.postal, r.lat, r.lon, r.phone, r.website, r.description, r.kind, r.access, Number(gMatch[1])).run();
+      purgeRanges();
+      return json({ ok: true });
+    }
+    if (gMatch && request.method === 'DELETE') {
+      await env.DB.prepare('DELETE FROM ranges WHERE id=?').bind(Number(gMatch[1])).run();
+      purgeRanges();
       return json({ ok: true });
     }
 

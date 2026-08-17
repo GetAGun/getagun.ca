@@ -1,6 +1,7 @@
 // Dynamic /sheets/ content generated from D1: browsable spreadsheets (HTML),
 // .xlsx downloads, and live SVG charts served at image URLs. Responses are
 // edge-cached and purged when retailer data changes.
+import { PROVINCE_POP, TERRITORIES } from '../shared/const';
 import { strToU8, zipSync } from 'fflate';
 
 export interface SheetsEnv {
@@ -114,10 +115,72 @@ const RBC_HEADERS = {
 const BANNER_FR: Record<string, string> = {
   INDEPENDENT: 'INDÉPENDANTS', 'CANADIAN TIRE': 'CANADIAN TIRE', PRONATURE: 'PRONATURE',
   ECOTONE: 'ÉCOTONE', 'HOME HARDWARE': 'HOME HARDWARE', 'BASS PRO CABELAS': "BASS PRO / CABELA'S",
-  SAIL: 'SAIL', LATULIPPE: 'LATULIPPE', COOP: 'CO-OP', FCNQ: 'FCNQ', GUNSMITH: 'ARMURIERS',
+  SAIL: 'SAIL', LATULIPPE: 'LATULIPPE', COOP: 'CO-OP', FCNQ: 'FCNQ', NORTHERN: 'MAGASINS NORTHERN', GUNSMITH: 'ARMURIERS',
 };
 
 type Row = { cells: Array<string | number | null>; banner?: string; cls?: string };
+
+
+// The generated pages carry the site's palette and type. Fonts are the same
+// self-hosted files the app preloads, so they are already cached by the time a
+// visitor follows a link here.
+const SHEET_CSS = `<style>
+@font-face{font-family:Rajdhani;src:url(/fonts/rajdhani-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Rajdhani;src:url(/fonts/rajdhani-700.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url(/fonts/serif-400.woff2) format('woff2');font-weight:400;font-display:swap}
+:root{--ink:#15161a;--paper:#f7f5f2;--rule:#e2ddd5;--steel:#5a5f68;--brand:#e6262a;--deep:#a8141a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+ font-family:'Source Serif 4',Georgia,serif;-webkit-text-size-adjust:100%}
+.mast{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;padding:.5rem .9rem;
+ background:var(--ink);border-bottom:2px solid var(--brand)}
+.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;flex:0 0 auto}
+.brand span{font-family:Rajdhani,sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.06em;
+ text-transform:uppercase;color:#fff}
+.brand b{color:var(--brand);font-weight:700}
+.mast h1{margin:0;font-family:Rajdhani,sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.14em;
+ text-transform:uppercase;color:rgba(255,255,255,.6)}
+.mast nav{margin-left:auto;display:flex;gap:1rem;flex-wrap:wrap}
+.mast nav a{font-family:Rajdhani,sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.12em;
+ text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none}
+.mast nav a:hover{color:#fff}
+.meta{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;padding:.5rem .9rem;
+ font-size:.78rem;color:var(--steel);border-bottom:1px solid var(--rule)}
+.meta .n{font-family:Rajdhani,sans-serif;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.meta .sep{color:var(--rule)}
+.chip{padding:.1rem .5rem;border:1px solid var(--rule);font-size:.72rem}
+.chip.y{background:#e4f0e2}.chip.n2{background:#f7e3e3}.chip.u{background:#f5efd8}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;font-size:.8rem;min-width:100%}
+th{position:sticky;top:0;z-index:1;background:var(--ink);color:rgba(255,255,255,.85);text-align:left;
+ padding:.5rem .6rem;white-space:nowrap;cursor:pointer;
+ font-family:Rajdhani,sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+td{padding:.42rem .6rem;border-bottom:1px solid var(--rule);white-space:nowrap;font-variant-numeric:tabular-nums}
+tbody tr:nth-child(even){background:rgba(21,22,26,.022)}
+tbody tr.y{background:#e9f3e7}tbody tr.n{background:#f9e8e8}tbody tr.u{background:#f6f1dd}
+tbody tr.s td{background:var(--ink);color:#fff;font-family:Rajdhani,sans-serif;font-weight:600;
+ letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;white-space:normal}
+td a{color:var(--deep);text-decoration:underline;text-underline-offset:2px}
+/* Phones: eleven nowrap columns are unusable side-scrolling, so each row becomes
+   a labelled card. The table structure is untouched, so sorting still works. */
+@media(max-width:640px){
+ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ table,tbody,tr,td{display:block;width:100%}
+ tbody tr{border-bottom:1px solid var(--rule);padding:.5rem .9rem;background:#fff}
+ tbody tr:nth-child(even){background:rgba(21,22,26,.022)}
+ td{border:0;padding:.12rem 0;white-space:normal;display:flex;gap:.75rem;align-items:baseline}
+ td:before{content:attr(data-label);flex:0 0 8.5rem;color:var(--steel);
+  font-family:Rajdhani,sans-serif;font-weight:600;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+ td:empty{display:none}
+ tbody tr.s{padding:0}
+ tbody tr.s td{padding:.45rem .9rem}
+ tbody tr.s td:before{content:none}
+}
+</style>`;
+
+// Same interface scale the app stores, so following a link here does not jump size.
+const SCALE_SCRIPT = `<script>try{var s=localStorage.getItem('ui-scale');
+if(s)document.documentElement.style.zoom=s}catch(e){}</script>`;
 
 export function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], rows: Row[], alt: string, xlsxHref: string, hasLegend: boolean, asOf = ''): string {
   const ui = UI[lang];
@@ -132,44 +195,38 @@ export function sheetHtml(title: string, lang: 'en' | 'fr', headers: string[], r
   const tr = (r: Row) =>
     r.banner !== undefined
       ? `<tr class="s"><td colspan="${headers.length}">${esc(r.banner)}</td></tr>`
-      : `<tr${r.cls ? ` class="${r.cls}"` : ''}>${r.cells.map((v) => `<td>${cell(v)}</td>`).join('')}</tr>`;
+      : `<tr${r.cls ? ` class="${r.cls}"` : ''}>${r.cells
+          .map((v, i) => `<td data-label="${esc(headers[i] ?? '')}">${cell(v)}</td>`)
+          .join('')}</tr>`;
   return (
     `<!doctype html><html lang="${lang}"><head><meta charset="utf-8">` +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     `<title>${esc(title)}</title>` +
     '<link rel="icon" href="/favicon.ico">' +
-    '<style>' +
-    'body{margin:0;font-family:system-ui,sans-serif;color:#1e293b}' +
-    'header{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:1rem 1.25rem;background:#0f172a;color:#fff}' +
-    'header h1{margin:0;font-size:1.1rem}' +
-    'header a{color:#93c5fd;font-size:.85rem;text-decoration:none}' +
-    'header a:hover{text-decoration:underline}' +
-    '.wrap{overflow-x:auto}' +
-    'table{border-collapse:collapse;font-size:.85rem;min-width:100%}' +
-    'th{position:sticky;top:0;background:#c8181d;color:#fff;text-align:left;padding:.45rem .6rem;white-space:nowrap}' +
-    'td{padding:.4rem .6rem;border-bottom:1px solid #e2e8f0;white-space:nowrap}' +
-    'tbody tr:nth-child(even){background:#f8fafc}' +
-    'tbody tr.y{background:#dcfce7}' +
-    'tbody tr.n{background:#fee2e2}' +
-    'tbody tr.u{background:#fef9c3}' +
-    'tbody tr.s td{background:#e2e8f0;font-weight:600}' +
-    '.chip{padding:.15rem .5rem;border-radius:9999px;color:#1e293b;font-size:.75rem}' +
-    'td a{color:#2563eb}' +
-    '</style></head>' +
+    SHEET_CSS +
+    '</head>' +
     `<body data-sort-hint="${esc(ui.sort)}">` +
-    `<header><h1>${esc(title)}</h1>` +
-    '<a href="/">&larr; getagun.ca</a>' +
+    SCALE_SCRIPT +
+    '<header class="mast">' +
+    '<a class="brand" href="/"><img src="/logo.png" alt="" width="26" height="24">' +
+    '<span>GetAGun<b>.ca</b></span></a>' +
+    `<h1>${esc(title)}</h1>` +
+    '<nav>' +
     `<a href="${esc(xlsxHref)}" download>${ui.dl}</a>` +
     `<a href="${esc(alt)}">${ui.alt}</a>` +
     `<a href="${lang === 'fr' ? '/sheets/archive-fr' : '/sheets/archive'}">${ui.archive}</a>` +
-    `<span style="font-size:.8rem;color:#94a3b8">${nrows} ${ui.rows}</span>` +
-    (asOf ? `<span style="font-size:.8rem;color:#94a3b8">${ui.asof} ${esc(fmtAsOf(asOf, lang))}</span>` : '') +
+    '</nav></header>' +
+    '<div class="meta">' +
+    `<span class="n">${nrows}</span> <span>${ui.rows}</span>` +
+    (asOf ? `<span class="sep">|</span><span>${ui.asof} ${esc(fmtAsOf(asOf, lang))}</span>` : '') +
     (hasLegend
-      ? `<span class="chip" style="background:#dcfce7">${ui.y}</span>` +
-        `<span class="chip" style="background:#fee2e2">${ui.n}</span>` +
-        `<span class="chip" style="background:#fef9c3">${ui.u}</span>`
+      ? '<span class="sep">|</span>' +
+        `<span class="chip y">${ui.y}</span>` +
+        `<span class="chip n2">${ui.n}</span>` +
+        `<span class="chip u">${ui.u}</span>`
       : '') +
-    '</header><div class="wrap"><table><thead><tr>' +
+    '</div>' +
+    '<div class="wrap"><table><thead><tr>' +
     headers.map((h) => `<th>${esc(h)}</th>`).join('') +
     '</tr></thead><tbody>' +
     rows.map(tr).join('') +
@@ -324,12 +381,8 @@ export function ctChartSvg(byProv: Array<{ prov: string; yes: number; no: number
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1218" height="994" viewBox="0 0 1218 994">${parts.join('')}</svg>`;
 }
 
-// population estimates: Statistics Canada, April 1, 2026
-const POP: Record<string, number> = {
-  NL: 547910, PE: 181715, NS: 1090852, NB: 866497, QC: 9016222, ON: 16103890,
-  MB: 1503865, SK: 1266092, AB: 5057077, BC: 5646420, YT: 48493, NT: 45808, NU: 42215,
-};
-const TERR = ['YT', 'NT', 'NU'];
+const POP = PROVINCE_POP;
+const TERR = TERRITORIES;
 
 export function percapitaWideSvg(counts: Record<string, number>, fr: boolean): string {
   const rate: Record<string, number> = {};
@@ -462,15 +515,25 @@ async function archivePage(env: SheetsEnv, lang: 'en' | 'fr'): Promise<Response>
   const html =
     `<!doctype html><html lang="${lang}"><head><meta charset="utf-8">` +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
-    `<title>${esc(ui.title)}</title><link rel="icon" href="/favicon.ico"><style>` +
-    'body{margin:0;font-family:system-ui,sans-serif;color:#1e293b}' +
-    'header{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:1rem 1.25rem;background:#0f172a;color:#fff}' +
-    'header h1{margin:0;font-size:1.1rem}header a{color:#93c5fd;font-size:.85rem;text-decoration:none}header a:hover{text-decoration:underline}' +
-    'main{padding:1rem 1.25rem;max-width:44rem}h2{font-size:1rem;margin:1.2rem 0 .4rem}ul{margin:.2rem 0;padding-left:1.4rem}' +
-    'li{margin:.2rem 0}a{color:#2563eb}p{color:#475569;font-size:.9rem}' +
+    `<title>${esc(ui.title)}</title><link rel="icon" href="/favicon.ico">` +
+    SHEET_CSS +
+    '<style>' +
+    'main{padding:1.1rem .9rem;max-width:44rem}' +
+    "h2{font-family:Rajdhani,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;" +
+    'color:var(--steel);margin:1.4rem 0 .4rem;border-top:1px solid var(--rule);padding-top:.5rem}' +
+    'ul{margin:.2rem 0;padding:0;list-style:none}' +
+    'li{margin:0;border-bottom:1px solid var(--rule)}' +
+    'li a{display:block;padding:.45rem .1rem;color:var(--deep);text-decoration:none;font-variant-numeric:tabular-nums}' +
+    'li a:hover{text-decoration:underline;text-underline-offset:2px}' +
+    'main>p{color:var(--steel);font-size:.9rem;line-height:1.6}' +
     '</style></head><body>' +
-    `<header><h1>${esc(ui.title)}</h1><a href="/">&larr; ${ui.back}</a>` +
-    `<a href="${lang === 'fr' ? '/sheets/archive' : '/sheets/archive-fr'}">${ui.alt}</a></header>` +
+    SCALE_SCRIPT +
+    '<header class="mast">' +
+    '<a class="brand" href="/"><img src="/logo.png" alt="" width="26" height="24">' +
+    '<span>GetAGun<b>.ca</b></span></a>' +
+    `<h1>${esc(ui.title)}</h1>` +
+    `<nav><a href="/">${ui.back}</a>` +
+    `<a href="${lang === 'fr' ? '/sheets/archive' : '/sheets/archive-fr'}">${ui.alt}</a></nav></header>` +
     `<main><p>${esc(ui.intro)}</p>${body}</main></body></html>`;
   return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8' } });
 }
@@ -481,6 +544,22 @@ const TITLES = {
   rbc: { en: 'Mapped Firearms Retailers by Category', fr: "Détaillants d'armes à feu cartographiés, par catégorie" },
   ct: { en: 'Canadian Tire Locations That Stock Guns', fr: 'Succursales Canadian Tire qui vendent des armes à feu' },
 };
+
+// The numbers behind both published charts, so the site can draw them
+// interactively from exactly the same data the SVGs use.
+export async function chartData(env: SheetsEnv) {
+  const stores = await retailers(env);
+  const counts: Record<string, number> = {};
+  for (const s of stores) counts[s.province] = (counts[s.province] ?? 0) + 1;
+  const locs = await ctLocations(env);
+  const byProv = new Map<string, { yes: number; no: number }>();
+  for (const r of deriveCt(locs, stores)) {
+    const e = byProv.get(r.province) ?? { yes: 0, no: 0 };
+    e[r.firearms === 'yes' ? 'yes' : 'no'] += 1;
+    byProv.set(r.province, e);
+  }
+  return { counts, ct: [...byProv.entries()].map(([prov, v]) => ({ prov, ...v })) };
+}
 
 export const DYNAMIC_SHEET_PATHS = [
   '/sheets/retailers-by-category', '/sheets/retailers-by-category-fr',
