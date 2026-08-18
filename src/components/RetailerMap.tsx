@@ -378,7 +378,7 @@ export default function RetailerMap({
           minimumFractionDigits: 1, maximumFractionDigits: 1,
         });
         const box = document.createElement('div');
-        box.className = 'text-xs leading-snug text-slate-700';
+        box.className = 'text-xs leading-snug text-ink';
         const name = document.createElement('div');
         name.className = 'font-semibold';
         name.textContent = n;
@@ -474,19 +474,19 @@ export default function RetailerMap({
       {/* Phones: the bottom edge is taken by the filter pill and attribution, so the
           counter sits under the header instead. */}
       {inView !== null && (
-        <div className="pointer-events-none absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/90 px-3 py-1 text-xs font-medium tabular-nums text-slate-700 shadow sm:bottom-3 sm:top-auto">
+        <div className="pointer-events-none absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-nowrap border border-rule bg-paper/95 px-3 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.1em] tabular-nums text-ink shadow-sm sm:bottom-3 sm:top-auto">
           {inView} {t('stores_in_view')}
         </div>
       )}
       {density && (
-        <div className="pointer-events-none absolute bottom-16 left-3 z-10 rounded-md bg-white/90 px-2.5 py-1.5 text-[11px] leading-tight text-slate-700 shadow sm:bottom-10 sm:left-auto sm:right-3">
-          <div className="mb-1 font-medium">{t('density_legend')}</div>
+        <div className="pointer-events-none absolute bottom-16 left-3 z-10 border border-rule bg-paper/95 px-2.5 py-1.5 text-[11px] leading-tight text-ink shadow-sm sm:bottom-10 sm:left-auto sm:right-3">
+          <div className="eyebrow mb-1">{t('density_legend')}</div>
           <div className="flex">
             {DENSITY_STOPS.map(([, c]) => (
               <span key={c} className="h-2.5 w-4 sm:w-6" style={{ background: c }} />
             ))}
           </div>
-          <div className="flex justify-between tabular-nums text-slate-500">
+          <div className="flex justify-between tabular-nums text-steel">
             <span>0</span><span>1</span><span>2</span><span>4</span><span>8</span><span>16+</span>
           </div>
         </div>

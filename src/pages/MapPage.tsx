@@ -22,17 +22,17 @@ const swatch = (c: Category) =>
 // with the active side emphasised; otherwise it is a plain on/off toggle.
 function Toggle({ on, onClick, label, labelOff, className = '', labelClass = '' }: { on: boolean; onClick: (e: React.MouseEvent) => void; label: string; labelOff?: string; className?: string; labelClass?: string }) {
   // The summary is font-semibold, so the inactive side must reset weight explicitly.
-  const side = (active: boolean) => (active ? 'font-semibold text-slate-800' : 'font-normal text-slate-400');
+  const side = (active: boolean) => (active ? 'font-semibold text-ink' : 'font-normal text-steel');
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={on}
       aria-label={labelOff ? `${labelOff} / ${label}` : label}
-      className={`flex items-center gap-2 rounded-md px-1 py-1 text-left text-sm transition-colors sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] hover:bg-slate-50 active:scale-[var(--press)] ${className}`}
+      className={`flex items-center gap-2 rounded-md px-1 py-1 text-left text-sm transition-colors sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] hover:bg-ink/[0.04] active:scale-[var(--press)] ${className}`}
     >
       {labelOff && <span className={`${labelClass} ${side(!on)}`}>{labelOff}</span>}
-      <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-[var(--dur)] ease-[var(--ease)] ${on ? 'bg-[#e6262a]' : labelOff ? 'bg-slate-500' : 'bg-slate-300'}`}>
+      <span className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-[var(--dur)] ease-[var(--ease)] ${on ? 'bg-brand' : labelOff ? 'bg-steel' : 'bg-ink/25'}`}>
         <span
           className={`absolute left-0 top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform duration-[var(--dur)] ease-[var(--ease)] ${
             on ? 'translate-x-[18px]' : 'translate-x-0.5'
@@ -215,9 +215,9 @@ export default function MapPage() {
         <button
           onClick={() => setSearchOpen(true)}
           aria-label={t('search_placeholder')}
-          className="absolute left-3 top-3 z-10 animate-[pop-in_var(--dur-fast)_var(--ease)] rounded-full bg-white p-3 shadow-lg transition-transform duration-[var(--dur-fast)] ease-[var(--ease)] hover:scale-105 active:scale-[var(--press)]"
+          className="absolute left-3 top-3 z-10 animate-[pop-in_var(--dur-fast)_var(--ease)] rounded-full border border-rule bg-white p-3 shadow-sm transition-transform duration-[var(--dur-fast)] ease-[var(--ease)] hover:scale-105 active:scale-[var(--press)]"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5 text-slate-700">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5 text-ink">
             <circle cx="11" cy="11" r="7" />
             <path d="m21 21-4.3-4.3" />
           </svg>
@@ -225,19 +225,19 @@ export default function MapPage() {
       )}
       {searchOpen && (
       <div className="absolute left-3 top-3 z-10 flex w-80 max-w-[calc(100vw-1.5rem)] sm:w-72 origin-top-left animate-[pop-in_var(--dur)_var(--ease)] flex-col gap-2">
-        <div className="rounded-lg bg-white p-2 shadow-lg">
+        <div className="border border-rule bg-white p-2 shadow-sm">
           <div className="flex gap-1.5">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('search_placeholder')}
-              className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm sm:py-1.5"
+              className="min-w-0 flex-1 border border-rule px-3 py-2 text-sm transition-colors duration-[var(--dur-fast)] focus:border-brand sm:py-1.5"
               aria-label={t('search_placeholder')}
             />
             <button
               onClick={() => setSearchOpen(false)}
               aria-label={t('close')}
-              className="shrink-0 rounded-md px-2 text-slate-400 hover:text-slate-600"
+              className="shrink-0 px-2 text-steel hover:text-ink"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                 <path d="m18 15-6-6-6 6" />
@@ -245,14 +245,14 @@ export default function MapPage() {
             </button>
           </div>
           {nameHits.length > 0 && (
-            <ul className="mt-1 divide-y divide-slate-100">
+            <ul className="mt-1 divide-y divide-rule">
               {nameHits.map((r) => (
                 <li key={r.id}>
-                  <button onClick={() => pickRetailer(r)} className="flex w-full items-center gap-2 px-2 py-1.5 text-left text-sm hover:bg-slate-100">
+                  <button onClick={() => pickRetailer(r)} className="flex w-full items-center gap-2 px-2 py-1.5 text-left text-sm hover:bg-ink/[0.05]">
                     <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={swatch(r.category)} />
                     <span className="truncate">
                       <span className="font-medium">{r.name}</span>
-                      <span className="text-slate-500"> — {r.city}, {r.province}</span>
+                      <span className="text-steel"> — {r.city}, {r.province}</span>
                     </span>
                   </button>
                 </li>
@@ -260,10 +260,10 @@ export default function MapPage() {
             </ul>
           )}
           {hits.length > 0 && (
-            <ul className="mt-1 divide-y divide-slate-100">
+            <ul className="mt-1 divide-y divide-rule">
               {hits.map((h, i) => (
                 <li key={i}>
-                  <button onClick={() => pick(h)} className="w-full px-2 py-1.5 text-left text-sm hover:bg-slate-100">
+                  <button onClick={() => pick(h)} className="w-full px-2 py-1.5 text-left text-sm hover:bg-ink/[0.05]">
                     {h.label}
                   </button>
                 </li>
@@ -273,7 +273,7 @@ export default function MapPage() {
           <button
             onClick={locate}
             disabled={locating}
-            className="mt-2 w-full rounded-md bg-slate-800 py-2 text-sm font-medium text-white sm:py-1.5 hover:bg-slate-700 disabled:opacity-50"
+            className="mt-2 w-full bg-ink py-2 font-display text-[13px] font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-[var(--dur-fast)] sm:py-1.5 hover:bg-brand-deep disabled:opacity-50"
           >
             {locating ? t('locating') : t('use_my_location')}
           </button>
@@ -281,25 +281,25 @@ export default function MapPage() {
         </div>
 
         {origin && (
-          <div className="max-h-[45vh] overflow-y-auto rounded-lg bg-white p-2 shadow-lg">
+          <div className="max-h-[45vh] overflow-y-auto border border-rule bg-white p-2 shadow-sm">
             <div className="mb-1 flex items-center justify-between">
               <h2 className="text-sm font-semibold">{t('nearest_title')}</h2>
-              <button onClick={() => setOrigin(null)} className="text-xs text-slate-500 hover:underline">
+              <button onClick={() => setOrigin(null)} className="text-xs text-steel hover:underline">
                 {t('clear')}
               </button>
             </div>
-            <p className="truncate text-xs text-slate-500">{origin.label}</p>
+            <p className="truncate text-xs text-steel">{origin.label}</p>
             <ol>
               {results.map((r) => (
                 <li key={r.id}>
                   <button
                     onClick={() => setSelected(r)}
-                    className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-slate-100"
+                    className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-ink/[0.05]"
                   >
                     <span className="font-medium">{r.name}</span>
-                    <span className="float-right text-slate-500">{r.distanceKm.toFixed(1)} km</span>
+                    <span className="float-right text-steel">{r.distanceKm.toFixed(1)} km</span>
                     <br />
-                    <span className="text-xs text-slate-500">{r.city}, {r.province}</span>
+                    <span className="text-xs text-steel">{r.city}, {r.province}</span>
                   </button>
                 </li>
               ))}
@@ -313,14 +313,14 @@ export default function MapPage() {
       <details
         open={filtersOpen}
         onToggle={(e) => setFiltersOpen((e.target as HTMLDetailsElement).open)}
-        className="absolute bottom-3 left-3 z-10 max-h-[55vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-lg bg-white p-2 shadow-lg open:w-[21rem] sm:p-1.5"
+        className="absolute bottom-3 left-3 z-10 max-h-[62vh] max-w-[calc(100vw-1.5rem)] overflow-y-auto border border-rule bg-white p-2 shadow-sm open:w-[21rem] sm:p-1.5"
       >
         {/* flex-wrap so the longer French labels drop to a second line instead of clipping */}
-        <summary className="flex cursor-pointer select-none list-none flex-wrap items-center gap-y-1 px-1 py-1 text-sm font-semibold text-slate-700 sm:text-[13px] [&::-webkit-details-marker]:hidden">
-          <Bullseye open={filtersOpen} className={`mr-1.5 transition-colors duration-[var(--dur-fast)] ${filtersOpen ? 'text-ink' : 'text-slate-400'}`} />
+        <summary className="flex cursor-pointer select-none list-none flex-wrap items-center gap-y-1 px-1 py-1 font-display text-[13px] font-semibold uppercase tracking-[0.1em] text-ink sm:text-[12px] [&::-webkit-details-marker]:hidden">
+          <Bullseye open={filtersOpen} className={`mr-1.5 transition-colors duration-[var(--dur-fast)] ${filtersOpen ? 'text-ink' : 'text-steel'}`} />
           {t('filters_title')}
           {(rangeMode ? ranges.length : retailers.length) > 0 && (
-            <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full bg-slate-800 px-1.5 text-xs font-medium leading-none tabular-nums text-white">
+            <span className="ml-1.5 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center bg-ink px-1.5 text-xs font-semibold leading-none tabular-nums text-white">
               {rangeMode ? ranges.length : retailers.length}
             </span>
           )}
@@ -339,7 +339,7 @@ export default function MapPage() {
         {rangeMode ? (
           <div className="stagger mt-2 grid grid-cols-2 gap-1.5 sm:gap-1">
             {RANGE_ACCESS.map((a) => (
-              <div key={a} className="px-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+              <div key={a} className="eyebrow px-1">
                 {RANGE_ACCESS_LABELS[a][lang]}
               </div>
             ))}
@@ -354,8 +354,8 @@ export default function MapPage() {
                   onClick={() => toggleRange(slug)}
                   aria-pressed={on}
                   aria-label={`${RANGE_ACCESS_LABELS[a][lang]} — ${RANGE_KIND_LABELS[k][lang]}`}
-                  className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
-                    on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
+                  className={`relative flex items-center gap-2 border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
+                    on ? 'border-rule bg-white' : 'border-transparent bg-ink/[0.05] text-steel'
                   }`}
                 >
                   <img
@@ -366,7 +366,7 @@ export default function MapPage() {
                   <span className="leading-tight">{RANGE_KIND_LABELS[k][lang]}</span>
                   <span
                     className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
-                      on ? 'bg-slate-100 text-slate-600' : 'bg-white text-slate-400'
+                      on ? 'bg-ink/[0.06] text-ink' : 'bg-white text-steel'
                     }`}
                   >
                     {rangeCounts[slug] ?? 0}
@@ -385,15 +385,15 @@ export default function MapPage() {
                 style={{ ["--i" as string]: i }}
                 onClick={() => toggle(c)}
                 aria-pressed={on}
-                className={`relative flex items-center gap-2 rounded-md border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
-                  on ? 'border-slate-300 bg-white' : 'border-transparent bg-slate-100 text-slate-400'
+                className={`relative flex items-center gap-2 border py-2 pl-2.5 pr-9 text-left text-sm transition-all sm:py-1.5 sm:pl-2 sm:text-[13px] duration-[var(--dur-fast)] ease-[var(--ease)] active:scale-[var(--press)] ${
+                  on ? 'border-rule bg-white' : 'border-transparent bg-ink/[0.05] text-steel'
                 }`}
               >
                 <span className="h-3 w-3 shrink-0 rounded-full sm:h-2.5 sm:w-2.5" style={on ? swatch(c) : { background: '#cbd5e1' }} />
                 <span className="leading-tight">{CATEGORY_LABELS[c][lang]}</span>
                 <span
                   className={`absolute right-1.5 top-2 inline-flex h-[18px] min-w-[1.75rem] items-center justify-center rounded-full px-1 text-[11px] font-medium leading-none tabular-nums ${
-                    on ? 'bg-slate-100 text-slate-600' : 'bg-white text-slate-400'
+                    on ? 'bg-ink/[0.06] text-ink' : 'bg-white text-steel'
                   }`}
                 >
                   {counts[c] ?? 0}
@@ -403,16 +403,16 @@ export default function MapPage() {
           })}
         </div>
         )}
-        <div className="mt-2 border-t border-slate-200 pt-2">
+        <div className="mt-2 border-t border-rule pt-2">
           <Toggle on={clustered} onClick={() => { setClustered((v) => !v); revealMap(); }} label={t('cluster_toggle')} className="w-full" />
           <Toggle on={density} onClick={() => { setDensity((v) => !v); revealMap(); }} label={t('density_toggle')} className="mt-1 w-full" />
         </div>
-        <label className="mt-2 block border-t border-slate-200 pt-2 text-sm sm:text-[13px]">
-          <span className="font-semibold text-slate-700">{t('theme_title')}</span>
+        <label className="mt-2 block border-t border-rule pt-2 text-sm sm:text-[13px]">
+          <span className="font-display font-semibold uppercase tracking-[0.1em] text-ink">{t('theme_title')}</span>
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value as MapTheme)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm sm:py-1"
+            className="mt-1 w-full border border-rule bg-white px-2 py-1.5 text-sm transition-colors duration-[var(--dur-fast)] focus:border-brand sm:py-1"
           >
             {THEMES.map((th) => {
               const flavor = th.replace('-nolabels', '') as MapFlavor;
@@ -436,10 +436,10 @@ export default function MapPage() {
               color: RANGE_ACCESS_COLORS[selectedRange!.access],
             };
         return (
-        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] origin-top-right animate-[pop-in_var(--dur)_var(--ease)] rounded-lg bg-white p-4 shadow-lg">
+        <div className="absolute right-3 top-3 z-10 w-80 max-w-[calc(100vw-1.5rem)] origin-top-right animate-[pop-in_var(--dur)_var(--ease)] border border-rule bg-white p-4 shadow-sm">
           <button
             onClick={() => { setSelected(null); setSelectedRange(null); }}
-            className="float-right text-slate-400 hover:text-slate-600"
+            className="float-right text-steel hover:text-ink"
             aria-label={t('close')}
           >
             ✕
@@ -451,22 +451,22 @@ export default function MapPage() {
             {badge.label}
           </span>
           <h2 className="text-lg font-bold">{item.name}</h2>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-steel">
             {item.address}, {item.city}, {item.province} {item.postal ?? ''}
           </p>
           {item.phone && (
-            <p className="mt-1 text-sm"><a className="text-blue-600 hover:underline" href={`tel:${item.phone}`}>{item.phone}</a></p>
+            <p className="mt-1 text-sm"><a className="text-brand-deep underline decoration-brand/40 underline-offset-[3px] hover:decoration-brand" href={`tel:${item.phone}`}>{item.phone}</a></p>
           )}
           {item.website && (
             <p className="mt-1 text-sm">
-              <a className="text-blue-600 hover:underline" href={item.website} target="_blank" rel="noopener noreferrer">
+              <a className="text-brand-deep underline decoration-brand/40 underline-offset-[3px] hover:decoration-brand" href={item.website} target="_blank" rel="noopener noreferrer">
                 {t('visit_website')}
               </a>
             </p>
           )}
           {item.description && <p className="mt-2 text-sm">{item.description}</p>}
           {selected && asOf && (
-            <p className="mt-2 text-xs text-slate-400">
+            <p className="mt-2 text-xs text-steel/70">
               {t('data_as_of')}{' '}
               {new Date(asOf.replace(' ', 'T') + 'Z').toLocaleDateString(lang === 'fr' ? 'fr-CA' : 'en-CA', {
                 year: 'numeric', month: 'long', day: 'numeric',
