@@ -114,11 +114,13 @@ export default function MapPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, lang]);
 
-  // Ranges are a separate dataset — only fetched once someone asks to see them.
+  // Ranges are a separate dataset, fetched when the range view is turned on, and on the first search, so a
+  // query can match a range without anyone having opened the range view first.
+  const searching = query.trim().length >= 2;
   useEffect(() => {
-    if (!rangeMode || ranges.length) return;
+    if ((!rangeMode && !searching) || ranges.length) return;
     getRanges().then(setRanges).catch(() => {});
-  }, [rangeMode, ranges.length]);
+  }, [rangeMode, searching, ranges.length]);
 
   const visibleRanges = useMemo(
     () => (rangeMode ? ranges.filter((r) => activeRanges.has(`${r.access}-${r.kind}`)) : []),
@@ -153,6 +155,11 @@ export default function MapPage() {
     if (q.length < 2) return [];
     return retailers.filter((r) => fold(r.name).includes(q)).slice(0, 5);
   }, [retailers, query]);
+  const rangeHits = useMemo(() => {
+    const q = fold(query.trim());
+    if (q.length < 2) return [];
+    return ranges.filter((r) => fold(r.name).includes(q)).slice(0, 4);
+  }, [ranges, query]);
 
   const pick = (h: GeocodeHit) => {
     ++searchGen.current;
@@ -164,6 +171,17 @@ export default function MapPage() {
   const pickRetailer = (r: Retailer) => {
     ++searchGen.current;
     setSelected(r);
+    setFlyTarget({ lat: r.lat, lon: r.lon });
+    setQuery(''); setHits([]); setSearchMsg('');
+  };
+
+  // Ranges only render in range view, so selecting one from search switches to it
+  // rather than flying to a pin that is not drawn.
+  const pickRange = (r: ShootingRange) => {
+    ++searchGen.current;
+    setRangeMode(true);
+    setActiveRanges((prev) => new Set(prev).add(`${r.access}-${r.kind}`));
+    setSelectedRange(r); setSelected(null);
     setFlyTarget({ lat: r.lat, lon: r.lon });
     setQuery(''); setHits([]); setSearchMsg('');
   };
@@ -250,6 +268,21 @@ export default function MapPage() {
                 <li key={r.id}>
                   <button onClick={() => pickRetailer(r)} className="flex w-full items-center gap-2 px-2 py-1.5 text-left text-sm hover:bg-ink/[0.05]">
                     <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full" style={swatch(r.category)} />
+                    <span className="truncate">
+                      <span className="font-medium">{r.name}</span>
+                      <span className="text-steel"> — {r.city}, {r.province}</span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {rangeHits.length > 0 && (
+            <ul className="mt-1 divide-y divide-rule border-t border-rule">
+              {rangeHits.map((r) => (
+                <li key={`range-${r.id}`}>
+                  <button onClick={() => pickRange(r)} className="flex w-full items-center gap-2 px-2 py-1.5 text-left text-sm hover:bg-ink/[0.05]">
+                    <img src={`/icons/${rangeIcon(r.access, r.kind)}.png`} alt="" className="h-4 w-4 shrink-0 object-contain" />
                     <span className="truncate">
                       <span className="font-medium">{r.name}</span>
                       <span className="text-steel"> — {r.city}, {r.province}</span>
