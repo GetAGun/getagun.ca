@@ -219,6 +219,7 @@ export default function MapPage() {
         density={density}
         ranges={visibleRanges}
         rangeMode={rangeMode}
+        rangeClustered={clustered}
         onSelectRange={(r) => { setSelectedRange(r); setSelected(null); }}
       />
 

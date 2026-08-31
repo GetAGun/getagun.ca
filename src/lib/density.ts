@@ -1,4 +1,3 @@
-import type { Retailer } from '../../shared/const';
 
 // Census division boundaries (2021 cartographic, simplified) with population.
 export interface CdFeature {
@@ -51,9 +50,9 @@ function bbox(f: CdFeature): [number, number, number, number] {
 }
 
 // Stores per 100,000 residents in each census division, keyed by division id.
-export function densityByCd(cds: CdCollection, retailers: Retailer[]): Map<string, number> {
+export function densityByCd(cds: CdCollection, points: Array<{ lat: number; lon: number }>): Map<string, number> {
   const counts = new Map<string, number>();
-  for (const r of retailers) {
+  for (const r of points) {
     const f = cds.features.find((f) => {
       const b = bbox(f);
       return r.lon >= b[0] && r.lon <= b[2] && r.lat >= b[1] && r.lat <= b[3] && contains(f, r.lon, r.lat);
@@ -67,6 +66,18 @@ export function densityByCd(cds: CdCollection, retailers: Retailer[]): Map<strin
 }
 
 // Class breaks (per 100k) and fill colours shared by the map layer and the legend.
+// Ranges are roughly a fifth as common as stores, so the retail scale would put
+// nearly every division in the lightest band. Same ramp, compressed.
+export const RANGE_DENSITY_STOPS: Array<[number, string]> = [
+  [0, '#f5efec'],
+  [0.001, '#fee5d9'],
+  [0.25, '#fcbba1'],
+  [0.5, '#fc9272'],
+  [1, '#fb6a4a'],
+  [2, '#de2d26'],
+  [4, '#a50f15'],
+];
+
 export const DENSITY_STOPS: Array<[number, string]> = [
   [0, '#f5efec'],
   [0.001, '#fee5d9'],

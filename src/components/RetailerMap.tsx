@@ -8,7 +8,7 @@ import {
   CATEGORY_COLORS, RANGE_ACCESS, RANGE_KINDS, SPLIT_CATEGORIES, rangeIcon,
   type Retailer, type ShootingRange,
 } from '../../shared/const';
-import { DENSITY_STOPS, densityByCd, loadCds } from '../lib/density';
+import { DENSITY_STOPS, RANGE_DENSITY_STOPS, densityByCd, loadCds } from '../lib/density';
 import { currentFeel } from '../lib/feel';
 import { useLang, useT } from '../lib/i18n';
 
@@ -114,24 +114,42 @@ async function ensureRangeIcons(m: maplibregl.Map) {
   );
 }
 
-async function addRangeLayer(m: maplibregl.Map, data: GeoJSON.FeatureCollection) {
+const RANGE_LAYERS = ['range-clusters', 'range-cluster-count', 'points-ranges'];
+
+// MapLibre fixes the cluster option when the source is created, so switching it
+// means rebuilding source and layers — the same dance the retailer pins do.
+async function addRangeLayer(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean) {
   await ensureRangeIcons(m);
   if (!m.getStyle()) return; // style swapped while the icons were loading
-  if (m.getSource('ranges')) {
-    (m.getSource('ranges') as maplibregl.GeoJSONSource).setData(data);
-  } else {
-    m.addSource('ranges', { type: 'geojson', data });
-  }
-  if (!m.getLayer('points-ranges')) {
+  for (const id of RANGE_LAYERS) if (m.getLayer(id)) m.removeLayer(id);
+  if (m.getSource('ranges')) m.removeSource('ranges');
+  m.addSource('ranges', { type: 'geojson', data, ...(clustered ? { cluster: true, clusterRadius: 45 } : {}) });
+  if (clustered) {
     m.addLayer({
-      id: 'points-ranges', type: 'symbol', source: 'ranges',
-      layout: {
-        'icon-image': ['concat', 'range-', ['get', 'access'], '-', ['get', 'kind']],
-        'icon-allow-overlap': true,
-        'icon-ignore-placement': true,
+      id: 'range-clusters', type: 'circle', source: 'ranges',
+      filter: ['has', 'point_count'],
+      paint: {
+        'circle-color': '#2f3b33',
+        'circle-radius': ['step', ['get', 'point_count'], 15, 10, 19, 50, 25],
+        'circle-opacity': 0.88,
       },
     });
+    m.addLayer({
+      id: 'range-cluster-count', type: 'symbol', source: 'ranges',
+      filter: ['has', 'point_count'],
+      layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Noto Sans Medium'], 'text-size': 12 },
+      paint: { 'text-color': '#ffffff' },
+    });
   }
+  m.addLayer({
+    id: 'points-ranges', type: 'symbol', source: 'ranges',
+    filter: ['!', ['has', 'point_count']],
+    layout: {
+      'icon-image': ['concat', 'range-', ['get', 'access'], '-', ['get', 'kind']],
+      'icon-allow-overlap': true,
+      'icon-ignore-placement': true,
+    },
+  });
 }
 
 const iconSizeExpr = (sel: number | null) =>
@@ -144,10 +162,10 @@ const sizeExprs = (sel: number | null, small = false) =>
     'circle-stroke-width': ['case', ['==', ['get', 'id'], sel ?? -1], small ? 1.5 : 3, small ? 0.75 : 2],
   }) as unknown as Record<'circle-radius' | 'circle-stroke-width', maplibregl.ExpressionSpecification>;
 
-const densityFill = [
+const fillFor = (stops: Array<[number, string]>) => [
   'step', ['coalesce', ['feature-state', 'd'], 0],
-  DENSITY_STOPS[0][1],
-  ...DENSITY_STOPS.slice(1).flatMap(([v, c]) => [v, c]),
+  stops[0][1],
+  ...stops.slice(1).flatMap(([v, c]) => [v, c]),
 ] as unknown as maplibregl.ExpressionSpecification;
 
 function addRetailerLayers(m: maplibregl.Map, data: GeoJSON.FeatureCollection, clustered: boolean, sel: number | null = null) {
@@ -208,12 +226,13 @@ interface Props {
   density?: boolean;
   ranges?: ShootingRange[];
   rangeMode?: boolean;
+  rangeClustered?: boolean;
   onSelectRange?: (r: ShootingRange) => void;
 }
 
 export default function RetailerMap({
   retailers, onSelect, flyTo, clustered = true, theme = 'light', selectedId = null,
-  density = false, ranges = [], rangeMode = false, onSelectRange,
+  density = false, ranges = [], rangeMode = false, rangeClustered = true, onSelectRange,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -234,6 +253,8 @@ export default function RetailerMap({
   rangesRef.current = ranges;
   const rangeModeRef = useRef(rangeMode);
   rangeModeRef.current = rangeMode;
+  const rangeClusteredRef = useRef(rangeClustered);
+  rangeClusteredRef.current = rangeClustered;
   const onSelectRangeRef = useRef(onSelectRange);
   onSelectRangeRef.current = onSelectRange;
   const ratesRef = useRef<Map<string, number>>(new Map());
@@ -247,7 +268,8 @@ export default function RetailerMap({
   const [inView, setInView] = useState<number | null>(null);
   const updateInView = (m: maplibregl.Map) => {
     const b = m.getBounds();
-    setInView(retailersRef.current.filter((r) => b.contains([r.lon, r.lat])).length);
+    const pts = rangeModeRef.current ? rangesRef.current : retailersRef.current;
+    setInView(pts.filter((r) => b.contains([r.lon, r.lat])).length);
   };
 
   // Shows the ranges layer, lazily creating it (and loading its icons) on first use.
@@ -256,7 +278,7 @@ export default function RetailerMap({
       if (m.getLayer('points-ranges')) m.setLayoutProperty('points-ranges', 'visibility', 'none');
       return;
     }
-    addRangeLayer(m, rangesGeoJSON(rangesRef.current))
+    addRangeLayer(m, rangesGeoJSON(rangesRef.current), rangeClusteredRef.current)
       .then(() => {
         if (!rangeModeRef.current || !m.getLayer('points-ranges')) return;
         m.setLayoutProperty('points-ranges', 'visibility', 'visible');
@@ -306,7 +328,7 @@ export default function RetailerMap({
         m.addLayer({
           id: 'cd-fill', type: 'fill', source: 'cds',
           paint: {
-            'fill-color': densityFill,
+            'fill-color': fillFor(rangeModeRef.current ? RANGE_DENSITY_STOPS : DENSITY_STOPS),
             'fill-opacity': PAINT_MS ? 0 : 0.55,
             'fill-opacity-transition': { duration: PAINT_MS, delay: 0 },
           },
@@ -316,7 +338,9 @@ export default function RetailerMap({
         m.addLayer({ id: 'cd-line', type: 'line', source: 'cds', paint: { 'line-color': 'rgba(0,0,0,0.18)', 'line-width': 0.5 } }, firstSymbol);
       }
       for (const id of ['cd-fill', 'cd-line']) m.setLayoutProperty(id, 'visibility', 'visible');
-      const rates = densityByCd(cds, retailersRef.current);
+      const ranged = rangeModeRef.current;
+      m.setPaintProperty('cd-fill', 'fill-color', fillFor(ranged ? RANGE_DENSITY_STOPS : DENSITY_STOPS));
+      const rates = densityByCd(cds, ranged ? rangesRef.current : retailersRef.current);
       ratesRef.current = rates;
       for (const [id, d] of rates) m.setFeatureState({ source: 'cds', id }, { d });
       // Raise opacity after the states land so the fade shows finished colours.
@@ -357,6 +381,18 @@ export default function RetailerMap({
         m.on('mouseenter', layer, () => { m.getCanvas().style.cursor = 'pointer'; });
         m.on('mouseleave', layer, () => { m.getCanvas().style.cursor = ''; });
       }
+      m.on('click', 'range-clusters', (e) => {
+        const f = e.features?.[0];
+        if (!f) return;
+        (m.getSource('ranges') as maplibregl.GeoJSONSource)
+          .getClusterExpansionZoom(f.properties!.cluster_id as number)
+          .then((zoom) => m.easeTo({ center: (f.geometry as GeoJSON.Point).coordinates as [number, number], zoom }))
+          .catch(() => {});
+      });
+      for (const layer of ['range-clusters']) {
+        m.on('mouseenter', layer, () => { m.getCanvas().style.cursor = 'pointer'; });
+        m.on('mouseleave', layer, () => { m.getCanvas().style.cursor = ''; });
+      }
       m.on('click', 'clusters', (e) => {
         const f = e.features?.[0];
         if (!f) return;
@@ -383,7 +419,7 @@ export default function RetailerMap({
         name.className = 'font-semibold';
         name.textContent = n;
         const val = document.createElement('div');
-        val.textContent = `${rate} ${tRef.current('density_popup_suffix')}`;
+        val.textContent = `${rate} ${tRef.current(rangeModeRef.current ? 'density_popup_suffix_ranges' : 'density_popup_suffix')}`;
         box.append(name, val);
         popupRef.current?.remove();
         popupRef.current = new maplibregl.Popup({ closeButton: false, maxWidth: '260px' })
@@ -424,9 +460,11 @@ export default function RetailerMap({
   }, [density, rangeMode]);
 
   useEffect(() => {
-    if (map.current && loaded.current) syncRanges(map.current);
+    if (!map.current || !loaded.current) return;
+    syncRanges(map.current);
+    updateInView(map.current); // the counter switches datasets with the view
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ranges, rangeMode]);
+  }, [ranges, rangeMode, rangeClustered]);
 
   // Rebuild source+layers on toggle: MapLibre fixes the cluster option at source creation.
   // Event handlers survive — they're bound by layer id, and the ids are reused.
@@ -437,7 +475,7 @@ export default function RetailerMap({
     if (m.getSource('retailers')) m.removeSource('retailers');
     addRetailerLayers(m, toGeoJSON(retailersRef.current), clustered, selectedIdRef.current);
     syncDensity(m);
-    syncRanges(m);
+    syncRanges(m); // rebuilds the range source, which also fixes its cluster option
   }, [clustered]);
 
   // setStyle wipes custom sources/layers — re-add them once the new style loads.
@@ -475,19 +513,21 @@ export default function RetailerMap({
           counter sits under the header instead. */}
       {inView !== null && (
         <div className="pointer-events-none absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-nowrap border border-rule bg-paper/95 px-3 py-1 font-display text-[11px] font-semibold uppercase tracking-[0.1em] tabular-nums text-ink shadow-sm sm:bottom-3 sm:top-auto">
-          {inView} {t('stores_in_view')}
+          {inView} {t(rangeMode ? 'ranges_in_view' : 'stores_in_view')}
         </div>
       )}
       {density && (
         <div className="pointer-events-none absolute bottom-16 left-3 z-10 border border-rule bg-paper/95 px-2.5 py-1.5 text-[11px] leading-tight text-ink shadow-sm sm:bottom-10 sm:left-auto sm:right-3">
-          <div className="eyebrow mb-1">{t('density_legend')}</div>
+          <div className="eyebrow mb-1">{t(rangeMode ? 'density_legend_ranges' : 'density_legend')}</div>
           <div className="flex">
-            {DENSITY_STOPS.map(([, c]) => (
+            {(rangeMode ? RANGE_DENSITY_STOPS : DENSITY_STOPS).map(([, c]) => (
               <span key={c} className="h-2.5 w-4 sm:w-6" style={{ background: c }} />
             ))}
           </div>
           <div className="flex justify-between tabular-nums text-steel">
-            <span>0</span><span>1</span><span>2</span><span>4</span><span>8</span><span>16+</span>
+            {(rangeMode ? RANGE_DENSITY_STOPS : DENSITY_STOPS).slice(1).map(([v], i, a) => (
+              <span key={v}>{i === a.length - 1 ? `${v}+` : v}</span>
+            ))}
           </div>
         </div>
       )}
