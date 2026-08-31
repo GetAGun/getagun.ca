@@ -235,6 +235,7 @@ export default function AdminPage() {
           <button onClick={() => setTab('retailers')} className={tabBtn(tab === 'retailers')}>Retailers</button>
           <button onClick={() => setTab('ranges')} className={tabBtn(tab === 'ranges')}>Ranges</button>
           <button onClick={() => setTab('faq')} className={tabBtn(tab === 'faq')}>FAQ</button>
+          <a href="/admin/canvass/" className={`${tabBtn(false)} no-underline`}>Canvass &rarr;</a>
         </div>
         <button
           onClick={async () => {

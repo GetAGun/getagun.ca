@@ -78,3 +78,25 @@ CREATE TABLE IF NOT EXISTS faqs (
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT
 );
+
+-- Door-to-door flyer canvassing (/admin/canvass): one row per residential
+-- address that has been touched, keyed on the City of London GIS_ID so
+-- rebuilding the static address data never orphans a log. Resident contact
+-- details live here and nowhere else, behind the Access gate.
+CREATE TABLE IF NOT EXISTS canvass_log (
+  id         INTEGER PRIMARY KEY,
+  address    TEXT NOT NULL,
+  sentiment  INTEGER CHECK (sentiment IS NULL OR sentiment BETWEEN -2 AND 2),
+  flyer      INTEGER NOT NULL DEFAULT 0,
+  convo      INTEGER NOT NULL DEFAULT 0,
+  not_home   INTEGER NOT NULL DEFAULT 0,
+  wants_info INTEGER NOT NULL DEFAULT 0,
+  licensed   INTEGER NOT NULL DEFAULT 0,
+  dnc        INTEGER NOT NULL DEFAULT 0,
+  name       TEXT,
+  phone      TEXT,
+  email      TEXT,
+  notes      TEXT,
+  updated    INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS canvass_log_updated ON canvass_log(updated);

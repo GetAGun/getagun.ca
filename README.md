@@ -22,6 +22,9 @@ Built with React, MapLibre GL (pmtiles basemap), and Cloudflare Workers + D1.
   with .xlsx downloads and charts — all available in French at the same
   address plus `-fr`
 - FAQ with rich-text answers and a suggestion form (Turnstile-protected)
+- Door-to-door flyer canvassing at `/admin/canvass`: every residential address
+  in London, Ontario, a five-point reaction scale, and resident contact details,
+  installable to a phone and usable with no signal
 
 ## Development
 
@@ -38,6 +41,40 @@ Cloudflare Access locally — Access verification otherwise fails closed.
 ## Deploy
 
     npm run deploy
+
+## Canvassing
+
+`/admin/canvass` is a field tool for handing out PAL/RPAL flyers: pick a street
+or pull the streets around you, walk it, and log each door. It sits behind the
+same Cloudflare Access app as the rest of `/admin`, and resident names, phone
+numbers and emails live only in D1 behind that gate.
+
+The address list is built from two City of London open data layers — 143,124
+unit-level address points joined to 6,773 zoning polygons, so each door carries
+its land use and the list can default to residential. Rebuild it with
+`canvass-prep.py`, which writes `public/canvass/` (gitignored, ~15 MB).
+
+Add the table before deploying the code. Run both from the repo root, so
+wrangler picks up `wrangler.jsonc` and targets the right database:
+
+    npx wrangler d1 execute getagun --local  --file=schema.sql
+    npx wrangler d1 execute getagun --remote --file=../getagun-tools/canvass-migration.sql
+
+`--file` is resolved against the working directory, not the config, so run these
+from the repo or pass an absolute path.
+
+Notes:
+
+- Doors are written to the phone first and queued, so nothing is lost in a dead
+  zone; the queue flushes on reconnect. Writes are last-write-wins on a
+  timestamp, so a door queued offline cannot overwrite a newer edit made
+  elsewhere.
+- `public/admin/canvass/sw.js` is scoped to `/admin/canvass/` and never touches
+  the public site. It has no precache list, so offline works from the second
+  visit onward, and the first load after a deploy still serves the previous
+  build before updating.
+- The basemap is fetched as byte ranges and is not cached: the list, every
+  street and all logging work offline, but the map needs signal.
 
 Requires: D1 database `getagun` (schema.sql applied --remote), Turnstile
 site + `TURNSTILE_SECRET` secret, a Cloudflare Access app covering

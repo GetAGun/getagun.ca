@@ -10,3 +10,6 @@ dist/
 /*.xlsx
 /*.csv
 !/retailers-by-category.xlsx
+
+# Rebuilt from City of London open data by getagun-tools/canvass-prep.py
+public/canvass/

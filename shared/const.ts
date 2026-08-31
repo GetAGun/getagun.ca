@@ -141,3 +141,59 @@ export interface Faq {
   answer_fr: string | null;
   position: number;
 }
+
+// --- Door-to-door flyer canvassing -----------------------------------------
+// Internal to /admin/canvass, so these labels stay English-only: unlike the
+// public site, the only reader is the person holding the flyers.
+
+export const CANVASS_FLAGS = [
+  'flyer', 'convo', 'not_home', 'wants_info', 'licensed', 'dnc',
+] as const;
+export type CanvassFlag = (typeof CANVASS_FLAGS)[number];
+
+export const CANVASS_FLAG_LABELS: Record<CanvassFlag, string> = {
+  flyer: 'Flyer left',
+  convo: 'Talked at door',
+  not_home: 'No answer',
+  wants_info: 'Wants PAL/RPAL info',
+  licensed: 'Already licensed',
+  dnc: 'Do not contact',
+};
+
+// A diverging scale deliberately clear of the brand red: #e6262a reading as
+// "very against" on this of all sites would say the wrong thing entirely.
+// Neutral borrows the steel token so the scale sits inside the site palette.
+export const CANVASS_SENTIMENT = [
+  { value: -2, label: 'Very against', face: '\u{1F620}', color: '#8c1c2b' },
+  { value: -1, label: 'Slightly against', face: '\u{1F641}', color: '#c2661a' },
+  { value: 0, label: 'Neutral', face: '\u{1F610}', color: '#5a5f68' },
+  { value: 1, label: 'Slightly for', face: '\u{1F642}', color: '#2f7d6b' },
+  { value: 2, label: 'Very for', face: '\u{1F603}', color: '#1c5c34' },
+] as const;
+
+// A door that was logged but never gave a view, and one not yet knocked.
+export const CANVASS_TOUCHED_COLOR = '#15161a';
+export const CANVASS_UNLOGGED_COLOR = '#b6afa4';
+
+export type CanvassRow = {
+  id: number;
+  address: string;
+  sentiment: number | null;
+  name: string | null;
+  phone: string | null;
+  email: string | null;
+  notes: string | null;
+  updated: number;
+} & Record<CanvassFlag, number>;
+
+/** One door from the static address data: [id, number, label, unit, lat, lon, landuse, ward] */
+export type CanvassDoorRow = [number, number, string, string, number, number, string, string];
+
+export interface CanvassStreet {
+  id: number;
+  name: string;
+  lat: number;
+  lon: number;
+  doors: number;
+  residential: number;
+}

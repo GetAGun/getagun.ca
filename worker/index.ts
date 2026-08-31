@@ -1,6 +1,7 @@
 import { validateSuggestion, validateRetailer, validateRange, validateFaq } from './validate';
 import { requireAccess } from './access';
 import { chartData, dataAsOf, purgeSheets, sheetsRoute, snapshotSheets } from './sheets';
+import { readCanvassLog, validateCanvassBatch, writeCanvassLog } from './canvass';
 
 export interface Env {
   DB: D1Database;
@@ -175,6 +176,22 @@ async function handle(request: Request, env: Env, ctx: ExecutionContext): Promis
 
     if (pathname === '/api/admin/snapshot' && request.method === 'POST') {
       return json({ ok: true, files: await snapshotSheets(env) });
+    }
+
+    // Flyer canvassing sync. GET pulls everything written since the client's
+    // watermark; POST upserts a batch the phone queued while it had no signal.
+    if (pathname === '/api/admin/canvass') {
+      if (request.method === 'GET') {
+        const since = Number(url.searchParams.get('since'));
+        return json({ now: Date.now(), rows: await readCanvassLog(env.DB, since) });
+      }
+      if (request.method === 'POST') {
+        const v = validateCanvassBatch(await request.json().catch(() => null));
+        if (!v.ok) return json({ error: v.error }, 400);
+        await writeCanvassLog(env.DB, v.value);
+        return json({ now: Date.now(), saved: v.value.length });
+      }
+      return json({ error: 'method not allowed' }, 405);
     }
 
     if (pathname === '/api/admin/retailers' && request.method === 'POST') {

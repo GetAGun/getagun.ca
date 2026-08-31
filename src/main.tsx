@@ -11,6 +11,7 @@ import FaqPage from './pages/FaqPage';
 import MapPage from './pages/MapPage';
 import SuggestPage from './pages/SuggestPage';
 import AdminPage from './pages/AdminPage';
+import AdminCanvass from './pages/AdminCanvass';
 import './index.css';
 
 applyFeel(feelName());
@@ -31,6 +32,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="/suggest" element={<SuggestPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Route>
+          {/* Outside the site chrome: a one-handed field tool needs the whole viewport. */}
+          <Route path="/admin/canvass" element={<AdminCanvass />} />
         </Routes>
       </BrowserRouter>
       {feelSwitcherEnabled() && <FeelSwitcher />}
